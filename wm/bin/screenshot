@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env dash
 #
 # take a screenshot & send a notification
 #
@@ -10,15 +10,14 @@ tim=$(date +%d-%m-%y_%H-%M-%S)
 scr() {
     mkdir -p "$dir"
 
-    # build command line
-    arg=( $1 )
-
-    import "${arg[@]}" "${dir}/${tim}.png" && \
+    import "$@" "${dir}/${tim}.png" && \
         notify-send "Saved screenshot as ${tim}.png"
 }
 
 case "$1" in
-    normal) scr "-window root";;
-    focused) scr "-window $(xdo id)";;
+    normal) scr -window root;;
+    focused) scr -window "$(xdo id)";;
     select) scr;;
 esac
+
+# vim: ft=sh

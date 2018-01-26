@@ -22,7 +22,7 @@ super + shift + r
     pkill -USR1 -x sxhkd
 
 super + shift + {b,t}
-    {chromium,telegram-desktop}
+    {chromium,Telegram}
 
 # BSPWM
 

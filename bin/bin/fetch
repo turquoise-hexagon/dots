@@ -15,7 +15,7 @@ font=$(xrdb -query | grep -m1 font | cut -d- -f3)
 
 # operating system
 get_os() {
-    os="$(lsb_release -si)"
+    os="$(lsb_release -si) $(lsb_release -sr)"
     os=${os,,}
 }
 
