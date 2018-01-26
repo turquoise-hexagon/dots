@@ -1,0 +1,86 @@
+! FONTS
+
+! urxvt font
+URxvt.font: -kakwa-kakwafont-medium-r-normal--12-120-72-72-c-60-iso8859-1
+URxvt.boldFont: -kakwa-kakwafont-medium-r-normal--12-120-72-72-c-60-iso8859-1
+
+! font rendering
+Xft.antialias: 1
+Xft.hinting: 1
+Xft.hintstyle: hintslight
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+
+! EXTENSIONS
+
+URxvt.perl-ext-common: default,matcher,selection-to-clipboard
+
+! urls
+URxvt.url-launcher: chromium
+URxvt.matcher.button: 3
+URxvt.matcher.rend.0: fg13
+
+! COLORSCHEME
+
+! special
+*.foreground: #E8DFD6
+*.background: #021B21
+*.cursorColor: #E8DFD6
+
+! black
+*.color0: #021B21
+*.color8: #065F73
+
+! red
+*.color1: #C2454E
+*.color9: #EF5847
+
+! green
+*.color2: #7CBF9E
+*.color10: #A2D9B1
+
+! yellow
+*.color3: #8A7A63
+*.color11: #BEB090
+
+! blue
+*.color4: #2E3340
+*.color12: #61778D
+
+! magenta
+*.color5: #FF5879
+*.color13: #FF99A1
+
+! cyan
+*.color6: #44B5B1
+*.color14: #9ED9D8
+
+! white
+*.color7: #E8DFD6
+*.color15: #E8DFD6
+
+! THEMING
+
+! x11 xursor
+Xcursor.theme: DMZ-White
+
+! urxvt settings
+URxvt.scrollBar: 0
+URxvt.cursorBlink: 1
+URxvt.internalBorder: 15
+URxvt.geometry: 70x27
+
+! rofi settings
+rofi.font: Kakwafont 8
+rofi.separator-style: none
+rofi.scrollbar-width: 0
+rofi.padding: 15
+rofi.width: 30
+rofi.lines: 5
+rofi.bw: 0
+
+! rofi colors
+rofi.color-window: #EEEEEE, #EEEEEE, #EEEEEE
+rofi.color-normal: #EEEEEE, #021B21, #EEEEEE, #EEEEEE, #FF99A1
+rofi.color-active: #EEEEEE, #021B21, #EEEEEE, #EEEEEE, #FF99A1
+rofi.color-urgent: #EEEEEE, #065F73, #EEEEEE, #EEEEEE, #A2D9B1

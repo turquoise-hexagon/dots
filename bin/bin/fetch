@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+#
+# simple fetch
+
+# set colors
+t=$(tput sgr0)
+a=$(tput setaf 11)
+
+# FETCH
+
+# shell / packages / font
+shell=$(basename "$SHELL")
+packages=$(dpkg --get-selections | grep -cv deinstall)
+font=$(xrdb -query | grep -m1 font | cut -d- -f3)
+
+# operating system
+get_os() {
+    os="$(lsb_release -si)"
+    os=${os,,}
+}
+
+# kernel
+get_kernel() {
+    kernel=$(uname -r)
+    kernel=${kernel/-amd64}
+}
+
+# device model
+get_model() {
+    model=$(< /sys/devices/virtual/dmi/id/product_version)
+    model=${model,,}
+}
+
+# window manager
+get_wm() {
+    wm=$(xprop -root -notype _NET_SUPPORTING_WM_CHECK)
+    wm=${wm##* }
+    wm=$(xprop -id "$wm" -notype -len 100 -f _NET_WM_NAME 8t)
+    wm=${wm/*_NET_WM_NAME = }
+    wm=${wm/\"}
+    wm=${wm/\"*}
+}
+
+# run functions
+get_kernel
+get_os
+get_model
+get_wm
+
+# OUTPUT
+
+cat << EOF
+
+${a}os${t}:          ${os}
+${a}kernel${t}:      ${kernel}
+${a}model${t}:       ${model}
+${a}shell${t}:       ${shell}
+${a}packages${t}:    ${packages}
+${a}font${t}:        ${font}
+${a}wm${t}:          ${wm}
+
+EOF

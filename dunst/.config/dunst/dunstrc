@@ -1,0 +1,33 @@
+[global]
+    font = Kakwafont 8
+    format = "%s\n%b"
+    geometry = "350x0-30+58"
+    padding = 15
+    horizontal_padding = 15
+    separator_height = 0
+    markup = no
+    sort = yes
+    show_indicators = no
+    indicate_hidden = yes
+    alignment = center
+    word_wrap = yes
+    shrink = yes
+    monitor = 0
+    follow = none
+
+[urgency_low]
+    background = "#EEEEEE"
+    foreground = "#021B21"
+    timeout = 5
+
+[urgency_normal]
+    background = "#EEEEEE"
+    foreground = "#021B21"
+    timeout = 5
+
+[urgency_critical]
+    background = "#021B21"
+    foreground = "#EEEEEE"
+    timeout = 0
+
+# vim: ft=cfg

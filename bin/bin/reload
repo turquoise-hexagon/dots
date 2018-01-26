@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#
+# reload various programs
+
+# fix directory issues
+cd "$HOME" || exit
+
+# kill function
+pk() {
+    if pgrep "$1" &> /dev/null; then
+        pkill -x "$1"
+    fi
+}
+
+# bspwm
+pk lemonbar
+pk sxhkd
+
+"${HOME}/.config/bspwm/bspwmrc"
+
+# dunst
+pk dunst
+
+dunst &
+
+# xresources
+xrdb "${HOME}/.Xresources"

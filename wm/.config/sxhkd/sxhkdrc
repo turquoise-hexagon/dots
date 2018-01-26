@@ -1,0 +1,51 @@
+# SHORTCUTS
+
+XF86MonBrightness{Up,Down}
+    xbacklight -time 0 -{inc,dec} 10
+
+XF86Audio{MicMute,Mute,RaiseVolume,LowerVolume}
+    volume {mic,toggle,up,down}
+
+XF86Audio{Prev,Next,Play}
+    player {prev,next,play}
+
+{_,super,super + shift} + Print
+    screenshot {normal,focused,select}
+
+super + Return
+    urxvtc
+
+super + space
+    rofi -show run
+
+super + shift + r
+    pkill -USR1 -x sxhkd
+
+super + shift + {b,t}
+    {chromium,telegram-desktop}
+
+# BSPWM
+
+super + q
+    bspc node -c
+
+super + shift + q
+    bspc quit
+
+super + {t,Tab,f}
+    bspc node -t ~{tiled,floating,fullscreen}
+
+super + {h,j,k,l}
+    bspc node -p {west,south,north,east}
+
+super + Escape
+    bspc node -p cancel
+
+super + r
+    bspc node -n last.!automatic
+
+super + {_,shift,alt} + {Left,Down,Up,Right}
+    {bspc node -f,move,resize} {west,south,north,east}
+
+super + {_,shift} + {ampersand,eacute,quotedbl,apostrophe,parenleft}
+    bspc {desktop -f,node -d} {1-5}

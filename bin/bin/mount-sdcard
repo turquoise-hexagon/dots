@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#
+# mount sdcard
+
+mt="/mnt/sdcard"
+dv="/dev/mmcblk0p1"
+
+if ! [[ -e $dv ]]; then
+    echo "ERROR : no sdcard"
+    exit
+fi
+
+if ! [[ -d $mt ]]; then
+    echo "ERROR : no mount point"
+    exit
+fi
+
+sudo mount "$dv" "$mt"

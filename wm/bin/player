@@ -1,0 +1,15 @@
+#!/usr/bin/env dash
+#
+# remote cmus control
+#
+# wm key bindings
+
+if pgrep cmus > /dev/null; then
+    case "$1" in
+        next) cmus-remote -n;;
+        prev) cmus-remote -r;;
+        play) cmus-remote -u;;
+    esac
+fi
+
+# vim: ft=sh
