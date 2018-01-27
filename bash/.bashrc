@@ -2,8 +2,9 @@
 
 PATH="/bin:/usr/bin:/usr/sbin:/sbin:${HOME}/bin"
 
-export HISTCONTROL=ignoredups:erasedups
-export HISTSIZE=10000
+HISTCONTROL='ignoredups:ignoreboth'
+HISTSIZE=10000
+PROMPT_DIRTRIM=2
 
 PS1='\[$(tput setaf 13)\]\w\[$(tput sgr0)\] '
 
