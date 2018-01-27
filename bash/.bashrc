@@ -2,20 +2,19 @@
 
 PATH="/bin:/usr/bin:/usr/sbin:/sbin:${HOME}/bin"
 
-HISTCONTROL='ignoredups:ignoreboth'
+HISTCONTROL="ignoredups:erasedups"
 HISTSIZE=10000
-PROMPT_DIRTRIM=2
 
-PS1='\[$(tput setaf 13)\]\w\[$(tput sgr0)\] '
+PS1="\[$(tput setaf 13)\]\w\[$(tput sgr0)\] "
 
 # ALIASES
 
-alias mp3='youtube-dl -x --audio-format mp3'
-alias grep='grep --color=auto'
-alias ls='ls --color=auto -F'
-alias sxiv='sxiv -b -s f'
-alias time='time -p'
-alias free='free -h'
+alias mp3="youtube-dl -x --audio-format mp3"
+alias grep="grep --color=auto"
+alias ls="ls --color=auto -F"
+alias sxiv="sxiv -b -s f"
+alias time="time -p"
+alias free="free -h"
 
 # MISC
 
