@@ -1,5 +1,5 @@
 [global]
-    font = Kakwafont 8
+    font = Ttyp0 8
     format = "%s\n%b"
     geometry = "350x0-30+58"
     padding = 15

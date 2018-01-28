@@ -13,6 +13,7 @@ alias mp3="youtube-dl -x --audio-format mp3"
 alias grep="grep --color=auto"
 alias ls="ls --color=auto -F"
 alias sxiv="sxiv -b -s f"
+alias uptime="uptime -p"
 alias time="time -p"
 alias free="free -h"
 

@@ -1,8 +1,8 @@
 ! FONTS
 
 ! urxvt font
-URxvt.font: -kakwa-kakwafont-medium-r-normal--12-120-72-72-c-60-iso8859-1
-URxvt.boldFont: -kakwa-kakwafont-medium-r-normal--12-120-72-72-c-60-iso8859-1
+URxvt.font: -uw-ttyp0-medium-r-normal--11-100-75-75-c-60-iso8859-1
+URxvt.boldFont: -uw-ttyp0-medium-r-normal--11-100-75-75-c-60-iso8859-1
 
 ! font rendering
 Xft.antialias: 1
@@ -68,10 +68,10 @@ Xcursor.theme: DMZ-White
 URxvt.scrollBar: 0
 URxvt.cursorBlink: 1
 URxvt.internalBorder: 15
-URxvt.geometry: 70x27
+URxvt.geometry: 70x30
 
 ! rofi settings
-rofi.font: Kakwafont 8
+rofi.font: Ttyp0 8
 rofi.separator-style: none
 rofi.scrollbar-width: 0
 rofi.padding: 15
