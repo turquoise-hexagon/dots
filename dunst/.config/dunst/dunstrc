@@ -1,7 +1,8 @@
 [global]
     font = Ttyp0 8
     format= "%s\n%b"
-    allow_markup = no
+    allow_markup = yes
+    plain_text = no
     sort = yes
     indicate_hidden = yes
     alignment = center
