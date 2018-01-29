@@ -11,7 +11,7 @@ hi Normal ctermfg=7
 
 " general syntax colors
 hi Comment          ctermfg=8
-hi Constant         ctermfg=10
+hi Constant         ctermfg=2
 hi Identifier       ctermfg=11      cterm=NONE
 hi Statement        ctermfg=6
 hi PreProc          ctermfg=12

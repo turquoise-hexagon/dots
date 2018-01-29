@@ -11,7 +11,7 @@ set format_statusline= %{status} %{?d?%t%=%{position} / %d}
 
 set color_win_dir=7
 
-set color_error=10
+set color_error=1
 
 set color_info=7
 
