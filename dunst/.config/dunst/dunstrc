@@ -1,19 +1,18 @@
 [global]
     font = Ttyp0 8
-    format = "%s\n%b"
-    geometry = "350x0-30+58"
-    padding = 15
-    horizontal_padding = 15
-    separator_height = 0
-    markup = no
+    format= "%s\n%b"
+    allow_markup = no
     sort = yes
-    show_indicators = no
     indicate_hidden = yes
     alignment = center
     word_wrap = yes
+    geometry = "350x0-30+60"
     shrink = yes
-    monitor = 0
     follow = none
+    show_indicators = no
+    separator_height = 0
+    padding = 15
+    horizontal_padding = 15
 
 [urgency_low]
     background = "#EEEEEE"

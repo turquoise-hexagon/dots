@@ -21,10 +21,6 @@ font=$(xrdb -query | grep -m1 font | cut -d- -f3)
 os="$(lsb_release -si) $(lsb_release -sr)"
 os=${os,,}
 
-# kernel
-kernel=$(uname -r)
-kernel=${kernel/-amd64}
-
 # device model
 model=$(< /sys/devices/virtual/dmi/id/product_version)
 model=${model,,}
@@ -42,7 +38,6 @@ wm=${wm/\"*}
 cat << EOF
 
 ${a}os${t}:          ${os}
-${a}kernel${t}:      ${kernel}
 ${a}model${t}:       ${model}
 ${a}shell${t}:       ${shell}
 ${a}packages${t}:    ${packages}

@@ -2,7 +2,7 @@
 
 PATH="/bin:/usr/bin:/usr/sbin:/sbin:${HOME}/bin"
 
-HISTCONTROL="ignoredups:erasedups"
+HISTCONTROL=ignoredups:erasedups
 HISTSIZE=10000
 
 PS1="\[$(tput setaf 13)\]\w\[$(tput sgr0)\] "
