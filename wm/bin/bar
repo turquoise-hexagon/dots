@@ -41,15 +41,14 @@ volume() {
 battery() {
     cur=$(cat /sys/class/power_supply/BAT0/capacity)
     if [ "$cur" -eq 100 ]; then
-        icon=
+        echo "${a}${n} ${cur}%"
     elif [ "$cur" -gt 75 ]; then
-        icon=
+        echo "${a}${n} ${cur}%"
     elif [ "$cur" -gt 25 ]; then
-        icon=
+        echo "${a}${n} ${cur}%"
     else
-        icon=
+        echo "${a}${n} ${cur}%"
     fi
-    echo "${a}${icon}${n} ${cur}%"
 }
 
 # create bar
