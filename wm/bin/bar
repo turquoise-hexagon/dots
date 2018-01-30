@@ -30,10 +30,11 @@ network() {
 }
 
 volume() {
-    if amixer sget Master | grep -q off; then
+    cur=$(amixer sget Master)
+    if echo "$cur" | grep -q off; then
         echo "${a}${n} muted"
     else
-        echo "${a}${n} $(amixer sget Master | grep -om1 '[0-9]*%')"
+        echo "${a}${n} $(echo "$cur" | grep -om1 '[0-9]*%')"
     fi
 }
 
