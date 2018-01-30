@@ -32,9 +32,9 @@ network() {
 volume() {
     cur=$(amixer sget Master | grep -o -m1 '[0-9]*%')
     if [ "$cur" = '0%' ]; then
-        icon=""
+        icon=''
     else
-        icon=""
+        icon=''
     fi
     echo "${a}${icon}${n} ${cur}"
 }
@@ -42,13 +42,13 @@ volume() {
 battery() {
     cur=$(cat /sys/class/power_supply/BAT0/capacity)
     if [ "$cur" -eq 100 ]; then
-        icon=""
+        icon=''
     elif [ "$cur" -gt 75 ]; then
-        icon=""
+        icon=''
     elif [ "$cur" -gt 25 ]; then
-        icon=""
+        icon=''
     else
-        icon=""
+        icon=''
     fi
     echo "${a}${icon}${n} ${cur}%"
 }
