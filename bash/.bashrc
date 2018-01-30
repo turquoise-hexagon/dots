@@ -19,10 +19,6 @@ alias free="free -h"
 
 # MISC
 
-if [[ -f /etc/bash_completion ]]; then
-    . /etc/bash_completion
-fi
+[[ -f /etc/bash_completion ]] && . /etc/bash_completion
 
-if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-    exec startx &> /dev/null
-fi
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx &> /dev/null
