@@ -25,18 +25,17 @@ clock() {
 
 network() {
     cur=$(iwgetid -r)
-    if [ -z "$cur" ]; then
-        cur='offline'
-    fi
+    [ -z "$cur" ] && cur='offline'
     echo "${a}${n} ${cur}"
 }
 
 volume() {
     cur=$(amixer sget Master | grep -o -m1 '[0-9]*%')
-    case "$cur" in
-        0%) icon="";;
-        *) icon="";;
-    esac
+    if [ "$cur" = '0%' ]; then
+        icon=""
+    else
+        icon=""
+    fi
     echo "${a}${icon}${n} ${cur}"
 }
 
