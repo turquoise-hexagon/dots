@@ -30,6 +30,7 @@ network() {
 }
 
 volume() {
+    # amixer slowness workaround
     cur=$(amixer sget Master)
     if echo "$cur" | grep -q off; then
         echo "${a}${n} muted"
