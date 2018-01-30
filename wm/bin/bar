@@ -30,13 +30,11 @@ network() {
 }
 
 volume() {
-    cur=$(amixer sget Master | grep -o -m1 '[0-9]*%')
-    if [ "$cur" = "0%" ]; then
-        icon=
+    if amixer sget Master | grep -q off; then
+        echo "${a}${n} muted"
     else
-        icon=
+        echo "${a}${n} $(amixer sget Master | grep -om1 '[0-9]*%')"
     fi
-    echo "${a}${icon}${n} ${cur}"
 }
 
 battery() {
