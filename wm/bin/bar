@@ -32,10 +32,12 @@ network() {
 volume() {
     # amixer slowness workaround
     cur=$(amixer sget Master)
-    case "$cur" in
-        *off*) echo "${a}${n} muted";;
-        *on*) echo "${a}${n} $(echo "$cur" | grep -om1 '[0-9]*%')";;
-    esac
+    if echo "$cur" | grep -q off; then
+        echo "${a}${n} muted"
+    else
+        cur=$(echo "$cur" | grep -om1 '[0-9]*%')
+        echo "${a}${n} ${cur}"
+    fi
 }
 
 battery() {
