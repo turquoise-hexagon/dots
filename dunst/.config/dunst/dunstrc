@@ -1,5 +1,5 @@
 [global]
-    font = Ttyp0 8
+    font = Vanilla 8
     format= "%s\n%b"
     allow_markup = yes
     plain_text = no

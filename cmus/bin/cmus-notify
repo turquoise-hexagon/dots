@@ -12,7 +12,7 @@ done
 
 if [[ $_status == playing ]]; then
     # format ampersands 
-    txt="$_title\n $_artist - $_album"
+    txt="$_title\n$_artist - $_album"
     txt=${txt//&/&amp;}
 
     notify-send -t 1000 "$txt"
