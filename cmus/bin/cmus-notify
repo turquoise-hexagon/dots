@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2154
+#
+# send a notification on cmus update
+#
+# cmus utils
+
+while [[ $# -gt 2 ]]; do
+    eval "_$1"='$2'
+    shift; shift
+done
+
+if [[ $_status != stopped ]]; then
+    # format ampersands 
+    txt="$_title\n $_artist - $_album"
+    txt=${txt//&/&amp;}
+
+    notify-send -t 1000 "$txt"
+fi

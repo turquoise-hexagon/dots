@@ -25,7 +25,7 @@ clock() {
 
 network() {
     cur=$(iwgetid -r)
-    [ -z "$cur" ] && cur=offline
+    [ -z "$cur" ] && cur=Offline
     echo "${a}${n} ${cur}"
 }
 
@@ -33,7 +33,7 @@ volume() {
     # amixer slowness workaround
     cur=$(amixer sget Master)
     if echo "$cur" | grep -q off; then
-        echo "${a}${n} muted"
+        echo "${a}${n} Muted"
     else
         cur=$(echo "$cur" | grep -om1 '[0-9]*%')
         echo "${a}${n} ${cur}"
