@@ -1,8 +1,8 @@
 ! FONTS
 
 ! urxvt font
-URxvt.font: -t-vanilla-medium-r-normal--11-100-75-75-m-100-iso8859-1 
-URxvt.boldFont: -t-vanilla-medium-r-normal--11-100-75-75-m-100-iso8859-1 
+URxvt.font: -t-vanilla-medium-r-normal--11-100-75-75-c-100-iso8859-1
+URxvt.boldFont: -t-vanilla-medium-r-normal--11-100-75-75-c-100-iso8859-1
 
 ! font rendering
 Xft.antialias: 1

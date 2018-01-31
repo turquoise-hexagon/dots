@@ -58,7 +58,7 @@ while echo "%{l}  $(workspaces)%{c}$(clock)%{r}$(network)  $(volume)  $(battery)
 do sleep .2s
 done |\
     lemonbar -g x30 \
-        -f "-t-vanilla-medium-r-normal--11-100-75-75-m-100-iso8859-1" \
+        -f "-t-vanilla-medium-r-normal--11-100-75-75-c-100-iso8859-1" \
         -f "-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1" \
         -B \#021B21 \
         -F \#E8DFD6
