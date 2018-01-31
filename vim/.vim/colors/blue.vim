@@ -5,7 +5,7 @@ if exists("syntax on")
     syntax reset
 endif
 
-let g:colors_name = "blue"
+let g:colors_name = "vanilla"
 
 hi Normal ctermfg=7
 
