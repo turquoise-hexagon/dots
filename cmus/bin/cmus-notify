@@ -10,7 +10,7 @@ while [[ $# -gt 2 ]]; do
     shift; shift
 done
 
-if [[ $_status != stopped ]]; then
+if [[ $_status == playing ]]; then
     # format ampersands 
     txt="$_title\n $_artist - $_album"
     txt=${txt//&/&amp;}
