@@ -1,6 +1,6 @@
 #!/usr/bin/env dash
 #
-# easier moving with bspwm
+# move windows with bspwm
 #
 # wm key bindings
 

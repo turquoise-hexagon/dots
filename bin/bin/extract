@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# easier archive extracting
+# extract common archives
 
 if [[ -f $1 ]]; then
     case "$1" in
