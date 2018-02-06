@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# rename picture based on exifs
+
+set -e
+
+# get extension
+ext=${1##*.}
+ext=${ext,,}
+
+# get date from exifs
+date=$(identify -format "%[EXIF:DateTime]" "$1")
+date=${date//:/-}
+date=${date// /_}
+
+mv "$1" "${date}.${ext}"
