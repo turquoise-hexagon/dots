@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#
+# mount sdcard
+
+mnt="/mnt/sdcard"
+dev="/dev/mmcblk0p1"
+
+check() {
+    if ! [[ -e $1 ]]; then
+        echo "ERROR : '$1' not found"
+        exit
+    fi
+}
+
+check "$mnt"
+check "$dev"
+
+sudo mount "$dev" "$mnt" && \
+    echo "done !"
