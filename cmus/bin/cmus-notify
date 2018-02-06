@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC2154
 #
 # send a notification on cmus update
 #
@@ -10,6 +9,7 @@ while [[ $# -gt 2 ]]; do
     shift; shift
 done
 
+# shellcheck disable=SC2154
 if [[ $_status == playing ]]; then
     # format ampersands 
     txt="$_title\n$_artist - $_album"
