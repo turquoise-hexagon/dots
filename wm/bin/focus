@@ -2,7 +2,7 @@
 #
 # focus windows with bspwm
 
-if bspc query -T -d | grep -q '[monocle|fullscreen]'; then
+if bspc query -T -d | grep -q '(monocle|fullscreen)'; then
     exit
 fi
 
