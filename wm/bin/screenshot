@@ -5,19 +5,19 @@
 # wm key bindings
 
 dir="${HOME}/pictures/screenshots"
-tim=$(date +%d-%m-%y_%H-%M-%S)
+date=$(date +%d-%m-%y_%H-%M-%S)
 
-scr() {
+cap() {
     mkdir -p "$dir"
 
-    import "$@" "${dir}/${tim}.png" && \
-        notify-send "Saved screenshot as ${tim}.png"
+    import "$@" "${dir}/${date}.png" && \
+        notify-send "Saved screenshot as ${date}.png"
 }
 
 case "$1" in
-    normal) scr -window root;;
-    focused) scr -window "$(xdo id)";;
-    select) scr;;
+    normal) cap -window root;;
+    focused) cap -window "$(xdo id)";;
+    select) cap;;
 esac
 
 # vim: ft=sh

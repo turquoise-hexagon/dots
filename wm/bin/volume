@@ -4,15 +4,15 @@
 #
 # wm key bindings
 
-am() {
+vol() {
     amixer -q sset "$@"
 }
 
 case "$1" in
-    mic) am Capture toggle;;
-    toggle) am Master toggle;;
-    up) am Master 5%+;;
-    down) am Master 5%-;;
+    mic) vol Capture toggle;;
+    toggle) vol Master toggle;;
+    up) vol Master 5%+;;
+    down) vol Master 5%-;;
 esac
 
 # vim: ft=sh

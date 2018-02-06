@@ -17,8 +17,8 @@ done
 
 if [[ $current == playing ]]; then
     # format ampersands for pango
-    txt="$title\n$artist - $album"
-    txt=${txt//&/&amp;}
+    text="$title\n$artist - $album"
+    text=${text//&/&amp;}
 
-    notify-send -t 1000 "$txt"
+    notify-send -t 1000 "$text"
 fi
