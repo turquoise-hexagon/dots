@@ -45,7 +45,7 @@ super + r
     bspc node -n last.!automatic
 
 super + {_,shift,alt} + {Left,Down,Up,Right}
-    {bspc node -f,move,resize} {west,south,north,east}
+    {focus,move,resize} {west,south,north,east}
 
 super + {_,shift} + {ampersand,eacute,quotedbl,apostrophe,parenleft}
     bspc {desktop -f,node -d} {1-5}

@@ -1,0 +1,15 @@
+#!/usr/bin/env dash
+#
+# focus windows with bspwm
+
+if bspc query -T -d | grep -q '[monocle|fullscreen]'; then
+    exit
+fi
+
+# fix interaction between floating and tiled
+if ! bspc node -f "$1".local; then
+    [ "$1" = "east" ] && bspc node -f next.local
+    [ "$1" = "west" ] && bspc node -f prev.local
+fi
+
+# vim: ft=sh

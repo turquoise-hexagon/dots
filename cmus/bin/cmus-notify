@@ -5,14 +5,19 @@
 # cmus utils
 
 while [[ $# -gt 2 ]]; do
-    eval "_$1"='$2'
-    shift; shift
+    case "$1" in
+        status) current="$2";;
+        title) title="$2";;
+        artist) artist="$2";;
+        album) album="$2";;
+    esac
+
+    shift;shift
 done
 
-# shellcheck disable=SC2154
-if [[ $_status == playing ]]; then
-    # format ampersands 
-    txt="$_title\n$_artist - $_album"
+if [[ $current == playing ]]; then
+    # format ampersands for pango
+    txt="$title\n$artist - $album"
     txt=${txt//&/&amp;}
 
     notify-send -t 1000 "$txt"
