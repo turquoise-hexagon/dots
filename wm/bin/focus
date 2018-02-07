@@ -1,6 +1,8 @@
 #!/usr/bin/env dash
 #
 # focus windows with bspwm
+#
+# wm key bindings
 
 if bspc query -N -n .focused.local.fullscreen > /dev/null; then
     exit

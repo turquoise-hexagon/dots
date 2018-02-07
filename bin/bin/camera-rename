@@ -4,6 +4,10 @@
 
 set -e
 
+if ! [[ $1 ]]; then
+    exit
+fi
+
 # get extension
 ext=${1##*.}
 ext=${ext,,}
