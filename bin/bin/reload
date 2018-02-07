@@ -5,7 +5,6 @@
 # fix directory issues
 cd "$HOME" || exit
 
-# kill function
 pk() {
     if pgrep "$1" &> /dev/null; then
         pkill -x "$1"
@@ -18,10 +17,11 @@ pk sxhkd
 
 "${HOME}/.config/bspwm/bspwmrc"
 
+# fix fullscreen
+sleep 1
+xdo lower -a bar
+
 # dunst
 pk dunst
 
 dunst &
-
-# xresources
-xrdb "${HOME}/.Xresources"
