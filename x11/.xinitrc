@@ -1,9 +1,9 @@
 #!/usr/bin/env dash
 
 # daemons
-dunst &
 pulseaudio --start
 urxvtd -q -f -o
+dunst &
 
 # settings
 xset s off -dpms -b

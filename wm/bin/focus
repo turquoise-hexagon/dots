@@ -4,9 +4,8 @@
 #
 # wm key bindings
 
-if bspc query -N -n .focused.local.fullscreen > /dev/null; then
+bspc query -N -n .focused.local.fullscreen > /dev/null && \
     exit
-fi
 
 # fix interaction between floating and tiled
 if ! bspc node -f "$1".local; then

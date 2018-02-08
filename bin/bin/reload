@@ -2,26 +2,25 @@
 #
 # reload various programs
 
-# fix directory issues
+# fix directory
 cd "$HOME" || exit
 
 pk() {
-    if pgrep "$1" &> /dev/null; then
+    pgrep -x "$1" &> /dev/null && \
         pkill -x "$1"
-    fi
 }
 
-# bspwm
-pk lemonbar
-pk sxhkd
+utils() {
+    pk sxhkd
+    pk dunst
+    pk lemonbar
 
-"${HOME}/.config/bspwm/bspwmrc"
+    "${HOME}/.config/bspwm/bspwmrc"
+    dunst
 
-# fix fullscreen
-sleep 1
-xdo lower -a bar
+    # fix fullscreen
+    sleep .5s
+    xdo lower -a bar
+}
 
-# dunst
-pk dunst
-
-dunst &
+utils &

@@ -4,9 +4,7 @@
 
 set -e
 
-if ! [[ $1 ]]; then
-    exit
-fi
+! [[ $1 ]] && exit
 
 # get extension
 ext=${1##*.}
