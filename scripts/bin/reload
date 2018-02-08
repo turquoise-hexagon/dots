@@ -10,17 +10,22 @@ pk() {
         pkill -x "$1"
 }
 
-utils() {
+reload_bspwm() {
     pk sxhkd
-    pk dunst
     pk lemonbar
 
     "${HOME}/.config/bspwm/bspwmrc"
-    dunst
 
     # fix fullscreen
     sleep .5s
     xdo lower -a bar
 }
 
-utils &
+reload_dunst() {
+    pk dunst
+
+    dunst &
+}
+
+reload_bspwm &
+reload_dunst &
