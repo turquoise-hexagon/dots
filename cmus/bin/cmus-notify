@@ -7,8 +7,8 @@
 while [[ $# -gt 2 ]]; do
     case "$1" in
         status) current="$2";;
-        title) title="$2";;
         artist) artist="$2";;
+        title) title="$2";;
         album) album="$2";;
     esac
 

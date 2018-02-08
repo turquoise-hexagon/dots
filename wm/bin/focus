@@ -1,18 +1,12 @@
 #!/usr/bin/env dash
 #
 # focus windows with bspwm
-#
-# wm key bindings
 
-bspc query -N -n .focused.local.fullscreen > /dev/null && \
-    exit
+bspc config pointer_follows_focus true
 
-# fix interaction between floating and tiled
-if ! bspc node -f "$1".local; then
-    [ "$1" = "east" ] && \
-        bspc node -f next.local
-    [ "$1" = "west" ] && \
-        bspc node -f prev.local
-fi
+bspc node -f "$1".local
+
+bspc config pointer_follows_focus false
+
 
 # vim: ft=sh
