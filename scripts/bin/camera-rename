@@ -4,15 +4,16 @@
 
 set -e
 
-! [[ $1 ]] && exit
+while [[ $# -gt 0 ]]; do
+    # get ext
+    ext=${1##*.}
+    ext=${ext,,}
 
-# get extension
-ext=${1##*.}
-ext=${ext,,}
+    # get date
+    date=$(identify -format "%[EXIF:DateTime]" "$1")
+    date=${date//:/-}
+    date=${date// /_}
 
-# get date from exifs
-date=$(identify -format "%[EXIF:DateTime]" "$1")
-date=${date//:/-}
-date=${date// /_}
-
-mv "$1" "${date}.${ext}"
+    mv "$1" "${date}.${ext}"
+    shift
+done
