@@ -8,5 +8,4 @@ bspc node -f "$1".local
 
 bspc config pointer_follows_focus false
 
-
 # vim: ft=sh

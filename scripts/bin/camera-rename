@@ -2,15 +2,14 @@
 #
 # rename pictures based on exifs
 
-set -e
-
 while [[ $# -gt 0 ]]; do
-    # get ext
     ext=${1##*.}
-    ext=${ext,,}
 
-    # get date
     date=$(identify -format "%[EXIF:DateTime]" "$1")
+
+    # exit in case there is no exif
+    ! [[ $date ]] && exit
+
     date=${date//:/-}
     date=${date// /_}
 
