@@ -4,8 +4,8 @@ set mouse=true
 
 set status_display_program=cmus-notify
 
-set format_current= %a%=%l
-set format_statusline= %{status} %{?d?%t%=%{position} / %d}
+set format_current= %a %= %l
+set format_statusline= %{status} %{?d?%t %= %{position} / %d}
 
 # COLORS
 
