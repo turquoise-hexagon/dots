@@ -2,7 +2,7 @@
 #
 # send a notification on cmus update
 #
-# cmus utils
+# cmus tool
 
 while [[ $# -gt 2 ]]; do
     case "$1" in
