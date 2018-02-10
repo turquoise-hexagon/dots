@@ -2,7 +2,7 @@
 #
 # external bspwm rules
 #
-# wm utils
+# wm tool
 
 # exit if there is a preselection
 bspc query -N -n .\!automatic > /dev/null && \
