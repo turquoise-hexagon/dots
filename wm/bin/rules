@@ -14,8 +14,8 @@ hori=east
 x=$(bspc query -T -n focused | jq '.rectangle.width')
 y=$(bspc query -T -n focused | jq '.rectangle.height')
 
-# split horizontaly if x > y
-# split verticaly otherwise
+# split horizontally if x > y
+# split vertically otherwise
 [ "$x" -gt "$y" ] && \
     split="$hori" ||\
     split="$vert"
