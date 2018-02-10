@@ -1,7 +1,7 @@
 # SHORTCUTS
 
 XF86MonBrightness{Up,Down}
-    xbacklight -time 0 -{inc,dec} 10
+    xbacklight -{inc,dec} 10
 
 XF86Audio{MicMute,Mute,RaiseVolume,LowerVolume}
     volume {mic,toggle,up,down}
