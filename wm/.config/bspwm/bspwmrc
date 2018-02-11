@@ -19,6 +19,7 @@ bspc config external_rules_command "$(which rules)"
 # RULES
 
 bspc rule -a mpv state=floating
+bspc rule -a Sxiv state=floating
 
 # UTILS
 
