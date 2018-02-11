@@ -1,25 +1,28 @@
-! FONTS
+! URXVT
 
-! urxvt font
+! fonts
 URxvt.font: -t-cherry-medium-r-normal--11-100-75-75-c-100-iso8859-1
 URxvt.boldFont: -t-cherry-medium-r-normal--11-100-75-75-c-100-iso8859-1
 
-! font rendering
+! settings
+URxvt.scrollBar: 0
+URxvt.cursorBlink: 1
+URxvt.internalBorder: 15
+URxvt.geometry: 70x30
+
+! extensions
+URxvt.perl-ext-common: default,matcher,selection-to-clipboard
+URxvt.url-launcher: chromium
+URxvt.matcher.rend.0: fg13
+URxvt.matcher.button: 3
+
+! FONTS
+
 Xft.antialias: 1
 Xft.hinting: 1
 Xft.hintstyle: hintslight
 Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
-
-! EXTENSIONS
-
-! perl
-URxvt.perl-ext-common: default,matcher,selection-to-clipboard
-
-! urls
-URxvt.url-launcher: chromium
-URxvt.matcher.rend.0: fg13
-URxvt.matcher.button: 3
 
 ! THEMING
 
@@ -55,13 +58,9 @@ URxvt.matcher.button: 3
 ! xcursor
 Xcursor.theme: DMZ-White
 
-! urxvt settings
-URxvt.scrollBar: 0
-URxvt.cursorBlink: 1
-URxvt.internalBorder: 15
-URxvt.geometry: 70x30
+! ROFI
 
-! rofi settings
+! settings
 rofi.font: Cherry 8
 rofi.separator-style: none
 rofi.scrollbar-width: 0
@@ -70,7 +69,7 @@ rofi.width: 30
 rofi.lines: 5
 rofi.bw: 0
 
-! rofi colors
+! colors
 rofi.color-window: #EEEEEE, #EEEEEE, #EEEEEE
 rofi.color-normal: #EEEEEE, #021B21, #EEEEEE, #EEEEEE, #FF99A1
 rofi.color-active: #EEEEEE, #021B21, #EEEEEE, #EEEEEE, #FF99A1
