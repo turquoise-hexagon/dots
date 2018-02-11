@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#
+# toggle gaps on and off
+
+if [[ $(bspc config window_gap) -eq 0 ]]; then
+    bspc config window_gap 5
+else
+    bspc config window_gap 0
+fi

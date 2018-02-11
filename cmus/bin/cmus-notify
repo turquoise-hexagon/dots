@@ -5,17 +5,12 @@
 # cmus tool
 
 while [[ $# -gt 2 ]]; do
-    case "$1" in
-        status) current="$2";;
-        artist) artist="$2";;
-        title) title="$2";;
-        album) album="$2";;
-    esac
-
+    printf -v "$1" "%s" "$2"
     shift;shift
 done
 
-if [[ $current == playing ]]; then
+# shellcheck disable=SC2154
+if [[ $status == playing ]]; then
     # format ampersands for pango
     text="$title\n$artist - $album"
     text=${text//&/&amp;}
