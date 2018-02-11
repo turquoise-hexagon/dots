@@ -6,26 +6,20 @@ set nocompatible
 set encoding=utf8
 set hidden
 set noswapfile
-
 set autoindent
-
 set wrap
 set linebreak
 set breakindent
-
 set backspace=indent,eol,start
-
 set expandtab
 set softtabstop=0
 set shiftwidth=4
 set tabstop=4
 set shiftround
-
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-
 set noruler
 set nonumber
 set mouse=a
