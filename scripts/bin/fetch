@@ -1,46 +1,27 @@
 #!/usr/bin/env bash
 #
-# simple fetch
-
-# set colors
-t=$(tput sgr0)
-a=$(tput setaf 11)
+# very simple fetch
 
 # FETCH
 
-# shell
-shell=$(basename "$SHELL")
+# colors
+t=$(tput sgr0)
+a=$(tput setaf 11)
 
-# packages
-packages=$(dpkg --get-selections | grep -cv deinstall)
-
-# font
+# infos
+wm=bspwm
+sh=$(basename "$SHELL")
+os=$(. /etc/os-release && echo "$ID")
+pkg=$(dpkg --get-selections | grep -cv deinstall)
 font=$(xrdb -query | grep -m1 font | cut -d- -f3)
-
-# operating system
-os="$(lsb_release -si) $(lsb_release -sr)"
-os=${os,,}
-
-# device model
-model=$(< /sys/devices/virtual/dmi/id/product_version)
-model=${model,,}
-
-# window manager
-wm=$(xprop -root -notype _NET_SUPPORTING_WM_CHECK)
-wm=${wm##* }
-wm=$(xprop -id "$wm" -notype -len 100 -f _NET_WM_NAME 8t)
-wm=${wm/*_NET_WM_NAME = }
-wm=${wm/\"}
-wm=${wm/\"*}
 
 # OUTPUT
 
 cat << EOF
 
 ${a}os${t}:          ${os}
-${a}model${t}:       ${model}
-${a}shell${t}:       ${shell}
-${a}packages${t}:    ${packages}
+${a}shell${t}:       ${sh}
+${a}packages${t}:    ${pkg}
 ${a}font${t}:        ${font}
 ${a}wm${t}:          ${wm}
 
