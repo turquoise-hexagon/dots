@@ -2,10 +2,12 @@
 #
 # focus windows with bspwm
 
+# exit when fullscreen
+bspc query -N -n .local.focused.fullscreen > /dev/null && \
+    exit
+
 bspc config pointer_follows_focus true
-
 bspc node -f "$1".local
-
 bspc config pointer_follows_focus false
 
 # vim: ft=sh
