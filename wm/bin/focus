@@ -1,4 +1,4 @@
-#!/usr/bin/env dash
+#!/bin/sh
 #
 # focus windows with bspwm
 
@@ -9,5 +9,3 @@ bspc query -N -n .local.focused.fullscreen > /dev/null && \
 bspc config pointer_follows_focus true
 bspc node -f "$1".local
 bspc config pointer_follows_focus false
-
-# vim: ft=sh

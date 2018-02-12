@@ -1,4 +1,4 @@
-#!/usr/bin/env dash
+#!/bin/sh
 
 # SETTINGS
 
@@ -25,5 +25,3 @@ bspc rule -a Sxiv state=floating
 
 sxhkd &
 bar &
-
-# vim: ft=sh

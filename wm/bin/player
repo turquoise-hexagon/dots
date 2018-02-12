@@ -1,4 +1,4 @@
-#!/usr/bin/env dash
+#!/bin/sh
 #
 # remote cmus control
 #
@@ -11,5 +11,3 @@ if pgrep cmus > /dev/null; then
         play) cmus-remote -u;;
     esac
 fi
-
-# vim: ft=sh

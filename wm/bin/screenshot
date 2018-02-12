@@ -1,4 +1,4 @@
-#!/usr/bin/env dash
+#!/bin/sh
 #
 # take a screenshot & send a notification
 #
@@ -19,5 +19,3 @@ case "$1" in
     focused) cap -window "$(xdo id)";;
     select) cap;;
 esac
-
-# vim: ft=sh

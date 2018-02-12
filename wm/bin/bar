@@ -1,4 +1,4 @@
-#!/usr/bin/env dash
+#!/bin/sh
 #
 # lemonbar script
 #
@@ -62,5 +62,3 @@ done |\
         -f "-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1" \
         -B \#021B21 \
         -F \#E8DFD6
-
-# vim: ft=sh

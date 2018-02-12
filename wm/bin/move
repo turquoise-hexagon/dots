@@ -1,4 +1,4 @@
-#!/usr/bin/env dash
+#!/bin/sh
 #
 # move windows with bspwm
 #
@@ -18,5 +18,3 @@ if bspc query -N -n focused.floating > /dev/null; then
 else
     bspc node -s "$1"
 fi
-
-# vim: ft=sh

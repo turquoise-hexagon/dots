@@ -1,4 +1,4 @@
-#!/usr/bin/env dash
+#!/bin/sh
 #
 # resize windows with bspwm
 #
@@ -18,5 +18,3 @@ esac
 
 bspc node -z "$dir" "$x" "$y" || \
     bspc node -z "$falldir" "$x" "$y"
-
-# vim: ft=sh

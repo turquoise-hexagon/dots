@@ -1,4 +1,4 @@
-#!/usr/bin/env dash
+#!/bin/sh
 #
 # remote volume control
 #
@@ -14,5 +14,3 @@ case "$1" in
     up) vol Master 5%+;;
     down) vol Master 5%-;;
 esac
-
-# vim: ft=sh

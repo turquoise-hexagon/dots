@@ -1,4 +1,4 @@
-#!/usr/bin/env dash
+#!/bin/sh
 #
 # external bspwm rules
 #
@@ -21,5 +21,3 @@ y=$(bspc query -T -n focused | jq '.rectangle.height')
     split="$vert"
 
 echo "split_dir=${split}"
-
-# vim: ft=sh
