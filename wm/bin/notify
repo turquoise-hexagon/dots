@@ -29,8 +29,10 @@ get_offset() {
 }
 
 while [ "$#" -gt 0 ]; do
-    [ "$1" = -t ] && time="$2"
-    [ "$1" = -m ] && text="$2"
+    case "$1" in
+        -t) time="$2";;
+        -m) text="$2";;
+    esac
     shift
     shift
 done
