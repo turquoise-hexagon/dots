@@ -8,7 +8,7 @@ not() {
     # send a notification when fullscreen
     if bspc query -N -n .local.focused.fullscreen > /dev/null; then
         var=$(amixer sget Master | grep -om1 '[0-9]*%')
-        notify -t 1 "Volume : ${var}"
+        notify -t 3 "Volume : ${var}"
     fi
 }
 

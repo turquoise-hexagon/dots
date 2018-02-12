@@ -12,5 +12,5 @@ done
 
 # shellcheck disable=SC2154
 if [[ $status == playing ]]; then
-    notify -t 1 "$title"
+    notify -t 3 "$title"
 fi
