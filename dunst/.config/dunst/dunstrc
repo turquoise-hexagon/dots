@@ -29,3 +29,5 @@
     background = "#021B21"
     foreground = "#EEEEEE"
     timeout = 0
+
+# vim: ft=cfg
