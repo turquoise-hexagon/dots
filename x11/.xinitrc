@@ -1,4 +1,4 @@
-#!/usr/bin/env dash
+#!/bin/sh
 
 # daemons
 pulseaudio --start
@@ -19,5 +19,3 @@ xset fp rehash
 xrdb "${HOME}/.Xresources"
 
 exec bspwm
-
-# vim: ft=sh
