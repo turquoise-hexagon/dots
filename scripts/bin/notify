@@ -36,7 +36,7 @@ width=$(( width * font_width ))
 
 # get offset_x
 res=$(bspc query -T -m | jq .rectangle.width)
-offset_x=$(( res - offset_x - width))
+offset_x=$(( res - offset_x - width ))
 
 send "$text" "$time" |\
     lemonbar \
