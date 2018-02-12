@@ -1,4 +1,6 @@
 #!/bin/sh
+#
+# xinitrc
 
 # daemons
 pulseaudio --start
