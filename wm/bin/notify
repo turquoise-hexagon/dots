@@ -17,32 +17,27 @@ foreground="#021B21"
 
 # SCRIPT
 
-get_width() {
-    # take padding into account
-    var=$(echo "  $text  " | wc -m)
-    echo "$((var * font_size))"
-}
-
-get_offset() {
-    var=$(bspc query -T -m | jq '.rectangle.width')
-    echo "$((var - offset_x - width))"
-}
-
 while [ "$#" -gt 0 ]; do
     case "$1" in
-        -t) time="$2";;
-        -m) text="$2";;
+        -t) { shift; time="$1"; };;
+        *) text="$1";;
     esac
-    shift
     shift
 done
 
-width=$(get_width)
-offset_x=$(get_offset)
+# get notification width
+length=$(echo "  $text  " | wc -m)
+width=$((length * font_size))
 
-(echo "%{c}${text}"; sleep "$time") |\
-    lemonbar \
-    -g "${width}x${height}+${offset_x}+${offset_y}" \
+# get notification offset
+res_x=$(bspc query -T -m | jq '.rectangle.width')
+offset_x=$((res_x - offset_x - width))
+
+# kill previous notification
+pkill -f "lemonbar .* -d"
+
+( echo "%{c}${text}"; sleep "$time"; ) |\
+    lemonbar -g "${width}x${height}+${offset_x}+${offset_y}" \
     -B "$background" \
     -F "$foreground" \
     -f "$font" \
