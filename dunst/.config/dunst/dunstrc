@@ -7,7 +7,7 @@
     indicate_hidden = yes
     alignment = center
     word_wrap = yes
-    geometry = "350x0-30+60"
+    geometry = "300x0-30+60"
     shrink = yes
     follow = none
     show_indicators = no
