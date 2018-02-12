@@ -9,11 +9,20 @@ t=$(tput sgr0)
 a=$(tput setaf 11)
 
 # infos
-wm=bspwm
 sh=$(basename "$SHELL")
 os=$(. /etc/os-release && echo "$ID")
 pkg=$(dpkg --get-selections | grep -cv deinstall)
 font=$(xrdb -query | grep -m1 font | cut -d- -f3)
+
+# get wm id
+id=$(xprop -root -notype _NET_SUPPORTING_WM_CHECK)
+id=${id##* }
+
+# get wm name
+wm=$(xprop -id "$id" -notype _NET_WM_NAME)
+wm=${wm/*_NET_WM_NAME = }
+wm=${wm/\"}
+wm=${wm/\"*}
 
 # OUTPUT
 
