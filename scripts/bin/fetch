@@ -19,7 +19,7 @@ id=$(xprop -root -notype _NET_SUPPORTING_WM_CHECK)
 id=${id##* }
 
 # get wm name
-wm=$(xprop -id "$id" -notype _NET_WM_NAME)
+wm=$(xprop -id "$id" -notype -len 100 -f _NET_WM_NAME 8t)
 wm=${wm/*_NET_WM_NAME = }
 wm=${wm/\"}
 wm=${wm/\"*}
