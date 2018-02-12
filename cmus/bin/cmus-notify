@@ -12,9 +12,5 @@ done
 
 # shellcheck disable=SC2154
 if [[ $status == playing ]]; then
-    # format ampersands for pango
-    text="$title\n$artist - $album"
-    text=${text//&/&amp;}
-
-    notify-send -t 1000 "$text"
+    notify -t 1 -m "$title"
 fi
