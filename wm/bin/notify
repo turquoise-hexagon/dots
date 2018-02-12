@@ -11,8 +11,8 @@ offset_y=60
 time=5
 
 # theming
-font="-*-cherry-*"
 font_size=6
+font="-*-cherry-*"
 background="#EEEEEE"
 foreground="#021B21"
 
