@@ -1,16 +1,15 @@
 #!/bin/bash
+#
+# send a notification using lemonbar
+#
+# wm tool
 
 # SETTINGS
 
-# dimensions
 height=40
 offset_x=30
 offset_y=60
-
-# timeout
 time=5
-
-# theming
 font_size=6
 font="-*-cherry-*"
 background="#EEEEEE"
@@ -19,7 +18,7 @@ foreground="#021B21"
 # SCRIPT
 
 get_width() {
-    # take count of padding
+    # take padding into account
     var=$(echo "  $text  " | wc -m)
     echo "$((var * font_size))"
 }
