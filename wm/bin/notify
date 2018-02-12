@@ -10,12 +10,20 @@ height=40
 offset_x=30
 offset_y=60
 time=5
-font_size=6
-font="-*-cherry-*"
-background="#EEEEEE"
-foreground="#021B21"
 
 # SCRIPT
+
+get_width() {
+    # take padding into account
+    var=$(echo "  $text  " | wc -m)
+    # this value depends on your font
+    echo "$((var * 6 ))"
+}
+
+get_offset() {
+    var=$(bspc query -T -m | jq '.rectangle.width')
+    echo "$((var - offset_x - width))"
+}
 
 while [ "$#" -gt 0 ]; do
     case "$1" in
@@ -25,20 +33,16 @@ while [ "$#" -gt 0 ]; do
     shift
 done
 
-# get notification width
-width=$(echo "  $text  " | wc -m)
-width=$(echo "$width * $font_size" | bc)
-
-# get notification offset
-res=$(bspc query -T -m | jq '.rectangle.width')
-offset_x=$(echo "$res - $offset_x - $width" | bc)
+# get offset & width
+width=$(get_width)
+offset_x=$(get_offset)
 
 # kill previous notification
 pkill -f "lemonbar .* -d"
 
 ( echo "%{c}${text}"; sleep "$time"; ) |\
     lemonbar -g "${width}x${height}+${offset_x}+${offset_y}" \
-    -B "$background" \
-    -F "$foreground" \
-    -f "$font" \
+    -f -*-cherry-* \
+    -B \#EEEEEE \
+    -F \#021B21 \
     -d &
