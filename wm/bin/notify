@@ -17,7 +17,7 @@ get_width() {
     # take padding into account
     var=$(echo "  $text  " | wc -m)
     # this value depends on your font
-    echo "$((var * 6 ))"
+    echo "$((var * 6))"
 }
 
 get_offset() {
@@ -40,7 +40,7 @@ offset_x=$(get_offset)
 # kill previous notification
 pkill -f "lemonbar .* -d"
 
-( echo "%{c}${text}"; sleep "$time"; ) |\
+( echo "%{c}${text}"; sleep "$time" ) |\
     lemonbar -g "${width}x${height}+${offset_x}+${offset_y}" \
     -f -*-cherry-* \
     -B \#EEEEEE \
