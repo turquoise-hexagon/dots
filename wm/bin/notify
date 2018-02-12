@@ -24,11 +24,11 @@ done
 
 # get notification width
 var=$(echo "  $text  " | wc -m)
-width=$((var * font_size))
+width=$(echo "$var * $font_size" | bc)
 
 # get notification offset
-var=$(bspc query -T -m | jq '.rectangle.width')
-offset_x=$((var - offset_x - width))
+var=$(bspc query -T -m | jq .rectangle.width)
+offset_x=$(echo "$var - $offset_x - $width" | bc)
 
 # kill previous notification
 pkill -f "lemonbar .* -d"
