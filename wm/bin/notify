@@ -7,6 +7,7 @@
 # SETTINGS
 
 height=40
+font_size=6
 offset_x=30
 offset_y=60
 time=5
@@ -16,8 +17,7 @@ time=5
 get_width() {
     # take padding into account
     var=$(echo "  $text  " | wc -m)
-    # this value depends on your font
-    echo "$((var * 6))"
+    echo "$((var * font_size))"
 }
 
 get_offset() {
