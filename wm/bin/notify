@@ -39,7 +39,7 @@ done
 width=$(get_width)
 offset_x=$(get_offset)
 
-(echo "%{c}$text"; sleep "$time") |\
+(echo "%{c}${text}"; sleep "$time") |\
     lemonbar \
     -g "${width}x${height}+${offset_x}+${offset_y}" \
     -B "$background" \
