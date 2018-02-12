@@ -4,13 +4,21 @@
 #
 # wm key bindings
 
+not() {
+    # send a notification when fullscreen
+    if bspc query -N -n .local.focused.fullscreen > /dev/null; then
+        var=$(amixer sget Master | grep -om1 '[0-9]*%')
+        notify -t 1 -m "Volume : ${var}"
+    fi
+}
+
 vol() {
     amixer -q sset "$@"
 }
 
 case "$1" in
-    mic) vol Capture toggle;;
+    up) vol Master 5%+; not;;
+    down) vol Master 5%-; not;;
     toggle) vol Master toggle;;
-    up) vol Master 5%+;;
-    down) vol Master 5%-;;
+    mic) vol Capture toggle;;
 esac
