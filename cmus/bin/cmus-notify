@@ -13,7 +13,5 @@ while [ "$#" -gt 2 ]; do
     shift
 done
 
-if [ "$status" = playing ]; then
-    # use notify script
+[ "$status" = playing ] &&
     notify -t 3 "$title"
-fi

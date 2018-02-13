@@ -6,10 +6,8 @@ mnt="/mnt/sdcard"
 dev="/dev/mmcblk0p1"
 
 check() {
-    if ! [[ -e $1 ]]; then
-        echo "ERROR : '$1' not found"
-        exit
-    fi
+    ! [[ -e $1 ]] &&
+        ( echo "ERROR : '$1' not found"; exit )
 }
 
 check "$mnt"
