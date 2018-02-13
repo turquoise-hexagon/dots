@@ -6,6 +6,7 @@
 
 step=100
 
+# set a smaller resize step when floating
 bspc query -N -n focused.floating > /dev/null && \
     step=20
 
