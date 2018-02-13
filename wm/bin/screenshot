@@ -10,7 +10,7 @@ date=$(date +%d-%m-%y_%H-%M-%S)
 cap() {
     mkdir -p "$dir"
 
-    import "$@" "${dir}/${date}.png" && \
+    import "$@" "${dir}/${date}.png" &&
         notify-send "Saved screenshot as ${date}.png"
 }
 
