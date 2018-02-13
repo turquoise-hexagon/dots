@@ -4,17 +4,23 @@
 #
 # wm key bindings
 
-# set step
-step=20
+percent=2
 
 # also move floating windows
 if bspc query -N -n focused.floating > /dev/null; then
     case "$1" in
-        west) x="-$step"; y=0;;
-        east) x="$step"; y=0;;
-        north) x=0; y="-$step";;
-        south) x=0; y="$step";;
+        west) target=width; sign=-;;
+        east) target=width; sign=+;;
+        north) target=height; sign=-;;
+        south) target=height; sign=+;;
     esac
+
+    # get move value
+    arg=$(bspc query -T -m | jq .rectangle.width)
+    arg=$(echo "$arg * $percent / 100" | bc)
+
+    [ "$target" = width ] && { x="${sign}${arg}"; y=0; }
+    [ "$target" = height ] && { x=0; y="${sign}${arg}"; }
 
     bspc node -v "$x" "$y"
 else

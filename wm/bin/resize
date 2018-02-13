@@ -2,20 +2,26 @@
 #
 # resize windows with bspwm
 #
-# wm key bindings
+# bspwm key bindings
 
-step=100
+percent=10
 
-# set a smaller resize step when floating
+# set a smaller percentage when floating
 bspc query -N -n focused.floating > /dev/null && \
-    step=20
+    percent=2
 
 case "$1" in
-    west) dir=right; falldir=left; x="-$step"; y=0;;
-    east) dir=right; falldir=left; x="$step"; y=0;;
-    north) dir=top; falldir=bottom; x=0; y="-$step";;
-    south) dir=top; falldir=bottom; x=0; y="$step";;
+    west) dir=right; falldir=left; target=width; sign=-;;
+    east) dir=right; falldir=left; target=width; sign=+;;
+    north) dir=top; falldir=bottom; target=height; sign=-;;
+    south) dir=top; falldir=bottom; target=height; sign=+;;
 esac
 
-bspc node -z "$dir" "$x" "$y" || \
-    bspc node -z "$falldir" "$x" "$y"
+# get resize value
+arg=$(bspc query -T -m | jq .rectangle.width)
+arg=$(echo "$arg * $percent / 100" | bc)
+
+[ "$target" = width ] && { x="${sign}${arg}"; y=0; }
+[ "$target" = height ] && { x=0; y="${sign}${arg}"; }
+
+bspc node -z "$dir" "$x" "$y" || bspc node -z "$falldir" "$x" "$y"
