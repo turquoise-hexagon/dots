@@ -7,28 +7,28 @@ endif
 
 let g:colors_name = "vanilla"
 
-hi Normal       term=NONE       cterm=NONE      ctermfg=7       ctermbg=NONE
-hi Comment      term=NONE       cterm=NONE      ctermfg=8       ctermbg=NONE
-hi Constant     term=NONE       cterm=NONE      ctermfg=2       ctermbg=NONE
-hi Identifier   term=NONE       cterm=NONE      ctermfg=11      ctermbg=NONE
-hi Statement    term=NONE       cterm=NONE      ctermfg=6       ctermbg=NONE
-hi PreProc      term=NONE       cterm=NONE      ctermfg=12      ctermbg=NONE
-hi Type         term=NONE       cterm=NONE      ctermfg=13      ctermbg=NONE
-hi Special      term=NONE       cterm=NONE      ctermfg=11      ctermbg=NONE
-hi Ignore       term=NONE       cterm=NONE      ctermfg=8       ctermbg=NONE
-hi Error        term=NONE       cterm=NONE      ctermfg=7       ctermbg=9
-hi Todo         term=NONE       cterm=NONE      ctermfg=7       ctermbg=2
-hi Underlined   term=underline  cterm=underline ctermfg=NONE    ctermbg=NONE
+hi Normal       ctermfg=7       ctermbg=NONE
+hi Comment      ctermfg=8       ctermbg=NONE
+hi Constant     ctermfg=2       ctermbg=NONE
+hi Identifier   ctermfg=11      ctermbg=NONE
+hi Statement    ctermfg=6       ctermbg=NONE
+hi PreProc      ctermfg=12      ctermbg=NONE
+hi Type         ctermfg=13      ctermbg=NONE
+hi Special      ctermfg=11      ctermbg=NONE
+hi Ignore       ctermfg=8       ctermbg=NONE
+hi Error        ctermfg=7       ctermbg=9
+hi Todo         ctermfg=7       ctermbg=2
+hi Underlined   ctermfg=NONE    ctermbg=NONE cterm=underline
 
-hi DiffAdd      term=NONE       cterm=NONE      ctermfg=2       ctermbg=NONE
-hi DiffChange   term=NONE       cterm=NONE      ctermfg=7       ctermbg=NONE
-hi DiffText     term=NONE       cterm=NONE      ctermfg=7       ctermbg=NONE
-hi DiffDelete   term=NONE       cterm=NONE      ctermfg=1       ctermbg=NONE
-hi Search       term=NONE       cterm=NONE      ctermfg=0       ctermbg=7
-hi IncSearch    term=NONE       cterm=NONE      ctermfg=7       ctermbg=2
-hi NonText      term=NONE       cterm=NONE      ctermfg=0       ctermbg=NONE
-hi StatusLine   term=NONE       cterm=NONE      ctermfg=7       ctermbg=NONE
-hi StatusLineNC term=NONE       cterm=NONE      ctermfg=7       ctermbg=NONE
-hi MatchParen   term=NONE       cterm=NONE      ctermfg=0       ctermbg=7
-hi VertSplit    term=NONE       cterm=NONE      ctermfg=7       ctermbg=NONE
-hi Visual       term=NONE       cterm=NONE      ctermfg=0       ctermbg=7
+hi DiffAdd      ctermfg=2       ctermbg=NONE
+hi DiffChange   ctermfg=7       ctermbg=NONE
+hi DiffText     ctermfg=7       ctermbg=NONE
+hi DiffDelete   ctermfg=1       ctermbg=NONE
+hi Search       ctermfg=0       ctermbg=7
+hi IncSearch    ctermfg=7       ctermbg=2
+hi NonText      ctermfg=0       ctermbg=NONE
+hi StatusLine   ctermfg=7       ctermbg=NONE
+hi StatusLineNC ctermfg=7       ctermbg=NONE
+hi MatchParen   ctermfg=0       ctermbg=7
+hi VertSplit    ctermfg=7       ctermbg=NONE
+hi Visual       ctermfg=0       ctermbg=7
