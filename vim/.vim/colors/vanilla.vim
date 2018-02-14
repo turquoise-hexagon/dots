@@ -28,7 +28,7 @@ hi Search       term=NONE       cterm=NONE      ctermfg=0       ctermbg=7
 hi IncSearch    term=NONE       cterm=NONE      ctermfg=7       ctermbg=2
 hi NonText      term=NONE       cterm=NONE      ctermfg=0       ctermbg=NONE
 hi StatusLine   term=NONE       cterm=NONE      ctermfg=7       ctermbg=NONE
-hi StatusLineNL term=NONE       cterm=NONE      ctermfg=7       ctermbg=NONE
+hi StatusLineNC term=NONE       cterm=NONE      ctermfg=7       ctermbg=NONE
 hi MatchParen   term=NONE       cterm=NONE      ctermfg=0       ctermbg=7
 hi VertSplit    term=NONE       cterm=NONE      ctermfg=7       ctermbg=NONE
 hi Visual       term=NONE       cterm=NONE      ctermfg=0       ctermbg=7
