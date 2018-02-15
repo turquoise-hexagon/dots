@@ -6,7 +6,7 @@
 
 # spawn in preselections first
 target=$(bspc query -N -n .\!automatic | head -n1)
-[ "$target" ] && { echo "node=$target"; exit; }
+[ "$target" ] && { echo "node=${target}"; exit; }
 
 vert=south
 hori=east
