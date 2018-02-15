@@ -1,4 +1,4 @@
-# SHORTCUTS
+# MISC
 
 XF86MonBrightness{Up,Down}
     xbacklight -{inc,dec} 10
@@ -47,5 +47,6 @@ super + r
 super + {_,shift,alt} + {Left,Down,Up,Right}
     {focus,move,resize} {west,south,north,east}
 
+# azerty keyboard
 super + {_,shift} + {ampersand,eacute,quotedbl,apostrophe,parenleft}
     bspc {desktop -f,node -d} {1-5}

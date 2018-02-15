@@ -20,6 +20,7 @@ hi Error        ctermfg=7       ctermbg=9
 hi Todo         ctermfg=7       ctermbg=2
 hi Underlined   ctermfg=NONE    ctermbg=NONE cterm=underline
 
+hi Folded       ctermfg=8       ctermbg=NONE
 hi DiffAdd      ctermfg=2       ctermbg=NONE
 hi DiffChange   ctermfg=7       ctermbg=NONE
 hi DiffText     ctermfg=7       ctermbg=NONE
