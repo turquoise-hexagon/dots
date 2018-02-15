@@ -4,9 +4,9 @@
 #
 # wm tool
 
-# exit if there is a preselection
-bspc query -N -n .\!automatic > /dev/null &&
-    exit
+# spawn in preselections first
+target=$(bspc query -N -n .\!automatic | head -n1)
+[ "$target" ] && { echo "node=$target"; exit; }
 
 vert=south
 hori=east
