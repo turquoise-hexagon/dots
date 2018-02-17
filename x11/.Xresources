@@ -26,7 +26,7 @@ Xft.lcdfilter: lcddefault
 
 ! THEMING
 
-! colors
+! colors
 *.foreground: #E8DFD6
 *.background: #021B21
 *.cursorColor: #E8DFD6
