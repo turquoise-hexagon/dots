@@ -1,5 +1,8 @@
 # MISC
 
+{_,super,super + shift} + Print
+    screenshot {normal,focused,select}
+
 XF86MonBrightness{Up,Down}
     xbacklight -{inc,dec} 10
 
@@ -9,9 +12,6 @@ XF86Audio{MicMute,Mute,RaiseVolume,LowerVolume}
 XF86Audio{Prev,Next,Play}
     player {prev,next,play}
 
-{_,super,super + shift} + Print
-    screenshot {normal,focused,select}
-
 super + Return
     urxvtc
 
@@ -20,9 +20,6 @@ super + space
 
 super + shift + r
     pkill -USR1 -x sxhkd
-
-super + shift + {b,t}
-    {chromium,telegram}
 
 # BSPWM
 
