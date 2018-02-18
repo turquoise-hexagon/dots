@@ -5,7 +5,7 @@
 # wm tool
 
 # spawn in preselections first
-target=$(bspc query -N -n .\!automatic | head -n1)
+target=$(bspc query -N -d -n .\!automatic | head -n1)
 [ "$target" ] && { echo "node=${target}"; exit; }
 
 vert=south
