@@ -18,10 +18,6 @@ bspc config split_ratio 0.5
 
 bspc config external_rules_command "$(which rules)"
 
-# RULES
-
-bspc rule -a mpv state=floating
-
 # UTILS
 
 sxhkd &
