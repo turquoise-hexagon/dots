@@ -9,18 +9,18 @@ percent=2
 # also move floating windows
 if bspc query -N -n focused.floating > /dev/null; then
     case "$1" in
-        west) target=width; sign=-;;
-        east) target=width; sign=+;;
-        north) target=height; sign=-;;
-        south) target=height; sign=+;;
+        west) target=x; sign=-;;
+        east) target=x; sign=+;;
+        north) target=y; sign=-;;
+        south) target=y; sign=+;;
     esac
 
     # get move value
     arg=$(bspc query -T -m | jq .rectangle.width)
     arg=$(echo "$arg * $percent / 100" | bc)
 
-    [ "$target" = width ] && { x="${sign}${arg}"; y=0; }
-    [ "$target" = height ] && { x=0; y="${sign}${arg}"; }
+    [ "$target" = x ] && { x="${sign}${arg}"; y=0; }
+    [ "$target" = y ] && { x=0; y="${sign}${arg}"; }
 
     bspc node -v "$x" "$y"
 else
