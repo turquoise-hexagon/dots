@@ -37,7 +37,3 @@ wtf "$id"
 
 # set stacking order
 chwso -r "$id"
-
-# teleport cursor
-wmp -a $(wattr xy "$id")
-wmp -r $(wattr wh "$id")

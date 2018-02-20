@@ -14,4 +14,4 @@ while [ "$#" -gt 2 ]; do
 done
 
 [ "$status" = playing ] &&
-    notify-send "$title"
+    notify -t 3 "$title"

@@ -4,7 +4,7 @@
 
 # daemons
 pulseaudio --start
-# urxvtd -q -f -o
+urxvtd -q -f -o
 dunst &
 
 # settings
@@ -20,4 +20,4 @@ xset fp rehash
 "${HOME}/.fehbg" &
 xrdb "${HOME}/.Xresources"
 
-exec wm
+exec bspwm
