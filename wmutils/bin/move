@@ -4,12 +4,6 @@
 #
 # wmutils
 
-#      north
-#        |
-# west --+-- east
-#        |
-#      south
-
 percent=5
 
 case "$1" in

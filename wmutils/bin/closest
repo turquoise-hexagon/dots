@@ -4,12 +4,6 @@
 #
 # wmutils
 
-#      north
-#        |
-# west --+-- east
-#        |
-#      south
-
 id=$(pfw)
 
 # stolen from wmutils contrib

@@ -4,12 +4,6 @@
 #
 # wmutils
 
-#      north
-#        |
-# west --+-- east
-#        |
-#      south
-
 border() {
     case "$1" in
         a) chwb -c 0xEEEEEE -s 5 "$2";;
