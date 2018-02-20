@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# quit x session
+#
+# wmutils
+
+pkill -x wm

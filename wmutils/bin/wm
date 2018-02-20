@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# keep x open
+#
+# wmutils
+
+workspaces &
+watcher &
+sxhkd &
+mnml &
+
+while :; do
+    sleep 10s
+done

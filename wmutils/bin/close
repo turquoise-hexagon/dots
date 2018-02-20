@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# close focused window
+#
+# wmutils
+
+killw -p `pfw`

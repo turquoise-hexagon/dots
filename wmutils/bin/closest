@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+# get closest window in a given direction
+#
+# wmutils
+
+#      north
+#        |
+# west --+-- east
+#        |
+#      south
+
+id=`pfw`
+
+next() {
+    lsw | \
+        xargs wattr "$1"i | \
+        sort -n"$2" | \
+        sed "0,/$id/d" | \
+        sed "1s/^[0-9]* //p;d"
+}
+
+case "$1" in
+    east) next x "";;
+    west) next x r;;
+    south) next y "";;
+    north) next y r;;
+esac

@@ -1,0 +1,29 @@
+#!/bin/sh
+#
+# bar
+#
+# wmutils
+
+volume () {
+    cur=$(amixer sget Master | grep -om1 '[0-9]*%')
+    echo " $cur"
+}
+
+clock() {
+    date +'%A %R'
+}
+
+battery() {
+    cur=$(cat /sys/class/power_supply/BAT0/capacity)
+    echo " $cur%"
+}
+
+while echo "%{l}  $(volume)%{c}$(clock)%{r}$(battery)  "
+do sleep 1s
+done | \
+    lemonbar -g "400x40+483+708" \
+    -f -*-cherry-* \
+    -f -*-siji-* \
+    -B \#EEEEEE \
+    -F \#021B21 \
+    -d

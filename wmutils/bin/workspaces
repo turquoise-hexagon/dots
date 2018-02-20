@@ -1,0 +1,57 @@
+#!/bin/sh
+#
+# manage workspaces
+#
+# wmutils
+
+dir=/tmp/wmutils-ws
+
+# if the current workspace is the one we want to focus
+# exit to avoid screen flickering
+cur=$(cat /tmp/wmutils-ws/current)
+[ "$cur" = "$1" ] && exit
+
+init() {
+    mkdir -p "$dir"
+    for i in $(seq 1 10); do
+        touch "$dir/$i"
+    done
+    echo 1 > "$dir/current"
+}
+
+save() {
+    lsw > "$dir/$1"
+}
+
+hide() {
+    for i in $(cat /tmp/wmutils-ws/"$1"); do
+        mapw -tu "$i"
+    done
+}
+
+show() {
+    for i in $(cat /tmp/wmutils-ws/"$1"); do
+        mapw -tm "$i"
+    done
+}
+
+send() {
+    id=$(pfw)
+    echo "$id" >> "$dir/$1"
+    mapw -tu "$id"
+}
+
+case "$1" in
+    "")
+        init
+        ;;
+    send)
+        send "$2"
+        ;;
+    show)
+        save "$cur"
+        hide "$cur"
+        show "$2"
+        echo "$2" > "$dir/current"
+        ;;
+esac

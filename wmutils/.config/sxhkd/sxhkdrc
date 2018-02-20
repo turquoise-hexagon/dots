@@ -1,0 +1,44 @@
+# MISC
+
+XF86Audio{MicMute,Mute,RaiseVolume,LowerVolume}
+    volume {capture,toggle,up,down}
+
+XF86MonBrightness{Up,Down}
+    xbacklight -{inc,dec} 10
+
+XF86Audio{Prev,Next,Play}
+    player {prev,next,play}
+
+Print
+    screenshot
+
+super + Return
+    urxvt
+
+super + space
+    rofi -show run
+
+super + shift + r
+    pkill -USR1 -x sxhkd
+
+# WM
+
+super + q
+    close
+
+super + f
+    fullscreen
+
+super + shift + q
+    quit
+
+super + {y,b,u,n,g}
+    tp {1-5}
+
+super + {_,shift,alt} {Right,Left,Up,Down}
+    {focus,move,resize} {east,west,north,south}
+
+super + {_,shift} {ampersand,eacute,quotedbl,apostrophe,parenleft}
+    workspaces {show,send} {1-5}
+
+
