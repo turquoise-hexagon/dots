@@ -15,7 +15,7 @@ clock() {
 
 battery() {
     cur=$(cat /sys/class/power_supply/BAT0/capacity)
-    echo " $cur%"
+    echo " $cur%"
 }
 
 while echo "%{l}  $(volume)%{c}$(clock)%{r}$(battery)  "

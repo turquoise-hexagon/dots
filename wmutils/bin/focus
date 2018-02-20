@@ -11,9 +11,10 @@
 #      south
 
 border() {
+    chwb -s 10 "$2"
     case "$1" in
-        a) chwb -c 0xEEEEEE -s 5 "$2";;
-        t) chwb -c 0x032C36 -s 5 "$2";;
+        a) chwb2 -O 0xEEEEEE -I 0x032C36 -i 5 -o 5 "$2";;
+        t) chwb2 -O 0x032C36 -I 0xEEEEEE -i 5 -o 5 "$2";;
     esac
 }
 
