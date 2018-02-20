@@ -6,12 +6,7 @@
 
 dir=/tmp/wmutils-ws
 
-# if the current workspace is the one we want to focus
-# exit to avoid screen flickering
-cur=$(cat "$dir/current")
-[ "$cur" = "$2" ] && exit
-
-init() {
+! [ -e "$dir" ] && {
     mkdir -p "$dir"
     for i in $(seq 1 10); do
         touch "$dir/$i"
@@ -41,10 +36,10 @@ send() {
     mapw -tu "$id"
 }
 
+cur=$(cat "$dir/current")
+[ "$cur" = "$2" ] && exit
+
 case "$1" in
-    "")
-        init
-        ;;
     send)
         send "$2"
         ;;
