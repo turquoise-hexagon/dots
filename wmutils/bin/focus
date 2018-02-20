@@ -20,6 +20,7 @@ border() {
 
 case "$1" in
     0x*) wattr "$1" && id="$1";;
+    # stolen from wmutils contrib
     next) id=$(lsw | grep -v "$2" | sed '1 p;d');;
     prev) id=$(lsw | grep -v "$2" | sed '$ p;d');;
     east|west|south|north) id=$(closest "$1");;
