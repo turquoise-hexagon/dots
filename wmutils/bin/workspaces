@@ -8,7 +8,7 @@ dir=/tmp/wmutils-ws
 
 ! [ -e "$dir" ] && {
     mkdir -p "$dir"
-    for i in $(seq 1 10); do
+    for i in $(seq 1 5); do
         touch "$dir/$i"
     done
     echo 1 > "$dir/current"
