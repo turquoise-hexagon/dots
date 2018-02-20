@@ -4,4 +4,4 @@
 #
 # wmutils
 
-killw -p `pfw`
+killw -p "$(pfw)"

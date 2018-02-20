@@ -11,10 +11,9 @@
 #      south
 
 border() {
-    chwb -s 10 "$2"
     case "$1" in
-        a) chwb2 -I 0xEEEEEE -O 0x032C36 -o 4 -i 4 "$2";;
-        t) chwb2 -I 0x032C36 -O 0xEEEEEE -o 4 -i 4 "$2";;
+        a) chwb -c 0xEEEEEE -s 5 "$2";;
+        t) chwb -c 0x032C36 -s 5 "$2";;
     esac
 }
 
@@ -29,7 +28,7 @@ esac
 # set borders
 border a "$id"
 
-for win in `lsw | grep -v "$id"`; do
+for win in $(lsw | grep -v "$id"); do
     border t "$win"
 done
 

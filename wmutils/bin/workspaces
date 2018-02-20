@@ -24,15 +24,15 @@ save() {
 }
 
 hide() {
-    for i in $(cat /tmp/wmutils-ws/"$1"); do
+    while read -r i; do
         mapw -tu "$i"
-    done
+    done < "$dir/$1"
 }
 
 show() {
-    for i in $(cat /tmp/wmutils-ws/"$1"); do
+    while read -r i; do
         mapw -tm "$i"
-    done
+    done < "$dir/$1"
 }
 
 send() {

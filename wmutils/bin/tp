@@ -10,12 +10,9 @@
 # | 2 | 4 |
 # +---+---+
 
-[ "$2" ] && id="$2" || id=`pfw`
+[ "$2" ] && id="$2" || id=$(pfw)
 
-root=`lsw -r`
-
-w=$(wattr w "$root")
-h=$(wattr h "$root")
+root=$(lsw -r)
 
 case "$1" in
     1)
@@ -24,19 +21,19 @@ case "$1" in
         ;;
     2)
         x=0
-        y="$h"
+        y=$(wattr h "$root")
         ;;
     3)
-        x="$w"
+        x=$(wattr w "$root")
         y=0
         ;;
     4)
-        x="$w"
-        y="$h"
+        x=$(wattr w "$root")
+        y=$(wattr h "$root")
         ;;
     5)
-        x=$((w/2))
-        y=$((h/2))
+        x=$(echo "$(wattr w "$root") / 2" | bc)
+        y=$(echo "$(wattr h "$root") / 2" | bc)
         ;;
 esac
 

@@ -10,7 +10,7 @@
 #        |
 #      south
 
-id=`pfw`
+id=$(pfw)
 
 next() {
     lsw | \

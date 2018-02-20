@@ -6,7 +6,7 @@
 
 file=/tmp/wmutils-fs
 
-id=`pfw`
+id=$(pfw)
 
 [ -f "$file" ] && wtp $(cat "$file")
 

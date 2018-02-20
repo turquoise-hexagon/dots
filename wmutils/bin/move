@@ -19,8 +19,8 @@ case "$1" in
     north) target=y; sign=-;;
 esac
 
-cur=`pfw`
-root=`lsw -r`
+cur=$(pfw)
+root=$(lsw -r)
 
 arg=$(wattr w "$root")
 arg=$(echo "$arg * $percent / 100" | bc)
