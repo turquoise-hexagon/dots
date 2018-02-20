@@ -12,6 +12,7 @@
 
 id=$(pfw)
 
+# stolen from wmutils contrib
 next() {
     lsw | \
         xargs wattr "$1"i | \
