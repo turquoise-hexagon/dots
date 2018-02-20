@@ -19,12 +19,9 @@ border() {
 
 case "$1" in
     0x*) wattr "$1" && id="$1";;
-    east) id=$(closest east);;
-    west) id=$(closest west);;
-    south) id=$(closest south);;
-    north) id=$(closest north);;
     next) id=$(lsw | grep -v "$2" | sed '1 p;d');;
     prev) id=$(lsw | grep -v "$2" | sed '$ p;d');;
+    east|west|south|north) id=$(closest "$1");;
 esac
 
 # set borders
