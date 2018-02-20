@@ -8,8 +8,8 @@ dir=/tmp/wmutils-ws
 
 # if the current workspace is the one we want to focus
 # exit to avoid screen flickering
-cur=$(cat /tmp/wmutils-ws/current)
-[ "$cur" = "$1" ] && exit
+cur=$(cat "$dir/current")
+[ "$cur" = "$2" ] && exit
 
 init() {
     mkdir -p "$dir"
