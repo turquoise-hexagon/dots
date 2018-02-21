@@ -4,8 +4,8 @@
 #
 # wmutils
 
+wew | watcher &
 workspaces &
-watcher &
 sxhkd &
 mnml &
 

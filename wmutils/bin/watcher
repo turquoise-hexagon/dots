@@ -4,10 +4,11 @@
 #
 # wmutils
 
-wew | while IFS=: read -r ev id; do
+while IFS=: read -r ev id; do
+    wattr o "$id" && continue
     case "$ev" in
-        18) wattr o "$id" || focus prev "$id";;
-        19) wattr o "$id" || focus "$id";;
-        16) wattr o "$id" || tp 5 "$id";;
+        18) focus prev "$id";;
+        19) focus "$id";;
+        16) tp 5 "$id";;
     esac
 done
