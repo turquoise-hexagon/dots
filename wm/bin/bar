@@ -1,0 +1,64 @@
+#!/bin/sh
+#
+# lemonbar script
+#
+# wm tool
+
+# set values
+a="%{F#FF99A1}"
+n="%{F-}"
+
+workspaces() {
+    cur=$(bspc wm -g | grep -o '[OFU][1-5]' | tail -c2)
+    case "$cur" in
+        1) echo "${a}${n}";;
+        2) echo "${a}${n}";;
+        3) echo "${a}${n}";;
+        4) echo "${a}${n}";;
+        5) echo "${a}${n}";;
+    esac
+}
+
+clock() {
+    echo "${a}${n} $(date +'%a %R')"
+}
+
+network() {
+    cur=$(iwgetid -r)
+    [ -z "$cur" ] && cur=Offline
+    echo "${a}${n} ${cur}"
+}
+
+volume() {
+    # amixer slowness workaround
+    cur=$(amixer sget Master)
+    if echo "$cur" | grep -q off; then
+        echo "${a}${n} Muted"
+    else
+        cur=$(echo "$cur" | grep -om1 '[0-9]*%')
+        echo "${a}${n} ${cur}"
+    fi
+}
+
+battery() {
+    cur=$(cat /sys/class/power_supply/BAT0/capacity)
+    if [ "$cur" -eq 100 ]; then
+        echo "${a}${n} ${cur}%"
+    elif [ "$cur" -gt 75 ]; then
+        echo "${a}${n} ${cur}%"
+    elif [ "$cur" -gt 25 ]; then
+        echo "${a}${n} ${cur}%"
+    else
+        echo "${a}${n} ${cur}%"
+    fi
+}
+
+# create bar
+while echo "%{l}  $(workspaces)%{c}$(clock)%{r}$(network)  $(volume)  $(battery)  "
+do sleep .2s
+done |\
+    lemonbar -g x30 \
+        -f "-t-cherry-medium-r-normal--11-100-75-75-c-100-iso8859-1" \
+        -f "-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1" \
+        -B \#021B21 \
+        -F \#E8DFD6

@@ -1,0 +1,38 @@
+#!/bin/sh
+#
+# send a notification using lemonbar
+#
+# wm tool
+
+# SETTINGS
+
+height=40
+font_size=6
+offset_x=30
+offset_y=60
+time=5
+
+# SCRIPT
+
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        -t) time="$1";;
+        -m) text="$1";;
+    esac
+    shift
+    shift
+done
+
+# get notification width
+width=$(echo "  $text  " | wc -m)
+width=$(echo "$var * 7" | bc)
+
+# kill previous notification
+pkill -f "lemonbar .* -d"
+
+( echo "%{c}${text}"; sleep "$time" ) |\
+    lemonbar -g "${width}x${height}+${offset_x}+${offset_y}" \
+    -f "-t-cherry-medium-r-normal--11-100-75-75-c-100-iso8859-1" \
+    -B \#EEEEEE \
+    -F \#021B21 \
+    -d &
