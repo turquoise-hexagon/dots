@@ -6,7 +6,7 @@
 
 volume () {
     cur=$(amixer sget Master | grep -om1 '[0-9]*%')
-    echo " $cur"
+    echo " $cur"
 }
 
 clock() {
