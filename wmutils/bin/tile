@@ -1,4 +1,8 @@
 #!/bin/sh
+#
+# make master & stack
+#
+# wmutils
 
 # get ids
 id=$(pfw)
