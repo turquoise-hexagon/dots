@@ -19,12 +19,12 @@ super + space
     rofi -show run
 
 super + shift + r
-    pkill -x sxhkd
+    pkill -USR1 -x sxhkd
 
 # WM
 
 super + q
-    killw -p `pfw`
+    killw -p $(pfw)
 
 super + f
     fullscreen
@@ -41,4 +41,7 @@ super + {_,shift,alt} {Right,Left,Up,Down}
 super + {_,shift} {ampersand,eacute,quotedbl,apostrophe,parenleft}
     workspaces {show,send} {1-5}
 
+# MOUSE
 
+super + @button1
+    focus $(mouse)
