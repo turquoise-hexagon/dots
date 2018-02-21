@@ -18,22 +18,16 @@ save() {
     lsw > "$dir/$1"
 }
 
-hide() {
+flip() {
     while read -r i; do
-        mapw -tu "$i"
-    done < "$dir/$1"
-}
-
-show() {
-    while read -r i; do
-        mapw -tm "$i"
+        mapw -t "$i"
     done < "$dir/$1"
 }
 
 send() {
     id=$(pfw)
     echo "$id" >> "$dir/$1"
-    mapw -tu "$id"
+    mapw -u "$id"
 }
 
 cur=$(cat "$dir/current")
@@ -45,8 +39,8 @@ case "$1" in
         ;;
     show)
         save "$cur"
-        hide "$cur"
-        show "$2"
+        flip "$cur"
+        flip "$2"
         echo "$2" > "$dir/current"
         ;;
 esac
