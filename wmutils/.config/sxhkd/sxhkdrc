@@ -23,11 +23,16 @@ super + shift + r
 
 # WM
 
-super + q
-    killw -p $(pfw)
+super + t
+    tile
 
 super + f
     fullscreen
+super + q
+    killw -p $(pfw)
+
+super + q
+    killw -p $(pfw)
 
 super + shift + q
     pkill -x wm
