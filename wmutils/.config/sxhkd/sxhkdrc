@@ -19,18 +19,18 @@ super + space
     rofi -show run
 
 super + shift + r
-    pkill -USR1 -x sxhkd
+    pkill -x sxhkd
 
 # WM
 
 super + q
-    close
+    killw -p `pfw`
 
 super + f
     fullscreen
 
 super + shift + q
-    quit
+    pkill -x wm
 
 super + {y,b,u,n,g}
     tp {1-5}
