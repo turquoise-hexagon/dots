@@ -1,0 +1,36 @@
+#!/bin/sh
+#
+# send a notification
+#
+# wmutils
+
+# SETTINGS
+
+height=40
+offset_x=30
+offset_y=30
+time=5
+
+# SCRIPT
+
+pkill -f "lemonbar .* notify"
+
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        -t) time="$2";;
+        -m) text="$2";;
+    esac
+    shift
+    shift
+done
+
+# get width
+width=$(echo "  $text  " | wc -m)
+width=$(echo "$width * 6" | bc)
+
+( echo "%{c}${text}"; sleep "$time" ) | \
+    lemonbar -g "${width}x${height}+${offset_x}+${offset_y}" \
+    -f -*-cherry-* \
+    -B \#EEEEEE \
+    -F \#021B21 \
+    -d &
