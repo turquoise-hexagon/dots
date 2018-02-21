@@ -5,8 +5,13 @@
 # wmutils
 
 volume () {
-    cur=$(amixer sget Master | grep -om1 '[0-9]*%')
-    echo " $cur"
+    cur=$(amixer sget Master)
+    if echo "$cur" | grep -q off; then
+        echo " Muted"
+    else
+        cur=$(echo "$cur" | grep -om1 '[0-9]*%')
+        echo " $cur"
+    fi
 }
 
 clock() {
@@ -15,11 +20,19 @@ clock() {
 
 battery() {
     cur=$(cat /sys/class/power_supply/BAT0/capacity)
-    echo " $cur%"
+    if [ "$cur" -eq 100 ]; then
+        echo " $cur%"
+    elif [ "$cur" -gt 75 ]; then
+        echo " $cur%"
+    elif [ "$cur" -gt 25 ]; then
+        echo " $cur%"
+    else
+        echo " $cur%"
+    fi
 }
 
 while echo "%{l}  $(volume)%{c}$(clock)%{r}$(battery)  "
-do sleep 1s
+do sleep .5s
 done | \
     lemonbar -g "400x40+483+708" \
     -f -*-cherry-* \
