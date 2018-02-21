@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+# resize focused window
+#
+# wmutils
+
+percent=5
+
+case "$1" in
+    east) target=x; sign=+;;
+    west) target=x; sign=-;;
+    south) target=y; sign=+;;
+    north) target=y; sign=-;;
+esac
+
+cur=$(pfw)
+root=$(lsw -r)
+
+arg=$(wattr w "$root")
+arg=$(echo "$arg * $percent / 100" | bc)
+
+[ "$target" = x ] && { x="$sign$arg"; y=0; }
+[ "$target" = y ] && { x=0; y="$sign$arg"; }
+
+wrs "$x" "$y" "$cur"

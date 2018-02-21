@@ -1,0 +1,32 @@
+#!/bin/sh
+#
+# make master & stack
+#
+# wmutils
+
+# get ids
+id=$(pfw)
+root=$(lsw -r)
+
+# get values
+bw=$(wattr b "$id")
+sw=$(wattr w "$root")
+sh=$(wattr h "$root")
+
+# set master dimensions
+ms=$((sw * 2 / 3))
+
+# make master
+wtp 0 0 "$((ms - 2 * bw))" "$((sh - 2 * bw))" "$id"
+
+# set variables for the stack
+nb=$(lsw | grep -cv "$id")
+w=$((sw - ms - 2 * bw))
+h=$((sh / nb - 2 * bw))
+
+# make stack
+y=0
+for i in $(lsw | grep -v "$id"); do
+    wtp "$ms" "$y" "$w" "$h" "$i"
+    y=$((y + h + 2 * bw))
+done

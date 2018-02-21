@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# keep x open
+#
+# wmutils
+
+# run utils
+wew | watcher &
+workspaces &
+sxhkd &
+mnml &
+
+# wait
+while :; do
+    sleep 10s
+done
