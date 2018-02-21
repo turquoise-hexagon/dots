@@ -28,8 +28,6 @@ super + t
 
 super + f
     fullscreen
-super + q
-    killw -p $(pfw)
 
 super + q
     killw -p $(pfw)
