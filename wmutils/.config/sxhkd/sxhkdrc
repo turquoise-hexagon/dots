@@ -44,4 +44,4 @@ super + {_,shift} {ampersand,eacute,quotedbl,apostrophe,parenleft}
 # MOUSE
 
 super + @button1
-    focus $(mouse)
+    focus $(cursor)

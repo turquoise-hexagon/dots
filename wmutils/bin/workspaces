@@ -6,7 +6,7 @@
 
 dir=/tmp/wmutils-ws
 
-! [ -e "$dir" ] && {
+! [ -e "$dir" ] || ! [ "$1" ] && {
     mkdir -p "$dir"
     for i in $(seq 1 5); do
         touch "$dir/$i"
