@@ -10,13 +10,14 @@ n="%{F-}"
 
 workspaces() {
     cur=$(bspc wm -g | grep -o '[OFU][1-5]' | tail -c2)
-    case "$cur" in
-        1) echo "${a}${n}";;
-        2) echo "${a}${n}";;
-        3) echo "${a}${n}";;
-        4) echo "${a}${n}";;
-        5) echo "${a}${n}";;
-    esac
+    for i in $(seq 1 5); do
+        if [ "$i" = "$cur" ]; then
+            line="${line}${a}${n}"
+        else
+            line="${line}"
+        fi
+    done
+    echo "$line"
 }
 
 clock() {

@@ -7,28 +7,31 @@
 # SETTINGS
 
 height=40
-font_size=6
 offset_x=30
 offset_y=60
 time=5
 
 # SCRIPT
 
+# kill previous notification
+pkill -f "lemonbar .* -d"
+
 while [ "$#" -gt 0 ]; do
     case "$1" in
-        -t) time="$1";;
-        -m) text="$1";;
+        -t) time="$2";;
+        -m) text="$2";;
     esac
     shift
     shift
 done
 
 # get notification width
-width=$(echo "  $text  " | wc -m)
-width=$(echo "$var * 7" | bc)
+var=$(echo "  $text  " | wc -m)
+width=$(echo "$var * 6" | bc)
 
-# kill previous notification
-pkill -f "lemonbar .* -d"
+# get notification offset
+var=$(bspc query -T -m | jq .rectangle.width)
+offset_x=$(echo "$var - $offset_x - $width" | bc)
 
 ( echo "%{c}${text}"; sleep "$time" ) |\
     lemonbar -g "${width}x${height}+${offset_x}+${offset_y}" \
