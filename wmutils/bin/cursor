@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+# get id using the cursor
+#
+# wmutils
+
+mx=$(wmp | cut -d\  -f1)
+my=$(wmp | cut -d\  -f2)
+
+for win in $(lsw); do
+    wx=$(wattr x "$win")
+    wy=$(wattr y "$win")
+
+    [ "$wx" -ge "$mx" ] && continue
+    [ "$wy" -ge "$my" ] && continue
+
+    ww=$(wattr w "$win")
+    wh=$(wattr h "$win")
+
+    [ "$((wx + ww))" -le "$mx" ] && continue
+    [ "$((wy + wh))" -le "$my" ] && continue
+
+    echo "$win"
+    exit
+done
