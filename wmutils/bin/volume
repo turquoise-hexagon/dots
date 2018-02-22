@@ -2,13 +2,18 @@
 #
 # remove volume control
 
-am() {
+not() {
+    var=$(amixer sget Master | grep -om1 '[0-9]*%')
+    notify -t 3 -m "Volume : $var"
+}
+
+vol() {
     amixer -q sset "$@"
 }
 
 case "$1" in
-    up) am Master 5%+;;
-    down) am Master 5%-;;
-    toggle) am Master toggle;;
-    capture) am Capture toggle;;
+    up) vol Master 5%+; not;;
+    down) vol Master 5%-; not;;
+    toggle) vol Master toggle;;
+    capture) vol Capture toggle;;
 esac
