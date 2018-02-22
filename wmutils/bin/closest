@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# get closest window in a given direction
+# focus window in a given direction
 #
 # wmutils
 
@@ -16,8 +16,8 @@ next() {
 }
 
 case "$1" in
-    east) next x "";;
-    west) next x r;;
-    south) next y "";;
-    north) next y r;;
+    east) focus "$(next x "")";;
+    west) focus "$(next x r)";;
+    south) focus "$(next y "")";;
+    north) focus "$(next y r)";;
 esac

@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# focus window in a given direction
+# set focus
 #
 # wmutils
 
@@ -16,14 +16,15 @@ case "$1" in
     # stolen from wmutils contrib
     next) id=$(lsw | grep -v "$2" | sed '1 p;d');;
     prev) id=$(lsw | grep -v "$2" | sed '$ p;d');;
-    east|west|south|north) id=$(closest "$1");;
 esac
+
+[ -z "$id" ] && exit
 
 # set borders
 border a "$id"
 
 for win in $(lsw | grep -v "$id"); do
-    border t "$win"
+    border t "$win" &
 done
 
 # set focus
@@ -31,3 +32,7 @@ wtf "$id"
 
 # set stacking order
 chwso -r "$id"
+
+# warp cursor
+wmp -a $(wattr xy "$id")
+wmp -r $(wattr wh "$id")

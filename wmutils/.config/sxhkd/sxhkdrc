@@ -39,7 +39,7 @@ super + {y,b,u,n,g}
     tp {1-5}
 
 super + {_,shift,alt} {Right,Left,Up,Down}
-    {focus,move,resize} {east,west,north,south}
+    {closest,move,resize} {east,west,north,south}
 
 super + {_,shift} {ampersand,eacute,quotedbl,apostrophe,parenleft}
     workspaces {show,send} {1-5}

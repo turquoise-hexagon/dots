@@ -37,3 +37,5 @@ for win in $(lsw | grep -v "$id"); do
     wtp "$x" "$y" "$w" "$h" "$win"
     y=$((y + h + GAP + 2 * bw))
 done
+
+# stolen from wmutils contrib
