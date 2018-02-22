@@ -38,7 +38,7 @@ bt() {
 while echo "%{l}$(ws)%{c}$(ck)%{r}$(nt)$(bt)"
 do sleep .2s
 done | \
-    lemonbar -g "x30" \
-    -f -*-cherry-* \
+    lemonbar -g x30 \
+    -f "-t-cherry-medium-r-normal--11-100-75-75-c-100-iso8859-1" \
     -B \#021B21 \
     -F \#E8DFD6
