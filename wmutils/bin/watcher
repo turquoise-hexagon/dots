@@ -10,5 +10,6 @@ while IFS=: read -r ev id; do
         18) focus prev "$id";;
         19) focus "$id";;
         16) tp 5 "$id";;
+        7) focus "$id";;
     esac
 done
