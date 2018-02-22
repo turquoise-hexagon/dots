@@ -4,11 +4,15 @@
 #
 # wmutils
 
+# export settings
+export GAP=5
+export PANEL=30
+
 # run utils
 wew | watcher &
 workspaces &
 sxhkd &
-mnml &
+bar &
 
 # wait
 while :; do

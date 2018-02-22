@@ -4,30 +4,40 @@
 #
 # wmutils
 
+GAP=${GAP:-0}
+PANEL=${PANEL:-0}
+
 id=${2:-`pfw`}
 root=$(lsw -r)
 
+bw=$(wattr b "$id")
+ww=$(wattr w "$id")
+wh=$(wattr h "$id")
+
+sw=$(wattr w "$root")
+sh=$(wattr h "$root")
+
 case "$1" in
     1)
-        x=0
-        y=0
+        x="$GAP"
+        y=$((GAP + PANEL))
         ;;
     2)
-        x=0
-        y=$(wattr h "$root")
+        x="$GAP"
+        y=$((sh - wh - bw * 2 - GAP))
         ;;
     3)
-        x=$(wattr w "$root")
-        y=0
+        x=$((sw - ww - bw * 2 - GAP))
+        y=$((GAP + PANEL))
         ;;
     4)
-        x=$(wattr w "$root")
-        y=$(wattr h "$root")
+        x=$((sw - ww - bw * 2 - GAP))
+        y=$((sh - wh - bw * 2 - GAP))
         ;;
     5)
-        x=$(echo "$(wattr w "$root") / 2" | bc)
-        y=$(echo "$(wattr h "$root") / 2" | bc)
+        x=$((sw / 2 - ww / 2 - bw))
+        y=$((sh / 2 - wh / 2 - bw))
         ;;
 esac
 
-wmv -a "$x" "$y" "$id"
+wtp "$x" "$y" "$ww" "$wh" "$id"

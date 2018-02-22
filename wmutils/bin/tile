@@ -4,29 +4,36 @@
 #
 # wmutils
 
+PANEL=${PANEL:-0}
+GAP=${GAP:-0}
+
 # get ids
 id=$(pfw)
 root=$(lsw -r)
 
 # get values
 bw=$(wattr b "$id")
+nb=$(lsw | grep -cv "$id")
+
 sw=$(wattr w "$root")
 sh=$(wattr h "$root")
 
-# set master dimensions
+# get real size
+sw=$((sw - GAP - 2 * bw))
+sh=$((sh - GAP - PANEL))
+
+# make the master
 ms=$((sw * 2 / 3))
+y=$((GAP + PANEL))
 
-# make master
-wtp 0 0 "$((ms - 2 * bw))" "$((sh - 2 * bw))" "$id"
+wtp "$GAP" "$y" "$((ms - GAP - 2 * bw))" "$((sh - GAP - 2 * bw))" "$id"
 
-# set variables for the stack
-nb=$(lsw | grep -cv "$id")
-w=$((sw - ms - 2 * bw))
-h=$((sh / nb - 2 * bw))
+# make the stack
+x=$((ms + GAP))
+w=$((sw - ms - GAP))
+h=$((sh / nb - GAP - 2 * bw))
 
-# make stack
-y=0
-for i in $(lsw | grep -v "$id"); do
-    wtp "$ms" "$y" "$w" "$h" "$i"
-    y=$((y + h + 2 * bw))
+for win in $(lsw | grep -v "$id"); do
+    wtp "$x" "$y" "$w" "$h" "$win"
+    y=$((y + h + GAP + 2 * bw))
 done
