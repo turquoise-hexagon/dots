@@ -20,7 +20,7 @@ save() {
 
 flip() {
     while read -r i; do
-        mapw -t "$i" &
+        mapw -t "$i"
     done < "$dir/$1"
 }
 
