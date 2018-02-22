@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #
 # mount sdcard
 
@@ -6,7 +6,7 @@ mnt="/mnt/sdcard"
 dev="/dev/mmcblk0p1"
 
 check() {
-    ! [[ -e $1 ]] &&
+    ! [ -e "$1" ] &&
         { echo "ERROR : '$1' not found"; exit; }
 }
 

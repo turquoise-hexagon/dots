@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #
 # extract common archives
 
-if [[ -f $1 ]]; then
+if [ -f "$1" ]; then
     case "$1" in
         *.tar.bz2) tar xvf "$1";;
         *.tar.gz) tar xvf "$1";;
