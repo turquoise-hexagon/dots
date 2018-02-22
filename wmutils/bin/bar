@@ -10,7 +10,7 @@ t="%{B-}"
 
 ws() {
     cur=$(cat /tmp/wmutils-ws/current)
-    for i in $(seq 1 5); do
+    for i in $(seq 1 "$WS"); do
         if [ "$i" = "$cur" ]; then
             line="$line$a  $i  "
         else

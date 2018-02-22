@@ -5,6 +5,7 @@
 # wmutils
 
 # export settings
+export WS=5
 export GAP=5
 export PANEL=30
 
