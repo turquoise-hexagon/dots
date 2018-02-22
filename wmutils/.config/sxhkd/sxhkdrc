@@ -32,6 +32,9 @@ super + f
 super + q
     killw -p $(pfw)
 
+super + r
+    chwso -i $(pfw)
+
 super + shift + q
     pkill -x wm
 

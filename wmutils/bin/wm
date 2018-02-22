@@ -10,8 +10,8 @@ export GAP=5
 export PANEL=30
 
 # run utils
-wew | watcher &
 workspaces &
+watcher &
 sxhkd &
 bar &
 

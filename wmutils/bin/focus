@@ -32,7 +32,3 @@ wtf "$id"
 
 # set stacking order
 chwso -r "$id"
-
-# warp cursor
-wmp -a $(wattr xy "$id")
-wmp -r $(wattr wh "$id")
