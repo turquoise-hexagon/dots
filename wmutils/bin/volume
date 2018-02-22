@@ -4,7 +4,7 @@
 
 not() {
     var=$(amixer sget Master | grep -om1 '[0-9]*%')
-    notify -t 3 -m "Volume : $var"
+    notify-send "Volume : $var"
 }
 
 vol() {
