@@ -41,5 +41,4 @@ done | \
     lemonbar -g "x30" \
     -f -*-cherry-* \
     -B \#021B21 \
-    -F \#E8DFD6 \
-    -d
+    -F \#E8DFD6
