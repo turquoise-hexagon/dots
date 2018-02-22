@@ -36,7 +36,7 @@ case "$1" in
         ;;
     5)
         x=$((sw / 2 - ww / 2 - bw))
-        y=$((sh / 2 - wh / 2 - bw))
+        y=$((sh / 2 - wh / 2 - bw + PANEL / 2))
         ;;
 esac
 
