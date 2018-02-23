@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# fullscreen focused window
+#
+# wmutils
+
+file=/tmp/wmutils-fs
+
+id=$(pfw)
+
+# stolen from wmutils contrib
+[ -f "$file" ] && wtp $(cat "$file")
+
+if [ -f "$file" ] && grep -q "$id" "$file"; then
+    rm "$file"
+else
+    wattr xywhi "$id" > "$file"
+    chwb -s 0 "$id"
+    wtp $(wattr xywh `lsw -r`) "$id"
+fi
+
+focus "$id"

@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# keep x open
+#
+# wmutils
+
+# export settings
+export WS=5
+export GAP=5
+export PANEL=30
+
+# run utils
+workspaces &
+watcher &
+sxhkd &
+bar &
+
+# wait
+while :; do
+    sleep 10s
+done

@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# focus window in a given direction
+#
+# wmutils
+
+id=$(pfw)
+
+# stolen from wmutils contrib
+next() {
+    lsw | \
+        xargs wattr "$1"i | \
+        sort -n"$2" | \
+        sed "0,/$id/d" | \
+        sed "1s/^[0-9]* //p;d"
+}
+
+case "$1" in
+    east) focus "$(next x "")";;
+    west) focus "$(next x r)";;
+    south) focus "$(next y "")";;
+    north) focus "$(next y r)";;
+esac
