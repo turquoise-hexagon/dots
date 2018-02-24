@@ -3,7 +3,6 @@
 # xinitrc
 
 # daemons
-# pulseaudio --start
 dunst &
 
 # settings
