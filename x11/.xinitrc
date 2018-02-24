@@ -17,7 +17,7 @@ xset +fp "${HOME}/.fonts"
 xset fp rehash
 
 # theming
+hsetroot -fill "${HOME}/.wall.jpeg"
 xrdb "${HOME}/.Xresources"
-"${HOME}/.fehbg" &
 
 exec bspwm
