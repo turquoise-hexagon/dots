@@ -38,6 +38,9 @@ super + r
 super + shift + q
     pkill -x wm
 
+super + {h,j,k,l}
+    max {west,south,north,east}
+
 super + {y,b,u,n,g}
     tp {1-5}
 
