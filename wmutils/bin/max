@@ -42,6 +42,12 @@ case "$1" in
         w=$((sw - 2 * wb - 2 * GAP))
         h=$(((sh - PANEL) / 2 - 2 * wb - 2 * GAP))
         ;;
+    center)
+        x="$GAP"
+        y=$((PANEL + GAP))
+        w=$((sw - 2 * wb - 2 * GAP))
+        h=$((sh - 2 * wb - 2 * GAP - PANEL))
+        ;;
 esac
 
 wtp "$x" "$y" "$w" "$h" "$id"
