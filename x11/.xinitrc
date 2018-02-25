@@ -16,7 +16,7 @@ xset +fp "${HOME}/.fonts"
 xset fp rehash
 
 # theming
-hsetroot -fill "${HOME}/.wall"
 xrdb "${HOME}/.Xresources"
+"${HOME}/.fehbg"
 
 exec wm
