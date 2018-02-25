@@ -7,7 +7,7 @@
 border() {
     case "$1" in
         a) chwb -c 0xEEEEEE -s 5 "$2";;
-        t) chwb -c 0x032C36 -s 5 "$2";;
+        t) chwb -c 0xEEEEEE -s 5 "$2";;
     esac
 }
 

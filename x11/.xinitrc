@@ -3,13 +3,12 @@
 # xinitrc
 
 # daemons
-start-pulseaudio-x11 & 
+pulseaudio --start
 dunst &
 
 # settings
 xsetroot -cursor_name left_ptr
 setxkbmap -option caps:escape
-setxkbmap fr
 xset s off -dpms -b
 
 # fonts
