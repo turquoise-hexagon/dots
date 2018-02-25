@@ -7,7 +7,7 @@
 border() {
     case "$1" in
         a) chwb -c 0xEEEEEE -s 5 "$2";;
-        t) chwb -c 0xEEEEEE -s 5 "$2";;
+        t) chwb -c 0x032C36 -s 5 "$2";;
     esac
 }
 
@@ -34,5 +34,9 @@ wtf "$id"
 chwso -r "$id"
 
 # teleport cursor
-wmp -a $(wattr xy "$id")
-wmp -r $(wattr wh "$id")
+x=$(wattr x "$id")
+y=$(wattr y "$id")
+w=$(wattr w "$id")
+h=$(wattr h "$id")
+
+wmp -a "$((x + w / 2))" "$((y + h / 2))"
