@@ -17,36 +17,38 @@ wb=$(wattr b "$id")
 ww=$(wattr w "$id")
 wh=$(wattr h "$id")
 
+sp=$((2 * wb + 2 * GAP))
+
 case "$1" in
     east)
         x=$((sw / 2 + GAP))
         y=$((PANEL + GAP))
-        w=$((sw / 2 - 2 * wb - 2 * GAP))
-        h=$((sh - 2 * wb - 2 * GAP - PANEL))
+        w=$((sw / 2 - sp))
+        h=$((sh - sp - PANEL))
         ;;
     west)
         x="$GAP"
         y=$((PANEL + GAP))
-        w=$((sw / 2 - 2 * wb - 2 * GAP))
-        h=$((sh - 2 * wb - 2 * GAP - PANEL))
+        w=$((sw / 2 - sp))
+        h=$((sh - sp - PANEL))
         ;;
     south)
         x="$GAP"
         y=$((sh / 2 + PANEL / 2 + GAP))
-        w=$((sw - 2 * wb - 2 * GAP))
-        h=$(((sh - PANEL) / 2 - 2 * wb - 2 * GAP))
+        w=$((sw - sp))
+        h=$(((sh - PANEL) / 2 - sp))
         ;;
     north)
         x="$GAP"
         y=$((PANEL + GAP))
-        w=$((sw - 2 * wb - 2 * GAP))
-        h=$(((sh - PANEL) / 2 - 2 * wb - 2 * GAP))
+        w=$((sw - sp))
+        h=$(((sh - PANEL) / 2 - sp))
         ;;
     center)
         x="$GAP"
         y=$((PANEL + GAP))
-        w=$((sw - 2 * wb - 2 * GAP))
-        h=$((sh - 2 * wb - 2 * GAP - PANEL))
+        w=$((sw - sp))
+        h=$((sh - sp - PANEL))
         ;;
 esac
 
