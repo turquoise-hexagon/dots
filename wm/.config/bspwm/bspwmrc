@@ -7,7 +7,6 @@
 bspc monitor -d 1 2 3 4 5
 
 bspc config focus_follows_pointer true
-bspc config click_to_focus true
 
 bspc config border_width 5
 bspc config window_gap 5
