@@ -4,7 +4,7 @@
 #
 # wm key bindings
 
-percent=2
+percent=5
 
 # also move floating windows
 if bspc query -N -n focused.floating > /dev/null; then
