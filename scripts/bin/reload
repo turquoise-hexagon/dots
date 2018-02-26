@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #
 # reload various programs
 
@@ -6,7 +6,7 @@
 cd "$HOME" || exit
 
 pk() {
-    pgrep -x "$1" &> /dev/null &&
+    pgrep -x "$1" > /dev/null &&
         pkill -x "$1"
 }
 
