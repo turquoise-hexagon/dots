@@ -10,12 +10,9 @@ PANEL=${PANEL:-0}
 id=$(pfw)
 root=$(lsw -r)
 
+wb=$(wattr b "$id")
 sw=$(wattr w "$root")
 sh=$(wattr h "$root")
-
-wb=$(wattr b "$id")
-ww=$(wattr w "$id")
-wh=$(wattr h "$id")
 
 sp=$((2 * wb + 2 * GAP))
 
