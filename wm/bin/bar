@@ -2,7 +2,7 @@
 #
 # lemonbar script
 #
-# wmutils
+# wm tool
 
 a="%{B#FF99A1}"
 b="%{B#032C36}"
