@@ -5,6 +5,7 @@
 # daemons
 pulseaudio --start
 urxvtd -q -o -f
+unclutter &
 dunst &
 
 # settings
