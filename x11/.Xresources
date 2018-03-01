@@ -57,20 +57,3 @@ Xft.lcdfilter: lcddefault
 
 ! xcursor
 Xcursor.theme: DMZ-White
-
-! ROFI
-
-! settings
-rofi.font: Cherry 8
-rofi.separator-style: none
-rofi.scrollbar-width: 0
-rofi.padding: 15
-rofi.width: 30
-rofi.lines: 5
-rofi.bw: 0
-
-! colors
-rofi.color-window: #EEEEEE, #EEEEEE, #EEEEEE
-rofi.color-normal: #EEEEEE, #021B21, #EEEEEE, #EEEEEE, #FF99A1
-rofi.color-active: #EEEEEE, #021B21, #EEEEEE, #EEEEEE, #FF99A1
-rofi.color-urgent: #EEEEEE, #065F73, #EEEEEE, #EEEEEE, #A2D9B1
