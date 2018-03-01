@@ -1,6 +1,6 @@
 # SETTINGS
 
-PATH="/bin:/usr/bin:/usr/sbin:/sbin:${HOME}/bin"
+PATH="/bin:/usr/bin:/usr/sbin:/sbin:$HOME/bin"
 
 HISTCONTROL=ignoredups:erasedups
 HISTSIZE=10000

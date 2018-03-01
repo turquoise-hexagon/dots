@@ -2,6 +2,6 @@
 #
 # refresh font folder
 
-mkfontdir "${HOME}/.fonts"
-xset +fp "${HOME}/.fonts"
+mkfontdir "$HOME/.fonts"
+xset +fp "$HOME/.fonts"
 xset fp rehash
