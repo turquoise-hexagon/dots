@@ -11,5 +11,4 @@ dmenu_run \
     -sb \#EEEEEE \
     -sf \#FF99A1 \
     -p \~ \
-    -l 5 \
     -b
