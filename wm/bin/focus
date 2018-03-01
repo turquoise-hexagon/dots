@@ -8,9 +8,9 @@ bspc query -N -n .local.focused.fullscreen > /dev/null &&
 
 bspc config pointer_follows_focus true
 
-if ! bspc node -f "$1".local; then
+! bspc node -f "$1".local && {
     [ "$1" = east ] && bspc node -f next.local
     [ "$1" = west ] && bspc node -f prev.local
-fi
+}
 
 bspc config pointer_follows_focus false
