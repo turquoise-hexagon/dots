@@ -25,7 +25,7 @@ vl() {
         echo "$a$t Muted"
     else
         cur=$(echo "$cur" | grep -om1 '[0-9]*%')
-        echo "$a$t $cur"
+        echo "$a$t $cur"
     fi
 }
 
