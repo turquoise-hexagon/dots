@@ -6,7 +6,7 @@
 
 # spawn in preselections first
 target=$(bspc query -N -d -n .\!automatic | head -n1)
-[ "$target" ] && { echo "node=${target}"; exit; }
+[ "$target" ] && { echo "node=$target"; exit; }
 
 vert=south
 hori=east
@@ -20,4 +20,4 @@ y=$(bspc query -T -n focused | jq .rectangle.height)
     split="$hori" ||
     split="$vert"
 
-echo "split_dir=${split}"
+echo "split_dir=$split"

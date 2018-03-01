@@ -13,6 +13,6 @@ while [[ $# -gt 0 ]]; do
     date=${date//:/-}
     date=${date// /_}
 
-    mv "$1" "${date}.${ext}"
+    mv "$1" "$date.$ext"
     shift
 done

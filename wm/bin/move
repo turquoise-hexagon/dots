@@ -19,8 +19,8 @@ if bspc query -N -n focused.floating > /dev/null; then
     arg=$(bspc query -T -m | jq .rectangle.width)
     arg=$(echo "$arg * $percent / 100" | bc)
 
-    [ "$target" = x ] && { x="${sign}${arg}"; y=0; }
-    [ "$target" = y ] && { x=0; y="${sign}${arg}"; }
+    [ "$target" = x ] && { x="$sign$arg"; y=0; }
+    [ "$target" = y ] && { x=0; y="$sign$arg"; }
 
     bspc node -v "$x" "$y"
 else
