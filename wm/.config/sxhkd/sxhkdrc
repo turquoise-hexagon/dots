@@ -1,8 +1,5 @@
 # MISC
 
-{_,super,super + shift} + Print
-    screenshot {normal,focused,select}
-
 XF86MonBrightness{Up,Down}
     xbacklight -{inc,dec} 10
 
@@ -11,6 +8,9 @@ XF86Audio{MicMute,Mute,RaiseVolume,LowerVolume}
 
 XF86Audio{Prev,Next,Play}
     player {prev,next,play}
+
+Print
+    screenshot
 
 super + Return
     urxvtc
