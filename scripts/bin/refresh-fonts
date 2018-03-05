@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# refresh font folder
+# refresh font directory
 
 mkfontdir "$HOME/.fonts"
 xset +fp "$HOME/.fonts"
