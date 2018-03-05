@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-#
-# make pcf files easily
-
-for file in *.bdf; do
-    bdftopcf -o "${file/.bdf/.pcf}" "$file"
-done
