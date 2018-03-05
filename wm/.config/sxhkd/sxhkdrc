@@ -1,0 +1,49 @@
+# MISC
+
+XF86MonBrightness{Up,Down}
+    xbacklight -{inc,dec} 10
+
+XF86Audio{MicMute,Mute,RaiseVolume,LowerVolume}
+    volume {mic,toggle,up,down}
+
+XF86Audio{Prev,Next,Play}
+    player {prev,next,play}
+
+Print
+    screenshot
+
+super + Return
+    urxvtc
+
+super + space
+    menu
+
+super + shift + r
+    pkill -USR1 -x sxhkd
+
+# BSPWM
+
+super + q
+    bspc node -c
+
+super + shift + q
+    bspc quit
+
+super + {t,Tab,f}
+    bspc node -t ~{tiled,floating,fullscreen}
+
+super + {h,j,k,l}
+    bspc node -p {west,south,north,east}
+
+super + Escape
+    bspc node -p cancel
+
+super + r
+    bspc node -n last.!automatic
+
+super + {_,shift,alt} + {Left,Down,Up,Right}
+    {focus,move,resize} {west,south,north,east}
+
+# azerty keyboard
+super + {_,shift} + {ampersand,eacute,quotedbl,apostrophe,parenleft}
+    bspc {desktop -f,node -d} {1-5}

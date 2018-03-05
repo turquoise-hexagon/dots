@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# remote volume control
+#
+# wm key bindings
+
+not() {
+    bspc query -N -n .local.focused.fullscreen > /dev/null && {
+        var=$(amixer sget Master | grep -om1 '[0-9]*%')
+        notify -t 3 -m "Volume : $var"
+    }
+}
+
+vol() {
+    amixer -q sset "$@"
+}
+
+case "$1" in
+    up) vol Master 5%+; not;;
+    down) vol Master 5%-; not;;
+    toggle) vol Master toggle;;
+    mic) vol Capture toggle;;
+esac

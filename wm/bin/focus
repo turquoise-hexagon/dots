@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# focus windows with bspwm
+
+# exit when fullscreen
+bspc query -N -n .local.focused.fullscreen > /dev/null &&
+    exit
+
+bspc config pointer_follows_focus true
+
+! bspc node -f "$1".local && {
+    [ "$1" = east ] && bspc node -f next.local
+    [ "$1" = west ] && bspc node -f prev.local
+}
+
+bspc config pointer_follows_focus false

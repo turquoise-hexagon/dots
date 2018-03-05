@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# run dmenu with options
+#
+# wm tool
+
+dmenu_run \
+    -fn cherry-8 \
+    -nb \#EEEEEE \
+    -nf \#021B21 \
+    -sb \#EEEEEE \
+    -sf \#FF99A1 \
+    -p \~ \
+    -b

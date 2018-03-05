@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# take a screenshot & send a notification
+#
+# wm key bindings
+
+dir="$HOME/pictures/screenshots"
+date=$(date +%d-%m-%y_%H-%M-%S)
+
+mkdir -p "$dir"
+
+import -window root "$dir/$date.png" &&
+    notify-send "Saved screenshot as $date.png"
