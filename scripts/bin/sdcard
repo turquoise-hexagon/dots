@@ -13,5 +13,4 @@ check() {
 check "$mnt"
 check "$dev"
 
-sudo mount "$dev" "$mnt" &&
-    echo "done !"
+sudo mount "$dev" "$mnt"

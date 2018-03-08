@@ -8,7 +8,7 @@ while [[ $# -gt 0 ]]; do
     date=$(identify -format "%[EXIF:DateTime]" "$1")
 
     # exit in case there is no exif
-    ! [[ $date ]] && exit
+    [[ ! $date ]] && exit
 
     date=${date//:/-}
     date=${date// /_}
