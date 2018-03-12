@@ -24,7 +24,6 @@ set ignorecase
 
 set noruler
 set nonumber
-set belloff=all
 set shortmess=atI
 
 " sh fix
