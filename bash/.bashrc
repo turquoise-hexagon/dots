@@ -1,5 +1,9 @@
 # SETTINGS
 
+# don't run if not interactive
+[[ $- != *i* ]] &&
+    return
+
 PATH="/bin:/usr/bin:/usr/sbin:/sbin:$HOME/bin"
 
 HISTCONTROL=ignoredups:erasedups
