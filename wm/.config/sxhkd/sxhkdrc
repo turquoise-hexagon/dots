@@ -9,8 +9,8 @@ XF86Audio{MicMute,Mute,RaiseVolume,LowerVolume}
 XF86Audio{Prev,Next,Play}
     player {prev,next,play}
 
-Print
-    screenshot
+{_,super,super + shift} + Print
+    screenshot {nor,foc,sel}
 
 super + Return
     urxvtc

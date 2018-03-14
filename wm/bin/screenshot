@@ -7,7 +7,15 @@
 dir="$HOME/pictures/screenshots"
 date=$(date +%d-%m-%y_%H-%M-%S)
 
-mkdir -p "$dir"
+imp() {
+    mkdir -p "$dir"
 
-import -window root "$dir/$date.png" &&
-    notify-send "Saved screenshot as $date.png"
+    import "$@" "$dir/$date.png" &&
+        notify-send "Saved screenshot as $date.png"
+}
+
+case "$1" in
+    sel) imp;;
+    nor) imp -window root;;
+    foc) imp -window "$(xdo id)";;
+esac
