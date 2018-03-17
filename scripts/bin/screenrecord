@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# record with ffmpeg
+
+dir="$HOME/pictures/records"
+date=$(date +%d-%m-%y_%H-%M-%S)
+
+x=$(bspc query -T -m | jq .rectangle.width)
+y=$(bspc query -T -m | jq .rectangle.height)
+
+mkdir -p "$dir"
+
+ffmpeg -loglevel 16 \
+    -s "${x}x${y}" \
+    -r 30 \
+    -f x11grab \
+    -i :0.0 \
+    "$dir/$date.mp4"
