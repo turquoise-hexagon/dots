@@ -1,8 +1,8 @@
 #!/bin/sh
 #
-# run dmenu with options
+# dmenu & options 
 #
-# wm tool
+# wm key bindings
 
 dmenu_run \
     -fn cherry-7 \
