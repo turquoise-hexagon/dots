@@ -5,7 +5,7 @@
 # cmus tool
 
 while [ "$#" -gt 2 ]; do
-    case "$1" in
+    case $1 in
         title) title="$2";;
         status) status="$2";;
     esac

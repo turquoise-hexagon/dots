@@ -14,7 +14,7 @@ imp() {
         notify-send "Saved screenshot as $date.png"
 }
 
-case "$1" in
+case $1 in
     sel) imp;;
     nor) imp -window root;;
     foc) imp -window "$(xdo id)";;
