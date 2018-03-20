@@ -1,6 +1,8 @@
 #!/bin/sh
 #
 # focus windows with bspwm
+#
+# wm key bindings
 
 # exit when fullscreen
 bspc query -N -n .local.focused.fullscreen > /dev/null &&
