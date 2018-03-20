@@ -2,7 +2,7 @@
 #
 # resize windows with bspwm
 #
-# bspwm key bindings
+# wm key bindings
 
 percent=10
 
