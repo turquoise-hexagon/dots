@@ -36,8 +36,7 @@ ck() {
 
 nt() {
     cur=$(iwgetid -r)
-    cur=${cur:-Offline}
-    echo "$a$t $cur"
+    echo "$a$t ${cur:-Offline}"
 }
 
 bt() {
