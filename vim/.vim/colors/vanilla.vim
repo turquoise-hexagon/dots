@@ -25,11 +25,11 @@ hi DiffAdd      ctermfg=2       ctermbg=NONE    cterm=NONE
 hi DiffChange   ctermfg=3       ctermbg=NONE    cterm=NONE
 hi DiffText     ctermfg=7       ctermbg=NONE    cterm=NONE
 hi DiffDelete   ctermfg=1       ctermbg=NONE    cterm=NONE
-hi Search       ctermfg=0       ctermbg=7       cterm=NONE
-hi IncSearch    ctermfg=0       ctermbg=2       cterm=NONE
+hi Search       ctermfg=0       ctermbg=2       cterm=NONE
+hi IncSearch    ctermfg=0       ctermbg=11      cterm=NONE
 hi NonText      ctermfg=0       ctermbg=NONE    cterm=NONE
 hi StatusLine   ctermfg=7       ctermbg=NONE    cterm=NONE
 hi StatusLineNC ctermfg=7       ctermbg=NONE    cterm=NONE
-hi MatchParen   ctermfg=0       ctermbg=7       cterm=NONE
+hi MatchParen   ctermfg=0       ctermbg=6       cterm=NONE
 hi VertSplit    ctermfg=7       ctermbg=NONE    cterm=NONE
 hi Visual       ctermfg=0       ctermbg=7       cterm=NONE
