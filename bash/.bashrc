@@ -1,8 +1,8 @@
-# SETTINGS
-
 # don't run if not interactive
 [[ $- != *i* ]] &&
     return
+
+# SETTINGS
 
 PATH="/bin:/usr/bin:/usr/sbin:/sbin:$HOME/bin"
 
