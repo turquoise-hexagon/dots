@@ -33,3 +33,4 @@ hi StatusLineNC ctermfg=7       ctermbg=NONE    cterm=NONE
 hi MatchParen   ctermfg=0       ctermbg=6       cterm=NONE
 hi VertSplit    ctermfg=7       ctermbg=NONE    cterm=NONE
 hi Visual       ctermfg=0       ctermbg=7       cterm=NONE
+hi ErrorMsg     ctermfg=1       ctermbg=NONE    cterm=NONE
