@@ -1,8 +1,8 @@
 ! URXVT
 
 ! fonts
-URxvt.font: -t-cherry-medium-r-normal--11-100-75-75-c-100-iso8859-1
-URxvt.boldFont: -t-cherry-medium-r-normal--11-100-75-75-c-100-iso8859-1
+URxvt.font: -t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1
+URxvt.boldFont: -t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1
 
 ! settings
 URxvt.scrollBar: 0
