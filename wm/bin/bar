@@ -4,40 +4,59 @@
 #
 # wm tool
 
-a="%{F#FAFAFA}%{B#555555}"
-b="%{F#555555}%{B#CCCCCC}"
-t="%{B-}%{F-}"
+a="%{F#FF99A1}"
+t="%{F-}"
 
 ws() {
     cur=$(bspc wm -g | grep -o '[OFU][1-5]' | tail -c2)
     for i in $(seq 1 5); do
         if [ "$cur" -eq "$i" ]; then
-            line="$line$a  $i  "
+            line="$line$a$t"
         else
-            line="$line$b  $i  "
+            line="$line"
         fi
     done
-    echo "$line$t"
+    echo "$line"
+}
+
+vl() {
+    cur=$(amixer sget Master)
+    if echo "$cur" | grep -q off; then
+        echo "$a$t Muted"
+    else
+        cur=$(echo "$cur" | grep -om1 '[0-9]*%')
+        echo "$a$t $cur"
+    fi
 }
 
 ck() {
-    date +'%A %R'
+    cur=$(date +'%a %R')
+    echo "$a$t $cur"
 }
 
 nt() {
     cur=$(iwgetid -r)
-    echo "$b  ${cur:-Offline}  $t"
+    echo "$a$t ${cur:-Offline}"
 }
 
 bt() {
     cur=$(cat /sys/class/power_supply/BAT0/capacity)
-    echo "$a  $cur%  $t"
+    if [ "$cur" -eq 100 ]; then
+        echo "$a$t $cur%"
+    elif [ "$cur" -gt 75 ]; then
+        echo "$a$t $cur%"
+    elif [ "$cur" -gt 25 ]; then
+        echo "$a$t $cur%"
+    else
+        echo "$a$t $cur%"
+    fi
 }
 
-while echo "%{l}$(ws)%{c}$(ck)%{r}$(nt)$(bt)"
+while echo "%{l}  $(ws)%{c}$(ck)%{r}$(nt)  $(vl)  $(bt)  "
 do sleep .2s
 done |\
     lemonbar -g x30 \
-    -f "-t-cherry-medium-r-normal--11-100-75-75-c-100-iso8859-1" \
-    -B \#FAFAFA \
-    -F \#555555
+    -f "-t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1" \
+    -f "-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1" \
+    -B \#021B21 \
+    -F \#E8DFD6
