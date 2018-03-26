@@ -5,10 +5,8 @@
 # wm key bindings
 
 not() {
-    bspc query -N -n .local.focused.fullscreen > /dev/null && {
-        var=$(amixer sget Master | grep -om1 '[0-9]*%')
-        notify -t 3 -m "Volume : $var"
-    }
+    var=$(amixer sget Master | grep -om1 '[0-9]*%')
+    notify -t 3 -m "Volume : $var"
 }
 
 vol() {

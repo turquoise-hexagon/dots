@@ -1,8 +1,8 @@
 ! URXVT
 
 ! fonts
-URxvt.font: -t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1
-URxvt.boldFont: -t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1
+URxvt.font: -t-cherry-medium-r-normal--11-100-75-75-c-100-iso8859-1
+URxvt.boldFont: -t-cherry-medium-r-normal--11-100-75-75-c-100-iso8859-1
 
 ! settings
 URxvt.scrollBar: 0
@@ -13,7 +13,7 @@ URxvt.geometry: 70x30
 ! extensions
 URxvt.perl-ext-common: default,matcher,selection-to-clipboard
 URxvt.url-launcher: chromium
-URxvt.matcher.rend.0: fg13
+URxvt.matcher.rend.0: fg10
 URxvt.matcher.button: 3
 
 ! FONTS
@@ -27,33 +27,33 @@ Xft.lcdfilter: lcddefault
 ! THEMING
 
 ! colors
-*.foreground: #E8DFD6
-*.background: #021B21
-*.cursorColor: #E8DFD6
+*.foreground: #555555
+*.background: #FAFAFA
+*.cursorColor: #555555
 
-*.color0: #021B21
-*.color8: #065F73
+*.color0: #FAFAFA
+*.color8: #CCCCCC
 
-*.color1: #C2454E
-*.color9: #EF5847
+*.color1: #555555
+*.color9: #CCCCCC
 
-*.color2: #7CBF9E
-*.color10: #A2D9B1
+*.color2: #555555
+*.color10: #CCCCCC
 
-*.color3: #8A7A63
-*.color11: #BEB090
+*.color3: #555555
+*.color11: #CCCCCC
 
-*.color4: #2E3340
-*.color12: #61778D
+*.color4: #555555
+*.color12: #CCCCCC
 
-*.color5: #FF5879
-*.color13: #FF99A1
+*.color5: #555555
+*.color13: #CCCCCC
 
-*.color6: #44B5B1
-*.color14: #9ED9D8
+*.color6: #555555
+*.color14: #CCCCCC
 
-*.color7: #E8DFD6
-*.color15: #E8DFD6
+*.color7: #555555
+*.color15: #CCCCCC
 
 ! xcursor
 Xcursor.theme: DMZ-White

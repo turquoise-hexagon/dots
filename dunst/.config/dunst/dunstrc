@@ -1,5 +1,5 @@
 [global]
-    font = Cherry 7
+    font = Cherry 8
     format= "%s\n%b"
     allow_markup = yes
     plain_text = no
@@ -16,18 +16,18 @@
     horizontal_padding = 15
 
 [urgency_low]
-    background = "#EEEEEE"
-    foreground = "#021B21"
+    background = "#555555"
+    foreground = "#FAFAFA"
     timeout = 5
 
 [urgency_normal]
-    background = "#EEEEEE"
-    foreground = "#021B21"
+    background = "#555555"
+    foreground = "#FAFAFA"
     timeout = 5
 
 [urgency_critical]
-    background = "#021B21"
-    foreground = "#EEEEEE"
+    background = "#CCCCCC"
+    foreground = "#FAFAFA"
     timeout = 0
 
 # vim: ft=cfg
