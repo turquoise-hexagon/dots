@@ -32,7 +32,7 @@ Xft.lcdfilter: lcddefault
 *.cursorColor: #E8DFD6
 
 *.color0: #021B21
-*.color8: #065F73
+*.color8: #234149
 
 *.color1: #C2454E
 *.color9: #EF5847
