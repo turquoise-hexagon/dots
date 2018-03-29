@@ -7,10 +7,10 @@
 a="%{F#FF99A1}"
 t="%{F-}"
 
-ws() {
-    cur=$(bspc wm -g | grep -o '[OFU][1-5]' | tail -c2)
+wks() {
+    var=$(bspc wm -g | grep -o '[OFU][1-5]' | tail -c2)
     for i in $(seq 1 5); do
-        if [ "$cur" -eq "$i" ]; then
+        if [ "$var" -eq "$i" ]; then
             line="$line$a$t"
         else
             line="$line"
@@ -19,40 +19,40 @@ ws() {
     echo "$line"
 }
 
-vl() {
-    cur=$(amixer sget Master)
-    if echo "$cur" | grep -q off; then
+clk() {
+    var=$(date +'%a %R')
+    echo "$a$t $var"
+}
+
+net() {
+    var=$(iwgetid -r)
+    echo "$a$t ${var:-Offline}"
+}
+
+vol() {
+    var=$(amixer sget Master)
+    if echo "$var" | grep -q off; then
         echo "$a$t Muted"
     else
-        cur=$(echo "$cur" | grep -om1 '[0-9]*%')
-        echo "$a$t $cur"
+        var=$(echo "$var" | grep -om1 '[0-9]*%')
+        echo "$a$t $var"
     fi
 }
 
-ck() {
-    cur=$(date +'%a %R')
-    echo "$a$t $cur"
-}
-
-nt() {
-    cur=$(iwgetid -r)
-    echo "$a$t ${cur:-Offline}"
-}
-
-bt() {
-    cur=$(cat /sys/class/power_supply/BAT0/capacity)
-    if [ "$cur" -eq 100 ]; then
-        echo "$a$t $cur%"
-    elif [ "$cur" -gt 75 ]; then
-        echo "$a$t $cur%"
-    elif [ "$cur" -gt 25 ]; then
-        echo "$a$t $cur%"
+bat() {
+    var=$(cat /sys/class/power_supply/BAT0/capacity)
+    if [ "$var" -eq 100 ]; then
+        echo "$a$t $var%"
+    elif [ "$var" -gt 75 ]; then
+        echo "$a$t $var%"
+    elif [ "$var" -gt 25 ]; then
+        echo "$a$t $var%"
     else
-        echo "$a$t $cur%"
+        echo "$a$t $var%"
     fi
 }
 
-while echo "%{l}  $(ws)%{c}$(ck)%{r}$(nt)  $(vl)  $(bt)  "
+while echo "%{l}  $(wks)%{c}$(clk)%{r}$(net)  $(vol)  $(bat)  "
 do sleep .2s
 done |\
     lemonbar -g x30 \
