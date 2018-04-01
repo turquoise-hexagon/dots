@@ -39,7 +39,7 @@ super + Escape
     bspc node -p cancel
 
 super + r
-    bspc node -n last.!automatic
+    replace
 
 super + {_,shift,alt} + {Left,Down,Up,Right}
     {focus,move,resize} {west,south,north,east}

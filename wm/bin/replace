@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# properly replace presels
+#
+# wm key bindings
+
+bspc query -N -n focused.floating > /dev/null &&
+    bspc node -t tiled
+
+bspc node -n last.!automatic
