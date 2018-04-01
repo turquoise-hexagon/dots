@@ -39,7 +39,7 @@ super + Escape
     bspc node -p cancel
 
 super + r
-    replace
+    bspc node -n last.!automatic -t tiled
 
 super + {_,shift,alt} + {Left,Down,Up,Right}
     {focus,move,resize} {west,south,north,east}
