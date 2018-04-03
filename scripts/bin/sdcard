@@ -1,13 +1,13 @@
 #!/bin/sh
 #
-# mount sdcard
+# mount my sdcard
 
 mnt="/mnt/sdcard"
 dev="/dev/mmcblk0p1"
 
 check() {
-    ! [ -e "$1" ] &&
-        { echo "ERROR : '$1' not found"; exit; }
+    [ ! -e "$1" ] &&
+        { echo "error : '$1' not found"; exit 1; }
 }
 
 check "$mnt"
