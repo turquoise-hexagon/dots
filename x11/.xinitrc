@@ -12,12 +12,9 @@ xsetroot -cursor_name left_ptr
 setxkbmap -option caps:escape
 xset s off -dpms -b
 
-# fonts
-xset +fp "$HOME/.fonts"
-xset fp rehash
-
 # theming
 xrdb "$HOME/.Xresources"
+xset +fp "$HOME/.fonts"
 "$HOME/.fehbg"
 
 exec bspwm
