@@ -6,19 +6,18 @@
 
 not() {
     # send notifications when fullscreen
-    bspc query -N -n .local.focused.fullscreen > /dev/null && {
+    if bspc query -N -n .local.focused.fullscreen > /dev/null; then
         var=$(amixer sget Master | grep -om1 '[0-9]*%')
         notify -t 3 -m "Volume : $var"
-    }
+    fi
 }
 
 vol() {
-    amixer -q sset "$@"
+    amixer -q sset Master "$1"
 }
 
 case $1 in
-    up) vol Master 5%+; not;;
-    down) vol Master 5%-; not;;
-    toggle) vol Master toggle;;
-    mic) vol Capture toggle;;
+    up) vol 5%+; not;;
+    down) vol 5%-; not;;
+    toggle) vol toggle;;
 esac

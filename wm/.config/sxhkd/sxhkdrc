@@ -3,8 +3,8 @@
 XF86MonBrightness{Up,Down}
     xbacklight -{inc,dec} 10
 
-XF86Audio{MicMute,Mute,RaiseVolume,LowerVolume}
-    volume {mic,toggle,up,down}
+XF86Audio{Mute,RaiseVolume,LowerVolume}
+    volume {toggle,up,down}
 
 XF86Audio{Prev,Next,Play}
     player {prev,next,play}
