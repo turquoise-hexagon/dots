@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# inline if
+
+eval "$1" && echo "${2-true}" || echo "${3-false}"

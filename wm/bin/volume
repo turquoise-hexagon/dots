@@ -1,23 +1,15 @@
 #!/bin/sh
 #
-# remote volume control
+# volume control
 #
 # wm key bindings
 
-not() {
-    # send notifications when fullscreen
-    if bspc query -N -n .local.focused.fullscreen > /dev/null; then
-        var=$(amixer sget Master | grep -om1 '[0-9]*%')
+var=$(amixer sset Master "$1")
+
+[ "$1" != toggle ] && {
+    # send a notification when fullscreen
+    bspc query -N -n .local.fullscreen > /dev/null && {
+        var=$(echo "$var" | grep -om1 '[0-9]*%')
         notify -t 3 -m "Volume : $var"
-    fi
+    }
 }
-
-vol() {
-    amixer -q sset Master "$1"
-}
-
-case $1 in
-    up) vol 5%+; not;;
-    down) vol 5%-; not;;
-    toggle) vol toggle;;
-esac
