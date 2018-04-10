@@ -5,17 +5,9 @@
 # wm key bindings
 
 dir="$HOME/pictures/screenshots"
-date=$(date +%d-%m-%y_%H-%M-%S)
+var=$(date +%d-%m-%y_%H-%M-%S)
 
-imp() {
-    mkdir -p "$dir"
+mkdir -p "$dir"
 
-    import "$@" "$dir/$date.png" &&
-        notify-send "Saved screenshot as $date.png"
-}
-
-case $1 in
-    sel) imp;;
-    nor) imp -window root;;
-    foc) imp -window "$(xdo id)";;
-esac
+import -window root "$dir/$var.png" &&
+    notify -m "Saved screenshot as $var.png"
