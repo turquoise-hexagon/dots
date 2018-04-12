@@ -31,4 +31,4 @@ let g:is_posix=1
 
 " THEMING
 
-colorscheme vanilla
+colorscheme cherry
