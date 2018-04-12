@@ -5,6 +5,7 @@
 exif() {
     date=$(identify -format "%[EXIF:DateTime]" "$1")
 
+    # exit if imagemagick failed
     [[ ! $date ]] && exit 1
 
     date=${date// /_}

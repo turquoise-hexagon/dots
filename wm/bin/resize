@@ -18,10 +18,10 @@ case $1 in
 esac
 
 # get resize value
-arg=$(bspc query -T -m | jq .rectangle.width)
-arg=$(echo "$arg * $percent / 100" | bc)
+var=$(bspc query -T -m | jq .rectangle.width)
+var=$(echo "$var * $percent / 100" | bc)
 
-[ "$target" = x ] && { x="$sign$arg"; y=0; }
-[ "$target" = y ] && { x=0; y="$sign$arg"; }
+[ "$target" = x ] && { x="$sign$var"; y=0; }
+[ "$target" = y ] && { x=0; y="$sign$var"; }
 
 bspc node -z "$dir" "$x" "$y" || bspc node -z "$falldir" "$x" "$y"
