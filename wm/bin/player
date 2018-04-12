@@ -4,10 +4,10 @@
 #
 # wm key bindings
 
-if pgrep cmus > /dev/null; then
+pgrep cmus > /dev/null && {
     case $1 in
         next) cmus-remote -n;;
         prev) cmus-remote -r;;
         play) cmus-remote -u;;
     esac
-fi
+}
