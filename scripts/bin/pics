@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#
+# rename pictures based on exifs
+
+while [[ $# -gt 0 ]]; do
+    var=$(exif -m -t DateTime "$1")
+
+    # exit if var is empty
+    [[ ! $var ]] && exit 1
+
+    var=${var//:/-}
+    var=${var// /_}
+
+    ext=${1##*.}
+
+    mv "$var.$ext" "$1"
+
+    shift
+done
