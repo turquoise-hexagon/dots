@@ -25,10 +25,12 @@ while [ "$#" -gt 0 ]; do
     shift
 done
 
+# get font width
+w=$(ftw "$HOME/.fonts/cherry-10-r.pcf")
+
 # get notification width
-# this value depends on the width of your font
 var=$(echo "  $text  " | wc -m)
-width=$(echo "$var * 6" | bc)
+width=$(echo "$var * $w" | bc)
 
 # get notification offset
 var=$(bspc query -T -m | jq .rectangle.width)
