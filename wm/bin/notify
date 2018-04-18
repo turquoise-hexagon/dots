@@ -26,7 +26,7 @@ while [ "$#" -gt 0 ]; do
 done
 
 # get font width
-# https://raw.rawgit.com/MarinHoc/bin/master/ftw.c
+# https://cdn.rawgit.com/MarinHoc/bin/master/ftw.c
 w=$(ftw "$HOME/.fonts/cherry-10-r.pcf")
 
 # get notification width
