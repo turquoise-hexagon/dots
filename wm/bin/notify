@@ -27,7 +27,7 @@ while [ "$#" -gt 0 ]; do
 done
 
 # get notification width dynamically
-# https://raw.github.com/MarinHoc/bin/master/ftw.c
+# https://raw.github.com/MarinHoc/bin/master/ftw/ftw.c
 var=$(ftw "$HOME/.fonts/cherry-10-r.pcf")
 width=$(echo "${#text} * $var + 2 * $padding" | bc)
 
