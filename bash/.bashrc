@@ -18,8 +18,6 @@ alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias ls="ls --color=auto -F"
 alias sxiv="sxiv -b -s f"
-alias time="time -p"
-alias free="free -h"
 
 # MISC
 
