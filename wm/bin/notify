@@ -7,6 +7,7 @@
 # SETTINGS
 
 height=50
+padding=20
 offset_x=30
 offset_y=60
 time=5
@@ -25,13 +26,10 @@ while [ "$#" -gt 0 ]; do
     shift
 done
 
-# get font width
+# get notification width dynamically
 # https://raw.github.com/MarinHoc/bin/master/ftw.c
-w=$(ftw "$HOME/.fonts/cherry-10-r.pcf")
-
-# get notification width
-var=$(echo "  $text  " | wc -m)
-width=$(echo "$var * $w" | bc)
+var=$(ftw "$HOME/.fonts/cherry-10-r.pcf")
+width=$(echo "${#text} * $var + 2 * $padding" | bc)
 
 # get notification offset
 var=$(bspc query -T -m | jq .rectangle.width)
