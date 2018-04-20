@@ -4,7 +4,7 @@
 #
 # wm key bindings
 
-dir="$HOME/pictures/screenshots"
+dir=~/pictures/screenshots
 var=$(date +%d-%m-%y_%H-%M-%S)
 
 mkdir -p "$dir"

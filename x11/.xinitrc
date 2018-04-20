@@ -13,8 +13,8 @@ setxkbmap -option caps:escape
 xset s off -dpms -b
 
 # theming
-xrdb "$HOME/.Xresources"
-xset +fp "$HOME/.fonts"
-"$HOME/.fehbg"
+xrdb ~/.Xresources
+xset +fp ~/.fonts
+~/.fehbg
 
 exec bspwm
