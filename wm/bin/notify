@@ -25,12 +25,11 @@ while [ "$#" -gt 0 ]; do
     shift
 done
 
-# get notification width dynamically
-var=$(ftw ~/.fonts/cherry.pcf)
+# get notification dimensions
+var=$(ftd -w ~/.fonts/cherry.pcf)
 width=$(echo "${#text} * $var + 2 * $padding" | bc)
 
-# get notification height
-var=$(fc-query -f '%{pixelsize}' ~/.fonts/cherry.pcf)
+var=$(ftd -h ~/.fonts/cherry.pcf)
 height=$(echo "$var + 2 * $padding" | bc)
 
 # get notification offset
