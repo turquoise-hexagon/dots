@@ -26,6 +26,7 @@ while [ "$#" -gt 0 ]; do
 done
 
 # get notification dimensions
+# https://github.com/marinhoc/bin/tree/master/ftd
 var=$(ftd -w ~/.fonts/cherry.pcf)
 width=$(echo "${#text} * $var + 2 * $padding" | bc)
 
