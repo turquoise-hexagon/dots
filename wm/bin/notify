@@ -26,11 +26,11 @@ while [ "$#" -gt 0 ]; do
 done
 
 # get notification dimensions
-# https://github.com/marinhoc/bin/tree/master/ftd
-var=$(ftd -w ~/.fonts/cherry.pcf)
+# https://github.com/marinhoc/bin/tree/master/fts
+var=$(fts -w ~/.fonts/cherry.pcf)
 width=$(echo "${#text} * $var + 2 * $padding" | bc)
 
-var=$(ftd -h ~/.fonts/cherry.pcf)
+var=$(fts -h ~/.fonts/cherry.pcf)
 height=$(echo "$var + 2 * $padding" | bc)
 
 # get notification offset
