@@ -27,7 +27,7 @@ super + q
     bspc node -c
 
 super + shift + q
-    bspc quit 1
+    bspc quit
 
 super + {t,Tab,f}
     bspc node -t ~{tiled,floating,fullscreen}

@@ -17,4 +17,4 @@ xrdb ~/.Xresources
 xset +fp ~/.fonts
 ~/.fehbg
 
-exec wm
+exec bspwm
