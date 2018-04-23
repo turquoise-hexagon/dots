@@ -59,3 +59,5 @@ set color_win_inactive_sel_fg=2
 # windows titles
 set color_win_title_bg=0
 set color_win_title_fg=0
+
+# vim: ft=cfg
