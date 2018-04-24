@@ -4,58 +4,101 @@
 #
 # wm tool
 
+# SETTINGS
+
 a="%{F#FF99A1}"
 t="%{F-}"
 
+fifo=/tmp/bar
+
+# FIFO
+
+[ -e "$fifo" ] && rm "$fifo"
+mkfifo "$fifo"
+
 wks() {
-    var=$(bspc wm -g | grep -o '[OFU][1-5]' | tail -c2)
-    for i in $(seq 1 5); do
-        if [ "$var" -eq "$i" ]; then
-            line="$line$a$t"
-        else
-            line="$line"
-        fi
+    bspc subscribe | while read -r line; do
+        out=""
+        var=$(echo "$line" | grep -om1 '[OFU][1-5]' | tail -c2)
+        for i in $(seq 1 5); do
+            if [ "$var" -eq "$i" ]; then
+                out="$out$a$t"
+            else
+                out="$out"
+            fi
+        done
+        echo "W$out"
     done
-    echo "$line"
 }
+wks > "$fifo" &
 
 clk() {
-    var=$(date +'%a %R')
-    echo "$a$t $var"
-}
+    while :; do
+        var=$(date +'%a %R')
+        echo "C$a$t $var"
 
-net() {
-    var=$(iwgetid -r)
-    echo "$a$t ${var:-Offline}"
+        sleep 10s
+    done
 }
+clk > "$fifo" &
+
+ntw() {
+    while :; do
+        var=$(iwgetid -r)
+        echo "N$a$t ${var:-Offline}"
+
+        sleep 1s
+    done
+}
+ntw > "$fifo" &
 
 vol() {
-    var=$(amixer sget Master)
-    if echo "$var" | grep -q off; then
-        echo "$a$t Muted"
-    else
-        var=$(echo "$var" | grep -om1 '[0-9]*%')
-        echo "$a$t $var"
-    fi
+    while :; do
+        var=$(amixer sget Master)
+        if echo "$var" | grep -q off; then
+            out="$a$t Muted"
+        else
+            var=$(echo "$var" | grep -om1 '[0-9]*%')
+            out="$a$t $var"
+        fi
+        echo "V$out"
+
+        sleep .2s
+    done
 }
+vol > "$fifo" &
 
 bat() {
-    var=$(cat /sys/class/power_supply/BAT0/capacity)
-    if [ "$var" -eq 100 ]; then
-        echo "$a$t $var%"
-    elif [ "$var" -gt 75 ]; then
-        echo "$a$t $var%"
-    elif [ "$var" -gt 25 ]; then
-        echo "$a$t $var%"
-    else
-        echo "$a$t $var%"
-    fi
-}
+    while :; do
+        var=$(cat /sys/class/power_supply/BAT0/capacity)
+        if [ "$var" -eq 100 ]; then
+            out="$a$t $var%"
+        elif [ "$var" -gt 75 ]; then
+            out="$a$t $var%"
+        elif [ "$var" -gt 25 ]; then
+            out="$a$t $var%"
+        else
+            out="$a$t $var%"
+        fi
+        echo "B$out"
 
-while echo "%{l}  $(wks)%{c}$(clk)%{r}$(net)  $(vol)  $(bat)  "
-do sleep .2s
-done |\
-    lemonbar -g x30 \
+        sleep 10s
+    done
+}
+bat > "$fifo" &
+
+# MAIN
+
+while read -r line; do
+    case $line in
+        W*) wks=${line#?};;
+        C*) clk=${line#?};;
+        N*) ntw=${line#?};;
+        V*) vol=${line#?};;
+        B*) bat=${line#?};;
+    esac
+    echo "%{l}  ${wks}%{c}${clk}%{r}${ntw}  ${vol}  ${bat}  "
+done < "$fifo" | lemonbar -g x30 \
     -f "-t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1" \
     -f "-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1" \
     -B \#021B21 \
