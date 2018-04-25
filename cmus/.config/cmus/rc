@@ -16,7 +16,7 @@ set color_win_dir=7
 set color_error=1
 
 # command line informational messages
-set color_info=2
+set color_info=7
 
 # separator between windows
 set color_separator=0

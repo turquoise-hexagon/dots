@@ -26,7 +26,7 @@
     timeout = 5
 
 [urgency_critical]
-    background = "#021B21"
+    background = "#234149"
     foreground = "#EEEEEE"
     timeout = 0
 
