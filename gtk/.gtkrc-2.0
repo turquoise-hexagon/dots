@@ -1,1 +1,6 @@
+gtk-cursor-theme-name="Adwaita"
+gtk-icon-theme-name="Adwaita"
+gtk-button-images=0
+gtk-menu-images=0
+gtk-theme-name="Adwaita"
 gtk-font-name="Roboto 9"
