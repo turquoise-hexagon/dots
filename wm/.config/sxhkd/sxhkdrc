@@ -9,7 +9,7 @@ XF86Audio{Mute,RaiseVolume,LowerVolume}
 XF86Audio{Prev,Next,Play}
     player {prev,next,play}
 
-Print
+@Print
     screenshot
 
 super + Return
