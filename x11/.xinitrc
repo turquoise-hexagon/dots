@@ -5,6 +5,7 @@
 # daemons
 pulseaudio --start
 urxvtd -q -o -f
+sxhkd -m 1 &
 dunst &
 
 # settings
