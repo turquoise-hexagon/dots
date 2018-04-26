@@ -7,9 +7,6 @@
 bspc monitor -d 1 2 3 4 5
 
 bspc config focus_follows_pointer true
-bspc config borderless_monocle true
-bspc config gapless_monocle true
-bspc config single_monocle true
 bspc config click_to_focus true
 
 bspc config border_width 5
