@@ -2,6 +2,7 @@
 #
 # send a notification on cmus update
 # depends on https://github.com/marinhoc/dots/tree/master/wm/bin/notify
+#
 # cmus tool
 
 while [ "$#" -gt 2 ]; do
