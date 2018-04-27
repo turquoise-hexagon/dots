@@ -18,7 +18,7 @@ mkfifo "$fifo"
 
 wks() {
     bspc subscribe | while read -r line; do
-        out=""
+        out=
         var=$(echo "$line" | grep -om1 '[OFU][1-5]' | tail -c2)
         for i in $(seq 1 5); do
             if [ "$var" -eq "$i" ]; then

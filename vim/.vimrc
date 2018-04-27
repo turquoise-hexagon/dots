@@ -23,7 +23,7 @@ set incsearch
 set ignorecase
 
 set noruler
-set nonumber
+set number
 set shortmess=atI
 
 " sh fix
