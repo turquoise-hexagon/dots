@@ -1,6 +1,7 @@
 #!/bin/sh
 #
 # send a notification using lemonbar
+# depends on https://github.com/marinhoc/bin/tree/master/fts
 #
 # wm tool
 
@@ -26,7 +27,6 @@ while [ "$#" -gt 0 ]; do
 done
 
 # get notification dimensions
-# https://github.com/marinhoc/bin/tree/master/fts
 var=$(fts -w ~/.fonts/cherry.pcf)
 width=$(echo "${#text} * $var + 2 * $padding" | bc)
 
