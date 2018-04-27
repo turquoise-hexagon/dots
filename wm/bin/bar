@@ -53,17 +53,23 @@ ntw() {
 ntw > "$fifo" &
 
 vol() {
-    while :; do
-        var=$(amixer sget Master)
-        if echo "$var" | grep -q off; then
-            out="$a$t Muted"
-        else
-            var=$(echo "$var" | grep -om1 '[0-9]*%')
-            out="$a$t $var"
-        fi
-        echo "V$out"
-
-        sleep .2s
+    {
+        echo init
+        pactl subscribe 2> /dev/null
+    } | \
+        while read -r line; do
+        case $line in
+            init|*\#0)
+                var=$(pactl list sinks)
+                if echo "$var" | grep -q yes; then
+                    out="$a$t Muted"
+                else
+                    var=$(echo "$var" | grep -o '[0-9]*%' | head -1)
+                    out="$a$t $var"
+                fi
+                echo "V$out"
+                ;;
+        esac
     done
 }
 vol > "$fifo" &
