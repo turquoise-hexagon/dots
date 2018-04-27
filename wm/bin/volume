@@ -6,7 +6,9 @@
 
 var=$(amixer sset Master "$1")
 
-[ "$1" != toggle ] && {
+[ "$1" != toggle ] &&
+    # send a notification when fullscreen
+    bspc query -N -n .local.fullscreen > /dev/null && {
     var=$(echo "$var" | grep -om1 '[0-9]*%')
     notify -t 3 -m "Volume : $var"
 }

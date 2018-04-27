@@ -6,9 +6,8 @@
 
 # SETTINGS
 
-a='%{B#FF99A1}'
-b='%{B#234149}'
-t='%{B-}'
+a='%{F#FF99A1}'
+t='%{F-}'
 
 fifo=/tmp/bar
 
@@ -23,19 +22,20 @@ wks() {
         var=$(echo "$line" | grep -om1 '[OFU][1-5]' | tail -c2)
         for i in $(seq 1 5); do
             if [ "$var" -eq "$i" ]; then
-                out="$out$a  $i  "
+                out="$out$a$t"
             else
-                out="$out$b  $i  "
+                out="$out"
             fi
         done
-        echo "W$out$t"
+        echo "W$out"
     done
 }
 wks > "$fifo" &
 
 clk() {
     while :; do
-        date +'C%A %R'
+        var=$(date +'%a %R')
+        echo "C$a$t $var"
 
         sleep 10s
     done
@@ -45,17 +45,42 @@ clk > "$fifo" &
 ntw() {
     while :; do
         var=$(iwgetid -r)
-        echo "N$b  ${var:-Offline}  $t"
+        echo "N$a$t ${var:-Offline}"
 
         sleep 1s
     done
 }
 ntw > "$fifo" &
 
+vol() {
+    while :; do
+        var=$(amixer sget Master)
+        if echo "$var" | grep -q off; then
+            out="$a$t Muted"
+        else
+            var=$(echo "$var" | grep -om1 '[0-9]*%')
+            out="$a$t $var"
+        fi
+        echo "V$out"
+
+        sleep .2s
+    done
+}
+vol > "$fifo" &
+
 bat() {
     while :; do
         var=$(cat /sys/class/power_supply/BAT0/capacity)
-        echo "B$a  $var%  $t"
+        if [ "$var" -eq 100 ]; then
+            out="$a$t $var%"
+        elif [ "$var" -gt 75 ]; then
+            out="$a$t $var%"
+        elif [ "$var" -gt 25 ]; then
+            out="$a$t $var%"
+        else
+            out="$a$t $var%"
+        fi
+        echo "B$out"
 
         sleep 10s
     done
@@ -69,10 +94,12 @@ while read -r line; do
         W*) wks=${line#?};;
         C*) clk=${line#?};;
         N*) ntw=${line#?};;
+        V*) vol=${line#?};;
         B*) bat=${line#?};;
     esac
-    echo "%{l}${wks}%{c}${clk}%{r}${ntw}${bat}"
+    echo "%{l}  ${wks}%{c}${clk}%{r}${ntw}  ${vol}  ${bat}  "
 done < "$fifo" | lemonbar -g x30 \
     -f "-t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1" \
+    -f "-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1" \
     -B \#021B21 \
     -F \#E8DFD6
