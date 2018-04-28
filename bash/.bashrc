@@ -9,7 +9,7 @@ PATH="/bin:/usr/bin:/usr/sbin:/sbin:$HOME/bin"
 HISTCONTROL=ignoredups:erasedups
 HISTSIZE=10000
 
-PS1="\[\e[95m\]\w\[\e[0m\] + "
+PS1="\[\e[95m\]\w\[\e[0m\] - "
 
 # ALIASES
 
