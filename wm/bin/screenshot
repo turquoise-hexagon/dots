@@ -4,8 +4,8 @@
 #
 # wm key bindings
 
-dir=~/pictures/screenshots
-var=$(date +%d-%m-%y_%H-%M-%S)
+dir=~/pics/screenshots
+var=$(date +%F_%H-%M-%S)
 
 mkdir -p "$dir"
 
