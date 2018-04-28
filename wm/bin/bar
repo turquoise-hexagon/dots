@@ -54,23 +54,24 @@ ntw > "$fifo" &
 
 vol() {
     {
+        # run on startup
         echo init
         pactl subscribe 2> /dev/null
     } | \
         while read -r line; do
-        case $line in
-            init|*\#0)
-                var=$(pactl list sinks)
-                if echo "$var" | grep -q yes; then
-                    out="$a$t Muted"
-                else
-                    var=$(echo "$var" | grep -o '[0-9]*%' | head -1)
-                    out="$a$t $var"
-                fi
-                echo "V$out"
-                ;;
-        esac
-    done
+            case $line in
+                init|*\#0)
+                    var=$(pactl list sinks)
+                    if echo "$var" | grep -q 'Muted: yes'; then
+                        out="$a$t Muted"
+                    else
+                        var=$(echo "$var" | grep -o '[0-9]*%' | head -1)
+                        out="$a$t $var"
+                    fi
+                    echo "V$out"
+                    ;;
+            esac
+        done
 }
 vol > "$fifo" &
 
