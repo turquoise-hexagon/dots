@@ -95,6 +95,7 @@ bat > "$fifo" &
 
 # MAIN
 
+# ensure proper script cleanup
 trap 'kill 0' INT TERM QUIT EXIT
 
 while read -r line; do
