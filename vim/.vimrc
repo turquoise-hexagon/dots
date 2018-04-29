@@ -24,7 +24,7 @@ set ignorecase
 
 set noruler
 set nonumber
-set shortmess=atI
+set shortmess=actI
 
 " sh fix
 let g:is_posix=1
