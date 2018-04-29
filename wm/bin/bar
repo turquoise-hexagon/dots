@@ -28,7 +28,6 @@ wks() {
                 out="$out"
             fi
         done
-
         echo "W$out"
     done
 }
@@ -71,7 +70,6 @@ vol() {
                         var=$(echo "$var" | grep -o '[0-9]*%' | head -1)
                         out="$a$t $var"
                     fi
-
                     echo "V$out"
                     ;;
             esac
@@ -92,7 +90,6 @@ bat() {
         else
             out="$a$t $var%"
         fi
-
         echo "B$out"
 
         sleep 10s
