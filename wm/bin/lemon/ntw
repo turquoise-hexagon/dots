@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# get network status
+#
+# lemonbar script
+
+while :; do
+    var=$(iwgetid -r)
+    echo "N$(icon ) ${var:-Offline}"
+
+    sleep 2s
+done

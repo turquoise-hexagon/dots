@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# get time
+#
+# lemonbar script
+
+while :; do
+    var=$(date +'%a %R')
+    echo "C$(icon ) $var"
+
+    sleep 10s
+done

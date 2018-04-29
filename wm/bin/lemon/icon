@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# format an icon
+#
+# lemonbar script
+
+echo "%{F#FF99A1}$1%{F-}"

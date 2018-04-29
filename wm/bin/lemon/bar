@@ -1,0 +1,38 @@
+#!/bin/sh
+#
+# main lemonbar
+#
+# lemonbar script
+
+export PATH="$PATH:$HOME/bin/lemon"
+fifo=/tmp/bar
+
+# ensure proper script cleanup
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
+[ -e "$fifo" ] && rm "$fifo"
+mkfifo "$fifo"
+
+wks > "$fifo" &
+clk > "$fifo" &
+ntw > "$fifo" &
+vol > "$fifo" &
+bat > "$fifo" &
+
+# main loop
+while read -r line; do
+    case $line in
+        W*) wks=${line#?};;
+        C*) clk=${line#?};;
+        N*) ntw=${line#?};;
+        V*) vol=${line#?};;
+        B*) bat=${line#?};;
+    esac
+
+    echo "%{l}  ${wks}%{c}${clk}%{r}${ntw}  ${vol}  ${bat}  "
+done < "$fifo" | \
+    lemonbar -g x30 \
+    -f "-t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1" \
+    -f "-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1" \
+    -B \#021B21 \
+    -F \#E8DFD6

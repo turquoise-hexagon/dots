@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# get workspaces
+#
+# lemonbar script
+
+bspc subscribe | while read -r event; do
+    out=""
+    var=$(echo "$event" | grep -om1 '[OFU][1-5]' | tail -c2)
+
+    for i in $(seq 1 5); do
+        if [ "$var" -eq "$i" ]; then
+            out="$out$(icon )"
+        else
+            out="$out"
+        fi
+    done
+    echo "W$out"
+done
