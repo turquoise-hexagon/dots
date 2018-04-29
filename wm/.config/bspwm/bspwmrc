@@ -26,4 +26,4 @@ bspc config external_rules_command "$(which rules)"
 # UTILS
 
 pgrep -x bar > /dev/null ||
-    ~/bin/lemon/bar &
+    ~/bin/lemons/bar &

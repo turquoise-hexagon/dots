@@ -4,7 +4,7 @@
 #
 # lemonbar script
 
-export PATH="$PATH:$HOME/bin/lemon"
+export PATH="$PATH:$HOME/bin/lemons"
 fifo=/tmp/bar
 
 # ensure proper script cleanup
