@@ -27,10 +27,10 @@ while [ "$#" -gt 0 ]; do
 done
 
 # get notification dimensions
-var=$(fts -w ~/.fonts/cherry.pcf)
+var=$(fts -w ~/.fonts/cherry-r.pcf)
 width=$(echo "${#text} * $var + 2 * $padding" | bc)
 
-var=$(fts -h ~/.fonts/cherry.pcf)
+var=$(fts -h ~/.fonts/cherry-r.pcf)
 height=$(echo "$var + 2 * $padding" | bc)
 
 # get notification offset
