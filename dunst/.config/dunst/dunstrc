@@ -26,8 +26,8 @@
     timeout = 5
 
 [urgency_critical]
-    background = "#234149"
-    foreground = "#EEEEEE"
+    background = "#EEEEEE"
+    foreground = "#FF99A1"
     timeout = 0
 
 # vim: ft=cfg

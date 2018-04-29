@@ -16,7 +16,7 @@ super + Return
     urxvtc
 
 super + space
-    menu
+    rofi -show run
 
 super + shift + r
     pkill -USR1 -x sxhkd
