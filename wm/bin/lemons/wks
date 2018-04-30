@@ -5,15 +5,16 @@
 # lemonbar script
 
 bspc subscribe | while read -r event; do
-    out=""
-    var=$(echo "$event" | grep -om1 '[OFU][1-5]' | tail -c2)
+    # we want word splitting
+    IFS=":"; set -- ${event#?}
 
-    for i in $(seq 1 5); do
-        if [ "$var" -eq "$i" ]; then
-            out="$out$(icon )"
-        else
-            out="$out"
-        fi
+    out=""
+    while [ "$#" -gt 0 ]; do
+        case $1 in
+            [OFU]*) out="$out$(icon )";;
+            [ofu]*) out="$out";;
+        esac
+        shift
     done
     echo "W$out"
 done
