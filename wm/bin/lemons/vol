@@ -14,7 +14,7 @@
             init|*\#0)
                 var=$(pactl list sinks)
 
-                if echo "$var" | grep -q 'Muted: yes'; then
+                if echo "$var" | grep -q 'Mute: yes'; then
                     out="$(icon ) Muted"
                 else
                     var=$(echo "$var" | grep -o '[0-9]*%' | head -1)
