@@ -37,7 +37,7 @@ height=$(echo "$var + 2 * $padding" | bc)
 var=$(bspc query -T -m | jq .rectangle.width)
 offset_x=$(echo "$var - $offset_x - $width" | bc)
 
-( echo "%{c}$text"; sleep "$time" ) |\
+( echo "%{c}$text"; sleep "$time" ) | \
     lemonbar -g "${width}x${height}+${offset_x}+${offset_y}" \
     -f "-t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1" \
     -B \#EEEEEE \
