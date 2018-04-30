@@ -5,8 +5,7 @@
 # lemonbar script
 
 while :; do
-    var=$(date +'%a %R')
-    echo "C$(icon ) $var"
+    echo "C$(icon ) $(date +'%a %R')"
 
     sleep 10s
 done
