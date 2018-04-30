@@ -7,15 +7,11 @@
 while :; do
     var=$(cat /sys/class/power_supply/BAT0/capacity)
 
-    if [ "$var" -eq 100 ]; then
-        out="$(icon ) $var%"
-    elif [ "$var" -gt 75 ]; then
-        out="$(icon ) $var%"
-    elif [ "$var" -gt 25 ]; then
-        out="$(icon ) $var%"
-    else
-        out="$(icon ) $var%"
-    fi
+    case $var in
+        [0-9])  out="$(icon ) $var%";;
+        [1-7]?) out="$(icon ) $var%";;
+        *)      out="$(icon ) $var%";;
+    esac
     echo "B$out"
 
     sleep 10s
