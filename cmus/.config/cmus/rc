@@ -6,6 +6,7 @@ set status_display_program=cmus-notify
 
 set format_current= %a %= %l
 set format_statusline= %{status} %{?d?%t %= %{position} / %d}
+set format_playlist= %-25%a %n. %t %= %y %d
 
 # COLORS
 
