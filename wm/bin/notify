@@ -17,7 +17,7 @@ time=5
 # kill previous notification
 pkill -f "lemonbar .* -d"
 
-while [ "$#" -gt 0 ]; do
+while [ $# -gt 0 ]; do
     case $1 in
         -t) time="$2";;
         -m) text="$2";;
