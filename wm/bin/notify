@@ -28,14 +28,14 @@ done
 
 # get notification dimensions
 var=$(fts -w ~/.fonts/cherry-r.pcf)
-width=$(echo "${#text} * $var + 2 * $padding" | bc)
+width=$(( ${#text} * var + 2 * padding ))
 
 var=$(fts -h ~/.fonts/cherry-r.pcf)
-height=$(echo "$var + 2 * $padding" | bc)
+height=$(( var + 2 * padding ))
 
 # get notification offset
 var=$(bspc query -T -m | jq .rectangle.width)
-offset_x=$(echo "$var - $offset_x - $width" | bc)
+offset_x=$(( var - offset_x - width ))
 
 ( echo "%{c}$text"; sleep "$time" ) | \
     lemonbar -g "${width}x${height}+${offset_x}+${offset_y}" \
