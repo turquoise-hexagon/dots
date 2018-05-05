@@ -6,7 +6,7 @@
 
 bspc subscribe | while read -r event; do
     # we want word splitting
-    IFS=':'; set -- ${event#?}
+    IFS=:; set -- ${event#?}
 
     out=
     while [ $# -gt 0 ]; do
