@@ -4,7 +4,7 @@
 #
 # wm key bindings
 
-pgrep cmus > /dev/null && {
+pgrep -x cmus > /dev/null && {
     case $1 in
         next) cmus-remote -n;;
         prev) cmus-remote -r;;
