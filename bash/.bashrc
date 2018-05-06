@@ -1,4 +1,3 @@
-# don't run if not interactive
 # if not interactive, return
 [[ $- != *i* ]] &&
     return
