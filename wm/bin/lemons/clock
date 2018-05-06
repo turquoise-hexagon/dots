@@ -1,5 +1,3 @@
-#!/bin/sh
-#
 # get time
 #
 # lemonbar script
@@ -11,3 +9,5 @@ clk() {
         sleep 10s
     done
 }
+
+# vim: ft=sh

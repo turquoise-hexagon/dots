@@ -1,5 +1,3 @@
-#!/bin/sh
-#
 # get workspaces
 #
 # lemonbar script
@@ -20,3 +18,5 @@ wks() {
         echo "W$out"
     done
 }
+
+# vim: ft=sh

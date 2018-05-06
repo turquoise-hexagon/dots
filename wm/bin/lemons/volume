@@ -1,5 +1,3 @@
-#!/bin/sh
-#
 # get volume
 #
 # lemonbar script
@@ -26,3 +24,5 @@ vol() {
             esac
         done
 }
+
+# vim: ft=sh

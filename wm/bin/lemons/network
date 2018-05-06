@@ -1,5 +1,3 @@
-#!/bin/sh
-#
 # get network status
 #
 # lemonbar script
@@ -12,3 +10,5 @@ ntw() {
         sleep 2s
     done
 }
+
+# vim: ft=sh

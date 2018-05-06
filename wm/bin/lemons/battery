@@ -1,5 +1,3 @@
-#!/bin/sh
-#
 # get battery status
 #
 # lemonbar script
@@ -18,3 +16,5 @@ bat() {
         sleep 10s
     done
 }
+
+# vim: ft=sh
