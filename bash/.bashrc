@@ -13,7 +13,6 @@ PS1="\[\e[95m\]\w\[\e[0m\] "
 
 # ALIASES
 
-alias shellcheck="shellcheck -x"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias ls="ls --color=auto -F"
