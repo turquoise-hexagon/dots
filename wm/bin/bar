@@ -11,7 +11,7 @@ fifo=/tmp/bar
 
 # source all functions
 for i in ~/bin/lemons/*; do
-    [ "$i" != "$0" ] && . "$i"
+    . "$i"
 done
 
 # ensure proper script cleanup
