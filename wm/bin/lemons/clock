@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# get time
+#
+# lemonbar script
+
+clk() {
+    while :; do
+        echo "C$a$t $(date +'%a %R')"
+
+        sleep 10s
+    done
+}

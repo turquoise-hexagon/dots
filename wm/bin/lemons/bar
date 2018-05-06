@@ -5,8 +5,14 @@
 #
 # lemonbar script
 
-export PATH="$PATH:$HOME/bin/lemons"
+a="%{F#FF99A1}"
+t="%{F-}"
 fifo=/tmp/bar
+
+# source all functions
+for i in ~/bin/lemons/*; do
+    [ "$i" != "$0" ] && . "$i"
+done
 
 # ensure proper script cleanup
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
@@ -20,7 +26,6 @@ ntw > "$fifo" &
 vol > "$fifo" &
 bat > "$fifo" &
 
-# main loop
 while read -r line; do
     case $line in
         W*) wks=${line#?};;
