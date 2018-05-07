@@ -17,8 +17,9 @@ vol() {
                     if echo "$var" | grep -q 'Mute: yes'; then
                         out="$a$t Muted"
                     else
-                        var=$(echo "$var" | grep -o '[0-9]*%' | head -1)
-                        out="$a$t $var"
+                        # we want word splitting
+                        set -- ${var#*Volume:}
+                        out="$a$t $4"
                     fi
                     echo "V$out"
             esac
