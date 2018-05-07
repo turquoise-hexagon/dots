@@ -13,6 +13,9 @@ pactl set-sink-volume 0 "$1"
 
 # send a notification when fullscreen
 bspc query -N -n .local.fullscreen > /dev/null && {
-    var=$(pactl list sinks | grep -o '[0-9]*%' | head -1)
-    notify -t 3 -m "Volume : $var"
+    var=$(pactl list sinks)
+
+    # we want word splitting
+    set -- ${var#*Volume:}
+    notify -t 3 -m "Volume : $4"
 }
