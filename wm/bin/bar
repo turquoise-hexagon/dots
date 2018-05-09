@@ -3,7 +3,7 @@
 # main lemonbar
 # depends on https://github.com/stark/siji
 #
-# lemonbar script
+# wm script
 
 a="%{F#FF99A1}"
 t="%{F-}"
