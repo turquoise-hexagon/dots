@@ -3,7 +3,7 @@
 # send a notification on cmus update
 # depends on https://github.com/marinhoc/dots/tree/master/wm/bin/notify
 #
-# cmus tool
+# cmus script
 
 while [ $# -ge 2 ]; do
     case $1 in
