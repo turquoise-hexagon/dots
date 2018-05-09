@@ -2,7 +2,7 @@
 #
 # external bspwm rules
 #
-# wm tool
+# wm script
 
 # spawn in preselections first
 target=$(bspc query -N -d -n .\!automatic | head -1)
