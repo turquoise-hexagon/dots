@@ -1,34 +1,45 @@
-" SETTINGS
-
-filetype indent plugin on
-syntax on
+" general
 set nocompatible
-set encoding=utf8
+set nomodeline
+set encoding=utf-8
+
+" syntax
+filetype indent plugin on
+syntax enable
+
+" swap & sessions
 set hidden
 set noswapfile
 
+" case insensitive search
+set ignorecase
+set smartcase
+set infercase
+
+" better search
+set hlsearch
+set incsearch
+
+" sane backspace
+set backspace=indent,eol,start
+
+" tab indent
+set noexpandtab
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+
+" indent
 set autoindent
 set wrap
 set linebreak
 set breakindent
 
-set backspace=indent,eol,start
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set shiftround
+" fix posix syntax
+let g:is_posix=1
 
-set hlsearch
-set incsearch
-set ignorecase
-
+" ui
 set noruler
 set nonumber
 set shortmess=actI
-
-" sh fix
-let g:is_posix=1
-
-" THEMING
-
 colorscheme cherry
