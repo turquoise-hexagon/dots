@@ -1,6 +1,5 @@
 " general
 set nocompatible
-set nomodeline
 set encoding=utf-8
 
 " syntax
