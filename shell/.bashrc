@@ -4,12 +4,12 @@
 
 # SETTINGS
 
-PATH="/bin:/usr/bin:/usr/sbin:/sbin:$HOME/bin"
+PATH="/usr/bin:/bin:/sbin:$HOME/bin"
+
+PS1="\[\e[95m\]\w\[\e[0m\] "
 
 HISTCONTROL=ignoredups:erasedups
 HISTSIZE=10000
-
-PS1="\[\e[95m\]\w\[\e[0m\] "
 
 # ALIASES
 
