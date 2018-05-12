@@ -4,12 +4,16 @@
 
 # SETTINGS
 
+shopt -s histappend
+shopt -s checkwinsize
+
 PATH="/usr/bin:/bin:/sbin:$HOME/bin"
 
 PS1="\[\e[95m\]\w\[\e[0m\] "
 
-HISTCONTROL=ignoredups:erasedups
 HISTSIZE=10000
+HISTFILESIZE=10000
+HISTCONTROL=ignoredups
 
 # ALIASES
 
