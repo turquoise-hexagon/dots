@@ -2,7 +2,8 @@
 #
 # lemonbar script
 
-bat () {
+bat ()
+{
     while :; do
         var=$(cat /sys/class/power_supply/BAT0/capacity)
 

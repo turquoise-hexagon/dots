@@ -3,7 +3,8 @@
 # lemonbar script
 
 
-vol () {
+vol ()
+{
     {
         # run on startup
         echo init

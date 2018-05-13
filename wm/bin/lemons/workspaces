@@ -2,7 +2,8 @@
 #
 # lemonbar script
 
-wks () {
+wks ()
+{
     bspc subscribe | while read -r event; do
         # we want word splitting
         IFS=:; set -- ${event#?}

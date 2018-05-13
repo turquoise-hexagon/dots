@@ -2,7 +2,8 @@
 #
 # lemonbar script
 
-clk () {
+clk ()
+{
     while :; do
         var=$(date +%a\ %R)
         echo "C$a$t $var"

@@ -2,7 +2,8 @@
 #
 # lemonbar script
 
-ntw () {
+ntw ()
+{
     while :; do
         var=$(iwgetid -r)
         echo "N$a$t ${var:-Offline}"
