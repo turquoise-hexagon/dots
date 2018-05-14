@@ -1,7 +1,6 @@
-# bash_profile
-
 PATH="$PATH:/sbin:$HOME/bin"
 
+# source bashrc
 [[ -f ~/.bashrc ]] &&
     . ~/.bashrc
 

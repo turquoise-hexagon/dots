@@ -1,5 +1,3 @@
-# bashrc
-
 # if not interactive, return
 [[ $- != *i* ]] &&
     return
