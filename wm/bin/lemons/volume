@@ -2,7 +2,6 @@
 #
 # lemonbar script
 
-
 vol ()
 {
     # ensure the block isn't empty on startup
