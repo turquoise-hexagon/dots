@@ -39,6 +39,7 @@ super + Escape
     bspc node -p cancel
 
 super + r
+    # replace preselection and tile
     bspc node -n last.!automatic -t tiled
 
 super + {_,shift,alt} + {Left,Down,Up,Right}
