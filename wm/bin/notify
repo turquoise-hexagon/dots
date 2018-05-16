@@ -6,7 +6,8 @@
 # wm script
 
 # source config file
-. ~/.config/notify/config
+config=~/.config/notify/config
+[ -f "$config" ] && . "$config" || exit 1
 
 # kill previous notification
 pkill -f "lemonbar .* -d"
