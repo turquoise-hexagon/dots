@@ -1,5 +1,7 @@
 # configuration file for `notify`
 # https://github.com/marinhoc/dots/tree/master/wm/bin/notify
+#
+# notify script
 
 # default timeout
 time=5
