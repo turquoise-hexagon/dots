@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # send a notification on cmus update
-# depends on https://github.com/marinhoc/dots/tree/master/wm/bin/notify
+# depends on `notify` (wm package)
 #
 # cmus script
 
