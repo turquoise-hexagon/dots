@@ -14,7 +14,7 @@ case $1 in
     west) dir=right; falldir=left; target=x; sign=-;;
     east) dir=right; falldir=left; target=x; sign=+;;
     north) dir=top; falldir=bottom; target=y; sign=-;;
-    south) dir=top; falldir=bottom; target=y; sign=+;;
+    south) dir=top; falldir=bottom; target=y; sign=+
 esac
 
 # get resize value

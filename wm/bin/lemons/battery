@@ -10,7 +10,7 @@ bat ()
         case $var in
             [0-9])  out="$a$t $var%";;
             [1-7]?) out="$a$t $var%";;
-            *)      out="$a$t $var%";;
+            *)      out="$a$t $var%"
         esac
         echo "B$out"
 

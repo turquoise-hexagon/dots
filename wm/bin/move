@@ -12,7 +12,7 @@ if bspc query -N -n focused.floating > /dev/null; then
         west) target=x; sign=-;;
         east) target=x; sign=+;;
         north) target=y; sign=-;;
-        south) target=y; sign=+;;
+        south) target=y; sign=+
     esac
 
     # get move value

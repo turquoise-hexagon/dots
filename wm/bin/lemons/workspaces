@@ -4,7 +4,7 @@
 
 wks ()
 {
-    bspc subscribe | while read -r event; do
+    bspc subscribe desktop | while read -r event; do
         # we want word splitting
         IFS=:; set -- ${event#?}
 
@@ -12,7 +12,7 @@ wks ()
         while [ $# -gt 0 ]; do
             case $1 in
                 [OFU]*) out="$out$a$t";;
-                [ofu]*) out="$out";;
+                [ofu]*) out="$out"
             esac
             shift
         done

@@ -20,7 +20,7 @@ pkill -f "lemonbar .* -d"
 while [ $# -gt 0 ]; do
     case $1 in
         -t) time="$2";;
-        -m) text="$2";;
+        -m) text="$2"
     esac
     shift
     shift

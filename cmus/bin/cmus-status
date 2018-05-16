@@ -8,7 +8,7 @@
 while [ $# -ge 2 ]; do
     case $1 in
         title) title="$2";;
-        status) status="$2";;
+        status) status="$2"
     esac
     shift
     shift
