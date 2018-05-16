@@ -17,8 +17,7 @@ while [ $# -gt 0 ]; do
         -t) time="$2";;
         -m) text="$2"
     esac
-    shift
-    shift
+    shift; shift
 done
 
 # get font infos
@@ -34,7 +33,10 @@ width=$(( ${#text} * width + 2 * padding ))
 var=$(bspc query -T -m | jq .rectangle.width)
 offset_x=$(( var - offset_x - width ))
 
-( echo "%{c}$text"; sleep "$time" ) | \
+{
+    echo "%{c}$text"
+    sleep "$time"
+} | \
     lemonbar -g "${width}x${height}+${offset_x}+${offset_y}" \
     -F "$foreground" \
     -B "$background" \
