@@ -4,7 +4,7 @@
 
 wks ()
 {
-    bspc subscribe desktop | while read -r event; do
+    bspc subscribe | while read -r event; do
         # we want word splitting
         IFS=:; set -- ${event#?}
 
