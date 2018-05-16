@@ -1,4 +1,4 @@
-PATH="$PATH:/sbin:$HOME/bin"
+PATH+=":/sbin:$HOME/bin"
 
 # source bashrc
 [[ -f ~/.bashrc ]] &&

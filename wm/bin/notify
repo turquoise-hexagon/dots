@@ -5,14 +5,8 @@
 #
 # wm script
 
-# SETTINGS
-
-padding=20
-offset_x=30
-offset_y=60
-time=5
-
-# SCRIPT
+# source config file
+. ~/.config/notify/config
 
 # kill previous notification
 pkill -f "lemonbar .* -d"
@@ -39,7 +33,7 @@ offset_x=$(( var - offset_x - width ))
 
 ( echo "%{c}$text"; sleep "$time" ) | \
     lemonbar -g "${width}x${height}+${offset_x}+${offset_y}" \
-    -f "-t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1" \
-    -B \#EEEEEE \
-    -F \#021B21 \
+    -F "$foreground" \
+    -B "$background" \
+    -f "$font" \
     -d &

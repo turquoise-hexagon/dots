@@ -1,5 +1,5 @@
-various scripts and config files
-
+various scripts and config files :
 bspwm, sxhkd, lemonbar etc.
 
+please read the files you intend to use
 managed with stow
