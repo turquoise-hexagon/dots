@@ -21,15 +21,14 @@ while [ $# -gt 0 ]; do
     shift
 done
 
-# get font path
+# get font infos
 path=$(ftf "$font")
+height=$(fts -h "$path")
+width=$(fts -w "$path")
 
 # get notification dimensions
-width=$(fts -w "$path")
-width=$(( ${#text} * width + 2 * padding ))
-
-height=$(fts -h "$path")
 height=$(( height + 2 * padding ))
+width=$(( ${#text} * width + 2 * padding ))
 
 # get notification offset
 var=$(bspc query -T -m | jq .rectangle.width)
