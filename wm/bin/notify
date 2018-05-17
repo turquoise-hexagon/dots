@@ -34,11 +34,11 @@ width=$(fts -w "$path")
 
 # get notification size
 height=$((height + 2 * padding))
-width=$((${#text} * width + 2 * padding))
+width=$(( ${#text} * width + 2 * padding ))
 
 # get notification offset
 var=$(bspc query -T -m | jq .rectangle.width)
-offset_x=$((var - offset_x - width))
+offset_x=$(( var - offset_x - width ))
 
 {
     echo "%{c}$text"
