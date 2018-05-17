@@ -29,6 +29,7 @@ done
 
 # get font values
 path=$(ftf "$font")
+
 height=$(fts -h "$path")
 width=$(fts -w "$path")
 
