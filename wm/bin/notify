@@ -34,7 +34,7 @@ height=$(fts -h "$path")
 width=$(fts -w "$path")
 
 # get notification size
-height=$((height + 2 * padding))
+height=$(( height + 2 * padding ))
 width=$(( ${#text} * width + 2 * padding ))
 
 # get notification offset
