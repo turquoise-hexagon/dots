@@ -6,7 +6,7 @@
 
 # spawn in preselections first
 target=$(bspc query -N -d -n .\!automatic | head -1)
-[ "$target" ] && { echo "node=$target"; exit; }
+test "$target" && { echo "node=$target"; exit; }
 
 # exit if there is no focused window
 bspc query -T -n focused > /dev/null || exit
