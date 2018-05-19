@@ -3,13 +3,11 @@
 # lemonbar script
 
 clk ()
-{
     while :; do
         var=$(date +%a\ %R)
         echo "C$a$t $var"
 
         sleep 10s
     done
-}
 
 # vim: ft=sh

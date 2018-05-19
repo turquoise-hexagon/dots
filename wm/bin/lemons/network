@@ -3,13 +3,11 @@
 # lemonbar script
 
 ntw ()
-{
     while :; do
         var=$(iwgetid -r)
         echo "N$a$t ${var:-Offline}"
 
         sleep 2s
     done
-}
 
 # vim: ft=sh

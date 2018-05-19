@@ -3,7 +3,6 @@
 # lemonbar script
 
 bat ()
-{
     while :; do
         var=$(cat /sys/class/power_supply/BAT0/capacity)
 
@@ -16,6 +15,5 @@ bat ()
 
         sleep 10s
     done
-}
 
 # vim: ft=sh
