@@ -11,6 +11,7 @@ while [ $# -ge 2 ]; do
         title) title="$2";;
         status) status="$2"
     esac
+
     shift; shift
 done
 
