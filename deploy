@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# deploy dots
+
+deps ()
+{
+    command -v stow > /dev/null ||
+        { echo "error : install stow first"; exit 1; }
+}
+
+dirs ()
+    for i in bin .config .icons .vim .xres; do
+        mkdir -p ~/"$i"
+    done
+
+dots ()
+    for i in *; do
+        test -d "$i" && stow "$i"
+    done
+
+deps; dirs; dots
