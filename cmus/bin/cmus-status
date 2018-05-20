@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# display cmus status
+#
+# cmus script
+
+# parse cmus datas
+while [ $# -gt 0 ]; do
+    case $1 in
+        title) title="$2";;
+        status) status="$2";;
+    esac
+
+    shift; shift
+done
+
+[ "$status" = playing ] &&
+    notify-send "$title"
