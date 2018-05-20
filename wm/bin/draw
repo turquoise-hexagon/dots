@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+#
+# draw à la plan9
+#
+# wm script
+
+# settings
+b="7"
+f="%w %h %x %y"
+c=".93 .93 .93"
+
+# spawn in the background
+bspc rule -a URxvt:float -o state=floating hidden=on
+
+urxvtc -name float &
+
+# get values from slop
+read -r w h x y < <(slop -b "$b" -c "$c" -f "$f")
+
+bw=$(bspc config border_width)
+id=$(bspc query -N -n .hidden)
+
+# take borders into account
+(( w -= 2 * bw ))
+(( h -= 2 * bw ))
+
+xdotool windowmove "$id" "$x" "$y"
+xdotool windowsize "$id" "$w" "$h"
+
+# bring back our window and focus it
+bspc node "$id" --flag hidden=off; bspc node -f "$id"

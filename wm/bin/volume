@@ -4,18 +4,8 @@
 #
 # wm key bindings
 
-[ "$1" = toggle ] && {
+if [ "$1" = toggle ]; then
     pactl set-sink-mute 0 toggle
-    exit
-}
-
-pactl set-sink-volume 0 "$1"
-
-# send a notification when fullscreen
-bspc query -N -n .local.fullscreen > /dev/null && {
-    var=$(pactl list sinks)
-
-    # we want word splitting
-    set -- ${var#*Volume:}
-    notify-send "Volume : $4"
-}
+else
+    pactl set-sink-volume 0 "$1"
+fi
