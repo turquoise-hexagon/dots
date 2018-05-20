@@ -5,8 +5,8 @@
 # wm script
 
 # spawn in preselections first
-target=$(bspc query -N -d -n .\!automatic | head -1)
-test "$target" && { echo "node=$target"; exit; }
+presel=$(bspc query -N -d -n .\!automatic | head -1)
+test "$presel" && { echo "node=$presel"; exit; }
 
 # exit if there is no focused window
 bspc query -T -n focused > /dev/null || exit

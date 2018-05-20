@@ -4,7 +4,7 @@
 
 clk ()
     while :; do
-        var=$(date +%a\ %R)
+        var=$(date +%A\ %R)
         echo "C$a$t $var"
 
         sleep 10s
