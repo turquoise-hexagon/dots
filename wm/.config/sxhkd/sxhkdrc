@@ -12,7 +12,7 @@ XF86Audio{Prev,Next,Play}
     screenshot
 
 super {_,shift} + Return
-    {draw,urxvtc}
+    {urxvtc,draw}
 
 super + space
     rofi -show run
