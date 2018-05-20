@@ -32,13 +32,11 @@ path=$(ftf "$font")
 # get values
 height=$(fts -h "$path")
 width=$(fts -w "$path")
-
 var=$(bspc query -T -m | jq .rectangle.width)
 
 # get notification size
 height=$(( height + 2 * padding ))
 width=$(( ${#text} * width + 2 * padding ))
-
 offset_x=$(( var - offset_x - width ))
 
 {
