@@ -36,13 +36,13 @@ super + {h,j,k,l}
 super + Escape
     bspc node -p cancel
 
+# replace preselection and tile
 super + r
-    # replace preselection and tile
     bspc node -n last.!automatic -t tiled
 
 super + {_,shift,alt} + {Left,Down,Up,Right}
     {focus,move,resize} {west,south,north,east}
 
+# caution, azerty keyboard
 super + {_,shift} + {ampersand,eacute,quotedbl,apostrophe,parenleft}
-    # caution, azerty keyboard
     bspc {desktop -f,node -d} {1-5}
