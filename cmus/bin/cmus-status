@@ -5,6 +5,7 @@
 #
 # cmus script
 
+# parse datas from cmus
 while [ $# -ge 2 ]; do
     case $1 in
         title) title="$2";;
