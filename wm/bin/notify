@@ -8,47 +8,48 @@
 # kill previous notification
 pkill -f "lemonbar .* -d"
 
-# config
-time=5
+# configuration
 
-padding=20
-offset_x=30
-offset_y=60
+# default timeout
+t=5
 
-foreground=\#021B21
-background=\#EEEEEE
-font=-t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1
+# geometry
+p=20
+x=30
+y=60
+
+# appearance
+fg=\#021B21
+bg=\#EEEEEE
+ft=-t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1
 
 # parse options
 while [ $# -gt 0 ]; do
     case $1 in
-        -t) time="$2";;
-        -m) text="$2"
+        -t) t="$2";;
+        -m) m="$2"
     esac
-
+    
     shift; shift
 done
 
+# get notification size
+pt=$(ftf "$ft")
 var=$(bspc query -T -m | jq .rectangle.width)
 
-# xfld  -> path
-path=$(ftf "$font")
+h=$(fts -h "$pt")
+w=$(fts -w "$pt")
 
-# path -> width / height
-width=$(fts -w "$path")
-height=$(fts -h "$path")
-
-# get notification size
-width=$(( ${#text} * width + 2 * padding ))
-height=$(( height + 2 * padding ))
-offset_x=$(( var - offset_x - width ))
+h=$(( h + 2 * p ))
+w=$(( ${#m} * w + 2 * p ))
+x=$(( var - x - w ))
 
 {
-    echo "%{c}$text"
-    sleep "$time"
+    echo "%{c}$m"
+    sleep "$t"
 } | \
-    lemonbar -g "${width}x${height}+${offset_x}+${offset_y}" \
-    -F "$foreground" \
-    -B "$background" \
-    -f "$font" \
+    lemonbar -g "${w}x${h}+${x}+${y}" \
+    -F "$fg" \
+    -B "$bg" \
+    -f "$ft" \
     -d &
