@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# send a notification using lemonbar
+# send a notification with lemonbar
 # depends on `fts` and `ftf` (bin repo)
 #
 # wm script
@@ -19,24 +19,30 @@ foreground=\#021B21
 background=\#EEEEEE
 font=-t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1
 
+# parse options
 while [ $# -gt 0 ]; do
     case $1 in
         -t) time="$2";;
         -m) text="$2"
     esac
+
     shift; shift
 done
 
-path=$(ftf "$font")
-
-# get values
-height=$(fts -h "$path")
-width=$(fts -w "$path")
 var=$(bspc query -T -m | jq .rectangle.width)
 
-# get notification size
-height=$(( height + 2 * padding ))
+# `ftf`
+# xfld  -> path
+path=$(ftf "$font")
+
+# `ftw`
+# path -> width / height
+width=$(fts -w "$path")
+height=$(fts -h "$path")
+
+# get notification dimensions
 width=$(( ${#text} * width + 2 * padding ))
+height=$(( height + 2 * padding ))
 offset_x=$(( var - offset_x - width ))
 
 {
