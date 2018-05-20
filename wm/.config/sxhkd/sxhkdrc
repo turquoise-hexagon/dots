@@ -1,4 +1,4 @@
-# MISC
+# misc
 
 XF86MonBrightness{Up,Down}
     xbacklight -{inc,dec} 10
@@ -21,7 +21,7 @@ super + space
 super + shift + r
     pkill -USR1 -x sxhkd
 
-# BSPWM
+# window manager
 
 super + q
     bspc node -c

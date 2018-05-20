@@ -6,6 +6,7 @@
 # wm script
 
 # config
+
 time=5
 
 padding=20
@@ -15,6 +16,8 @@ offset_y=60
 foreground=\#021B21
 background=\#EEEEEE
 font=-t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1
+
+# actual script
 
 # kill previous notification
 pkill -f "lemonbar .* -d"
@@ -29,9 +32,8 @@ done
 
 # get font values
 path=$(ftf "$font")
-
-height=$(fts -h "$path")
 width=$(fts -w "$path")
+height=$(fts -h "$path")
 
 # get notification size
 height=$(( height + 2 * padding ))

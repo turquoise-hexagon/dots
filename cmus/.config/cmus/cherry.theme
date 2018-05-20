@@ -1,24 +1,51 @@
+# directory
 set color_win_dir=7
+
+# command line error messages
 set color_error=1
+
+# command line informational messages
 set color_info=7
+
+# separator between windows
 set color_separator=0
+
+# currently playing track
 set color_win_cur=13
+
+# main colors
 set color_win_bg=0
 set color_win_fg=7
+
+# command line
 set color_cmdline_bg=0
 set color_cmdline_fg=7
+
+# status line
 set color_statusline_bg=0
 set color_statusline_fg=7
+
+# line displaying the currently playing track
 set color_titleline_bg=0
 set color_titleline_fg=13
+
+# selected row + currently playing track + active window
 set color_win_cur_sel_bg=0
 set color_win_cur_sel_fg=13
+
+# selected row + currently playing track + inactive window
 set color_win_inactive_cur_sel_bg=0
 set color_win_inactive_cur_sel_fg=13
+
+# selected row + active window
 set color_win_sel_bg=0
 set color_win_sel_fg=2
+
+# selected row + inactive window
 set color_win_inactive_sel_bg=0
 set color_win_inactive_sel_fg=2
+
+# window title
 set color_win_title_bg=0
 set color_win_title_fg=0
 

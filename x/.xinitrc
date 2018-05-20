@@ -8,7 +8,7 @@ urxvtd -q -o -f
 sxhkd -m 1 &
 dunst &
 
-# x settings
+# settings
 xsetroot -cursor_name left_ptr
 setxkbmap -option caps:escape
 xset s off -dpms -b
