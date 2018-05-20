@@ -3,7 +3,6 @@
     return
 
 # settings
-
 shopt -s histappend
 shopt -s checkwinsize
 
@@ -14,7 +13,6 @@ HISTFILESIZE=10000
 HISTCONTROL=ignoredups
 
 # replace defaults
-
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias ls="ls --color=auto -F"

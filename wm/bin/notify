@@ -5,8 +5,10 @@
 #
 # wm script
 
-# config
+# kill previous notification
+pkill -f "lemonbar .* -d"
 
+# config
 time=5
 
 padding=20
@@ -17,11 +19,6 @@ foreground=\#021B21
 background=\#EEEEEE
 font=-t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1
 
-# actual script
-
-# kill previous notification
-pkill -f "lemonbar .* -d"
-
 while [ $# -gt 0 ]; do
     case $1 in
         -t) time="$2";;
@@ -30,17 +27,18 @@ while [ $# -gt 0 ]; do
     shift; shift
 done
 
-# get font values
 path=$(ftf "$font")
-width=$(fts -w "$path")
+
+# get values
 height=$(fts -h "$path")
+width=$(fts -w "$path")
+
+var=$(bspc query -T -m | jq .rectangle.width)
 
 # get notification size
 height=$(( height + 2 * padding ))
 width=$(( ${#text} * width + 2 * padding ))
 
-# get notification offset
-var=$(bspc query -T -m | jq .rectangle.width)
 offset_x=$(( var - offset_x - width ))
 
 {
