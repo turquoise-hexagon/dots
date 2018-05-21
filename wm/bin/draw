@@ -10,7 +10,7 @@ bspc rule -a \* -o state=floating
 # get values from slop
 read -r w h x y < <(slop -f "%w %h %x %y")
 
-urxvt &
+urxvtc &
 
 # take borders into account
 (( w -= 2 * bw ))
