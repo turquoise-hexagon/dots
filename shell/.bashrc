@@ -15,10 +15,11 @@ HISTCONTROL=ignoredups
 # replace defaults
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
-alias ls="ls --color=auto -F"
+alias ls="ls -F --color=auto"
 alias sxiv="sxiv -b -s f"
-alias uptime="uptime -p"
 alias free="free -h"
+alias mkdir="mkdir -p"
+alias cp="cp -r"
 
 # enable bash completion
 [[ -f /etc/bash_completion ]] &&
