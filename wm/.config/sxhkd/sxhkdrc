@@ -24,6 +24,7 @@ super + shift + r
 super + q
     bspc node -c
 
+# ensure panel cleanup
 super + shift + q
     pkill -x bar; bspc quit
 
