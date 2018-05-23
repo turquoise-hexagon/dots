@@ -7,6 +7,8 @@
 
 a="%{F#FF99A1}"
 t="%{F-}"
+
+name=bar
 fifo=/tmp/bar
 
 # source all functions
@@ -41,4 +43,13 @@ done < "$fifo" | \
     -f "-t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1" \
     -f "-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1" \
     -B \#021B21 \
-    -F \#E8DFD6
+    -F \#E8DFD6 \
+    -n "$name" &
+
+# ensure proper fullscreen
+until xdo id -a "$name" > /dev/null; do
+    sleep .1s
+done
+xdo lower -a "$name"
+
+wait
