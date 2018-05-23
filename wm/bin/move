@@ -24,5 +24,8 @@ if bspc query -N -n focused.floating > /dev/null; then
 
     bspc node -v "$x" "$y"
 else
+    # teleport cursor on the focused window
+    bspc config pointer_follows_focus true
     bspc node -s "$1"
+    bspc config pointer_follows_focus false
 fi
