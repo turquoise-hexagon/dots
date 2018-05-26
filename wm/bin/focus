@@ -5,7 +5,7 @@
 # wm key bindings
 
 # exit when fullscreen
-bspc query -N -n .local.focused.fullscreen > /dev/null &&
+bspc query -N -n .local.fullscreen > /dev/null &&
     exit
 
 # teleport cursor on the focused window
