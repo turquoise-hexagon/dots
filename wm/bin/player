@@ -4,10 +4,9 @@
 #
 # wm key bindings
 
-pgrep -x cmus > /dev/null && {
+pgrep -x cmus > /dev/null &&
     case $1 in
         next) cmus-remote -n;;
         prev) cmus-remote -r;;
         play) cmus-remote -u
     esac
-}
