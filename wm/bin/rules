@@ -4,7 +4,7 @@
 #
 # wm script
 
-# spawn in preselections first
+# spawn in preselections first, exit in that case
 presel=$(bspc query -N -d -n .\!automatic | head -1)
 test "$presel" && { echo "node=$presel"; exit; }
 
