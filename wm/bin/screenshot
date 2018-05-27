@@ -7,7 +7,7 @@
 dir=~/pics/screenshots
 var=$(date +%F_%H-%M-%S)
 
-mkdir -p "$dir" || exit 1
+mkdir -p "$dir"
 
 maim -s "$dir/$var.png" &&
     notify-send "Saved screenshot as $var.png"
