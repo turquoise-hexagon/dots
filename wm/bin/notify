@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# update notifications
+
+# clear notifications
+xdotool key "ctrl+space" > /dev/null
+
+notify-send -u low "$1"

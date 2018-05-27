@@ -30,4 +30,7 @@
     foreground = "#FF99A1"
     timeout = 0
 
+[shortcuts]
+    close = ctrl + space
+
 # vim: ft=cfg

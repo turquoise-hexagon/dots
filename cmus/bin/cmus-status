@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# send notification on cmus update
+#
+# cmus script
+
+while [ $# -gt 0 ]; do
+    case $1 in
+        title) title="$2";;
+        status) status="$2"
+    esac
+
+    shift; shift
+done
+
+[ "$status" = playing ] &&
+    notify "$title"
