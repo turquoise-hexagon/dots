@@ -13,7 +13,7 @@ while [ $# -gt 0 ]; do
     shift; shift
 done
 
-if [ "$status" = playing ] && {
+[ "$status" = playing ] && {
     # clear previous notification
     xdotool key ctrl+space > /dev/null
 
