@@ -1,7 +1,6 @@
 #!/bin/sh
 #
 # main lemonbar
-# depends on https://github.com/stark/siji
 #
 # wm script
 
