@@ -1,17 +1,16 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #
 # send notification on cmus update
 #
 # cmus script
 
+# parse datas from cmus
 while [ $# -gt 0 ]; do
-    case $1 in
-        title) title="$2";;
-        status) status="$2"
-    esac
+    printf -v "$1" "%s" "$2"
 
     shift
     shift
 done
 
-[ "$status" = playing ] && popup "$title"
+[ "$status" = playing ] &&
+    popup "$artist - $title"
