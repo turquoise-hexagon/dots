@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+#
+# lemonbar popup
+#
+# wm script
+
+# kill previous notification
+pkill -f "lemonbar .* -d"
+
+# settings
+
+time=5
+
+padding=20
+offset_x=30
+offset_y=30
+
+background=\#EEEEEE
+foreground=\#021B21
+font=-t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1
+
+# parse command line options
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -m) text="$2";;
+        -t) time="$2"
+    esac
+
+    shift; shift
+done
+
+# get popup dimensions
+
+var=$(bspc query -T -m)
+
+x=$(echo "$var" | jq .rectangle.width)
+y=$(echo "$var" | jq .rectangle.height)
+
+read -r w h < <(txtf "$font" "$text")
+
+w=$(( w + 2 * padding ))
+h=$(( h + 2 * padding ))
+
+offset_x=$(( x - w - offset_x ))
+offset_y=$(( y - h - offset_y ))
+
+# create popup
+{ echo "%{c}$text"; sleep "$time"; } | lemonbar \
+    -g "${w}x${h}+${offset_x}+${offset_y}" \
+    -F "$foreground" \
+    -B "$background" \
+    -f "$font" \
+    -d &

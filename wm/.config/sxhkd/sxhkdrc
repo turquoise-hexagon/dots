@@ -1,14 +1,15 @@
 # misc
+
 XF86MonBrightness{Up,Down}
     xbacklight -{inc,dec} 10
 
 XF86Audio{Mute,RaiseVolume,LowerVolume}
     volume {toggle,+5%,-5%}
 
-XF86Audio{Prev,Next,Play}
+~XF86Audio{Prev,Next,Play}
     player {prev,next,play}
 
-@Print
+Print
     screenshot
 
 super {_,shift} + Return
@@ -20,7 +21,9 @@ super + space
 super + shift + r
     pkill -USR1 -x sxhkd
 
+
 # window manager
+
 super + q
     bspc node -c
 

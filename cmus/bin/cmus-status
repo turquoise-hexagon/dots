@@ -14,4 +14,4 @@ while [ $# -gt 0 ]; do
 done
 
 [ "$status" = playing ] &&
-    notify-send "$title"
+    popup -m "$title"
