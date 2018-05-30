@@ -10,8 +10,8 @@ while [ $# -gt 0 ]; do
         status) status="$2"
     esac
 
-    shift; shift
+    shift
+    shift
 done
 
-[ "$status" = playing ] &&
-    popup -m "$title"
+[ "$status" = playing ] && popup "$title"
