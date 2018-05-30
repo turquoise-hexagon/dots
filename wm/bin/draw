@@ -2,7 +2,7 @@
 #
 # draw terminals
 #
-# wm script
+# wm key bindings
 
 bw=$(bspc config border_width)
 bspc rule -a \* -o state=floating
