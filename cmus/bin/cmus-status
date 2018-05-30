@@ -13,9 +13,5 @@ while [ $# -gt 0 ]; do
     shift; shift
 done
 
-[ "$status" = playing ] && {
-    # clear previous notification
-    xdotool key ctrl+space > /dev/null
-
+[ "$status" = playing ] &&
     notify-send "$title"
-}
