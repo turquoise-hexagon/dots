@@ -1,4 +1,4 @@
-# misc
+# misc stuff
 
 XF86MonBrightness{Up,Down}
     xbacklight -{inc,dec} 10
@@ -20,7 +20,6 @@ super + space
 
 super + shift + r
     pkill -USR1 -x sxhkd
-
 
 # window manager
 

@@ -11,7 +11,6 @@ pkill -f "lemonbar .* -d"
 . ~/.config/popup/config
 
 # get popup dimensions
-
 var=$(bspc query -T -m)
 
 x=$(echo "$var" | jq .rectangle.width)
