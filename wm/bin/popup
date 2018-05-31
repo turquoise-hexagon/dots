@@ -4,7 +4,7 @@
 #
 # wm script
 
-name="popup"
+name=popup
 
 # kill previous notification
 pkill -f "lemonbar .* $name .*"
