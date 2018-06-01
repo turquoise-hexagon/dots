@@ -5,7 +5,7 @@
 # wm script
 
 # kill previous notification
-pkill -f "lemonbar .* $name .*"
+pkill -f "lemonbar .* -d"
 
 # source configuration
 . ~/.config/popup/config
@@ -31,5 +31,4 @@ off_y=$(( y - h - off_y ))
     -F "$foreground" \
     -B "$background" \
     -f "$font" \
-    -n "$name" \
     -d &
