@@ -1,6 +1,9 @@
 # popup duration
 time=3
 
+# popup name
+name=popup
+
 # geometry
 padding=20
 off_x=30
