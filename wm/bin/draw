@@ -13,8 +13,8 @@ read -r w h x y < <(slop -f "%w %h %x %y")
 urxvtc &
 
 # take borders into account
-(( w -= bw ))
-(( h -= bw ))
+(( w -= 2 * bw ))
+(( h -= 2 * bw ))
 
 while read -r event mon desk node ip; do
     xdotool windowmove "$node" "$x" "$y" &
