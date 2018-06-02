@@ -1,12 +1,12 @@
 # notify config
 
+name=notify
+
 time=3
 
 padding=20
 off_x=30
 off_y=30
-
-name=notify
 
 background=\#EEEEEE
 foreground=\#021B21

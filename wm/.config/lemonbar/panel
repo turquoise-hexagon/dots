@@ -1,7 +1,8 @@
 # panel config
 
-a="%{F#FF99A1}"
-t="%{F-}"
+# script variables
+a=%{F\#FF99A1}
+t=%{F-}
 
 name=panel
 fifo=/tmp/panel
