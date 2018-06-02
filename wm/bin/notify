@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 #
-# lemonbar popup
+# lemonbar notification
 #
 # wm script
 
-# kill previous notification
-pkill -f "lemonbar .* -d"
+. ~/.config/lemonbar/notify
 
-# source configuration
-. ~/.config/popup/config
+# kill previous notification
+pkill -f "lemonbar .* $name .*"
 
 # get popup dimensions
 var=$(bspc query -T -m)
@@ -31,4 +30,5 @@ off_y=$(( y - h - off_y ))
     -F "$foreground" \
     -B "$background" \
     -f "$font" \
+    -n "$name" \
     -d &

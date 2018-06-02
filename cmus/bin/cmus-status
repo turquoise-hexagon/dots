@@ -13,4 +13,4 @@ while [[ $# -gt 0 ]]; do
 done
 
 [[ $status == playing ]] &&
-    popup "$artist - $title"
+    notify "$artist - $title"

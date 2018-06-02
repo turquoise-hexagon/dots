@@ -4,11 +4,7 @@
 #
 # wm script
 
-a="%{F#FF99A1}"
-t="%{F-}"
-
-name=bar
-fifo=/tmp/bar
+. ~/.config/lemonbar/panel
 
 # source all functions
 for i in ~/bin/lemons/*; do
@@ -38,11 +34,11 @@ while read -r line; do
 
     echo "%{l}  ${wks}%{c}${clk}%{r}${ntw}  ${vol}  ${bat}  "
 done < "$fifo" | \
-    lemonbar -g x30 \
-    -f "-t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1" \
-    -f "-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1" \
-    -B \#021B21 \
-    -F \#E8DFD6 \
+    lemonbar -g "x$height" \
+    -F "$foreground" \
+    -B "$background" \
+    -f "$font" \
+    -f "$icons" \
     -n "$name" &
 
 # ensure proper fullscreen

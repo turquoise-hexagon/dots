@@ -1,4 +1,7 @@
-# popup duration
+# wm name
+name=notify
+
+# duration
 time=3
 
 # geometry

@@ -11,8 +11,8 @@ bspc config gapless_monocle true
 bspc config single_monocle true
 bspc config click_to_focus true
 
-bspc config border_width 7
-bspc config window_gap 7
+bspc config border_width 8
+bspc config window_gap 8
 
 bspc config normal_border_color \#032C36
 bspc config focused_border_color \#EEEEEE
@@ -23,4 +23,4 @@ bspc config split_ratio 0.5
 # utils
 bspc config external_rules_command "$(which rules)"
 
-pgrep -x bar > /dev/null || bar &
+pgrep -x panel > /dev/null || panel &

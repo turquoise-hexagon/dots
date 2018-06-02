@@ -1,0 +1,16 @@
+# behavior
+name=panel
+fifo=/tmp/panel
+
+# variables
+a="%{F#FF99A1}"
+t="%{F-}"
+
+# appearance
+height=30
+foreground=\#E8DFD6
+background=\#021B21
+font=-t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1
+icons=-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
+
+# vim: ft=sh

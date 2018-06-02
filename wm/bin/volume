@@ -15,6 +15,6 @@ else
 
         # we want word splitting
         set -- ${var#*Volume:}
-        popup "Volume : $4"
+        notify "Volume : $4"
     fi
 fi
