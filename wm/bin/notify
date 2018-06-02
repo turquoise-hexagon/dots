@@ -4,7 +4,6 @@
 #
 # wm script
 
-name=notify
 . ~/.config/lemonbar/notify
 
 # kill previous notification

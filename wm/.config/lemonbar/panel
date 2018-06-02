@@ -3,6 +3,7 @@
 a="%{F#FF99A1}"
 t="%{F-}"
 
+name=panel
 fifo=/tmp/panel
 
 height=30
