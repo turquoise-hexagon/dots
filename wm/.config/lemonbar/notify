@@ -1,15 +1,11 @@
-# wm name
-name=notify
+# notify config
 
-# duration
 time=3
 
-# geometry
 padding=20
 off_x=30
 off_y=30
 
-# appearance
 background=\#EEEEEE
 foreground=\#021B21
 font=-t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1
