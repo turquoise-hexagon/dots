@@ -28,7 +28,7 @@ super + q
 
 # ensure panel cleanup
 super + shift + q
-    pkill -x bar; bspc quit
+    pkill -x panel; bspc quit
 
 super + {t,Tab,f}
     bspc node -t ~{tiled,floating,fullscreen}
