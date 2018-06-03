@@ -7,7 +7,7 @@
 . ~/.config/lemonbar/notify
 
 # kill previous notification
-pkill -f "lemonbar .* $name .*"
+pkill -n -f "lemonbar .* $name .*"
 
 # get popup dimensions
 var=$(bspc query -T -m)
