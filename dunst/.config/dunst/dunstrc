@@ -1,8 +1,7 @@
 [global]
     font = Cherry 8
     format= "%s\n%b"
-    allow_markup = yes
-    plain_text = no
+    markup = full
     sort = yes
     indicate_hidden = yes
     alignment = center
@@ -29,5 +28,8 @@
     background = "#EEEEEE"
     foreground = "#FF99A1"
     timeout = 0
+
+[shortcuts]
+    close = ctrl+space
 
 # vim: ft=cfg
