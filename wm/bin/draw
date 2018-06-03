@@ -16,9 +16,9 @@ urxvtc &
 (( w -= 2 * bw ))
 (( h -= 2 * bw ))
 
-while read -r event mon desk node ip; do
-    xdotool windowmove "$node" "$x" "$y" &
-    xdotool windowsize "$node" "$w" "$h" &
+bspc subscribe node_add | while read -r line; do
+    xdotool getactivewindow windowmove "$x" "$y" &
+    xdotool getactivewindow windowsize "$w" "$h" &
 
     break
-done < <(bspc subscribe node_manage)
+done

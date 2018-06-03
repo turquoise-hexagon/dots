@@ -3,6 +3,7 @@ rofi.lines: 5
 rofi.width: 30
 rofi.padding: 20
 rofi.font: Cherry 8
+rofi.scrollbar-width: 0
 
 ! colors
 rofi.color-window: #EEEEEE, #EEEEEE, #EEEEEE

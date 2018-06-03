@@ -18,4 +18,4 @@ xrdb ~/.Xresources
 xset +fp ~/.fonts
 ~/.fehbg
 
-exec bspwm
+exec bspwm > .bspwm.log 2>&1
