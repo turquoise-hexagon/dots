@@ -8,7 +8,7 @@ bw=$(bspc config border_width)
 bspc rule -a \* -o state=floating
 
 # get values from slop
-read -r w h x y < <(slop -f "%w %h %x %y")
+read -r w h x y < <(slop -o -f "%w %h %x %y")
 
 urxvtc &
 
