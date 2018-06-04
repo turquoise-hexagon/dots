@@ -14,9 +14,9 @@ HISTCONTROL=ignoredups
 
 # replace defaults
 alias cp="cp -r"
-alias ls="ls --color=auto -F -N"
-alias grep="grep --color=auto"
-alias diff="diff --color=auto"
+alias ls="ls --color -F -N"
+alias grep="grep --color"
+alias diff="diff --color"
 alias mkdir="mkdir -p"
 alias free="free -h"
 alias sxiv="sxiv -b -s f"
