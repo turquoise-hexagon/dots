@@ -7,7 +7,7 @@
 . ~/.config/lemonbar/notify
 
 # kill previous notification
-pkill -n -f "lemonbar .* $name .*"
+pkill -f "lemonbar .* $name .*"
 
 # get popup dimensions
 var=$(bspc query -T -m)
@@ -17,8 +17,8 @@ y=$(echo "$var" | jq .rectangle.height)
 
 read -r w h < <(txtf "$font" "$1")
 
-w=$(( w + 2 * padding ))
-h=$(( h + 2 * padding ))
+(( w += 2 * padding ))
+(( h += 2 * padding ))
 
 off_x=$(( x - w - off_x ))
 off_y=$(( y - h - off_y ))
