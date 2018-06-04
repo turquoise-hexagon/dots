@@ -9,5 +9,5 @@ var=$(date +%F_%H-%M-%S)
 
 mkdir -p "$dir"
 
-maim -o -s "$dir/$var.png" &&
+maim -q -s "$dir/$var.png" &&
     notify "Saved screenshot as $var.png"
