@@ -10,11 +10,11 @@ bspc rule -a \* -o state=floating
 # get values from slop
 read -r w h x y < <(slop -q -f "%w %h %x %y")
 
-urxvtc &
-
 # take borders into account
 (( w -= 2 * bw ))
 (( h -= 2 * bw ))
+
+urxvtc &
 
 # wait for our window to spawn
 # then move it and resize it

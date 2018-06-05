@@ -5,9 +5,9 @@
 # wm key bindings
 
 dir=~/pics/screenshots
-var=$(date +%F_%H-%M-%S)
+cur=$(date +%F_%H-%M-%S)
 
 mkdir -p "$dir"
 
-maim -q -s "$dir/$var.png" &&
-    notify "Saved screenshot as $var.png"
+maim -q -s "$dir/$cur.png" &&
+    notify "Saved screenshot as $cur.png"
