@@ -15,10 +15,10 @@ var=$(bspc query -T -m)
 x=$(echo "$var" | jq .rectangle.width)
 y=$(echo "$var" | jq .rectangle.height)
 
-read -r w h < <(txtf "$font" "$1")
+read w h < <(txtf "$font" "$1")
 
-(( w += 2 * padding ))
-(( h += 2 * padding ))
+w=$(( w + 2 * padding ))
+h=$(( h + 2 * padding ))
 
 off_x=$(( x - w - off_x ))
 off_y=$(( y - h - off_y ))
