@@ -20,8 +20,8 @@ urxvtc &
 # then move it and resize it
 bspc subscribe node_add | \
     while read -r line; do
-        xdotool getactivewindow windowmove "$x" "$y" &
-        xdotool getactivewindow windowsize "$w" "$h" &
+        xdotool getactivewindow windowsize "$w" "$h"
+        xdotool getactivewindow windowmove "$x" "$y"
 
         break
     done
