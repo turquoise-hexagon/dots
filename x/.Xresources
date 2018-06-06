@@ -1,4 +1,4 @@
-# ~/.xres
+! ~/.xres
 
 #include ".xres/misc"
 #include ".xres/rofi"
