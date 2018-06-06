@@ -1,6 +1,4 @@
 ! ~/.xres
-
-#include ".xres/misc"
 #include ".xres/rofi"
 #include ".xres/urxvt"
 #include ".xres/fonts"
