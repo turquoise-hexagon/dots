@@ -15,7 +15,7 @@ var=$(bspc query -T -m)
 x=$(echo "$var" | jq .rectangle.width)
 y=$(echo "$var" | jq .rectangle.height)
 
-read w h < <(txtf "$font" "$1")
+read -r w h < <(txtf "$font" "$1")
 
 w=$(( w + 2 * padding ))
 h=$(( h + 2 * padding ))

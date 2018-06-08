@@ -8,7 +8,7 @@ bw=$(bspc config border_width)
 bspc rule -a \* -o state=floating
 
 # get values from slop
-read w h x y < <(slop -q -f "%w %h %x %y")
+read -r w h x y < <(slop -q -f "%w %h %x %y")
 
 # take borders into account
 (( w -= 2 * bw ))
@@ -19,7 +19,7 @@ urxvtc &
 # wait for our window to spawn
 # then move it and resize it
 bspc subscribe node_add | \
-    while read line; do
+    while read; do
         xdotool getactivewindow windowsize "$w" "$h"
         xdotool getactivewindow windowmove "$x" "$y"
 
