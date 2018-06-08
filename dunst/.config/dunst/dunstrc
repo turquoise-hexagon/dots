@@ -2,7 +2,6 @@
     font = Cherry 8
     format= "%s\n%b"
     markup = full
-    sort = yes
     indicate_hidden = yes
     alignment = center
     word_wrap = yes
