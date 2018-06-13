@@ -1,7 +1,7 @@
 # misc stuff
 
 XF86MonBrightness{Up,Down}
-    xbacklight -{inc,dec} 10
+    brightness -{inc,dec}
 
 XF86Audio{Mute,RaiseVolume,LowerVolume}
     volume {toggle,+5%,-5%}

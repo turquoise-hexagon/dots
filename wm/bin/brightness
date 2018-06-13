@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# change brightness
+#
+# wm key bindings
+
+cur=$(xbacklight -get)
+
+# convert to integer
+case ${cur%.*} in
+    [0-9])  percent=2;;
+    [1-3]?) percent=5;;
+    [4-7]?) percent=10;;
+    *)      percent=20
+esac
+
+xbacklight "$1" "$percent"
