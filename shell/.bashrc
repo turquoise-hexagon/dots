@@ -7,9 +7,6 @@ HISTSIZE=10000
 HISTFILESIZE=10000
 HISTCONTROL=ignoredups
 
-shopt -s histappend
-shopt -s checkwinsize
-
 PS1="\[\e[95m\]\W\[\e[0m\] "
 
 # replace defaults
