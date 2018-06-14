@@ -17,7 +17,7 @@ bat ()
         fi
         echo "B$out"
 
-        sleep 10s
+        sleep 10
     done
 
 # vim: ft=sh

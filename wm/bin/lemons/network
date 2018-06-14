@@ -7,7 +7,7 @@ ntw ()
         var=$(iwgetid -r)
         echo "N$a$t ${var:-Offline}"
 
-        sleep 2s
+        sleep 2
     done
 
 # vim: ft=sh

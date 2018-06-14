@@ -7,7 +7,7 @@ clk ()
         var=$(date +%a\ %R)
         echo "C$a$t $var"
 
-        sleep 10s
+        sleep 10
     done
 
 # vim: ft=sh
