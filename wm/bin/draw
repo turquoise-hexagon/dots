@@ -4,15 +4,16 @@
 #
 # wm key bindings
 
-bw=$(bspc config border_width)
 bspc rule -a \* -o state=floating
 
 # get values from slop
-read -r w h x y < <(slop -q -f "%w %h %x %y")
+read -r w h x y < <(slop -q -f '%w %h %x %y')
 
 # take borders into account
-(( w -= 2 * bw ))
-(( h -= 2 * bw ))
+: "$(bspc config border_width)"
+
+(( w -= 2 * _ ))
+(( h -= 2 * _ ))
 
 urxvtc &
 
