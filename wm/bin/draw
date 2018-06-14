@@ -19,9 +19,9 @@ urxvtc &
 # wait for our window to spawn
 # then move it and resize it
 bspc subscribe node_add | \
-    while read; do
-        xdotool getactivewindow windowsize "$w" "$h"
-        xdotool getactivewindow windowmove "$x" "$y"
+    while read -r event mon desk ip node; do
+        xdotool windowsize "$node" "$w" "$h"
+        xdotool windowmove "$node" "$x" "$y"
 
         break
     done
