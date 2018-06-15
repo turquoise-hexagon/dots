@@ -8,14 +8,20 @@ urxvtd -q -o -f
 sxhkd -m 1 &
 dunst &
 
-# settings
-xsetroot -cursor_name left_ptr
-setxkbmap -option caps:escape
-xset s off -dpms -b
+# xset settings
+xset r rate 200 40
+xset s off -dpms
 
-# rice
+# fix cursor issue
+xsetroot -cursor_name left_ptr
+
+# enable fonts
+xset +fp ~/.local/share/fonts
+
+# merge xresources
 xrdb ~/.Xresources
-xset +fp ~/.fonts
+
+# restore wallpaper
 ~/.fehbg
 
 exec bspwm

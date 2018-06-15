@@ -40,5 +40,6 @@ let g:is_posix=1
 " ui
 set noruler
 set nonumber
+set vb t_vb=
 set shortmess=actI
 colorscheme cherry
