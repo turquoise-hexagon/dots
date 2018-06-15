@@ -12,8 +12,8 @@ read -r w h x y < <(slop -q -f '%w %h %x %y')
 # take borders into account
 : "$(bspc config border_width)"
 
-(( w -= 2 * _ ))
-(( h -= 2 * _ ))
+((w -= 2 * _))
+((h -= 2 * _))
 
 urxvtc &
 

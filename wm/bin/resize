@@ -19,7 +19,7 @@ esac
 
 # get resize value
 var=$(bspc query -T -m | jq .rectangle.width)
-var=$(( var * percent / 100 ))
+var=$((var * percent / 100))
 
 [ "$target" = x ] && { x="$sign$var"; y=0; }
 [ "$target" = y ] && { x=0; y="$sign$var"; }
