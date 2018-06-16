@@ -9,15 +9,14 @@ percent=5
 # also move floating windows
 if bspc query -N -n focused.floating > /dev/null; then
     case $1 in
-        west) target=x; sign=-;;
-        east) target=x; sign=+;;
+        west)  target=x; sign=-;;
+        east)  target=x; sign=+;;
         north) target=y; sign=-;;
         south) target=y; sign=+
     esac
 
-    # get move value
-    var=$(bspc query -T -m | jq .rectangle.width)
-    var=$((var * percent / 100))
+    # get a percentage of the monitor horizontal resolution
+    var=$((`bspc query -T -m | jq .rectangle.width` * percent / 100))
 
     [ "$target" = x ] && { x="$sign$var"; y=0; }
     [ "$target" = y ] && { x=0; y="$sign$var"; }
