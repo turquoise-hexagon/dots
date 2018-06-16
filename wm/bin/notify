@@ -10,10 +10,8 @@
 pkill -f "lemonbar .* $name .*"
 
 # get popup dimensions
-var=$(bspc query -T -m)
-
-x=$(echo "$var" | jq .rectangle.width)
-y=$(echo "$var" | jq .rectangle.height)
+x=$(bspc query -T -m | jq .rectangle.width)
+y=$(bspc query -T -m | jq .rectangle.height)
 
 read -r w h < <(txtf "$font" "$1")
 
