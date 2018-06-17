@@ -12,6 +12,9 @@ dunst &
 xset r rate 200 40
 xset s off -dpms
 
+# keyboard settings
+setxkbmap -option caps:escape
+
 # fix cursor issue
 xsetroot -cursor_name left_ptr
 
