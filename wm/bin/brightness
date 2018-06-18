@@ -15,4 +15,4 @@ case ${cur%.*} in
     [4-6]?) percent=10
 esac
 
-xbacklight "$1" "$percent" -time 0
+xbacklight -"$1" "$percent" -time 0

@@ -42,7 +42,7 @@ done < "$fifo" | \
     -n "$name" &
 
 # ensure proper fullscreen
-# TODO : use xdo -m when available
+# NOTE: use xdo -m when available
 until xdo id -a "$name" > /dev/null; do
     sleep 0.1
 done
