@@ -36,6 +36,6 @@
 
 ! white
 *.color7: #E8DFD6
-*.color15: #E8DFD6
+*.color15: #F6F6C9
 
 ! vim: ft=xdefaults

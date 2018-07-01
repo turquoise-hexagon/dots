@@ -33,6 +33,7 @@ hi NonText         ctermfg=0       ctermbg=NONE    cterm=NONE
 hi Pmenu           ctermfg=0       ctermbg=7       cterm=NONE
 hi PmenuSel        ctermfg=13      ctermbg=7       cterm=NONE
 hi LineNr          ctermfg=8       ctermbg=NONE    cterm=NONE
+hi ModeMsg         ctermfg=7       ctermbg=NONE    cterm=NONE
 hi StatusLine      ctermfg=7       ctermbg=NONE    cterm=NONE
 hi StatusLineNC    ctermfg=7       ctermbg=NONE    cterm=NONE
 hi MatchParen      ctermfg=0       ctermbg=6       cterm=NONE
