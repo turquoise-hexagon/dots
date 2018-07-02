@@ -7,7 +7,7 @@ t=%{F-}
 name=panel
 fifo=/tmp/panel
 
-height=30
+height=35
 foreground=\#E8DFD6
 background=\#021B21
 font=-t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1
