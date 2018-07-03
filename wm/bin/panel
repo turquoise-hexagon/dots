@@ -14,7 +14,7 @@ done
 # ensure proper script cleanup
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
-[ -e "$fifo" ] && rm "$fifo"
+test -e "$fifo" && rm "$fifo"
 mkfifo "$fifo"
 
 wks > "$fifo" &

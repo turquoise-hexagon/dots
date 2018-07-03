@@ -4,9 +4,9 @@
 #
 # wm key bindings
 
-cur=$(xbacklight -get)
-
 percent=20
+
+cur=$(xbacklight -get)
 
 # convert to integer
 case ${cur%.*} in
