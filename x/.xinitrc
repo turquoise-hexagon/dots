@@ -9,9 +9,9 @@ sxhkd -m 1 &
 dunst &
 
 # settings
-setxkbmap -option caps:escape
 xsetroot -cursor_name left_ptr
-xset s off -dpms
+xset s off -dpms r rate 200 40
+setxkbmap -option caps:escape
 
 # rice
 xset +fp ~/.local/share/fonts
