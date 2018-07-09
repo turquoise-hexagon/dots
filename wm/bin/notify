@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+#
+# lemonbar notification
+#
+# wm script
+
+. ~/.config/lemonbar/notify
+
+# kill previous notification
+pkill -f "lemonbar .* $name .*"
+
+# get popup dimensions
+x=$(bspc query -T -m | jq .rectangle.width)
+y=$(bspc query -T -m | jq .rectangle.height)
+
+read -r w h < <(txtf "$font" "$1")
+
+((w += 2 * padding))
+((h += 2 * padding))
+
+((off_x = x - w - off_x))
+((off_y = y - h - off_y))
+
+{
+    echo "%{c}$1"
+    sleep "$time"
+} | lemonbar -g "${w}x${h}+$off_x+$off_y" \
+    -F "$foreground" \
+    -B "$background" \
+    -f "$font" \
+    -n "$name" \
+    -d &

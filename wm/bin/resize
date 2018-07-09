@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# resize windows with bspwm
+#
+# wm key bindings
+
+percent=10
+
+# set a smaller percentage when floating
+bspc query -N -n focused.floating > /dev/null && percent=5
+
+case $1 in
+    west)  dir=right; falldir=left; sign=-;;
+    east)  dir=right; falldir=left; sign=+;;
+    north) dir=top; falldir=bottom; sign=-;;
+    south) dir=top; falldir=bottom; sign=+
+esac
+
+# get a percentage of the monitor horizontal resolution
+var=$((`bspc query -T -m | jq .rectangle.width` * percent / 100))
+
+[ "$dir" = right ] && { x="$sign$var"; y=0; }
+[ "$dir" = top   ] && { y="$sign$var"; x=0; }
+
+# try to resize in one direction
+# fallback to the other if it fails
+bspc node -z "$dir" "$x" "$y" || bspc node -z "$falldir" "$x" "$y"

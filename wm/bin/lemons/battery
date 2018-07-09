@@ -1,0 +1,23 @@
+# get battery status
+#
+# lemonbar script
+
+bat ()
+    while :; do
+        var=$(cat /sys/class/power_supply/BAT0/capacity)
+
+        if [ "$var" -eq 100 ]; then
+            out="$a$t $var%"
+        elif [ "$var" -gt 75 ]; then
+            out="$a$t $var%"
+        elif [ "$var" -gt 25 ]; then
+            out="$a$t $var%"
+        else
+            out="$a$t $var%"
+        fi
+        echo "B$out"
+
+        sleep 10
+    done
+
+# vim: ft=sh

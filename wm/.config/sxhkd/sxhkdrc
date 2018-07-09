@@ -1,0 +1,51 @@
+# misc stuff
+
+XF86MonBrightness{Up,Down}
+    brightness {inc,dec}
+
+XF86Audio{Mute,RaiseVolume,LowerVolume}
+    volume {toggle,+5%,-5%}
+
+XF86Audio{Prev,Next,Play}
+    player {prev,next,play}
+
+Print
+    screenshot
+
+super {_,shift} + Return
+    {urxvtc,draw}
+
+super + space
+    rofi -show run
+
+super + shift + r
+    pkill -USR1 -x sxhkd
+
+# window manager
+
+super + q
+    bspc node -c
+
+# ensure panel cleanup
+super + shift + q
+    pkill -x panel; bspc quit
+
+super + {t,Tab,f}
+    bspc node -t ~{tiled,floating,fullscreen}
+
+super + {h,j,k,l}
+    bspc node -p {west,south,north,east}
+
+super + Escape
+    bspc node -p cancel
+
+# replace preselection and tile
+super + r
+    bspc node -n last.!automatic -t tiled
+
+super + {_,shift,alt} + {Left,Down,Up,Right}
+    {focus,move,resize} {west,south,north,east}
+
+# caution, azerty keyboard
+super + {_,shift} + {ampersand,eacute,quotedbl,apostrophe,parenleft}
+    bspc {desktop -f,node -d} {1-5}

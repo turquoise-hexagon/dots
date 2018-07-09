@@ -1,0 +1,13 @@
+# get network status
+#
+# lemonbar script
+
+ntw ()
+    while :; do
+        var=$(iwgetid -r)
+        echo "N$a$t ${var:-Offline}"
+
+        sleep 2
+    done
+
+# vim: ft=sh
