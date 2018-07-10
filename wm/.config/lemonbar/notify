@@ -1,7 +1,5 @@
 # notify config
 
-name=notify
-
 time=3
 
 padding=20

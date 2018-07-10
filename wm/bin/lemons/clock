@@ -5,7 +5,7 @@
 clk ()
     while :; do
         var=$(date +%a\ %R)
-        echo "C$a$t $var"
+        echo "C%{F$accent}%{F-} $var"
 
         sleep 10
     done

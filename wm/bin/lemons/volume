@@ -12,11 +12,11 @@ vol ()
                     var=$(pactl list sinks)
 
                     if echo "$var" | grep -q 'Mute: yes'; then
-                        out="$a$t Muted"
+                        out="%{F$accent}%{F-} Muted"
                     else
                         # we want word splitting
                         set -- ${var#*Volume:}
-                        out="$a$t $4"
+                        out="%{F$accent}%{F-} $4"
                     fi
                     echo "V$out"
             esac

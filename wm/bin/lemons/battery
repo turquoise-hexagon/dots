@@ -7,15 +7,15 @@ bat ()
         var=$(cat /sys/class/power_supply/BAT0/capacity)
 
         if [ "$var" -eq 100 ]; then
-            out="$a$t $var%"
+            icon=
         elif [ "$var" -gt 75 ]; then
-            out="$a$t $var%"
+            icon=
         elif [ "$var" -gt 25 ]; then
-            out="$a$t $var%"
+            icon=
         else
-            out="$a$t $var%"
+            icon=
         fi
-        echo "B$out"
+        echo "B%{F$accent}$icon%{F-} $var%"
 
         sleep 10
     done

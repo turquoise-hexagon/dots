@@ -4,6 +4,9 @@
 #
 # wm script
 
+name=panel
+fifo=/tmp/panel
+
 . ~/.config/lemonbar/panel
 
 # source all functions
