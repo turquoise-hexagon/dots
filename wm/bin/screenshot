@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# take a screenshot & send a notification
+#
+# wm key bindings
+
+dir=~/pics/screenshots
+cur=$(date +%F_%H-%M-%S)
+
+mkdir -p "$dir"
+
+maim -q -s -u "$dir/$cur.png" &&
+    notify "Saved screenshot as $cur.png"

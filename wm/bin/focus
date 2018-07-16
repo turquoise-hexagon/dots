@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# focus windows with bspwm
+#
+# wm key bindings
+
+# exit when fullscreen
+bspc query -N -n .local.fullscreen > /dev/null &&
+    exit
+
+# teleport cursor on the focused window
+bspc config pointer_follows_focus true
+bspc node -f "$1".local
+bspc config pointer_follows_focus false

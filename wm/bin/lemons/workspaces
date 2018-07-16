@@ -1,0 +1,23 @@
+# get workspaces
+#
+# lemonbar script
+
+wks ()
+{
+    bspc subscribe | while read -r event; do
+        # we want word splitting
+        IFS=:; set -- ${event#?}
+
+        out=
+        while [ $# -gt 0 ]; do
+            case $1 in
+                [OFU]*) out="$out%{F$accent}%{F-}";;
+                [ofu]*) out="$out"
+            esac
+            shift
+        done
+        echo "W$out"
+    done
+}
+
+# vim: ft=sh
