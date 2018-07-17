@@ -45,9 +45,9 @@ done < "$fifo" | \
     -n "$name" &
 
 # ensure proper fullscreen
-# NOTE: use xdo -m when available
+# TODO: use xdo -m when available
 until xdo id -a "$name" > /dev/null; do
-    sleep 0.1
+    sleep .1
 done
 xdo lower -a "$name"
 
