@@ -11,7 +11,7 @@ wks ()
         out=
         while [ $# -gt 0 ]; do
             case $1 in
-                [OFU]*) out="$out%{F$accent}%{F-}";;
+                [OFU]*) out="$out$a$t";;
                 [ofu]*) out="$out"
             esac
             shift

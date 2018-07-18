@@ -15,7 +15,7 @@ bat ()
         else
             icon=
         fi
-        echo "B%{F$accent}$icon%{F-} $var%"
+        echo "B$a$icon$t $var%"
 
         sleep 10
     done

@@ -14,10 +14,13 @@ for i in ~/bin/lemons/*; do
     . "$i"
 done
 
+# set colors
+a=%{F$accent}; t=%{F-}
+
 # ensure proper script cleanup
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
-test -e "$fifo" && rm "$fifo"
+[ -e "$fifo" ] && rm "$fifo"
 mkfifo "$fifo"
 
 wks > "$fifo" &

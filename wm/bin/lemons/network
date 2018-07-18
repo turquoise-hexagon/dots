@@ -5,7 +5,7 @@
 ntw ()
     while :; do
         var=$(iwgetid -r)
-        echo "N%{F$accent}%{F-} ${var:-Offline}"
+        echo "N$a$t ${var:-Offline}"
 
         sleep 2
     done
