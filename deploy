@@ -10,7 +10,7 @@
 
 
 if ! command -v stow > /dev/null; then
-    echo "error : install stow first"
+    echo 'error : install stow first'
     exit 1
 fi
 
