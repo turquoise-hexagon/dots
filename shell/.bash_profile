@@ -1,9 +1,9 @@
-PATH+=":/sbin:$HOME/bin"
+[[ -d ~/bin ]] &&
+    PATH+=":$HOME/bin"
 
-# source bashrc
 [[ -f ~/.bashrc ]] &&
     . ~/.bashrc
 
-# auto startx on tty1
+# automatically start x on tty1
 [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]] &&
     exec startx &> /dev/null

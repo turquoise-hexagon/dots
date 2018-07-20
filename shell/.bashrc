@@ -1,5 +1,5 @@
 # if not interactive, return
-[[ $- != *i* ]] && return
+[[ $- =~ i ]] || return
 
 # settings
 HISTSIZE=10000
