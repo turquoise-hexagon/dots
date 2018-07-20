@@ -1,32 +1,36 @@
 #!/bin/sh
 #
-# main lemonbar
+# panel
 #
 # wm script
 
-. ~/.config/lemonbar/panel
-
-name=panel; fifo=/tmp/panel
+name=panel
 
 if xdo id -a "$name" > /dev/null; then
     echo "error : panel already running"
     exit 1
 fi
 
-# ensure proper script cleanup
-trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+# ensure proper panel script cleanup
+# ensure we don't get the same signal
+trap 'trap - TERM; kill 0' INT TERM QUIT
 
-test -e "$fifo" &&
-    rm "$fifo"
-mkfifo "$fifo"
-
-# accent color shortcuts
-a=%{F$accent}; t=%{F-}
-
-# source all our functions
+# source all panel modules
 for i in ~/bin/lemons/*; do
     . "$i"
 done
+
+fifo=/tmp/panel
+
+if test -e "$fifo"; then
+    rm "$fifo"
+fi
+mkfifo "$fifo"
+
+. ~/.config/lemonbar/panel
+
+# accent color shortcuts
+a=%{F$accent}; t=%{F-}
 
 wks > "$fifo" &
 clk > "$fifo" &
@@ -46,11 +50,11 @@ while read -r line; do
     echo "%{l}  $wks%{c}$clk%{r}$ntw  $vol  $bat  "
 done < "$fifo" | \
     lemonbar -g "x$height" \
-    -F "$foreground" \
-    -B "$background" \
-    -f "$font" \
-    -f "$icons" \
-    -n "$name" &
+        -F "$foreground" \
+        -B "$background" \
+        -f "$font" \
+        -f"$icons" \
+        -n "$name" &
 
 # ensure proper fullscreen
 # NOTE : use xdo -m when available
