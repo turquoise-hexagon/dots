@@ -53,7 +53,7 @@ done < "$fifo" | \
         -F "$foreground" \
         -B "$background" \
         -f "$font" \
-        -f"$icons" \
+        -f "$icons" \
         -n "$name" &
 
 # ensure proper fullscreen
