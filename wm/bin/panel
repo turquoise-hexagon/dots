@@ -4,24 +4,29 @@
 #
 # wm script
 
-name=panel
-fifo=/tmp/panel
-
 . ~/.config/lemonbar/panel
 
-# source all functions
-for i in ~/bin/lemons/*; do
-    . "$i"
-done
+name=panel; fifo=/tmp/panel
 
-# set colors
-a=%{F$accent}; t=%{F-}
+if xdo id -a "$name" > /dev/null; then
+    echo "error : panel already running"
+    exit 1
+fi
 
 # ensure proper script cleanup
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
-[ -e "$fifo" ] && rm "$fifo"
+test -e "$fifo" &&
+    rm "$fifo"
 mkfifo "$fifo"
+
+# accent color shortcuts
+a=%{F$accent}; t=%{F-}
+
+# source all our functions
+for i in ~/bin/lemons/*; do
+    . "$i"
+done
 
 wks > "$fifo" &
 clk > "$fifo" &
@@ -48,7 +53,7 @@ done < "$fifo" | \
     -n "$name" &
 
 # ensure proper fullscreen
-# TODO: use xdo -m when available
+# NOTE : use xdo -m when available
 until xdo id -a "$name" > /dev/null; do
     sleep .1
 done
