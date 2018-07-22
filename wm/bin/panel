@@ -7,7 +7,7 @@
 name=panel
 
 if xdo id -a "$name" > /dev/null; then
-    echo "error : panel already running"
+    echo 'error : panel already running'
     exit 1
 fi
 
@@ -30,7 +30,7 @@ mkfifo "$fifo"
 . ~/.config/lemonbar/panel
 
 # accent color shortcuts
-a=%{F$accent}; t=%{F-}
+a="%{F$accent}"; t="%{F-}"
 
 wks > "$fifo" &
 clk > "$fifo" &
