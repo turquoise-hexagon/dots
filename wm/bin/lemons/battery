@@ -4,7 +4,7 @@
 
 bat ()
     while :; do
-        var=$(cat /sys/class/power_supply/BAT0/capacity)
+        read -r var < /sys/class/power_supply/BAT0/capacity
 
         if [ "$var" -eq 100 ]; then
             icon=
