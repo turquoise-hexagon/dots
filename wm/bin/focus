@@ -4,11 +4,10 @@
 #
 # wm key bindings
 
-# exit when fullscreen
-bspc query -N -n .local.fullscreen > /dev/null &&
-    exit
+# exit if there is no window to focus
+bspc query -N -n "$1" > /dev/null || exit
 
 # teleport cursor on the focused window
 bspc config pointer_follows_focus true
-bspc node -f "$1".local
+bspc node -f "$1"
 bspc config pointer_follows_focus false
