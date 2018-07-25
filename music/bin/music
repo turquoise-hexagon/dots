@@ -2,6 +2,11 @@
 #
 # mpd script
 
+if test -s ~/.config/mpd/pid; then
+    echo 'error : mpd already running'
+    exit 1
+fi
+
 # start daemon
 mpd 2> /dev/null
 

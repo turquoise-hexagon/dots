@@ -4,4 +4,4 @@
 #
 # wm key bindings
 
-pgrep -x mpd > /dev/null && mpc "$1"
+test -s ~/.config/mpd/pid && mpc "$i"
