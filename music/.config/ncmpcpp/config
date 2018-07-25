@@ -1,3 +1,7 @@
+# general
+autocenter_mode = "yes"
+centered_cursor = "yes"
+
 # playlists
 playlist_display_mode = "classic"
 song_list_format = "$6%a$9 - $3%t$9"
@@ -5,11 +9,7 @@ playlist_disable_highlight_delay = "0"
 current_item_prefix = "$b"
 current_item_suffix = "$/b"
 
-# centered elements
-autocenter_mode = "yes"
-centered_cursor = "yes"
-
-# main window
+# ui
 titles_visibility = "no"
 header_visibility = "no"
 statusbar_visibility = "no"

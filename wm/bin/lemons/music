@@ -4,7 +4,14 @@
 
 mus ()
     while :; do
-        echo "M$a$t $(mpc current)"
+        case $(mpc) in
+            *playing*)
+                out=$(mpc current)
+                ;;
+            *)
+                out=Paused
+        esac
+        echo "M$a$t $out"
 
         mpc idle
     done
