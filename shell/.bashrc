@@ -18,6 +18,7 @@ alias grep='grep --color'
 alias diff='diff --color'
 
 alias mkdir='mkdir -p'
+alias ncmpcpp="ncmpcpp -q"
 
 # enable bash completion
 [[ -f /etc/bash_completion ]] &&

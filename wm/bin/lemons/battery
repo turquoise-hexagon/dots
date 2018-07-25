@@ -6,7 +6,7 @@ bat ()
     while :; do
         read -r var < /sys/class/power_supply/BAT0/capacity
 
-        if [ "$var" -eq 100 ]; then
+        if  [ "$var" -eq 100 ]; then
             icon=
         elif [ "$var" -gt 75 ]; then
             icon=
