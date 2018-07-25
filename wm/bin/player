@@ -4,4 +4,4 @@
 #
 # wm key bindings
 
-test -s ~/.config/mpd/pid && mpc "$i"
+test -s ~/.config/mpd/pid && mpc "$1"
