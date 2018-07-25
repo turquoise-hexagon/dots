@@ -8,15 +8,15 @@ wks ()
         # we want word splitting
         IFS=:; set -- ${event#?}
 
-        out=
+        var=
         while [ $# -gt 0 ]; do
             case $1 in
-                [OFU]*) out=$out$a$t;;
-                [ofu]*) out=$out
+                [OFU]*) var=$var$a$t;;
+                [ofu]*) var=$var
             esac
             shift
         done
-        echo "W$out"
+        echo "W$var"
     done
 }
 

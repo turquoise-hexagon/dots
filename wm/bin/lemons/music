@@ -6,12 +6,12 @@ mus ()
     while :; do
         case $(mpc) in
             *playing*)
-                out=$(mpc current)
+                var=$(mpc current)
                 ;;
             *)
-                out=Paused
+                var=Paused
         esac
-        echo "M$a$t $out"
+        echo "M$a$t $var"
 
         mpc idle
     done
