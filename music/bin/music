@@ -12,5 +12,5 @@ mpd 2> /dev/null
 
 # send notification on mpd updates
 while test -s ~/.config/mpd/pid; do
-    notify "`mpc curren --wait`"
+    notify "`mpc current --wait`"
 done

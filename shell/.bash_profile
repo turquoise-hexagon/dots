@@ -1,5 +1,5 @@
 [[ -d ~/bin ]] &&
-    PATH+=":$HOME/bin"
+    PATH+=:$HOME/bin
 
 [[ -f ~/.bashrc ]] &&
     . ~/.bashrc
