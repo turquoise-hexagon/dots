@@ -7,7 +7,7 @@ pulseaudio --start
 urxvtd -q -o -f
 sxhkd -m1 &
 dunst &
-music &
+mpd &
 
 # settings
 xsetroot -cursor_name left_ptr

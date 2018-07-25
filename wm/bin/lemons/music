@@ -1,0 +1,15 @@
+# get song
+#
+# lemonbar script
+
+mus ()
+{
+    while :; do
+        var=`mpc current`
+        echo "M$a$t $var"
+
+        mpc idle
+    done
+}
+
+# vim: ft=sh
