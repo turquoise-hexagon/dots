@@ -3,13 +3,11 @@
 # lemonbar script
 
 mus ()
-{
     while :; do
-        var=`mpc current`
+        var=$(mpc current)
         echo "M$a$t $var"
 
         mpc idle
     done
-}
 
 # vim: ft=sh
