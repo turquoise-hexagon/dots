@@ -5,10 +5,8 @@
 # start daemon
 mpd 2> /dev/null
 
-# subscribe to mpd events
-# send notifications on events
-mpc idleloop player | \
-    while read -r event; do
-        var=$(mpc current --wait)
-        notify "$var"
-    done
+# send notification on mpd updates
+while :; do
+    var=$(mpc current --wait)
+    notify "$var"
+done
