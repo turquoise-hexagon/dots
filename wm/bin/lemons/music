@@ -4,8 +4,7 @@
 
 mus ()
     while :; do
-        var=$(mpc current)
-        echo "M$a$t $var"
+        echo "M$a$t $(mpc current)"
 
         mpc idle
     done
