@@ -13,14 +13,14 @@ vol ()
 
                     case $var in
                         *'Mute: yes'*)
-                            out="$a$t Muted"
+                            var="$a$t Muted"
                             ;;
                         *)
                             # we want word splitting
                             set -- ${var#*Volume:}
-                            out="$a$t $4"
+                            var="$a$t $4"
                     esac
-                    echo "V$out"
+                    echo "V$var"
             esac
         done
 }
