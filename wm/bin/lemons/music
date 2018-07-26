@@ -11,7 +11,7 @@ mus ()
             *)
                 var=Paused
         esac
-        echo "M$a$t $var"
+        echo "M$a$t $var"
 
         mpc idle
     done

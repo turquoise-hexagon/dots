@@ -6,15 +6,12 @@ bat ()
     while :; do
         read -r var < /sys/class/power_supply/BAT0/capacity
 
-        if  [ "$var" -eq 100 ]; then
-            icon=
-        elif [ "$var" -gt 75 ]; then
-            icon=
-        elif [ "$var" -gt 25 ]; then
-            icon=
-        else
-            icon=
-        fi
+        case $((var == 100 ? 0 : var >= 75 ? 1 : var >= 25 ? 2 : 3)) in
+            0) icon=;;
+            1) icon=;;
+            2) icon=;;
+            3) icon=
+        esac
         echo "B$a$icon$t $var%"
 
         sleep 10
