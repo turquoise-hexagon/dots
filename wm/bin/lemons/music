@@ -4,6 +4,7 @@
 
 mus ()
     while :; do
+        # pattern matching
         case $(mpc) in
             *playing*)
                 var=$(mpc current)

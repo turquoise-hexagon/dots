@@ -11,6 +11,7 @@ vol ()
                 init|*'sink #0')
                     var=$(pactl list sinks)
 
+                    # pattern matching
                     case $var in
                         *'Mute: yes'*)
                             var="$a$t Muted"
