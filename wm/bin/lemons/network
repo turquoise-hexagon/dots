@@ -6,7 +6,7 @@ ntw ()
     while :; do
         var=$(/sbin/iwgetid -r)
 
-        echo "N$a$t ${var:-Offline}"
+        echo "N$a$t ${var:-Disconnected}"
 
         sleep 2
     done

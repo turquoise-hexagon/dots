@@ -4,7 +4,7 @@ centered_cursor = "yes"
 
 # playlists
 playlist_display_mode = "classic"
-song_list_format = "$6%a$9 - $3%t$9"
+song_list_format = "$6%a $4- $3%t"
 playlist_disable_highlight_delay = "0"
 current_item_prefix = "$b"
 current_item_suffix = "$/b"
@@ -16,5 +16,5 @@ statusbar_visibility = "no"
 
 # progress bar
 progressbar_look = "---"
-progressbar_color  = "blue"
+progressbar_color  = "black:b"
 progressbar_elapsed_color = "white"
