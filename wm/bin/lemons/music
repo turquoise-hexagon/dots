@@ -6,12 +6,10 @@ mus ()
     while :; do
         # pattern matching
         case $(mpc) in
-            *playing*)
-                var=$(mpc current)
-                ;;
-            *)
-                var=Paused
+            *paused*) var=Paused;;
+            *) var=$(mpc current)
         esac
+
         echo "M$a$t $var"
 
         mpc idle
