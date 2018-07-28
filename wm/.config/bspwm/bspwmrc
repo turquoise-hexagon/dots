@@ -2,24 +2,26 @@
 #
 # bspwm config
 
+cfg () bspc config "$@"
+
 # settings
 bspc monitor -d 1 2 3 4 5
 
-bspc config focus_follows_pointer true
-bspc config borderless_monocle true
-bspc config gapless_monocle true
-bspc config single_monocle true
+cfg focus_follows_pointer true
+cfg borderless_monocle true
+cfg gapless_monocle true
+cfg single_monocle true
 
-bspc config presel_feedback_color \#EEEEEE
-bspc config focused_border_color \#EEEEEE
-bspc config normal_border_color \#032C36
+cfg presel_feedback_color \#EEEEEE
+cfg focused_border_color \#EEEEEE
+cfg normal_border_color \#032C36
 
-bspc config border_width 7
-bspc config window_gap 7
+cfg border_width 7
+cfg window_gap 7
 
-bspc config split_ratio 0.5
+cfg split_ratio 0.5
 
 # utils
-bspc config external_rules_command "$(command -v rules)"
+cfg external_rules_command "$(command -v rules)"
 
 panel &
