@@ -12,9 +12,9 @@ cfg borderless_monocle true
 cfg gapless_monocle true
 cfg single_monocle true
 
-cfg presel_feedback_color \#EEEEEE
-cfg focused_border_color \#EEEEEE
-cfg normal_border_color \#032C36
+cfg presel_feedback_color '#EEEEEE'
+cfg focused_border_color '#EEEEEE'
+cfg normal_border_color '#032C36'
 
 cfg border_width 7
 cfg window_gap 7
