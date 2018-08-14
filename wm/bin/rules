@@ -6,7 +6,7 @@
 
 # spawn in preselections first, exit in that case
 presel=$(bspc query -N -d -n .\!automatic | head -1)
-test "$presel" && { echo "node=$presel"; exit; }
+test "$presel" && { echo "node = $presel"; exit; }
 
 # exit if there is no focused window
 bspc query -N -n focused > /dev/null || exit
@@ -18,4 +18,4 @@ y=$(bspc query -T -n focused | jq .rectangle.height)
 # split vertically otherwise
 [ "$x" -gt "$y" ] && split=east || split=south
 
-echo "split_dir=$split"
+echo "split_dir = $split"
