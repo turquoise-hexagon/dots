@@ -23,8 +23,27 @@ if bspc query -N -n focused.floating > /dev/null; then
 
     bspc node -v "$x" "$y"
 else
-    # teleport cursor on the focused window
+    case $1 in
+        east)  target=x; falldir=west; rotate=south;;
+        west)  target=x; falldir=east; rotate=north;;
+        north) target=y; falldir=south; rotate=west;;
+        south) target=y; falldir=north; rotate=east
+    esac
+
+    [ "$target" = x ] && { a=90; b=270; }
+    [ "$target" = y ] && { b=90; a=270; }
+
     bspc config pointer_follows_focus true
-    bspc node -s "$1"
+
+    # try to move in one direction
+    # fall back to the other if it fails
+    # fall back to a rotation if it fails
+    bspc node -s "$1" || bspc node -s "$falldir" ||
+        if bspc query -N -n "$rotate" > /dev/null; then
+            bspc node @/ -R "$a"
+        else
+            bspc node @/ -R "$b"
+        fi
+
     bspc config pointer_follows_focus false
 fi

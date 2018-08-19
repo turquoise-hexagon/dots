@@ -23,5 +23,5 @@ var=$((`bspc query -T -m | jq .rectangle.width` * percent / 100))
 [ "$dir" = top   ] && { y=$sign$var; x=0; }
 
 # try to resize in one direction
-# fallback to the other if it fails
+# fall back to the other if it fails
 bspc node -z "$dir" "$x" "$y" || bspc node -z "$falldir" "$x" "$y"
