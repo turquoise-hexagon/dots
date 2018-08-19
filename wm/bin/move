@@ -33,6 +33,7 @@ else
     [ "$target" = x ] && { a=90; b=270; }
     [ "$target" = y ] && { b=90; a=270; }
 
+    # teleport cursor on the focused window
     bspc config pointer_follows_focus true
 
     # try to move in one direction
