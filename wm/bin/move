@@ -49,15 +49,17 @@ tiled ()
     parent=$(bspc query -T -n "$node#@parent" | jq ".rectangle.$dim")
 
     if [ "$parent" -gt "$window" ]; then
+
         # create a receptacle
+        # get the receptacle id
+        # replace the receptacle
+
         bspc node "$par_id" -p "$dir"
         bspc node "$par_id" -i
 
-        # NOTE : not a reliable solution
-        # use a better one when available
-        recept=$(bspc query -N -n .leaf.!window)
+        rec_id=$(bspc query -N "$par_id#@parent" -n .descendant_of.leaf.!window)
 
-        bspc node "$node" -n "$recept"
+        bspc node "$node" -n "$rec_id"
     else
         node=$par_id
 
