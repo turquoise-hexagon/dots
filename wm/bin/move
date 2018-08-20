@@ -4,29 +4,74 @@
 #
 # wm key bindings
 
-percent=5
+dir=$1
 
-# also move floating windows
-if bspc query -N -n focused.floating > /dev/null; then
-    case $1 in
-        west)  target=x; sign=-;;
-        east)  target=x; sign=+;;
-        north) target=y; sign=-;;
-        south) target=y; sign=+
+node=$(bspc query -N -n)
+
+# move floating windows
+floating ()
+{
+    percent=5
+
+    case $dir in
+        west)  dim=width;  sign=-;;
+        east)  dim=width;  sign=+;;
+        north) dim=height; sign=-;;
+        south) dim=height; sign=+
     esac
 
     # get a percentage of the monitor horizontal resolution
     var=$((`bspc query -T -m | jq .rectangle.width` * percent / 100))
 
-    [ "$target" = x ] && { x=$sign$var; y=0; }
-    [ "$target" = y ] && { y=$sign$var; x=0; }
+    [ "$dim" = width  ] && { x=$sign$var; y=0; }
+    [ "$dim" = height ] && { y=$sign$var; x=0; }
 
     bspc node -v "$x" "$y"
+}
+
+# move tiled windows
+tiled ()
+{
+    # attempt to move the window
+    bspc node -s "$dir" && return
+
+    # exit if there is no parent window
+    par_id=$(bspc query -N -n "$node#@parent"); test "$par_id" || return
+
+    case $dir in
+        west) dim=height;;
+        east) dim=height;;
+        north) dim=width;;
+        south) dim=width
+    esac
+
+    window=$(bspc query -T -n "$node"         | jq ".rectangle.$dim")
+    parent=$(bspc query -T -n "$node#@parent" | jq ".rectangle.$dim")
+
+    if [ "$parent" -gt "$window" ]; then
+        # create a receptacle
+        bspc node "$par_id" -p "$dir"
+        bspc node "$par_id" -i
+
+        # NOTE : not a reliable solution
+        # use a better one when available
+        recept=$(bspc query -N -n .leaf.!window)
+
+        bspc node "$node" -n "$recept"
+    else
+        node=$par_id
+
+        tiled
+    fi
+}
+
+# teleport pointer on the focused window
+bspc config pointer_follows_focus true
+
+if bspc query -N -n .focused.floating > /dev/null; then
+    floating
 else
-    # teleport cursor on the focused window
-    bspc config pointer_follows_focus true
-
-    bspc node -n "$1".!automatic || bspc node -s "$1"
-
-    bspc config pointer_follows_focus false
+    tiled
 fi
+
+bspc config pointer_follows_focus false

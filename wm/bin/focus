@@ -7,7 +7,7 @@
 # exit if there is no window to focus
 bspc query -N -n "$1" > /dev/null || exit
 
-# teleport cursor on the focused window
+# teleport pointer on the focused window
 bspc config pointer_follows_focus true
 bspc node -f "$1"
 bspc config pointer_follows_focus false
