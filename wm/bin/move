@@ -60,6 +60,7 @@ tiled ()
         rec_id=$(bspc query -N "$par_id#@parent" -n .descendant_of.leaf.!window)
 
         bspc node "$node" -n "$rec_id"
+        bspc node "$node#@parent" -B
     else
         node=$par_id
 
