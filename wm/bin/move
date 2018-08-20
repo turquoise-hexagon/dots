@@ -8,23 +8,23 @@ dir=$1
 
 node=$(bspc query -N -n)
 
+case $dir in
+    west)  fdim=width;  tdim=height; sign=-;;
+    east)  fdim=width;  tdim=height; sign=+;;
+    north) fdim=height; tdim=width;  sign=-;;
+    south) fdim=height; tdim=width;  sign=+
+esac
+
 # move floating windows
 floating ()
 {
     percent=5
 
-    case $dir in
-        west)  dim=width;  sign=-;;
-        east)  dim=width;  sign=+;;
-        north) dim=height; sign=-;;
-        south) dim=height; sign=+
-    esac
-
     # get a percentage of the monitor horizontal resolution
     var=$((`bspc query -T -m | jq .rectangle.width` * percent / 100))
 
-    [ "$dim" = width  ] && { x=$sign$var; y=0; }
-    [ "$dim" = height ] && { y=$sign$var; x=0; }
+    [ "$fdim" = width  ] && { x=$sign$var; y=0; }
+    [ "$fdim" = height ] && { y=$sign$var; x=0; }
 
     bspc node -v "$x" "$y"
 }
@@ -38,15 +38,8 @@ tiled ()
     # exit if there is no parent window
     par_id=$(bspc query -N -n "$node#@parent"); test "$par_id" || return
 
-    case $dir in
-        west) dim=height;;
-        east) dim=height;;
-        north) dim=width;;
-        south) dim=width
-    esac
-
-    cur_dim=$(bspc query -T -n "$node"         | jq ".rectangle.$dim")
-    par_dim=$(bspc query -T -n "$node#@parent" | jq ".rectangle.$dim")
+    cur_dim=$(bspc query -T -n "$node"         | jq ".rectangle.$tdim")
+    par_dim=$(bspc query -T -n "$node#@parent" | jq ".rectangle.$tdim")
 
     if [ "$par_dim" -gt "$cur_dim" ]; then
 
@@ -70,11 +63,5 @@ tiled ()
 
 # teleport pointer on the focused window
 bspc config pointer_follows_focus true
-
-if bspc query -N -n .focused.floating > /dev/null; then
-    floating
-else
-    tiled
-fi
-
+bspc query -N -n .focused.floating > /dev/null && floating || tiled
 bspc config pointer_follows_focus false
