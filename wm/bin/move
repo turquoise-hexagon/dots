@@ -36,25 +36,25 @@ tiled ()
     { bspc node -n "$dir.!automatic" || bspc node -s "$dir"; } && return
 
     # exit if there is no parent window
-    par_id=$(bspc query -N -n "$node#@parent"); test "$par_id" || return
+    parent=$(bspc query -N -n "$node#@parent"); test "$parent" || return
 
-    cur_dim=$(bspc query -T -n "$node"         | jq ".rectangle.$tdim")
-    par_dim=$(bspc query -T -n "$node#@parent" | jq ".rectangle.$tdim")
+    nod_dim=$(bspc query -T -n "$node"   | jq ".rectangle.$tdim")
+    par_dim=$(bspc query -T -n "$parent" | jq ".rectangle.$tdim")
 
-    if [ "$par_dim" -gt "$cur_dim" ]; then
+    if [ "$par_dim" -gt "$nod_dim" ]; then
         # create a receptacle
         # get the receptacle id
         # replace the receptacle
 
-        bspc node "$par_id" -p "$dir"
-        bspc node "$par_id" -i
+        bspc node "$parent" -p "$dir"
+        bspc node "$parent" -i
 
-        rec_id=$(bspc query -N "$par_id#@parent" -n .descendant_of.leaf.!window)
+        recept=$(bspc query -N "$parent#@parent" -n .descendant_of.leaf.!window)
 
-        bspc node "$node" -n "$rec_id"
-        bspc node "$node#@parent" -B
+        bspc node "$node" -n "$recept"
+        bspc node "$parent" -B
     else
-        node=$par_id
+        node=$parent
 
         tiled
     fi
