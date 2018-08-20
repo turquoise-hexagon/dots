@@ -42,7 +42,6 @@ tiled ()
     par_dim=$(bspc query -T -n "$node#@parent" | jq ".rectangle.$tdim")
 
     if [ "$par_dim" -gt "$cur_dim" ]; then
-
         # create a receptacle
         # get the receptacle id
         # replace the receptacle
