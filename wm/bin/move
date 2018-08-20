@@ -63,5 +63,5 @@ tiled ()
 
 # teleport pointer on the focused window
 bspc config pointer_follows_focus true
-bspc query -N -n .focused.floating > /dev/null && floating || tiled
+bspc query -N -n focused.floating > /dev/null && floating || tiled
 bspc config pointer_follows_focus false
