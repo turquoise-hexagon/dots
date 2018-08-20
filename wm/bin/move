@@ -32,8 +32,8 @@ floating ()
 # move tiled windows
 tiled ()
 {
-    # attempt to move the window
-    bspc node -s "$dir" && return
+    # attempt to replace a preselection or to move a window
+    { bspc node -n "$dir.!automatic" || bspc node -s "$dir"; } && return
 
     # exit if there is no parent window
     par_id=$(bspc query -N -n "$node#@parent"); test "$par_id" || return
