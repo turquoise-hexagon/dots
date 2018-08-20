@@ -45,10 +45,10 @@ tiled ()
         south) dim=width
     esac
 
-    window=$(bspc query -T -n "$node"         | jq ".rectangle.$dim")
-    parent=$(bspc query -T -n "$node#@parent" | jq ".rectangle.$dim")
+    cur_dim=$(bspc query -T -n "$node"         | jq ".rectangle.$dim")
+    par_dim=$(bspc query -T -n "$node#@parent" | jq ".rectangle.$dim")
 
-    if [ "$parent" -gt "$window" ]; then
+    if [ "$par_dim" -gt "$cur_dim" ]; then
 
         # create a receptacle
         # get the receptacle id
