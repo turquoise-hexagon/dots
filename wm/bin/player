@@ -4,7 +4,8 @@
 #
 # wm key bindings
 
-test -s ~/.config/mpd/pid || exit 1
+# exit if mpd isn't running
+[ -s ~/.config/mpd/pid ] || exit 1
 
 mpc "$1"
 
