@@ -52,7 +52,7 @@ windows=$(
 )
 
 # sort the windows
-focus=$(
+windows=$(
     while read -r win_x win_y win; do
 
         diff_x=$((win_x - nod_x))
@@ -68,7 +68,7 @@ focus=$(
 )
 
 # properly parse the values
-read -r focus <<< "$focus"
+read -r focus <<< "$windows"
 set -- $focus; focus=$3
 
 # exit if there is no window to focus
