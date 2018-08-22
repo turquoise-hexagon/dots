@@ -68,7 +68,7 @@ windows=$(
 )
 
 # exit if there is no window to focus
-test "$window" || exit
+test "$windows" || exit
 
 # get the closest window
 read -r focus <<< "$windows"    # head
