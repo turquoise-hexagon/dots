@@ -67,9 +67,8 @@ windows=$(
     done <<< "$windows" | sort -k1n -k2n
 )
 
-# properly parse the values
-read -r focus <<< "$windows"
-set -- $focus; focus=$3
+read -r focus <<< "$windows"    # head
+set -- $focus; focus=$3         # cut
 
 # exit if there is no window to focus
 test "$focus" || exit
