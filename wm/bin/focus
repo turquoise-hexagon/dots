@@ -11,7 +11,7 @@ case $1 in
     south) dir=y; sign='>'
 esac
 
-# get the current window status
+# get current window status
 bspc query -N -n focused.floating > /dev/null && state=floating || state=tiled
 
 read -r nod_x nod_y < <(
@@ -51,7 +51,7 @@ windows=$(
         | @sh'
 )
 
-# sort the windows
+# sort windows
 windows=$(
     while read -r win_x win_y win; do
 
@@ -67,11 +67,12 @@ windows=$(
     done <<< "$windows" | sort -k1n -k2n
 )
 
+# exit if there is no window to focus
+test "$window" || exit
+
+# get the closest window
 read -r focus <<< "$windows"    # head
 set -- $focus; focus=$3         # cut
-
-# exit if there is no window to focus
-test "$focus" || exit
 
 # teleport pointer on the focused window
 bspc config pointer_follows_focus true

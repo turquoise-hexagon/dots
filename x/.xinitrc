@@ -19,4 +19,4 @@ xset +fp ~/.local/share/fonts
 xrdb ~/.Xresources
 ~/.fehbg
 
-exec bspwm > .bspwm.log 2>&1
+exec bspwm
