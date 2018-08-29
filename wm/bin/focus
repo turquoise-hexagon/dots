@@ -4,6 +4,9 @@
 #
 # wm key bindings
 
+# exit when fullscreen
+bspc query -N -n focused.fullscreen && exit
+
 case $1 in
     east)  dir=x; sign='>';;
     west)  dir=x; sign='<';;
@@ -11,16 +14,21 @@ case $1 in
     south) dir=y; sign='>'
 esac
 
-# get current window status and exit when fullscreen
-state=$(bspc query -T -n | jq -r .client.state); test "$state" = fullscreen && exit
-
+# get values for the current window
 read -r nod_x nod_y < <(
-    bspc query -T -n | jq -r "
-        [
-             .client.${state}Rectangle.x
-            ,.client.${state}Rectangle.y
-        ]
-        | @sh"
+    bspc query -T -n | jq -r '
+        if .client.state == "floating" then
+            [
+                 .client.floatingRectangle.x
+                ,.client.floatingRectangle.y
+            ]
+        else
+            [
+                 .client.tiledRectangle.x
+                ,.client.tiledRectangle.y
+            ]
+        end
+        | @sh'
 )
 
 # get values for all windows on the current desktop
@@ -28,13 +36,6 @@ windows=$(
     bspc query -T -d | jq -r '
         ..
         | .?
-        | select
-            (
-                .client.state == "floating"
-                or
-                .client.state == "tiled"
-            )
-
         | if .client.state == "floating" then
             [
                  .client.floatingRectangle.x
