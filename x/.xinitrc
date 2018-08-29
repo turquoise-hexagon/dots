@@ -3,7 +3,6 @@
 # xinitrc
 
 # start daemons
-pulseaudio --start
 urxvtd -q -o -f
 sxhkd -m1 &
 dunst &

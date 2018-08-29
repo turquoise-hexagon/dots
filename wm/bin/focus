@@ -11,8 +11,8 @@ case $1 in
     south) dir=y; sign='>'
 esac
 
-# get current window status
-bspc query -N -n focused.floating > /dev/null && state=floating || state=tiled
+# get current window status and exit when fullscreen
+state=$(bspc query -T -n | jq -r .client.state); test "$state" = fullscreen && exit
 
 read -r nod_x nod_y < <(
     bspc query -T -n | jq -r "
