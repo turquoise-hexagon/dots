@@ -27,16 +27,16 @@ read -r nod_x nod_y < <(
                  .client.tiledRectangle.x
                 ,.client.tiledRectangle.y
             ]
-        end
-        | @sh'
+        end |
+        @sh'
 )
 
 # get values for all windows on the current desktop
 windows=$(
     bspc query -T -d | jq -r '
-        ..
-        | .?
-        | if .client.state == "floating" then
+        .. |
+        .? |
+        if .client.state == "floating" then
             [
                  .client.floatingRectangle.x
                 ,.client.floatingRectangle.y
@@ -50,8 +50,8 @@ windows=$(
             ]
         else
             empty
-        end
-        | @sh'
+        end |
+        @sh'
 )
 
 # sort windows
