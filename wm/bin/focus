@@ -5,7 +5,7 @@
 # wm key bindings
 
 # exit when fullscreen
-bspc query -N -n focused.fullscreen && exit
+bspc query -N -n focused.fullscreen > /dev/null && exit
 
 case $1 in
     east)  dir=x; sign='>';;
