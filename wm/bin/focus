@@ -42,12 +42,14 @@ windows=$(
                 ,.client.floatingRectangle.y
                 ,.id
             ]
-        else
+        elif .client.state == "tiled" then
             [
                  .client.tiledRectangle.x
                 ,.client.tiledRectangle.y
                 ,.id
             ]
+        else
+            empty
         end
         | @sh'
 )
