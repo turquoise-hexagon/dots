@@ -13,7 +13,7 @@ fi
 
 # ensure proper panel script cleanup
 # ensure we don't get the same signal
-trap 'trap - TERM; kill 0' INT TERM QUIT
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
 # source all panel modules
 for i in ~/bin/lemons/*; do
