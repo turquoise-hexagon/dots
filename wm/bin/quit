@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# quit bspwm
+#
+# wm key bindings
+
+# ensure panel cleanup
+pkill -x panel
+
+bspc quit

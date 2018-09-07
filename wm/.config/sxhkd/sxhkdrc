@@ -26,9 +26,8 @@ super + shift + r
 super + q
     bspc node -c
 
-# ensure panel cleanup
 super + shift + q
-    pkill -x panel; bspc quit
+    quit
 
 super + {t,Tab,f}
     bspc node -t ~{tiled,floating,fullscreen}
@@ -39,7 +38,7 @@ super + {h,j,k,l}
 super + Escape
     bspc node -p cancel
 
-# replace preselection and tile
+# replace presel and tile
 super + r
     bspc node -n last.!automatic -t tiled
 
