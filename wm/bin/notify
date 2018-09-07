@@ -17,7 +17,7 @@ read -r w h < <(txtf "$font" "$1")
 ((w += 2 * padding))
 ((h += 2 * padding))
 
-((off_x = `bspc query -T -m | jq .rectangle.width` - w - off_x))
+((off_x = `bspc query -T -m | jq .rectangle.width`  - w - off_x))
 ((off_y = `bspc query -T -m | jq .rectangle.height` - h - off_y))
 
 {
