@@ -16,6 +16,7 @@ esac
 
 # get values for the current window
 read -r nod_x nod_y < <(
+
     bspc query -T -n | jq -r '
         if .client.state == "floating" then
             [
@@ -29,10 +30,12 @@ read -r nod_x nod_y < <(
             ]
         end |
         @sh'
+
 )
 
 # get values for all windows on the current desktop
 windows=$(
+
     bspc query -T -d | jq -r '
         .. |
         .? |
@@ -52,6 +55,7 @@ windows=$(
             empty
         end |
         @sh'
+
 )
 
 # sort windows
