@@ -8,7 +8,7 @@
 bspc query -N -n > /dev/null || exit
 
 # spawn in preselections first, exit in that case
-presel=$(bspc query -N -d -n .!automatic | head -1)
+presel=$(bspc query -N -n last.local.!automatic)
 test "$presel" && { echo "node = $presel"; exit; }
 
 x=$(bspc query -T -n | jq .rectangle.width )
