@@ -1,3 +1,7 @@
+# dirs
+ncmpcpp_directory = "~/.config/ncmpcpp/ncmpcpp"
+lyrics_directory = "~/.config/ncmpcpp/lyrics"
+
 # general
 autocenter_mode = "yes"
 centered_cursor = "yes"
