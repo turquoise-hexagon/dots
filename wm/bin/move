@@ -60,7 +60,7 @@ tiled ()
     fi
 }
 
-if ! bspc query -N -n focused.floating > /dev/null; then
+if bspc query -N -n focused.floating > /dev/null; then
     floating
 else
     # teleport pointer on the focused window
