@@ -78,8 +78,7 @@ windows=$(
 test "$windows" || exit
 
 # get the closest window
-read -r focus <<< "$windows"    # head
-set -- $focus; focus=$3         # cut
+read -r diff_x diff_y focus <<< $windows
 
 # teleport pointer on the focused window
 bspc config pointer_follows_focus true
