@@ -50,7 +50,7 @@ while read -r line; do
     esac
 
     echo "%{l}  $wks  $mus%{c}$clk%{r}$ntw  $vol  $bat  "
-done < "$fifo" | \
+done < "$fifo" |
     lemonbar -g "x$height" \
         -F "$foreground" \
         -B "$background" \

@@ -11,11 +11,18 @@ bspc query -N -n > /dev/null || exit
 presel=$(bspc query -N -n last.local.!automatic)
 test "$presel" && { echo "node = $presel"; exit; }
 
-x=$(bspc query -T -n | jq .rectangle.width )
-y=$(bspc query -T -n | jq .rectangle.height)
+bspc query -T -n | jq -r '
+    [
+         .rectangle.width
+        ,.rectangle.height
+    ] |
+    @sh' |
+    {
+        read -r x y
 
-# split horizontally if x > y
-# split vertically otherwise
-[ "$x" -gt "$y" ] && split=east || split=south
+        # split horizontally if x > y
+        # split vertically otherwise
+        [ "$x" -gt "$y" ] && split=east || split=south
 
-echo "split_dir = $split"
+        echo "split_dir = $split"
+    }
