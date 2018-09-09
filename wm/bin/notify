@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #
 # lemonbar notification
 #
@@ -11,38 +11,34 @@ name=notify
 # kill previous notification
 pkill -f "lemonbar .* $name .*"
 
-txtf "$font" "$1" |
-    {
-        read -r txt_w txt_h
+read -r txt_w txt_h < <(txtf "$font" "$1")
 
-        # get notification width
-        # get notification height
-        w=$((txt_w + 2 * padding))
-        h=$((txt_h + 2 * padding))
+# get notification width
+# get notification height
+((w = txt_w + 2 * padding))
+((h = txt_h + 2 * padding))
 
-        bspc query -T -m | jq -r '
-            [
-                 .rectangle.width
-                ,.rectangle.height
-            ] |
-            @sh' |
-            {
-                read -r mon_w mon_h
+read -r mon_w mon_h < <(
+    bspc query -T -m | jq -r '
+        [
+             .rectangle.width
+            ,.rectangle.height
+        ] |
+        @sh'
+)
 
-                # get notification horizontal offset
-                # get notification vertical offset
-                off_x=$((mon_w - w - off_x))
-                off_y=$((mon_h - h - off_y))
+# get notification horizontal offset
+# get notification vertical offset
+((off_x = mon_w - w - off_x))
+((off_y = mon_h - h - off_y))
 
-                {
-                    echo "%{c}$1"
-                    sleep "$time"
-                } |
-                    lemonbar -g "${w}x${h}+$off_x+$off_y" \
-                        -F "$foreground" \
-                        -B "$background" \
-                        -f "$font" \
-                        -n "$name" \
-                        -d &
-            }
-    }
+{
+    echo "%{c}$1"
+    sleep "$time"
+} |
+    lemonbar -g "${w}x${h}+$off_x+$off_y" \
+        -F "$foreground" \
+        -B "$background" \
+        -f "$font" \
+        -n "$name" \
+        -d &
