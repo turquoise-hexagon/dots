@@ -1,3 +1,5 @@
+" a simple vim colorscheme
+
 hi clear
 set background=dark
 
@@ -7,7 +9,10 @@ endif
 
 let g:colors_name="cherry"
 
-" syntax colors
+" ---
+" syntax
+" ---
+
 hi Normal          ctermfg=7       ctermbg=NONE    cterm=NONE
 hi Comment         ctermfg=8       ctermbg=NONE    cterm=NONE
 hi Constant        ctermfg=2       ctermbg=NONE    cterm=NONE
@@ -21,7 +26,10 @@ hi Error           ctermfg=0       ctermbg=1       cterm=NONE
 hi Todo            ctermfg=0       ctermbg=2       cterm=NONE
 hi Underlined      ctermfg=NONE    ctermbg=NONE    cterm=underline
 
-" ui colors
+" ---
+" interface
+" ---
+
 hi Folded          ctermfg=8       ctermbg=NONE    cterm=NONE
 hi DiffAdd         ctermfg=2       ctermbg=NONE    cterm=NONE
 hi DiffChange      ctermfg=11      ctermbg=NONE    cterm=NONE

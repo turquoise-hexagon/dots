@@ -1,4 +1,6 @@
-# misc stuff
+# ---
+# wm independant
+# ---
 
 XF86MonBrightness{Up,Down}
     brightness {inc,dec}
@@ -21,7 +23,9 @@ super + space
 super + shift + r
     pkill -USR1 -x sxhkd
 
+# ---
 # window manager
+# ---
 
 super + q
     bspc node -c

@@ -1,14 +1,20 @@
 # if not interactive, return
 [[ $- =~ i ]] || return
 
+# ---
 # settings
+# ---
+
 HISTSIZE=10000
 HISTFILESIZE=10000
 HISTCONTROL=ignoredups
 
 PS1='\[\e[95m\]\w\[\e[0m\] '
 
-# replace defaults
+# ---
+# aliases
+# ---
+
 alias cp='cp -r'
 alias ls='ls -FN --color'
 
@@ -20,6 +26,9 @@ alias diff='diff --color'
 alias mkdir='mkdir -p'
 alias ncmpcpp='ncmpcpp -q'
 
-# enable bash completion
+# ---
+# misc
+# ---
+
 [[ -f /etc/bash_completion ]] &&
     . /etc/bash_completion
