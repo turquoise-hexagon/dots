@@ -16,7 +16,6 @@ esac
 
 # get values for the current window
 read -r nod_x nod_y < <(
-
     bspc query -T -n | jq -r '
         if .client.state == "floating" then
             [
@@ -30,12 +29,10 @@ read -r nod_x nod_y < <(
             ]
         end |
         @sh'
-
 )
 
 # get values for all windows on the current desktop
 windows=$(
-
     bspc query -T -d | jq -r '
         .. |
         .? |
@@ -55,13 +52,11 @@ windows=$(
             empty
         end |
         @sh'
-
 )
 
 # sort windows
 windows=$(
     while read -r win_x win_y win; do
-
         diff_x=$((win_x - nod_x))
         diff_y=$((win_y - nod_y))
 
@@ -70,7 +65,6 @@ windows=$(
 
         [[ $dir == x ]] && ((win_x $sign nod_x)) && echo "$diff_x $diff_y $win"
         [[ $dir == y ]] && ((win_y $sign nod_y)) && echo "$diff_y $diff_x $win"
-
     done <<< "$windows" | sort -k1n -k2n
 )
 
