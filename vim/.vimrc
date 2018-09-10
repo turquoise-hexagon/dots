@@ -6,7 +6,7 @@ set encoding=utf-8
 filetype indent plugin on
 syntax enable
 
-" swap & sessions
+" swap and sessions
 set hidden
 set noswapfile
 
@@ -22,7 +22,7 @@ set incsearch
 " sane backspace
 set backspace=indent,eol,start
 
-" tab indent
+" tab
 set expandtab
 set shiftwidth=4
 set tabstop=4
@@ -36,7 +36,7 @@ set breakindent
 " fix posix syntax
 let g:is_posix=1
 
-" ui
+" interface
 set noruler
 set nonumber
 set vb t_vb=

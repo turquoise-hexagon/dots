@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# take a screenshot & send a notification
+# screenshot script
 #
 # wm key bindings
 
