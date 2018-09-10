@@ -65,14 +65,14 @@ windows=$(
 
         [[ $dir == x ]] && ((win_x $sign nod_x)) && echo "$diff_x $diff_y $win"
         [[ $dir == y ]] && ((win_y $sign nod_y)) && echo "$diff_y $diff_x $win"
-    done <<< "$windows" | sort -k1n -k2n
+    done <<< $windows | sort -k1n -k2n
 )
 
 # exit if there is no window to focus
 test "$windows" || exit
 
 # get the closest window
-read -r diff_x diff_y focus <<< "$windows"
+read -r diff_x diff_y focus <<< $windows
 
 # teleport pointer on the focused window
 bspc config pointer_follows_focus true
