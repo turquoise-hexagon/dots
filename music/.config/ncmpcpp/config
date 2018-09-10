@@ -13,7 +13,7 @@ autocenter_mode = "yes"
 centered_cursor = "yes"
 
 # ---
-# playlists
+# interface
 # ---
 
 playlist_display_mode = "classic"
@@ -22,17 +22,9 @@ playlist_disable_highlight_delay = "0"
 current_item_prefix = "$b"
 current_item_suffix = "$/b"
 
-# ---
-# interface
-# ---
-
 titles_visibility = "no"
 header_visibility = "no"
 statusbar_visibility = "no"
-
-# ---
-# progress bar
-# ---
 
 progressbar_look = "---"
 progressbar_color  = "black:b"
