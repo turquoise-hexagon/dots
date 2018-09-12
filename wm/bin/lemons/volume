@@ -15,9 +15,9 @@ vol ()
                 esac
 
                 # we want word splitting
-                set -- ${var#*Volume:}
+                set -- ${var#*Volume:}; var=$4
 
-                echo "V$a$icon$t $4"
+                echo "V$a$icon$t $var"
         esac
     done
 }

@@ -14,6 +14,7 @@ if bspc query -N -n .local.fullscreen > /dev/null; then
     var=$(pactl list sinks)
 
     # we want word splitting
-    set -- ${var#*Volume:}
-    notify "Volume : $4"
+    set -- ${var#*Volume:}; var=$4
+
+    notify "Volume : $var"
 fi
