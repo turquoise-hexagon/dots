@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# send a notification
+# send notifs with lemonbar
 
 name=notify
 

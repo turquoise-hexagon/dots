@@ -1,8 +1,6 @@
 #!/bin/sh
 #
 # volume control
-#
-# wm key bindings
 
 if [ "$1" = toggle ]; then
     pactl set-sink-mute 0 toggle

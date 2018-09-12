@@ -1,6 +1,4 @@
-# get time
-#
-# lemonbar script
+# sourced by 'panel'
 
 clk ()
     while :; do

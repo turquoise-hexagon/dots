@@ -1,6 +1,4 @@
-# get song
-#
-# lemonbar script
+# sourced by 'panel'
 
 mus ()
     while :; do

@@ -1,8 +1,6 @@
 #!/bin/sh
 #
-# remote mpc control
-#
-# wm key bindings
+# mpc control
 
 # exit if mpd isn't running
 [ -s ~/.config/mpd/pid ] || exit 1

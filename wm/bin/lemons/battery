@@ -1,6 +1,4 @@
-# get battery status
-#
-# lemonbar script
+# sourced by 'panel'
 
 bat ()
     while :; do

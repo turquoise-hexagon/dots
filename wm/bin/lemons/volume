@@ -1,6 +1,4 @@
-# get volume
-#
-# lemonbar script
+# sourced by 'panel'
 
 vol ()
 {

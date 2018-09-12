@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 #
 # draw terminals
-#
-# wm key bindings
 
 bspc rule -a \* -o state=floating
 

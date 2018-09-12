@@ -1,8 +1,6 @@
 #!/bin/sh
 #
-# quit bspwm
-#
-# wm key bindings
+# properly exit bspwm
 
 # ensure panel cleanup
 pkill -x panel

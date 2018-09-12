@@ -1,6 +1,4 @@
-# get workspaces
-#
-# lemonbar script
+# sourced by 'panel'
 
 wks ()
 {

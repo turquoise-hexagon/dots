@@ -1,6 +1,4 @@
-# get network status
-#
-# lemonbar script
+# sourced by 'panel'
 
 ntw ()
     while :; do
