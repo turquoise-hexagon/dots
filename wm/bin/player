@@ -3,7 +3,7 @@
 # mpc control
 
 # exit if mpd isn't running
-[ -s ~/.config/mpd/pid ] || exit 1
+test -s ~/.config/mpd/pid || exit 1
 
 mpc "$1"
 
