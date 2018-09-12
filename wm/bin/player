@@ -10,6 +10,6 @@ mpc "$1"
 if [ "$1" != toggle ]; then
     # send notification when fullscreen
     if bspc query -N -n .local.fullscreen > /dev/null; then
-        notify "$(mpc current)"
+        popup "$(mpc current)"
     fi
 fi

@@ -1,17 +1,17 @@
 #!/bin/sh
 #
-# send notifs with lemonbar
+# lemonbar popup
 
-name=notify
+name=popup
 
-. ~/.config/lemonbar/notify
+. ~/.config/lemonbar/popup
 
-# clear previous notification
+# clear previous popup
 pkill -f "lemonbar .* $name .*"
 
-# get notification size
+# get popup size
 w=$((font_w * ${#1} + 2 * padding))
-h=$((font_h + 2 * padding))
+h=$((font_h         + 2 * padding))
 
 bspc query -T -m | jq -r '
     [
@@ -22,7 +22,7 @@ bspc query -T -m | jq -r '
     {
         read -r mon_w mon_h
 
-        # get notification offset
+        # get popup offset
         off_x=$((mon_w - w - off_x))
         off_y=$((mon_h - h - off_y))
 
