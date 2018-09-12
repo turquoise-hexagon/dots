@@ -17,5 +17,5 @@ if bspc query -N -n .local.fullscreen > /dev/null; then
 
     # we want word splitting
     set -- ${var#*Volume:}
-    notify-send "Volume : $4"
+    notify "Volume : $4"
 fi

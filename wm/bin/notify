@@ -1,0 +1,41 @@
+#!/bin/sh
+#
+# send a notification
+
+name=notify
+
+. ~/.config/lemonbar/notify
+
+# clear previous notification
+pkill -f "lemonbar .* $name .*"
+
+# get notification width
+# get notification height
+w=$((font_w * ${#1} + 2 * padding))
+h=$((font_h + 2 * padding))
+
+bspc query -T -m | jq -r '
+    [
+         .rectangle.width
+        ,.rectangle.height
+    ] |
+    @sh' |
+    {
+        read -r mon_w mon_h
+
+        # get notification vertical offset
+        # get notification horizontal offset
+        off_x=$((mon_w - w - off_x))
+        off_y=$((mon_h - h - off_y))
+
+        {
+            echo "%{c}$1"
+            sleep "$time"
+        } |
+            lemonbar -g "${w}x${h}+$off_x+$off_y" \
+                -F "$foreground" \
+                -B "$background" \
+                -f "$font" \
+                -n "$name" \
+                -d &
+    }

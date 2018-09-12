@@ -11,4 +11,4 @@ mkdir -p "$dir" || exit 1
 
 # disable compositor warning
 maim -qsu "$dir/$cur.png" &&
-    notify-send "Saved screenshot as $cur.png"
+    notify "Saved screenshot as $cur.png"
