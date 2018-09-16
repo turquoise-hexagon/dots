@@ -4,7 +4,7 @@
 
 _ ()
     # send notification when fullscreen
-    if bspc query -N -n .local.fullscreen > /dev/null; then
+    if bspc query -N -n focused.fullscreen > /dev/null; then
         var=$(pactl list sinks)
 
         # we want word splitting

@@ -1,78 +1,80 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #
 # focus windows with bspwm
 
-# exit when fullscreen
 bspc query -N -n focused.fullscreen > /dev/null && exit
 
 case $1 in
-    east)  dir=x; sign='>';;
-    west)  dir=x; sign='<';;
-    north) dir=y; sign='<';;
-    south) dir=y; sign='>'
+    east)  dir=x; sign=-gt;;
+    west)  dir=x; sign=-lt;;
+    north) dir=y; sign=-lt;;
+    south) dir=y; sign=-gt;;
 esac
 
 # get values for the current window
-read -r nod_x nod_y < <(
-    bspc query -T -n | jq -r '
-        if .client.state == "floating" then
-            [
-                 .client.floatingRectangle.x
-                ,.client.floatingRectangle.y
-            ]
-        else
-            [
-                 .client.tiledRectangle.x
-                ,.client.tiledRectangle.y
-            ]
-        end |
-        @sh'
-)
+bspc query -T -n | jq -r '
+    if .client.state == "floating" then
+        [
+             .client.floatingRectangle.x
+            ,.client.floatingRectangle.y
+        ]
+    else
+        [
+             .client.tiledRectangle.x
+            ,.client.tiledRectangle.y
+        ]
+    end |
+    @sh' |
+    {
+        read -r nod_x nod_y
 
-# get values for all windows on the current desktop
-windows=$(
-    bspc query -T -d | jq -r '
-        .. |
-        .? |
-        if .client.state == "floating" then
-            [
-                 .client.floatingRectangle.x
-                ,.client.floatingRectangle.y
-                ,.id
-            ]
-        elif .client.state == "tiled" then
-            [
-                 .client.tiledRectangle.x
-                ,.client.tiledRectangle.y
-                ,.id
-            ]
-        else
-            empty
-        end |
-        @sh'
-)
+        windows=$(
+            bspc query -T -d | jq -r '
+                .. |
+                .? |
+                if .client.state == "floating" then
+                    [
+                         .client.floatingRectangle.x
+                        ,.client.floatingRectangle.y
+                        ,.id
+                    ]
+                elif .client.state == "tiled" then
+                    [
+                         .client.tiledRectangle.x
+                        ,.client.tiledRectangle.y
+                        ,.id
+                    ]
+                else
+                    empty
+                end |
+                @sh'
+        )
 
-# sort windows
-windows=$(
-    while read -r win_x win_y win; do
-        ((diff_x = win_x - nod_x))
-        ((diff_y = win_y - nod_y))
+        # sort windows
+        windows=$(
+            echo "$windows" | while read -r win_x win_y win; do
+                diff_x=$((win_x - nod_x))
+                diff_y=$((win_y - nod_y))
 
-        diff_x=${diff_x#-}
-        diff_y=${diff_y#-}
+                diff_x=${diff_x#-}
+                diff_y=${diff_y#-}
 
-        [[ $dir == x ]] && ((win_x $sign nod_x)) && echo "$diff_x $diff_y $win"
-        [[ $dir == y ]] && ((win_y $sign nod_y)) && echo "$diff_y $diff_x $win"
-    done <<< $windows | sort -k1n -k2n
-)
+                [ "$dir" = x ] && [ "$win_x" "$sign" "$nod_x" ] && echo "$diff_x $diff_y $win"
+                [ "$dir" = y ] && [ "$win_y" "$sign" "$nod_y" ] && echo "$diff_y $diff_x $win"
+            done | sort -k1n -k2n
+        )
 
-# exit if there is no window to focus
-test "$windows" || exit
+        # exit if there is no window to focus
+        test "$windows" || exit
 
-# get the closest window
-read -r diff_x diff_y focus <<< $windows
+        # get the closest window
+        echo "$windows" |
+        {
+            read -r diff_x diff_y focus
 
-# teleport pointer on the focused window
-bspc config pointer_follows_focus true
-bspc node "$focus" -f
-bspc config pointer_follows_focus false
+            # teleport pointer on the focused window
+            bspc config pointer_follows_focus true
+            bspc node "$focus" -f
+            bspc config pointer_follows_focus false
+        }
+    }
