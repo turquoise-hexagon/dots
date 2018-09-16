@@ -8,7 +8,7 @@ ntw ()
     # ensure network block isn't empty on startup
     { echo init; iwevent 2> /dev/null; } | while read -r event; do
         case $event in
-            init | *'Not-Associated'*)
+            init| *'New Access'*)
 
                 # pattern matching
                 case $event in
