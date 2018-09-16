@@ -8,7 +8,7 @@ case $1 in
     east)  dir=x; sign=-gt;;
     west)  dir=x; sign=-lt;;
     north) dir=y; sign=-lt;;
-    south) dir=y; sign=-gt;;
+    south) dir=y; sign=-gt
 esac
 
 # get values for the current window
