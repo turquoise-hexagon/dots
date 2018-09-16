@@ -3,23 +3,24 @@
 vol ()
 {
     # ensure volume block isn't empty on startup
-    { echo init; pactl subscribe 2> /dev/null; } | while read -r event; do
-        case $event in
-            init|*'sink #0')
-                var=$(pactl list sinks)
+    { echo init; pactl subscribe 2> /dev/null; } |
+        while read -r event; do
+            case $event in
+                init|*'sink #0')
+                    var=$(pactl list sinks)
 
-                # pattern matching
-                case $var in
-                    *yes*) icon=;;
-                    *)     icon=
-                esac
+                    # pattern matching
+                    case $var in
+                        *yes*) icon=;;
+                        *)     icon=
+                    esac
 
-                # we want word splitting
-                set -- ${var#*Volume:}; var=$4
+                    # we want word splitting
+                    set -- ${var#*Volume:}; var=$4
 
-                echo "V$a$icon$t $var"
-        esac
-    done
+                    echo "V$a$icon$t $var"
+            esac
+        done
 }
 
 # vim: ft=sh

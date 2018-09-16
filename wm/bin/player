@@ -1,15 +1,19 @@
 #!/bin/sh
 #
-# mpc control
+# mpd control
 
 # exit if mpd isn't running
-test -s ~/.config/mpd/pid || exit 1
+pgrep -x mpd || exit 1
 
-mpc "$1"
+mpc "$1" > /dev/null
 
-if [ "$1" != toggle ]; then
-    # send notification when fullscreen
-    if bspc query -N -n .local.fullscreen > /dev/null; then
-        popup "$(mpc current)"
-    fi
-fi
+case $1 in
+    toggle)
+        exit
+        ;;
+    *)
+        # send a notification when fullscreen
+        if bspc query -N -n .local.fullscreen > /dev/null; then
+            popup "$(mpc current)"
+        fi
+esac

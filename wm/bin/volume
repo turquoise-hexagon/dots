@@ -2,19 +2,22 @@
 #
 # volume control
 
-if [ "$1" = toggle ]; then
-    pactl set-sink-mute 0 toggle
-    exit
-fi
+_ ()
+    # send notification when fullscreen
+    if bspc query -N -n .local.fullscreen > /dev/null; then
+        var=$(pactl list sinks)
 
-pactl set-sink-volume 0 "$1"
+        # we want word splitting
+        set -- ${var#*Volume:}; var=$4
 
-# send notification when fullscreen
-if bspc query -N -n .local.fullscreen > /dev/null; then
-    var=$(pactl list sinks)
+        popup "Volume : $var"
+    fi
 
-    # we want word splitting
-    set -- ${var#*Volume:}; var=$4
-
-    popup "Volume : $var"
-fi
+case $1 in
+    toggle)
+        pactl set-sink-mute 0 "$1"
+        ;;
+    *)
+        pactl set-sink-volume 0 "$1"
+        _
+esac
