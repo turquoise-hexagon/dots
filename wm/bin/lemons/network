@@ -2,11 +2,11 @@
 
 ntw ()
 {
-    # add wireless tools
-    PATH=$PATH:/sbin
+    iwgetid=/sbin/iwgetid
+    iwevent=/sbin/iwevent
 
     # ensure network block isn't empty on startup
-    { echo init; iwevent 2> /dev/null; } | while read -r event; do
+    { echo init; "$iwevent" 2> /dev/null; } | while read -r event; do
         case $event in
             init| *'New Access'*)
 
@@ -17,14 +17,14 @@ ntw ()
                         ;;
                     *'New Access'*)
                         # wait for a valid SSID
-                        until iwgetid > /dev/null; do
+                        until "$iwgetid" > /dev/null; do
                             sleep .1
                         done
 
-                        var=$(iwgetid -r)
+                        var=$("$iwgetid" -r)
                         ;;
                     init)
-                        var=$(iwgetid -r)
+                        var=$("$iwgetid" -r)
                 esac
 
                 echo "N$a$t ${var:-Disconnected}"
