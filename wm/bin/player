@@ -3,7 +3,7 @@
 # mpd control
 
 # exit if mpd isn't running
-pgrep -x mpd || exit 1
+pgrep -x mpd > /dev/null || exit 1
 
 mpc "$1" > /dev/null
 
