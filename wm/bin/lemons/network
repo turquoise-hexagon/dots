@@ -1,12 +1,38 @@
 # sourced by 'panel'
 
 ntw ()
-    while :; do
-        var=$(/sbin/iwgetid -r)
+{
+    # add utils
+    PATH=$PATH:/sbin
 
-        echo "N$a$t ${var:-Disconnected}"
+    # ensure network block isn't empty on startup
+    { echo init; iwevent 2> /dev/null; } |
+        while read -r event; do
+            case $event in
+                init|*'New Access'*)
 
-        sleep 2
-    done
+                    # pattern matching
+                    case $event in
+                        *'Not-Associated'*)
+                            var=Disconnected
+                            ;;
+                        *'New Access'*)
+                            # wait for a valid SSID
+                            until iwgetid > /dev/null; do
+                                sleep .1
+                            done
+
+                            var=$(iwgetid -r)
+                            ;;
+                        init)
+                            var=$(iwgetid -r)
+
+                            var=${var:-Disconnected}
+                    esac
+
+                    echo "N$a$t $var"
+            esac
+        done
+}
 
 # vim: ft=sh
