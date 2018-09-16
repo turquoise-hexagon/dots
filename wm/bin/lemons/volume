@@ -6,7 +6,7 @@ vol ()
     { echo init; pactl subscribe 2> /dev/null; } |
         while read -r event; do
             case $event in
-                init|*'sink #0')
+                init | *'sink #0'*)
                     var=$(pactl list sinks)
 
                     # pattern matching

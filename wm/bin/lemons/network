@@ -2,37 +2,34 @@
 
 ntw ()
 {
-    # add utils
+    # add wireless tools
     PATH=$PATH:/sbin
 
     # ensure network block isn't empty on startup
-    { echo init; iwevent 2> /dev/null; } |
-        while read -r event; do
-            case $event in
-                init|*'New Access'*)
+    { echo init; iwevent 2> /dev/null; } | while read -r event; do
+        case $event in
+            init | *'Not-Associated'*)
 
-                    # pattern matching
-                    case $event in
-                        *'Not-Associated'*)
-                            var=Disconnected
-                            ;;
-                        *'New Access'*)
-                            # wait for a valid SSID
-                            until iwgetid > /dev/null; do
-                                sleep .1
-                            done
+                # pattern matching
+                case $event in
+                    *'Not-Associated'*)
+                        var=Disconnected
+                        ;;
+                    *'New Access'*)
+                        # wait for a valid SSID
+                        until iwgetid > /dev/null; do
+                            sleep .1
+                        done
 
-                            var=$(iwgetid -r)
-                            ;;
-                        init)
-                            var=$(iwgetid -r)
+                        var=$(iwgetid -r)
+                        ;;
+                    init)
+                        var=$(iwgetid -r)
+                esac
 
-                            var=${var:-Disconnected}
-                    esac
-
-                    echo "N$a$t $var"
-            esac
-        done
+                echo "N$a$t ${var:-Disconnected}"
+        esac
+    done
 }
 
 # vim: ft=sh
