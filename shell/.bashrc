@@ -1,5 +1,5 @@
-# if not interactive, return
-[[ $- =~ i ]] || return
+# exit if not interactive
+[[ $PS1 ]] || return
 
 # ---
 # settings
