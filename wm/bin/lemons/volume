@@ -2,8 +2,8 @@
 
 vol ()
 {
-    # ensure the block isn't empty
-    { echo init; pactl subscribe; } | while read -r event; do
+    # ensure volume block isn't empty on startup
+    { echo init; pactl subscribe 2> /dev/null; } | while read -r event; do
         case $event in
             init|*'sink #0')
                 var=$(pactl list sinks)
