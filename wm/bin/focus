@@ -2,6 +2,7 @@
 #
 # focus windows with bspwm
 
+# exit when fullscreen
 bspc query -N -n focused.fullscreen > /dev/null && exit
 
 case $1 in
