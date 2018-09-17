@@ -32,4 +32,4 @@ xrdb ~/.Xresources
 # window manager
 # ---
 
-exec bspwm > .bspwm.log 2>&1
+exec bspwm
