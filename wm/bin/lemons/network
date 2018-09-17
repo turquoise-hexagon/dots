@@ -6,7 +6,7 @@ ntw ()
 
     {
         echo init
-        # subscribe to network manager events via a file
+        # https://raw.github.com/turquoise-hexagon/bin/master/ssid
         inotifywait -e close_write -m "$file" 2> /dev/null
     } |
         while read -r event; do
