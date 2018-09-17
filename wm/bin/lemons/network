@@ -2,34 +2,21 @@
 
 ntw ()
 {
-    # add wireless tools
-    PATH=$PATH:/sbin
+    file=/tmp/ssid
 
-    # ensure network block isn't empty on startup
-    { echo init; iwevent 2> /dev/null; } | while read -r event; do
-        case $event in
-            init| *'New Access'*)
+    {
+        echo init
+        # subscribe to network manager events via a file
+        inotifywait -e close_write -m "$file" 2> /dev/null
+    } |
+        while read -r event; do
+            read -r var < $file
 
-                # pattern matching
-                case $event in
-                    *'Not-Associated'*)
-                        var=Disconnected
-                        ;;
-                    *'New Access'*)
-                        # wait for a valid SSID
-                        until iwgetid > /dev/null; do
-                            sleep .1
-                        done
+            # fallback to disconnected
+            var=${var:-Disconnected}
 
-                        var=$(iwgetid -r)
-                        ;;
-                    init)
-                        var=$(iwgetid -r)
-                esac
-
-                echo "N$a$t ${var:-Disconnected}"
-        esac
-    done
+            echo "N$a$t $var"
+        done
 }
 
 # vim: ft=sh
