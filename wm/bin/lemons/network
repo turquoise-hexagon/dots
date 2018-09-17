@@ -4,11 +4,8 @@ ntw ()
 {
     file=/tmp/ssid
 
-    {
-        echo init
-        # https://raw.github.com/turquoise-hexagon/bin/master/ssid
-        inotifywait -e close_write -m "$file" 2> /dev/null
-    } |
+    # https://raw.github.com/turquoise-hexagon/bin/master/ssid
+    { echo init; inotifywait -qme close_write "$file"; }
         while read -r event; do
             read -r var < $file
 
