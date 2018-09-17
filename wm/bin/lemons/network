@@ -1,18 +1,19 @@
 # sourced by 'panel'
 
+# depends on https://raw.github.com/turquoise-hexagon/bin/master/ssid
+
 file=/tmp/ssid
 
-# ensure the block isn't empty on startup
+# ensure network block isn't empty on startup
 test -e "$file" || echo > $file
 
 ntw ()
 {
-    # https://raw.github.com/turquoise-hexagon/bin/master/ssid
-    tail -f "$file" 2> /dev/null |
-        while read -r event; do
-            read -r var < $file
+    tail -n 1 -f "$file" |
+        while read -r var; do
+            var=${var:-Disconnected}
 
-            echo "N$a$t ${var:-Disconnected}"
+            echo "N$a$t $var"
         done
 }
 
