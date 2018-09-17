@@ -5,15 +5,14 @@ ntw ()
     file=/tmp/ssid
 
     # https://raw.github.com/turquoise-hexagon/bin/master/ssid
-    { echo init; inotifywait -qme close_write "$file"; } |
-        while read -r event; do
-            read -r var < $file
+    tail -f "$file" 2> /dev/null | while read -r event; do
+        read -r var < $file
 
-            # fallback to disconnected
-            var=${var:-Disconnected}
+        # fallback to disconnected
+        var=${var:-Disconnected}
 
-            echo "N$a$t $var"
-        done
+        echo "N$a$t $var"
+    done
 }
 
 # vim: ft=sh
