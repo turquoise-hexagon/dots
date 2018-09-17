@@ -4,6 +4,9 @@
 # https://raw.github.com/turquoise-hexagon/bin/master/ssid
 file=/tmp/ssid
 
+# create it if necessary
+test -e "$file" || > $file
+
 ntw ()
 {
     # ensure network block isn't empty on startup
