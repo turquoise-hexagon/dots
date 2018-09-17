@@ -1,14 +1,12 @@
 # sourced by 'panel'
 
+# file populated by
+# https://raw.github.com/turquoise-hexagon/bin/master/ssid
 file=/tmp/ssid
-
-# create file if necessary
-test -e "$file" || > $file
 
 ntw ()
 {
     # ensure network block isn't empty on startup
-    # https://raw.github.com/turquoise-hexagon/bin/master/ssid
     { echo init; inotifywait -qme close_write "$file"; } |
         while read -r event; do
             read -r var < $file
