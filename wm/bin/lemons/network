@@ -1,23 +1,18 @@
 # sourced by 'panel'
 
-# file populated by
-# https://raw.github.com/turquoise-hexagon/bin/master/ssid
 file=/tmp/ssid
 
-# create it if necessary
-test -e "$file" || > $file
+# ensure the block isn't empty on startup
+test -e "$file" || echo > $file
 
 ntw ()
 {
-    # ensure network block isn't empty on startup
-    { echo init; inotifywait -qme close_write "$file"; } |
+    # https://raw.github.com/turquoise-hexagon/bin/master/ssid
+    tail -f "$file" 2> /dev/null |
         while read -r event; do
             read -r var < $file
 
-            # fallback to disconnected
-            var=${var:-Disconnected}
-
-            echo "N$a$t $var"
+            echo "N$a$t ${var:-Disconnected}"
         done
 }
 
