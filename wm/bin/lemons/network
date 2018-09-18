@@ -1,19 +1,12 @@
 # sourced by 'panel'
 
 ntw ()
-{
-    file=/tmp/ssid
+    while :; do
+        var=$(/sbin/iwgetid -r)
 
-    # ensure network block isn't empty on startup
-    test -e "$file" || echo > $file
+        echo "N$a$t ${var:-Disconnected}"
 
-    # https://raw.github.com/turquoise-hexagon/bin/master/ssid
-    tail -n 1 -f "$file" |
-        while read -r var; do
-            var=${var:-Disconnected}
-
-            echo "N$a$t $var"
-        done
-}
+        sleep 2
+    done
 
 # vim: ft=sh
