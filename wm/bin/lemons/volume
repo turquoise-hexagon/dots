@@ -3,10 +3,10 @@
 vol ()
 {
     # ensure volume block isn't empty on startup
-    { echo init; pactl subscribe 2> /dev/null; } |
+    { echo 'sink #0'; pactl subscribe 2> /dev/null; } |
         while read -r event; do
             case $event in
-                init | *'sink #0'*)
+                *'sink #0'*)
                     var=$(pactl list sinks)
 
                     # pattern matching
