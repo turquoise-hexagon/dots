@@ -13,7 +13,7 @@ bat ()
 
         echo "B$a$icon$t $var%"
 
-        sleep 10
+        sleep 30
     done
 
 # vim: ft=sh
