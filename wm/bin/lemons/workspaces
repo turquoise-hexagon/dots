@@ -2,21 +2,23 @@
 
 wks ()
 {
-    bspc subscribe | while read -r event; do
-        # we want word splitting
-        IFS=:; set -- ${event#?}
+    bspc subscribe |
+        while read -r event; do
+            # we want word splitting
+            IFS=:; set -- ${event?}
 
-        var=
-        while [ $# -gt 0 ]; do
-            case $1 in
-                [OFU]*) var=$var$a$t;;
-                [ofu]*) var=$var
-            esac
-            shift
+            var=
+            while [ "$1" ]; do
+                case $1 in
+                    [OFU]*) var=$var$a$t;;
+                    [ofu]*) var=$var
+                esac
+
+                shift
+            done
+
+            echo "W$var"
         done
-
-        echo "W$var"
-    done
 }
 
 # vim: ft=sh
