@@ -14,10 +14,6 @@ _ ()
     fi
 
 case $1 in
-    toggle)
-        pactl set-sink-mute 0 "$1"
-        ;;
-    *)
-        pactl set-sink-volume 0 "$1"
-        _
+    toggle) pactl set-sink-mute 0 "$1";;
+    *) pactl set-sink-volume 0 "$1"; _
 esac

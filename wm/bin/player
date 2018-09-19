@@ -8,9 +8,7 @@ pgrep -x mpd > /dev/null || exit 1
 mpc "$1" > /dev/null
 
 case $1 in
-    toggle)
-        exit
-        ;;
+    toggle) exit;;
     *)
         # send a notification when fullscreen
         if bspc query -N -n focused.fullscreen > /dev/null; then

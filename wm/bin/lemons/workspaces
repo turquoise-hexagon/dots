@@ -5,7 +5,7 @@ wks ()
     bspc subscribe |
         while read -r event; do
             # we want word splitting
-            IFS=:; set -- ${event?}
+            IFS=:; set -- $event
 
             var=
             while [ "$1" ]; do
