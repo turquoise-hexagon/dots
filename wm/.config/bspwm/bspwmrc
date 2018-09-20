@@ -19,8 +19,8 @@ cfg presel_feedback_color '#EEEEEE'
 cfg focused_border_color '#EEEEEE'
 cfg normal_border_color '#032C36'
 
-cfg border_width 7
-cfg window_gap 7
+cfg border_width 6
+cfg window_gap 6
 
 cfg split_ratio 0.5
 

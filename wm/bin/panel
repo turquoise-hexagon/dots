@@ -28,7 +28,7 @@ mkfifo "$fifo"
 . ~/.config/lemonbar/panel
 
 # accent color shortcuts
-a="%{F$accent}"; t="%{F-}"
+a="%{F$accent}"; t='%{F-}'
 
 wks > $fifo &
 mus > $fifo &
