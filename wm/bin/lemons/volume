@@ -18,7 +18,7 @@ vol ()
                     # we want word splitting
                     set -- ${var#*Volume:}; var=$4
 
-                    echo "V$a$icon$t $var"
+                    echo "V$icon $var"
             esac
         done
 }

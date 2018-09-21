@@ -2,7 +2,7 @@
 
 clk ()
     while :; do
-        echo "C$a$t $(date +'%a %R')"
+        echo "C$(date +'%A %R')"
 
         sleep 10
     done

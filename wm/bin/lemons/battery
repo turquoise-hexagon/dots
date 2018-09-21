@@ -11,7 +11,7 @@ bat ()
             3) icon=
         esac
 
-        echo "B$a$icon$t $var%"
+        echo "B$icon $var%"
 
         sleep 10
     done

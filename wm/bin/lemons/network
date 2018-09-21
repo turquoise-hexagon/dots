@@ -7,7 +7,7 @@ ntw ()
         # fallback to down
         var=${var:-Down}
 
-        echo "N$a$t $var"
+        echo "N $var"
 
         sleep 2
     done

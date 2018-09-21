@@ -27,8 +27,8 @@ mkfifo "$fifo"
 
 . ~/.config/lemonbar/panel
 
-# accent color shortcuts
-a="%{F$accent}"; t='%{F-}'
+# accent colors shortcuts
+a="%{B$a}"; b="%{B$b}"; c="%{B$c}"; t='%{B-}'
 
 wks > $fifo &
 mus > $fifo &
@@ -47,7 +47,7 @@ while read -r line; do
         B*) bat=${line#?}
     esac
 
-    echo "%{l}  $wks  $mus%{c}$clk%{r}$ntw  $vol  $bat  "
+    echo "%{l}$a  $wks  $c  $mus  $t%{c}$clk%{r}$c  $ntw  $b  $vol  $bat  $t"
 done < $fifo |
     lemonbar -g "x$height" \
         -F "$foreground" \
