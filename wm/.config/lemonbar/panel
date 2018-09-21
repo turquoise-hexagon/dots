@@ -4,10 +4,10 @@ height=35
 
 a='#37BF8D'
 b='#5394C9'
-c='#445967'
+c='#3C4F5B'
 
 foreground='#EEEEEE'
-background='#3C4F5B'
+background='#445967'
 
 font=-t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1
 icons=-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
