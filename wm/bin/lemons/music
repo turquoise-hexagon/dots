@@ -4,7 +4,7 @@ mus ()
     while :; do
         # pattern matching
         case $(mpc) in
-            *paused*) var=Paused;;
+            *paused*) var='Not playing';;
             *) var=$(mpc current)
         esac
 

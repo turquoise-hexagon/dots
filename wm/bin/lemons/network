@@ -4,7 +4,10 @@ ntw ()
     while :; do
         var=$(/sbin/iwgetid -r)
 
-        echo "N$a$t ${var:-Disconnected}"
+        # fallback to down
+        var=${var:-Down}
+
+        echo "N$a$t $var"
 
         sleep 2
     done
