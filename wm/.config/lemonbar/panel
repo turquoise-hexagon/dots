@@ -1,11 +1,12 @@
 # panel config
+# colors : hal
 
 height=35
 
-# colors : hal
 a='#37BF8D'
 b='#5394C9'
 c='#3C4F5B'
+
 foreground='#EEEEEE'
 background='#445967'
 
