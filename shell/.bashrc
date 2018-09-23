@@ -9,7 +9,7 @@ HISTSIZE=10000
 HISTFILESIZE=10000
 HISTCONTROL=ignoredups
 
-PS1='\[\e[95m\]\w\[\e[0m\] '
+PS1='\[\e[95m\]\W\[\e[0m\] '
 
 # ---
 # aliases
