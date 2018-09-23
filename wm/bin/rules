@@ -6,7 +6,7 @@
 bspc query -N -n > /dev/null || exit
 
 # spawn in preselections first, exit in that case
-presel=$(bspc query -N -n last.local.!automatic)
+presel=$(bspc query -N -n newest.local.!automatic)
 test "$presel" && { echo "node = $presel"; exit; }
 
 # NOTE : use automatic_scheme when available
