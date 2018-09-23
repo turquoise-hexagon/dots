@@ -17,7 +17,7 @@ cfg single_monocle true
 
 cfg presel_feedback_color '#EEEEEE'
 cfg focused_border_color '#EEEEEE'
-cfg normal_border_color '#021B21'
+cfg normal_border_color '#032C36'
 
 cfg border_width 6
 cfg window_gap 6
