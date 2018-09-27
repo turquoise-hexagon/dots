@@ -22,8 +22,6 @@ cfg normal_border_color '#032C36'
 cfg border_width 5
 cfg window_gap 5
 
-cfg split_ratio 0.52
-
 # ---
 # utils
 # ---
