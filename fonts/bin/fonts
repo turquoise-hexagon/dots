@@ -2,6 +2,6 @@
 #
 # refresh fonts
 
-mkfontdir ~/.local/share/fonts
-xset +fp ~/.local/share/fonts
+mkfontdir ~/.fonts
+xset +fp ~/.fonts
 xset fp rehash
