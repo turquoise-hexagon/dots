@@ -4,7 +4,13 @@ bat ()
     while :; do
         read -r var < /sys/class/power_supply/BAT0/capacity
 
-        case $((var == 100 ? 0 : var >= 75 ? 1 : var >= 50 ? 2 : var >= 25 ? 3 : 4)) in
+        case \
+            $((
+                var == 100 ? 0 :
+                var >= 75  ? 1 :
+                var >= 50  ? 2 :
+                var >= 25  ? 3 : 4
+            )) in
             0) icon=;;
             1) icon=;;
             2) icon=;;
