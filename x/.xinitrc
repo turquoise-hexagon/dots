@@ -25,8 +25,8 @@ xset s off -dpms
 # ---
 
 xrdb ~/.Xresources
+xset +fp ~/.fonts
 ~/.fehbg
-fonts
 
 # ---
 # window manager

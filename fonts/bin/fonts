@@ -1,7 +1,0 @@
-#!/bin/sh
-#
-# refresh fonts
-
-mkfontdir ~/.fonts
-xset +fp ~/.fonts
-xset fp rehash
