@@ -39,7 +39,7 @@ super + {t,Tab,f}
 super + {h,j,k,l}
     bspc node -p {west,south,north,east}
 
-super + Escape
+super + c
     bspc node -p cancel
 
 # replace presel and tile
