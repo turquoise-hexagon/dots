@@ -10,8 +10,8 @@ wks ()
             var=
             while [ "$1" ]; do
                 case $1 in
-                    [OFU]*) var=$var;;
-                    [ofu]*) var=$var
+                    [OFU]*) var=$var;;
+                    [ofu]*) var=$var
                 esac
 
                 shift

@@ -5,7 +5,7 @@ ntw ()
         var=$(/sbin/iwgetid -r)
 
         # fallback to down
-        echo "N ${var:-Down}"
+        echo "N ${var:-Down}"
 
         sleep 2
     done

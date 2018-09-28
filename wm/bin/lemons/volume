@@ -11,8 +11,8 @@ vol ()
 
                     # pattern matching
                     case $var in
-                        *'Mute: yes'*) icon=;;
-                        *) icon=
+                        *'Mute: yes'*) icon=;;
+                        *) icon=
                     esac
 
                     # we want word splitting

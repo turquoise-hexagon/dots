@@ -8,7 +8,7 @@ mus ()
             *) var=$(mpc current)
         esac
 
-        echo "M $var"
+        echo "M $var"
 
         mpc idle
     done
