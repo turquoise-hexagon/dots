@@ -24,9 +24,9 @@ xset s off -dpms
 # rice
 # ---
 
-xset +fp ~/.local/share/fonts
 xrdb ~/.Xresources
 ~/.fehbg
+fonts
 
 # ---
 # window manager
