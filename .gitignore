@@ -1,5 +1,8 @@
 fonts/.fonts/.uuid
 
+music/.config/ncmpcpp/lyrics
+music/.config/ncmpcpp/ncmpcpp
+
 music/.config/mpd/database
 music/.config/mpd/log
 music/.config/mpd/pid
@@ -7,5 +10,4 @@ music/.config/mpd/playlists
 music/.config/mpd/state
 music/.config/mpd/sticker
 
-music/.config/ncmpcpp/lyrics
-music/.config/ncmpcpp/ncmpcpp
+vim/.vim/.*
