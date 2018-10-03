@@ -10,4 +10,4 @@ music/.config/mpd/playlists
 music/.config/mpd/state
 music/.config/mpd/sticker
 
-vim/.vim/.*
+nvim/.config/nvim/.*

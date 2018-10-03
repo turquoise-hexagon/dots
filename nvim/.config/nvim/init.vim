@@ -33,12 +33,10 @@ set wrap
 set linebreak
 set breakindent
 
-" fix posix syntax
-let g:is_posix=1
-
 " interface
 set noruler
 set nonumber
-set vb t_vb=
+set guicursor=
+set laststatus=1
 set shortmess=actI
 colorscheme cherry

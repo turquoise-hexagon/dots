@@ -3,7 +3,7 @@
 hi clear
 set background=dark
 
-if exists ("syntax on")
+if exists ("g:syntax on")
     syntax reset
 endif
 
