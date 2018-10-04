@@ -1,16 +1,16 @@
-" general
+" vim
 set nocompatible
 set encoding=utf-8
 
 " syntax
 filetype indent plugin on
-syntax enable
+set noswapfile
 
 " swap and sessions
 set hidden
 set noswapfile
 
-" case insensitive search
+" case insensitive
 set ignorecase
 set smartcase
 set infercase
@@ -19,18 +19,19 @@ set infercase
 set hlsearch
 set incsearch
 
-" sane backspace
+" better backspace
 set backspace=indent,eol,start
 
-" tab
+" tabs
 set expandtab
-set shiftwidth=4
+set nosmarttab
 set tabstop=4
+set shiftwidth=4
 
 " indent
-set autoindent
 set wrap
 set linebreak
+set autoindent
 set breakindent
 
 " interface
@@ -39,4 +40,6 @@ set nonumber
 set guicursor=
 set laststatus=1
 set shortmess=actI
+
+" colors
 colorscheme cherry
