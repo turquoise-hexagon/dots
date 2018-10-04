@@ -4,7 +4,7 @@ set encoding=utf-8
 
 " syntax
 filetype indent plugin on
-set noswapfile
+syntax enable
 
 " swap and sessions
 set hidden
