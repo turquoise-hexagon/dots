@@ -9,10 +9,10 @@ off_y=30
 foreground='#021B21'
 background='#EEEEEE'
 
-font=-t-violet-medium-r-normal--11-100-75-75-c-100-iso8859-1
+font=-t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1
 
 # caution, hardcoded
 font_w=6
-font_h=11
+font_h=10
 
 # vim: ft=sh
