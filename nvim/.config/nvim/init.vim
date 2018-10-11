@@ -23,8 +23,8 @@ set incsearch
 set backspace=indent,eol,start
 
 " tabs
+set smarttab
 set expandtab
-set nosmarttab
 set tabstop=4
 set shiftwidth=4
 
