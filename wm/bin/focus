@@ -71,7 +71,7 @@ bspc query -T -n | jq -r '
         # get the closest window
         echo "$windows" |
         {
-            read -r diff_x diff_y focus
+            read -r foo bar focus
 
             # teleport pointer on the focused window
             bspc config pointer_follows_focus true
