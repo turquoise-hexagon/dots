@@ -69,13 +69,10 @@ bspc query -T -n | jq -r '
         test "$windows" || exit
 
         # get the closest window
-        echo "$windows" |
-        {
-            read -r foo bar focus
+        set -- $windows; focus=$3
 
-            # teleport pointer on the focused window
-            bspc config pointer_follows_focus true
-            bspc node "$focus" -f
-            bspc config pointer_follows_focus false
-        }
+        # teleport pointer on the focused window
+        bspc config pointer_follows_focus true
+        bspc node "$focus" -f
+        bspc config pointer_follows_focus false
     }
