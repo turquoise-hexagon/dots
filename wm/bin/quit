@@ -1,8 +1,0 @@
-#!/bin/sh
-#
-# properly exit bspwm
-
-# ensure panel cleanup
-pkill -x panel
-
-bspc quit

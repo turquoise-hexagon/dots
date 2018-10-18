@@ -1,5 +1,0 @@
-! ~/.xres
-#include ".xres/rofi"
-#include ".xres/urxvt"
-#include ".xres/fonts"
-#include ".xres/colors"
