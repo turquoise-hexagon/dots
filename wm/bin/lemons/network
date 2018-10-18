@@ -1,0 +1,13 @@
+# sourced by 'panel'
+
+ntw ()
+    while :; do
+        var=$(/sbin/iwgetid -r)
+
+        # fallback to down
+        echo "N ${var:-Down}"
+
+        sleep 2
+    done
+
+# vim: ft=sh

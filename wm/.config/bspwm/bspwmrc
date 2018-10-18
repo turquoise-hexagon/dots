@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+# bspwm config
+
+cfg () bspc config "$@"
+
+# ---
+# settings
+# ---
+
+bspc monitor -d 1 2 3 4 5
+
+cfg focus_follows_pointer true
+cfg borderless_monocle true
+cfg gapless_monocle true
+cfg single_monocle true
+
+cfg presel_feedback_color '#EEEEEE'
+cfg focused_border_color '#EEEEEE'
+cfg normal_border_color '#032C36'
+
+cfg border_width 5
+cfg window_gap 5
+
+# ---
+# utils
+# ---
+
+cfg external_rules_command "$(command -v rules)"
+
+panel &

@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# mpd control
+
+# exit if mpd isn't running
+pgrep -x mpd > /dev/null || exit 1
+
+mpc "$1" > /dev/null
+
+case $1 in
+    toggle) exit;;
+    *)
+        # send a notification when fullscreen
+        if bspc query -N -n focused.fullscreen > /dev/null; then
+            popup "$(mpc current)"
+        fi
+esac

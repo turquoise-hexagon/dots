@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# volume control
+
+_ ()
+    # send notification when fullscreen
+    if bspc query -N -n focused.fullscreen > /dev/null; then
+        var=$(pactl list sinks)
+
+        # we want word splitting
+        set -- ${var#*Volume:}; var=$4
+
+        popup "Volume : $var"
+    fi
+
+case $1 in
+    toggle) pactl set-sink-mute 0 "$1";;
+    *) pactl set-sink-volume 0 "$1"; _
+esac

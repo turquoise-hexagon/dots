@@ -1,0 +1,31 @@
+# ---
+# directories
+# ---
+
+ncmpcpp_directory = "~/.config/ncmpcpp/ncmpcpp"
+lyrics_directory = "~/.config/ncmpcpp/lyrics"
+
+# ---
+# general
+# ---
+
+autocenter_mode = "yes"
+centered_cursor = "yes"
+
+# ---
+# interface
+# ---
+
+playlist_display_mode = "classic"
+song_list_format = "$6%a $4- $3%t"
+playlist_disable_highlight_delay = "0"
+current_item_prefix = "$b"
+current_item_suffix = "$/b"
+
+titles_visibility = "no"
+header_visibility = "no"
+statusbar_visibility = "no"
+
+progressbar_look = "---"
+progressbar_color  = "black:b"
+progressbar_elapsed_color = "white"

@@ -1,0 +1,26 @@
+# sourced by 'panel'
+
+vol ()
+{
+    # ensure volume block isn't empty on startup
+    { echo 'sink #0'; pactl subscribe 2> /dev/null; } |
+        while read -r event; do
+            case $event in
+                *'sink #0'*)
+                    var=$(pactl list sinks)
+
+                    # pattern matching
+                    case $var in
+                        *'Mute: yes'*) icon=;;
+                        *) icon=
+                    esac
+
+                    # we want word splitting
+                    set -- ${var#*Volume:}; var=$4
+
+                    echo "V$icon $var"
+            esac
+        done
+}
+
+# vim: ft=sh

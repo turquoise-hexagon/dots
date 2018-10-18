@@ -1,0 +1,68 @@
+#!/bin/sh
+#
+# move windows with bspwm
+
+dir=$1
+
+node=$(bspc query -N -n)
+
+case $dir in
+    west)  fdim=width;  tdim=height; sign=-;;
+    east)  fdim=width;  tdim=height; sign=+;;
+    north) fdim=height; tdim=width;  sign=-;;
+    south) fdim=height; tdim=width;  sign=+
+esac
+
+# move floating windows
+floating ()
+{
+    percent=5
+
+    # get a percentage of the monitor horizontal resolution
+    var=$((`bspc query -T -m | jq .rectangle.width` * percent / 100))
+
+    [ "$fdim" = width  ] && { x=$sign$var; y=0; }
+    [ "$fdim" = height ] && { y=$sign$var; x=0; }
+
+    bspc node -v "$x" "$y"
+}
+
+# move tiled windows
+tiled ()
+{
+    # attempt to replace a preselection or to move a window
+    { bspc node -n "$dir.!automatic" || bspc node -s "$dir"; } && return
+
+    # exit if there is no parent window
+    parent=$(bspc query -N -n "$node#@parent"); test "$parent" || return
+
+    nod_dim=$(bspc query -T -n "$node"   | jq ".rectangle.$tdim")
+    par_dim=$(bspc query -T -n "$parent" | jq ".rectangle.$tdim")
+
+    if [ "$par_dim" -gt "$nod_dim" ]; then
+        # create a receptacle
+        # get the receptacle id
+        # replace the receptacle
+
+        bspc node "$parent" -p "$dir"
+        bspc node "$parent" -i
+
+        recept=$(bspc query -N "$parent#@parent" -n .descendant_of.leaf.!window)
+
+        bspc node "$node" -n "$recept"
+        bspc node "$parent" -B
+    else
+        node=$parent
+
+        tiled
+    fi
+}
+
+if bspc query -N -n focused.floating > /dev/null; then
+    floating
+else
+    # teleport pointer on the focused window
+    bspc config pointer_follows_focus true
+    tiled
+    bspc config pointer_follows_focus false
+fi

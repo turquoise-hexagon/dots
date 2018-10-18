@@ -1,0 +1,10 @@
+# sourced by 'panel'
+
+clk ()
+    while :; do
+        echo "C$(date +'%A %R')"
+
+        sleep 10
+    done
+
+# vim: ft=sh
