@@ -9,7 +9,7 @@ bspc query -N -n > /dev/null || exit
 presel=$(bspc query -N -n newest.local.!automatic)
 test "$presel" && { echo "node = $presel"; exit; }
 
-# NOTE : use automatic_scheme when available
+# TODO : use automatic_scheme when available
 bspc query -T -n | jq -r '
     [
          .rectangle.width
