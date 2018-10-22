@@ -2,7 +2,7 @@
 
 # ensure stow is installed
 if ! command -v stow > /dev/null; then
-    echo 'error : install stow first'
+    echo 'error : install stow first' >&2
     exit 1
 fi
 
