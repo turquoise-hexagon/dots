@@ -3,7 +3,7 @@
 # ---
 
 XF86MonBrightness{Up,Down}
-    brightness {inc,dec}
+    brightness {+,-} 10
 
 XF86Audio{Mute,RaiseVolume,LowerVolume}
     volume {toggle,+5%,-5%}
