@@ -8,7 +8,7 @@ min=30
 cur=$(brightnessctl g)
 max=$(brightnessctl m)
 
-var=$((cur $1 $2 * max / 100))
+var=$((cur $1 max * $2 / 100))
 
 [ "$var" -gt "$max" ] && var=$max
 [ "$var" -lt "$min" ] && var=$min
