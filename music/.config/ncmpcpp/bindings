@@ -14,11 +14,8 @@ def_key "k"
 def_key "l"
     next_column
 
-def_key ":"
-    execute_command
-
 def_key "/"
-    find
+    apply_filter
 
 def_key "space"
     pause
