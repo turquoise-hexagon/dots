@@ -11,17 +11,17 @@ test "$presel" && { echo "node = $presel"; exit; }
 
 # TODO : use automatic_scheme when available
 bspc query -T -n | jq -r '
-    [
-         .rectangle.width
-        ,.rectangle.height
-    ] |
-    @sh' |
-    {
-        read -r x y
+[
+     .rectangle.width
+    ,.rectangle.height
+] |
+@sh' |
+{
+    read -r x y
 
-        # split horizontally if x > y
-        # split vertically otherwise
-        [ "$x" -gt "$y" ] && split=east || split=south
+    # split horizontally if x > y
+    # split vertically otherwise
+    [ "$x" -gt "$y" ] && split=east || split=south
 
-        echo "split_dir = $split"
-    }
+    echo "split_dir = $split"
+}

@@ -14,26 +14,26 @@ w=$((font_w * ${#1} + 2 * padding))
 h=$((font_h         + 2 * padding))
 
 bspc query -T -m | jq -r '
-    [
-         .rectangle.width
-        ,.rectangle.height
-    ] |
-    @sh' |
+[
+     .rectangle.width
+    ,.rectangle.height
+] |
+@sh' |
+{
+    read -r mon_w mon_h
+
+    # get popup offset
+    off_x=$((mon_w - w - off_x))
+    off_y=$((mon_h - h - off_y))
+
     {
-        read -r mon_w mon_h
-
-        # get popup offset
-        off_x=$((mon_w - w - off_x))
-        off_y=$((mon_h - h - off_y))
-
-        {
-            echo "%{c}$1"
-            sleep "$time"
-        } |
-            lemonbar -g "${w}x${h}+$off_x+$off_y" \
-                -F "$foreground" \
-                -B "$background" \
-                -f "$font" \
-                -n "$name" \
-                -d &
-    }
+        echo "%{c}$1"
+        sleep "$time"
+    } |
+        lemonbar -g "${w}x${h}+$off_x+$off_y" \
+            -F "$foreground" \
+            -B "$background" \
+            -f "$font" \
+            -n "$name" \
+            -d &
+}
