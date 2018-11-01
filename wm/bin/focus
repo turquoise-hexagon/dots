@@ -14,41 +14,41 @@ esac
 
 # get values for the current window
 bspc query -T -n | jq -r '
-if .client.state == "floating" then
-    [
-         .client.floatingRectangle.x
-        ,.client.floatingRectangle.y
-    ]
-else
-    [
-         .client.tiledRectangle.x
-        ,.client.tiledRectangle.y
-    ]
-end |
-@sh' |
+    if .client.state == "floating" then
+        [
+             .client.floatingRectangle.x
+            ,.client.floatingRectangle.y
+        ]
+    else
+        [
+             .client.tiledRectangle.x
+            ,.client.tiledRectangle.y
+        ]
+    end |
+    @sh' |
 {
     read -r nod_x nod_y
 
     windows=$(
         bspc query -T -d | jq -r '
-        .. |
-        .? |
-        if .client.state == "floating" then
-            [
-                 .client.floatingRectangle.x
-                ,.client.floatingRectangle.y
-                ,.id
-            ]
-        elif .client.state == "tiled" then
-            [
-                 .client.tiledRectangle.x
-                ,.client.tiledRectangle.y
-                ,.id
-            ]
-        else
-            empty
-        end |
-        @sh'
+            .. |
+            .? |
+            if .client.state == "floating" then
+                [
+                     .client.floatingRectangle.x
+                    ,.client.floatingRectangle.y
+                    ,.id
+                ]
+            elif .client.state == "tiled" then
+                [
+                     .client.tiledRectangle.x
+                    ,.client.tiledRectangle.y
+                    ,.id
+                ]
+            else
+                empty
+            end |
+            @sh'
     )
 
     # sort windows

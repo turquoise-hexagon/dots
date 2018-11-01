@@ -14,11 +14,11 @@ w=$((font_w * ${#1} + 2 * padding))
 h=$((font_h         + 2 * padding))
 
 bspc query -T -m | jq -r '
-[
-     .rectangle.width
-    ,.rectangle.height
-] |
-@sh' |
+    [
+         .rectangle.width
+        ,.rectangle.height
+    ] |
+    @sh' |
 {
     read -r mon_w mon_h
 
