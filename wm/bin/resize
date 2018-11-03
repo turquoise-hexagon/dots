@@ -17,8 +17,8 @@ esac
 # get a percentage of the monitor resolution
 var=$((`bspc query -T -m | jq .rectangle."$dim"` * percent / 100))
 
-[ "$dir" = width  ] && { x=$sign$var; y=0; }
-[ "$dir" = height ] && { y=$sign$var; x=0; }
+[ "$dim" = width  ] && { x=$sign$var; y=0; }
+[ "$dim" = height ] && { y=$sign$var; x=0; }
 
 # try to resize in one direction
 # fall back to the other if it fails
