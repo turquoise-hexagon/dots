@@ -14,9 +14,7 @@ bspc query -T -n | jq -r '
     [
         .rectangle.width,
         .rectangle.height
-    ] |
-
-    @sh' |
+    ] | @sh' |
 {
     read -r x y
 

@@ -26,9 +26,7 @@ bspc query -T -n | jq -r '
             ,.client.floatingRectangle.y
             ,.id
         ]
-    end |
-
-    @sh' |
+    end | @sh' |
 {
     read -r nod_x nod_y nod
 
@@ -50,9 +48,7 @@ bspc query -T -n | jq -r '
                 ]
             else
                 empty
-            end |
-
-            @sh"
+            end | @sh"
     )
 
     # sort windows
