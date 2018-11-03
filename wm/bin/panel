@@ -5,7 +5,7 @@
 name=panel
 
 if xdo id -a "$name" > /dev/null; then
-    echo 'error : panel already running'
+    echo 'error : panel already running' >&2
     exit 1
 fi
 
