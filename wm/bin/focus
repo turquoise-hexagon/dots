@@ -6,10 +6,10 @@
 bspc query -N -n focused.fullscreen > /dev/null && exit
 
 case $1 in
-    east)  dir=x; sign=-ge;;
-    west)  dir=x; sign=-le;;
-    north) dir=y; sign=-le;;
-    south) dir=y; sign=-ge
+    east)  dir=x; sign=-gt;;
+    west)  dir=x; sign=-lt;;
+    north) dir=y; sign=-lt;;
+    south) dir=y; sign=-gt
 esac
 
 # get values for the current window
@@ -18,21 +18,19 @@ bspc query -T -n | jq -r '
         [
              .client.tiledRectangle.x
             ,.client.tiledRectangle.y
-            ,.id
         ]
     else
         [
              .client.floatingRectangle.x
             ,.client.floatingRectangle.y
-            ,.id
         ]
     end | @sh' |
 {
-    read -r nod_x nod_y nod
+    read -r nod_x nod_y
 
     windows=$(
         bspc query -T -d | jq -r "
-            .. | .? | select (.id != "$nod") |
+            .. | .? |
 
             if .client.state == \"tiled\" then
                 [
