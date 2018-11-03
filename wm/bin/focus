@@ -29,16 +29,16 @@ bspc query -T -n | jq -r '
     read -r nod_x nod_y
 
     windows=$(
-        bspc query -T -d | jq -r "
+        bspc query -T -d | jq -r '
             .. | .? |
 
-            if .client.state == \"tiled\" then
+            if .client.state == "tiled" then
                 [
                      .client.tiledRectangle.x
                     ,.client.tiledRectangle.y
                     ,.id
                 ]
-            elif .client.state == \"floating\" then
+            elif .client.state == "floating" then
                 [
                      .client.floatingRectangle.x
                     ,.client.floatingRectangle.y
@@ -46,7 +46,7 @@ bspc query -T -n | jq -r '
                 ]
             else
                 empty
-            end | @sh"
+            end | @sh'
     )
 
     # sort windows
