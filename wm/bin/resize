@@ -8,17 +8,17 @@ percent=10
 bspc query -N -n focused.floating > /dev/null && percent=5
 
 case $1 in
-    west)  dir=right; falldir=left; sign=-;;
-    east)  dir=right; falldir=left; sign=+;;
-    north) dir=top; falldir=bottom; sign=-;;
-    south) dir=top; falldir=bottom; sign=+
+    west)  dim=width;  dir=right; falldir=left;   sign=-;;
+    east)  dim=width;  dir=right; falldir=left;   sign=+;;
+    north) dim=height; dir=top;   falldir=bottom; sign=-;;
+    south) dim=height; dir=top;   falldir=bottom; sign=+
 esac
 
-# get a percentage of the monitor horizontal resolution
-var=$((`bspc query -T -m | jq .rectangle.width` * percent / 100))
+# get a percentage of the monitor resolution
+var=$((`bspc query -T -m | jq .rectangle."$dim"` * percent / 100))
 
-[ "$dir" = right ] && { x=$sign$var; y=0; }
-[ "$dir" = top   ] && { y=$sign$var; x=0; }
+[ "$dir" = width  ] && { x=$sign$var; y=0; }
+[ "$dir" = height ] && { y=$sign$var; x=0; }
 
 # try to resize in one direction
 # fall back to the other if it fails

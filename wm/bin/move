@@ -18,8 +18,8 @@ floating ()
 {
     percent=5
 
-    # get a percentage of the monitor horizontal resolution
-    var=$((`bspc query -T -m | jq .rectangle.width` * percent / 100))
+    # get a percentage of the monitor resolution
+    var=$((`bspc query -T -m | jq .rectangle."$fdim"` * percent / 100))
 
     [ "$fdim" = width  ] && { x=$sign$var; y=0; }
     [ "$fdim" = height ] && { y=$sign$var; x=0; }
