@@ -1,11 +1,8 @@
 #!/bin/sh
 #
-# teleport windows
+# teleport floating windows
 
 var=.client.floatingRectangle
-
-# make floating
-bspc node -t floating
 
 bspc query -T -n | jq -r "
         [
