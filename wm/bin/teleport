@@ -24,8 +24,6 @@ bspc query -T -n | jq -r "
     win_h=$(($4 - h))
 
     # move and resize window
-    bspc node \
-        -v "$win_x" "$win_y" \
-        -z right "$win_w" 0 \
-        -z bottom 0 "$win_h"
+    bspc node -v "$win_x" "$win_y" \
+        -z bottom_right "$win_w" "$win_h"
 }
