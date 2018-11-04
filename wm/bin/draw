@@ -19,9 +19,8 @@ slop -qf '%w %h %x %y' |
     # wait for our window to spawn
     # then move it and resize it
     bspc subscribe node_add |
-        while read -r event mon desk ip node; do
-            xdotool windowsize "$node" "$w" "$h"
-            xdotool windowmove "$node" "$x" "$y"
+        while read -r; do
+            teleport "$x" "$y" "$w" "$h"
 
             break
         done

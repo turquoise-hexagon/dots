@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+# teleport windows with bspwm
+
+# make floating
+bspc node -t floating
+
+var=".client.floatingRectangle"
+
+bspc query -T -n | jq -r "
+        [
+            $var.x,
+            $var.y,
+            $var.width,
+            $var.height
+        ] | @sh" |
+{
+    read -r x y w h
+
+    win_x=$(($1 - x))
+    win_y=$(($2 - y))
+
+    win_w=$(($3 - w))
+    win_h=$(($4 - h))
+
+    # move and resize window
+    bspc node \
+        -v "$win_x" "$win_y" \
+        -z right "$win_w" 0 \
+        -z bottom 0 "$win_h"
+}
