@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# move windows with bspwm
+# move windows
 
 dir=$1
 

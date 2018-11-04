@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# resize windows with bspwm
+# resize windows
 
 percent=10
 

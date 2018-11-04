@@ -2,8 +2,6 @@
 #
 # draw terminals
 
-bspc rule -a \* -o state=floating
-
 slop -qf '%w %h %x %y' |
 {
     read -r w h x y
