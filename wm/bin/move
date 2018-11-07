@@ -58,7 +58,8 @@ tiled ()
 
             return
         fi
-            node=$parent
+
+        node=$parent
     done
 }
 
