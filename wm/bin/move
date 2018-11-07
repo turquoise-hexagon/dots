@@ -57,9 +57,8 @@ tiled ()
             bspc node "$parent" -B
 
             return
-        else
-            node=$parent
         fi
+            node=$parent
     done
 }
 
