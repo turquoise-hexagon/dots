@@ -31,16 +31,10 @@ floating ()
 tiled ()
 {
     # attempt to replace a preselection or to move a window
-    {
-        bspc node -n "$dir.!automatic" || bspc node -s "$dir"
-    } &&
-        return
+    { bspc node -n "$dir.!automatic" || bspc node -s "$dir"; } && return
 
-    while
-        parent=$(bspc query -N -n "$node#@parent")
+    while parent=$(bspc query -N -n "$node#@parent"); test "$parent"; do
 
-        test "$parent"
-    do
         nod_dim=$(bspc query -T -n "$node"   | jq ".rectangle.$tdim")
         par_dim=$(bspc query -T -n "$parent" | jq ".rectangle.$tdim")
 
