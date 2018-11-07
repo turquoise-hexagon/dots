@@ -14,15 +14,15 @@ esac
 
 # get values for the current window
 bspc query -T -n | jq -r '
-    if .client.state == "tiled" then
-        [
-             .client.tiledRectangle.x
-            ,.client.tiledRectangle.y
-        ]
-    else
+    if .client.state == "floating" then
         [
              .client.floatingRectangle.x
             ,.client.floatingRectangle.y
+        ]
+    else
+        [
+             .client.tiledRectangle.x
+            ,.client.tiledRectangle.y
         ]
     end | @sh' |
 {
@@ -30,22 +30,20 @@ bspc query -T -n | jq -r '
 
     windows=$(
         bspc query -T -d | jq -r '
-            .. | .? |
+            .. | .? | select (.client.state != null) |
 
-            if .client.state == "tiled" then
-                [
-                     .client.tiledRectangle.x
-                    ,.client.tiledRectangle.y
-                    ,.id
-                ]
-            elif .client.state == "floating" then
+            if .client.state == "floating" then
                 [
                      .client.floatingRectangle.x
                     ,.client.floatingRectangle.y
                     ,.id
                 ]
             else
-                empty
+                [
+                     .client.tiledRectangle.x
+                    ,.client.tiledRectangle.y
+                    ,.id
+                ]
             end | @sh'
     )
 
