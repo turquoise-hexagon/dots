@@ -31,32 +31,38 @@ floating ()
 tiled ()
 {
     # attempt to replace a preselection or to move a window
-    { bspc node -n "$dir.!automatic" || bspc node -s "$dir"; } && return
+    {
+        bspc node -n "$dir.!automatic" || bspc node -s "$dir"
+    } &&
+        return
 
-    # exit if there is no parent window
-    parent=$(bspc query -N -n "$node#@parent"); test "$parent" || return
+    while
+        parent=$(bspc query -N -n "$node#@parent")
 
-    nod_dim=$(bspc query -T -n "$node"   | jq ".rectangle.$tdim")
-    par_dim=$(bspc query -T -n "$parent" | jq ".rectangle.$tdim")
+        test "$parent"
+    do
+        nod_dim=$(bspc query -T -n "$node"   | jq ".rectangle.$tdim")
+        par_dim=$(bspc query -T -n "$parent" | jq ".rectangle.$tdim")
 
-    if [ "$par_dim" -gt "$nod_dim" ]; then
-        # create a receptacle
-        # get the receptacle id
-        # replace the receptacle
+        if [ "$par_dim" -gt "$nod_dim" ]; then
+            # create a receptacle
+            # get the receptacle id
+            # replace the receptacle
 
-        bspc node "$parent" -p "$dir"
-        bspc node "$parent" -i
+            bspc node "$parent" -p "$dir" -i
 
-        recept=$(bspc query -N "$parent#@parent" -n .descendant_of.leaf.!window)
+            recept=$(bspc query -N "$parent#@parent" -n .descendant_of.leaf.!window)
 
-        bspc node "$node" -n "$recept"
-        bspc node "$parent" -B
-    else
-        node=$parent
+            bspc node "$node" -n "$recept"
+            bspc node "$parent" -B
 
-        tiled
-    fi
+            return
+        else
+            node=$parent
+        fi
+    done
 }
+
 
 if bspc query -N -n focused.floating > /dev/null; then
     floating

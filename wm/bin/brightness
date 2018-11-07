@@ -3,7 +3,7 @@
 # change brightness
 
 # set minimum brightness
-min=30
+min=25
 
 cur=$(brightnessctl g)
 max=$(brightnessctl m)
