@@ -16,13 +16,13 @@ esac
 bspc query -T -n | jq -r '
     if .client.state == "floating" then
         [
-             .client.floatingRectangle.x
-            ,.client.floatingRectangle.y
+            .client.floatingRectangle.x,
+            .client.floatingRectangle.y
         ]
     else
         [
-             .client.tiledRectangle.x
-            ,.client.tiledRectangle.y
+            .client.tiledRectangle.x,
+            .client.tiledRectangle.y
         ]
     end | @sh' |
 {
@@ -34,15 +34,15 @@ bspc query -T -n | jq -r '
 
             if .client.state == "floating" then
                 [
-                     .client.floatingRectangle.x
-                    ,.client.floatingRectangle.y
-                    ,.id
+                    .client.floatingRectangle.x,
+                    .client.floatingRectangle.y,
+                    .id
                 ]
             else
                 [
-                     .client.tiledRectangle.x
-                    ,.client.tiledRectangle.y
-                    ,.id
+                    .client.tiledRectangle.x,
+                    .client.tiledRectangle.y,
+                    .id
                 ]
             end | @sh'
     )
