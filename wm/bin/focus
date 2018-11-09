@@ -28,8 +28,8 @@ bspc query -T -n | jq -r '
 {
     read -r cur_x cur_y
 
-    # get values for all windows on the current desktop
     windows=$(
+        # get values for all windows on the current desktop
         bspc query -T -d | jq -r '
             .. | .? | select (.client.state != null) |
 

@@ -10,7 +10,7 @@ HISTFILESIZE=10000
 HISTCONTROL=ignoredups
 EDITOR=vim
 
-PS1='\[\e[95m\]\W\[\e[0m\] - '
+PS1='\[\e[95m\]\W\[\e[0m\] '
 
 # ---
 # aliases
