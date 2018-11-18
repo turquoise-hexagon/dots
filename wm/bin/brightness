@@ -4,7 +4,7 @@
 
 dir=/sys/class/backlight/intel_backlight
 
-# set minimum brightness 25
+# set minimum brightness
 min=25
 
 read -r cur < "$dir/brightness"
