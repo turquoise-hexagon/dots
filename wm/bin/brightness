@@ -2,15 +2,17 @@
 #
 # change brightness
 
-# set minimum brightness
+dir=/sys/class/backlight/intel_backlight
+
+# set minimum brightness 25
 min=25
 
-cur=$(brightnessctl g)
-max=$(brightnessctl m)
+read -r cur < "$dir/brightness"
+read -r max < "$dir/max_brightness"
 
 var=$((cur $1 max * $2 / 100))
 
 [ "$var" -gt "$max" ] && var=$max
 [ "$var" -lt "$min" ] && var=$min
 
-brightnessctl -q s "$var"
+echo "$var" > "$dir/brightness"

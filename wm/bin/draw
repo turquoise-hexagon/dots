@@ -4,9 +4,9 @@
 
 bspc rule -a \* -o state=floating
 
-slop -qf '%w %h %x %y' |
+slop -qf '%x %y %w %h' |
 {
-    read -r w h x y
+    read -r x y w h
 
     # take borders into account
     b=$(bspc config border_width)
