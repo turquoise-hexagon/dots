@@ -19,8 +19,8 @@ cfg presel_feedback_color '#EEEEEE'
 cfg focused_border_color '#EEEEEE'
 cfg normal_border_color '#032C36'
 
-cfg border_width 5
-cfg window_gap 5
+cfg border_width 7
+cfg window_gap 7
 
 # ---
 # utils
@@ -28,4 +28,4 @@ cfg window_gap 5
 
 cfg external_rules_command "$(command -v rules)"
 
-panel &
+pgrep -x panel > /dev/null || panel &
