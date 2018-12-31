@@ -4,14 +4,14 @@
 
 # get values from bspwm config
 s=$((`bspc config border_width` / 2))
-n=$(bspc config normal_border_color);  n=0x${n#?}
-f=$(bspc config focused_border_color); f=0x${f#?}
+color1=$(bspc config normal_border_color);  color1=0x${color1#?}
+color2=$(bspc config focused_border_color); color2=0x${color2#?}
 
 run ()
 {
     case $1 in
-        n) a=$f; b=$n;;
-        f) a=$n; b=$f
+        normal)  a=$color1; b=$color2;;
+        focused) a=$color2; b=$color1
     esac
 
     shift
@@ -21,6 +21,6 @@ run ()
 
 bspc subscribe node_geometry node_focus |
     while read -r var; do
-        run n $(bspc query -N -n .descendant_of.window)
-        run f $(bspc query -N -n .!descendant_of.window)
+        run normal  $(bspc query -N -n .descendant_of.window)
+        run focused $(bspc query -N -n .!descendant_of.window)
     done
