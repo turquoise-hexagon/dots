@@ -2,7 +2,7 @@
 
 ntw ()
     while :; do
-        var=$(/sbin/iwgetid -r)
+        var=$(iwgetid -r)
 
         # fallback to down
         echo "N ${var:-Down}"

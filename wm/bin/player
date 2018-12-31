@@ -2,10 +2,11 @@
 #
 # mpd control
 
-# exit if mpd isn't running
-pgrep -x mpd > /dev/null || exit 1
-
-mpc "$1" > /dev/null
+{
+    # exit if mpd isn't running
+    pgrep -x mpd && mpc "$1" || exit
+} \
+    > /dev/null
 
 case $1 in
     toggle) exit;;

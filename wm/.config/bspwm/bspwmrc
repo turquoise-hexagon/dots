@@ -17,10 +17,10 @@ cfg single_monocle true
 
 cfg presel_feedback_color '#EEEEEE'
 cfg focused_border_color '#EEEEEE'
-cfg normal_border_color '#032C36'
+cfg normal_border_color '#DCDCDC'
 
-cfg border_width 7
-cfg window_gap 7
+cfg border_width 6
+cfg window_gap 6
 
 # ---
 # utils
@@ -29,3 +29,4 @@ cfg window_gap 7
 cfg external_rules_command "$(command -v rules)"
 
 pgrep -x panel > /dev/null || panel &
+pgrep -x 2bspwm > /dev/null || 2bspwm &
