@@ -9,4 +9,4 @@ LC_LANG=en_US.UTF-8
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 # automatically start x on tty1
-if [[ ! $DISPLAY && $(tty) =~ 1 ]] && exec startx &> /dev/null
+[[ ! $DISPLAY && $(tty) =~ 1 ]] && exec startx &> /dev/null
