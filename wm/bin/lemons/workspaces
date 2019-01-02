@@ -8,7 +8,7 @@ wks ()
             IFS=:; set -- $event
 
             var=
-            while [ "$1" ]; do
+            while test "$1"; do
                 case $1 in
                     [OFU]*) var=$var;;
                     [ofu]*) var=$var
