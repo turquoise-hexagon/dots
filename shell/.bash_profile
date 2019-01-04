@@ -1,6 +1,6 @@
 # locales
-LC_ALL=en_US.UTF-8
-LC_LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_LANG=en_US.UTF-8
 
 # path
 [[ -d ~/bin ]] && PATH+=:/sbin:/usr/sbin:~/bin
