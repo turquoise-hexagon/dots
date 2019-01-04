@@ -13,6 +13,6 @@ case $1 in
     *)
         # send a notification when fullscreen
         if bspc query -N -n focused.fullscreen > /dev/null; then
-            popup "$(mpc current)"
+            dunstify -r 550 "$(mpc current)"
         fi
 esac

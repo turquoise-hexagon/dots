@@ -9,4 +9,4 @@ mkdir -p "$dir" || exit 1
 
 # disable compositor warning
 maim -qsu "$dir/$cur.png" &&
-    popup "Saved screenshot as $cur.png"
+    notify-send "Saved screenshot as $cur.png"
