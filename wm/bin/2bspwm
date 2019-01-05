@@ -19,7 +19,8 @@ run ()
     chwb2 -I "$a" -O "$b" -i "$s" -o "$s" "$@" 2> /dev/null
 }
 
-bspc subscribe node_geometry node_focus |
+# initial draw, and then subscribe to events
+{ echo; bspc subscribe node_geometry node_focus; } |
     while read -r var; do
         run normal  $(bspc query -N -n .descendant_of.window)
         run focused $(bspc query -N -n .!descendant_of.window)
