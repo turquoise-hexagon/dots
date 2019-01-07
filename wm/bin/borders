@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# 2bspwm
+# double borders
 
 # get values from bspwm config
 s=$((`bspc config border_width` / 2))

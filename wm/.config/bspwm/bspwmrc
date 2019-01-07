@@ -28,5 +28,5 @@ cfg window_gap 6
 
 cfg external_rules_command "$(command -v rules)"
 
-pgrep -x panel  > /dev/null || panel &
-pgrep -x 2bspwm > /dev/null || 2bspwm &
+pgrep -x panel   > /dev/null || panel &
+pgrep -x borders > /dev/null || borders &
