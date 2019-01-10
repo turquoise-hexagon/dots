@@ -4,7 +4,7 @@
 
 bspc rule -a \* -o state=floating
 
-slop -qf '%x %y %w %h' |
+slop -f '%x %y %w %h' |
 {
     read -r x y w h
 
