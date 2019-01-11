@@ -44,5 +44,5 @@ super + {_,shift} + q
 super + {_,shift} + {ampersand,eacute,quotedbl,apostrophe,parenleft}
     bspc {desktop -f,node -d} {1-5}
 
-super + {_,ctrl,shift,alt} + {h,j,k,l}
-    {focus,bspc node -p,move,resize} {west,south,north,east}
+super + {_,,shift,alt,ctrl} + {h,j,k,l}
+    {focus,move,resize,bspc node -p} {west,south,north,east}
