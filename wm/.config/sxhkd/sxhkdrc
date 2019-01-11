@@ -27,9 +27,6 @@ super + shift + r
 # window manager
 # ---
 
-super + {t,Tab,f}
-    bspc node -t ~{tiled,floating,fullscreen}
-
 super + c
     bspc node -p cancel
 
@@ -37,12 +34,15 @@ super + c
 super + r
     bspc node -n last.!automatic -t tiled
 
+super + {t,Tab,f}
+    bspc node -t ~{tiled,floating,fullscreen}
+
 super + {_,shift} + q
     {bspc node -c, quit}
-
-super + {_,ctrl,shift,alt} + {h,j,k,l}
-    {focus,bspc node -p,move,resize} {west,south,north,east}
 
 # caution, azerty keyboard
 super + {_,shift} + {ampersand,eacute,quotedbl,apostrophe,parenleft}
     bspc {desktop -f,node -d} {1-5}
+
+super + {_,ctrl,shift,alt} + {h,j,k,l}
+    {focus,bspc node -p,move,resize} {west,south,north,east}
