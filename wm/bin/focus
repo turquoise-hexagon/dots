@@ -56,12 +56,7 @@ bspc query -T -n | jq -r '
             {
                 # sort windows
                 while read -r col_1 col_2 col_3; do
-                    case \
-                        $((
-                            min_1 ?
-                            col_1  < min_1 ? 0 :
-                            col_1 == min_1 && col_2 < min_2 ? 1 : 2 : 3
-                         )) in
+                    case $((min_1 ? col_1 < min_1 ? 0 : col_1 == min_1 && col_2 < min_2 ? 1 : 2 : 3)) in
                          0|1|3) min_1=$col_1; min_2=$col_2; focus=$col_3
                     esac
                 done
