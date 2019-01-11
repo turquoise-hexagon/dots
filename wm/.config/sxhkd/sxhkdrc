@@ -30,9 +30,6 @@ super + shift + r
 super + {t,Tab,f}
     bspc node -t ~{tiled,floating,fullscreen}
 
-super + {h,j,k,l}
-    bspc node -p {west,south,north,east}
-
 super + c
     bspc node -p cancel
 
@@ -43,8 +40,8 @@ super + r
 super + {_,shift} + q
     {bspc node -c, quit}
 
-super + {_,shift,alt} + {Left,Down,Up,Right}
-    {focus,move,resize} {west,south,north,east}
+super + {_,ctrl,shift,alt} + {h,j,k,l}
+    {focus,bspc node -p,move,resize} {west,south,north,east}
 
 # caution, azerty keyboard
 super + {_,shift} + {ampersand,eacute,quotedbl,apostrophe,parenleft}
