@@ -27,12 +27,6 @@ super + shift + r
 # window manager
 # ---
 
-super + q
-    bspc node -c
-
-super + shift + q
-    quit
-
 super + {t,Tab,f}
     bspc node -t ~{tiled,floating,fullscreen}
 
@@ -45,6 +39,9 @@ super + c
 # replace presel and tile
 super + r
     bspc node -n last.!automatic -t tiled
+
+super + {_,shift} + q
+    {bspc node -c, quit}
 
 super + {_,shift,alt} + {Left,Down,Up,Right}
     {focus,move,resize} {west,south,north,east}
