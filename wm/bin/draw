@@ -19,9 +19,7 @@ slop -f '%x %y %w %h' |
     # wait for our window to spawn
     # then move it and resize it
     bspc subscribe node_add |
-        while read -r var; do
-            teleport "$x" "$y" "$w" "$h"
-
-            break
-        done
+    {
+        read -r _; teleport "$x" "$y" "$w" "$h"
+    }
 }

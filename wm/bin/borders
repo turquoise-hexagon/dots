@@ -21,7 +21,7 @@ draw ()
 
 # initial draw, and then subscribe to events
 { echo; bspc subscribe node_geometry node_focus; } |
-    while read -r var; do
+    while read -r _; do
         draw normal  $(bspc query -N -n .descendant_of.window)
         draw focused $(bspc query -N -n .!descendant_of.window)
     done
