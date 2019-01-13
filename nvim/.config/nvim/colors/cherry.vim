@@ -41,7 +41,7 @@ hi IncSearch       ctermfg=0       ctermbg=11      cterm=NONE
 hi NonText         ctermfg=0       ctermbg=NONE    cterm=NONE
 hi Pmenu           ctermfg=0       ctermbg=7       cterm=NONE
 hi PmenuSel        ctermfg=13      ctermbg=7       cterm=NONE
-hi LineNr          ctermfg=8       ctermbg=NONE    cterm=NONE
+hi LineNr          ctermfg=4       ctermbg=NONE    cterm=NONE
 hi ModeMsg         ctermfg=7       ctermbg=NONE    cterm=NONE
 hi StatusLine      ctermfg=7       ctermbg=NONE    cterm=NONE
 hi StatusLineNC    ctermfg=8       ctermbg=NONE    cterm=NONE
