@@ -2,7 +2,9 @@
 
 clk ()
     while :; do
-        echo "C$(date +'%A %R')"
+        var=$(date +'%A %R')
+
+        echo "C$var"
 
         sleep 10
     done

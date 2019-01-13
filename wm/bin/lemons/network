@@ -2,10 +2,10 @@
 
 ntw ()
     while :; do
-        var=$(iwgetid -r)
-
         # fallback to down
-        echo "N ${var:-Down}"
+        var=$(iwgetid -r) || var=Down
+
+        echo "N $var"
 
         sleep 2
     done
