@@ -20,7 +20,7 @@ hi Identifier      ctermfg=11      ctermbg=NONE    cterm=NONE
 hi Statement       ctermfg=6       ctermbg=NONE    cterm=NONE
 hi PreProc         ctermfg=12      ctermbg=NONE    cterm=NONE
 hi Type            ctermfg=1       ctermbg=NONE    cterm=NONE
-hi Special         ctermfg=6       ctermbg=NONE    cterm=NONE
+hi Special         ctermfg=11      ctermbg=NONE    cterm=NONE
 hi Ignore          ctermfg=4       ctermbg=NONE    cterm=NONE
 hi Error           ctermfg=0       ctermbg=1       cterm=NONE
 hi Todo            ctermfg=0       ctermbg=2       cterm=NONE
