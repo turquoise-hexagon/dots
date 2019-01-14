@@ -5,12 +5,12 @@ mus ()
         # pattern matching
         case $(mpc) in
             *paused*) var='Not playing';;
-            *) var=$(mpc current)
+            *)        var=$(mpc current)
         esac
 
         echo "M $var"
 
-        mpc idle
+        mpc idle player
     done
 
 # vim: ft=sh
