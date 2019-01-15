@@ -50,11 +50,11 @@ while read -r event; do
     echo "%{l}$a  $wks  $c  $mus  $t%{c}$clk%{r}$c  $ntw  $b  $vol  $bat  $t"
 done < $fifo |
     lemonbar -g "x$height" \
-    -F "$foreground" \
-    -B "$background" \
-    -f "$icons" \
-    -f "$font" \
-    -n "$name" &
+        -F "$foreground" \
+        -B "$background" \
+        -f "$icons" \
+        -f "$font" \
+        -n "$name" &
 
 # ensure proper fullscreen
 xdo lower -m -a "$name"
