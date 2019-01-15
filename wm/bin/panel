@@ -2,7 +2,15 @@
 #
 # lemonbar script
 
-name=panel
+name=panel; fifo=/tmp/panel
+
+. ~/.config/lemonbar/config
+
+# accent colors shortcuts
+a=%{B$accent1}
+b=%{B$accent2}
+c=%{B$accent3}
+t=%{B-}
 
 if xdo id -a "$name" > /dev/null; then
     echo 'error : panel already running' >&2
@@ -10,51 +18,43 @@ if xdo id -a "$name" > /dev/null; then
 fi
 
 # ensure proper panel script cleanup
-# ensure we don't get the same signal
+# ensure we don't get the same signal twice
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
-
-# source all panel modules
-for i in ~/bin/lemons/*; do
-    . "$i"
-done
-
-fifo=/tmp/panel
 
 if test -e "$fifo"; then
     rm "$fifo"
 fi
 mkfifo "$fifo"
 
-. ~/.config/lemonbar/panel
+# source all panel modules
+# and then run their functions
+for file in ~/bin/lemons/*; do
+    . "$file"
+done
 
-# accent colors shortcuts
-a="%{B$a}"; b="%{B$b}"; c="%{B$c}"; t='%{B-}'
+for func in wks mus clk ntw vol bat; do
+    "$func" > $fifo &
+done
 
-wks > $fifo &
-mus > $fifo &
-clk > $fifo &
-ntw > $fifo &
-vol > $fifo &
-bat > $fifo &
-
-while read -r line; do
-    case $line in
-        W*) wks=${line#?};;
-        M*) mus=${line#?};;
-        C*) clk=${line#?};;
-        N*) ntw=${line#?};;
-        V*) vol=${line#?};;
-        B*) bat=${line#?}
+while read -r event; do
+    case $event in
+        # remove identifier
+        W*) wks=${event#?};;
+        M*) mus=${event#?};;
+        C*) clk=${event#?};;
+        N*) ntw=${event#?};;
+        V*) vol=${event#?};;
+        B*) bat=${event#?}
     esac
 
     echo "%{l}$a  $wks  $c  $mus  $t%{c}$clk%{r}$c  $ntw  $b  $vol  $bat  $t"
 done < $fifo |
     lemonbar -g "x$height" \
-        -F "$foreground" \
-        -B "$background" \
-        -f "$font" \
-        -f "$icons" \
-        -n "$name" &
+    -F "$foreground" \
+    -B "$background" \
+    -f "$icons" \
+    -f "$font" \
+    -n "$name" &
 
 # ensure proper fullscreen
 xdo lower -m -a "$name"
