@@ -11,7 +11,6 @@ cfg () bspc config "$@"
 bspc monitor -d 1 2 3 4 5
 
 cfg focus_follows_pointer true
-cfg borderless_monocle true
 cfg gapless_monocle true
 cfg single_monocle true
 
