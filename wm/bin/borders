@@ -16,7 +16,7 @@ draw ()
 
     shift
 
-    chwb2 -I "$i" -O "$o" -i "$b" -o "$b" "$@"
+    chwb2 -I "$i" -O "$o" -i "$b" -o "$b" "$@" 2> /dev/null
 }
 
 # initial draw, and then subscribe to events
