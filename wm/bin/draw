@@ -2,6 +2,7 @@
 #
 # draw terminals
 
+# make the newly spawned window floating
 bspc rule -a \* -o state=floating
 
 slop -f '%x %y %w %h' |
@@ -20,6 +21,28 @@ slop -f '%x %y %w %h' |
     # then move it and resize it
     bspc subscribe node_add |
     {
-        read -r _; teleport "$x" "$y" "$w" "$h"
+        read -r _
+
+        # shortcut
+        var=.client.floatingRectangle
+
+        bspc query -T -n | jq -r "
+            [
+                $var.x,
+                $var.y,
+                $var.width,
+                $var.height
+            ] | @sh" |
+        {
+            read -r cur_x cur_y cur_w cur_h
+
+            x=$((x - cur_x))
+            y=$((y - cur_y))
+            w=$((w - cur_w))
+            h=$((h - cur_h))
+
+            # move and resize
+            bspc node -v "$x" "$y" -z bottom_right "$w" "$h"
+        }
     }
 }

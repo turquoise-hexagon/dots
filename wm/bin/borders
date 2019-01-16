@@ -3,25 +3,25 @@
 # double borders
 
 # get values from bspwm config
-s=$((`bspc config border_width` / 2))
+b=$((`bspc config border_width` / 2))
 color1=$(bspc config normal_border_color);  color1=0x${color1#?}
 color2=$(bspc config focused_border_color); color2=0x${color2#?}
 
 draw ()
 {
     case $1 in
-        normal)  a=$color1; b=$color2;;
-        focused) a=$color2; b=$color1
+        normal)  i=$color1; o=$color2;;
+        focused) i=$color2; o=$color1
     esac
 
     shift
 
-    chwb2 -I "$a" -O "$b" -i "$s" -o "$s" "$@" 2> /dev/null
+    chwb2 -I "$i" -O "$o" -i "$b" -o "$b" "$@"
 }
 
 # initial draw, and then subscribe to events
 { echo; bspc subscribe node_geometry node_focus; } |
     while read -r _; do
-        draw normal  $(bspc query -N -n .descendant_of.window)
-        draw focused $(bspc query -N -n .!descendant_of.window)
+        draw normal  $(bspc query -N -n .local.descendant_of.window.leaf.!fullscreen)
+        draw focused $(bspc query -N -n .local.!descendant_of.window.leaf.!fullscreen)
     done
