@@ -58,7 +58,6 @@ tiled ()
     done
 }
 
-
 if bspc query -N -n focused.floating > /dev/null; then
     floating
 else
