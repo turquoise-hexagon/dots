@@ -7,43 +7,39 @@ dir=$1
 node=$(bspc query -N -n)
 
 case $dir in
-    west)  fdim=width;  tdim=height; sign=-;;
-    east)  fdim=width;  tdim=height; sign=+;;
-    north) fdim=height; tdim=width;  sign=-;;
-    south) fdim=height; tdim=width;  sign=+
+    west)  fdim=w; tdim=height; sign=-;;
+    east)  fdim=w; tdim=height; sign=+;;
+    north) fdim=h; tdim=width;  sign=-;;
+    south) fdim=h; tdim=width;  sign=+
 esac
 
-# move floating windows
 floating ()
 {
     percent=5
 
     # get a percentage of the monitor resolution
-    var=$((`bspc query -T -m | jq .rectangle."$fdim"` * percent / 100))
+    var=$((`wattr "$fdim" "$(lsw -r)"` * percent / 100))
 
-    [ "$fdim" = width  ] && { x=$sign$var; y=0; }
-    [ "$fdim" = height ] && { y=$sign$var; x=0; }
+    [ "$fdim" = w ] && { x=$sign$var; y=0; }
+    [ "$fdim" = h ] && { y=$sign$var; x=0; }
 
     bspc node -v "$x" "$y"
 }
 
-# move tiled windows
 tiled ()
 {
-    # attempt to replace a preselection or to move a window
+    # attempt to replace a preselection
+    # or to move the window normally
     { bspc node -n "$dir.!automatic" || bspc node -s "$dir"; } && return
 
-    # exit if there is no parent window
     while parent=$(bspc query -N -n "$node#@parent"); do
-
-        nod_dim=$(bspc query -T -n "$node"   | jq ".rectangle.$tdim")
-        par_dim=$(bspc query -T -n "$parent" | jq ".rectangle.$tdim")
+        nod_dim=$(bspc query -T -n "$node"   | jshon -e rectangle -e "$tdim")
+        par_dim=$(bspc query -T -n "$parent" | jshon -e rectangle -e "$tdim")
 
         if [ "$par_dim" -gt "$nod_dim" ]; then
             # create a receptacle
-            # get the receptacle id
-            # replace the receptacle
-
+            # get its id
+            # replace it
             bspc node "$parent" -p "$dir" -i
 
             recept=$(bspc query -N "$parent#@parent" -n .descendant_of.leaf.!window)
