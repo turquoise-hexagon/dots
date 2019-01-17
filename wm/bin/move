@@ -34,7 +34,7 @@ tiled ()
     { bspc node -n "$dir.!automatic" || bspc node -s "$dir"; } && return
 
     # exit if there is no parent window
-    while parent=$(bspc query -N -n "$node#@parent"); test "$parent"; do
+    while parent=$(bspc query -N -n "$node#@parent"); do
 
         nod_dim=$(bspc query -T -n "$node"   | jq ".rectangle.$tdim")
         par_dim=$(bspc query -T -n "$parent" | jq ".rectangle.$tdim")

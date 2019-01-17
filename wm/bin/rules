@@ -10,17 +10,13 @@ presel=$(bspc query -N -n newest.local.!automatic)
 test "$presel" && { echo "node = $presel"; exit; }
 
 # TODO : use automatic_scheme when available
-bspc query -T -n | jq -r '
-    [
-        .rectangle.width,
-        .rectangle.height
-    ] | @sh' |
+wattr wh "$(pfw)" |
 {
-    read -r x y
+    read -r w h
 
-    # split horizontally if x > y
+    # split horizontally if w > h
     # split vertically otherwise
-    [ "$x" -gt "$y" ] && split=east || split=south
+    [ "$w" -gt "$h" ] && split=east || split=south
 
     echo "split_dir = $split"
 }

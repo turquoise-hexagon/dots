@@ -17,32 +17,12 @@ slop -f '%x %y %w %h' |
 
     urxvtc &
 
-    # wait for our window to spawn
+    # wait for the window to spawn
     # then move it and resize it
     bspc subscribe node_add |
     {
-        read -r _
+        read -r event mon desk ip node
 
-        # shortcut
-        var=.client.floatingRectangle
-
-        bspc query -T -n | jq -r "
-            [
-                $var.x,
-                $var.y,
-                $var.width,
-                $var.height
-            ] | @sh" |
-        {
-            read -r cur_x cur_y cur_w cur_h
-
-            x=$((x - cur_x))
-            y=$((y - cur_y))
-            w=$((w - cur_w))
-            h=$((h - cur_h))
-
-            # move and resize
-            bspc node -v "$x" "$y" -z bottom_right "$w" "$h"
-        }
+        wtp "$x" "$y" "$w" "$h" "$node"
     }
 }

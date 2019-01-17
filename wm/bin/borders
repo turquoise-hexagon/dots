@@ -16,12 +16,12 @@ draw ()
 
     shift
 
-    chwb2 -I "$i" -O "$o" -i "$b" -o "$b" "$@" 2> /dev/null
+    chwb2 -I "$i" -O "$o" -i "$b" -o "$b" $@ 2> /dev/null
 }
 
 # initial draw, and then subscribe to events
 { echo; bspc subscribe node_geometry node_focus; } |
     while read -r _; do
-        draw normal  $(bspc query -N -n .local.focused.!fullscreen)
-        draw focused $(bspc query -N -n .local.!focused.!fullscreen)
+        draw normal  "$(windows normal)"
+        draw focused "$(windows focused)"
     done
