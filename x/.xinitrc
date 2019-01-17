@@ -24,7 +24,7 @@ xset s off -dpms
 # rice
 # ---
 
-hsetroot -fill ~/.wall.jpg
+hsetroot -fill ~/.wall
 xrdb ~/.Xresources
 xset +fp ~/.fonts
 
