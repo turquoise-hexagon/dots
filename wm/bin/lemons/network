@@ -2,8 +2,8 @@
 
 ntw ()
     while :; do
-        # fallback to down
-        var=$(iwgetid -r) || var=Down
+        var=$(iwgetid -r)
+        var=${var:-Down} # fallback
 
         echo "N $var"
 
