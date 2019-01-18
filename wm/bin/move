@@ -7,10 +7,10 @@ dir=$1
 node=$(bspc query -N -n)
 
 case $dir in
-    west)  fdim=w; tdim=height; sign=-;;
-    east)  fdim=w; tdim=height; sign=+;;
-    north) fdim=h; tdim=width;  sign=-;;
-    south) fdim=h; tdim=width;  sign=+
+    west)  fdim=width;  tdim=height; sign=-;;
+    east)  fdim=width;  tdim=height; sign=+;;
+    north) fdim=height; tdim=width;  sign=-;;
+    south) fdim=height; tdim=width;  sign=+
 esac
 
 floating ()
@@ -18,10 +18,10 @@ floating ()
     percent=5
 
     # get a percentage of the monitor resolution
-    var=$((`wattr "$fdim" "$(lsw -r)"` * percent / 100))
+    var=$((`bspc query -T -m | jshon -e rectangle -e "$fdim"` * percent / 100))
 
-    [ "$fdim" = w ] && { x=$sign$var; y=0; }
-    [ "$fdim" = h ] && { y=$sign$var; x=0; }
+    [ "$fdim" = width  ] && { x=$sign$var; y=0; }
+    [ "$fdim" = height ] && { y=$sign$var; x=0; }
 
     bspc node -v "$x" "$y"
 }
