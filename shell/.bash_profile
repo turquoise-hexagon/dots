@@ -3,7 +3,9 @@ export LC_ALL=en_US.UTF-8
 export LC_LANG=en_US.UTF-8
 
 # path
-[[ -d ~/bin ]] && PATH+=:/sbin:/usr/sbin:~/bin
+PATH+=:/sbin:/usr/sbin
+
+[[ -d ~/bin ]] && PATH+=~/bin
 
 # interactive shell config
 [[ -f ~/.bashrc ]] && . ~/.bashrc
