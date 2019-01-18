@@ -7,6 +7,5 @@ cur=$(date +%F_%H-%M-%S)
 
 mkdir -p "$dir" || exit 1
 
-# disable compositor warning
 maim -su "$dir/$cur.png" &&
     notify-send "Saved screenshot as $cur.png"
