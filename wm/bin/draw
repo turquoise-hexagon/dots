@@ -2,12 +2,9 @@
 #
 # draw terminals
 
-# make the newly spawned window floating
-bspc rule -a \* -o state=floating
-
-slop -f '%x %y %w %h' |
+slop -f '%w %h %x %y' |
 {
-    read -r x y w h
+    read -r w h x y
 
     # take borders into account
     b=$(bspc config border_width)
@@ -15,14 +12,8 @@ slop -f '%x %y %w %h' |
     w=$((w - 2 * b))
     h=$((h - 2 * b))
 
+    # make the newly spawned window floating and with the right geometry
+    bspc rule -a \* -o state=floating rectangle=${w}x${h}+${x}+${y}
+
     urxvtc &
-
-    # wait for the window to spawn
-    # then move it and resize it
-    bspc subscribe node_add |
-    {
-        read -r event mon desk ip node
-
-        wtp "$x" "$y" "$w" "$h" "$node"
-    }
 }
