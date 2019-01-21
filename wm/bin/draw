@@ -13,7 +13,7 @@ slop -f '%w %h %x %y' |
     h=$((h - 2 * b))
 
     # make the newly spawned window floating and with the right geometry
-    bspc rule -a \* -o state=floating rectangle=${w}x${h}+${x}+${y}
+    bspc rule -a \* -o state=floating rectangle="${w}x${h}+${x}+${y}"
 
     urxvtc
 }
