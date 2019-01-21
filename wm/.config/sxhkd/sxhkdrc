@@ -1,5 +1,5 @@
 # ---
-# wm independent
+# misc keybindings
 # ---
 
 XF86MonBrightness{Up,Down}
