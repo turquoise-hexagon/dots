@@ -7,6 +7,7 @@ rofi.width: 30
 rofi.padding: 20
 rofi.font: Cherry 7
 rofi.scrollbar-width: 0
+rofi.show-match: 0
 
 ! ---
 ! colors
