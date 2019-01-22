@@ -2,10 +2,7 @@
 #
 # move windows
 
-# exit when fullscreen
-bspc query -N -n focused.fullscreen > /dev/null && exit
-
-node=$(bspc query -N -n); dir=$1
+dir=$1
 
 case $dir in
     west)  fdim=width;  tdim=height; sign=-;;
@@ -22,38 +19,45 @@ floating ()
     var=$((`bspc query -T -m | jshon -e rectangle -e "$fdim"` * percent / 100))
 
     [ "$fdim" = width  ] && { x=$sign$var; y=0; }
-    [ "$fdim" = height ] && { y=$sign$var; x=0; }
+    [ "$tdim" = height ] && { y=$sign$var; x=0; }
 
     bspc node -v "$x" "$y"
 }
 
 tiled ()
 {
-    # attempt to replace a preselection
+    # attempt to replace preselection
     # or to move the window normally
     { bspc node -n "$dir.!automatic" || bspc node -s "$dir"; } && return
 
-    nod_dim=$(bspc query -T -n "$node"         | jshon -e rectangle -e "$tdim")
-    par_dim=$(bspc query -T -n "$node#@parent" | jshon -e rectangle -e "$tdim")
+    while parent=$(bspc query -N -n "$node#@parent"); do
+        cur_dim=$(bspc query -T -n "$node"         | jshon -e rectangle -e "$tdim")
+        par_dim=$(bspc query -T -n "$node#@parent" | jshon -e rectangle -e "$tdim")
 
-    # climb up the tree
-    if [ "$par_dim" -gt "$nod_dim" ]; then
-        bspc node "$node#@parent" -p "$dir" -i
+        if [ "$par_dim" -gt "$cur_dim" ]; then
+            # climp up the tree
+            bspc node "$node#@parent" -p "$dir" -i
 
-        recept=$(bspc query -N "$node#@parent#@parent" -n .descendant_of.leaf.!window)
+            recept=$(bspc query -N "$node#@parent#@parent" -n .descendant_of.leaf.!window)
 
-        bspc node "$node" -n "$recept"
-        bspc node "$node#@parent" -B
-    else
-        node=$(bspc query -N -n "$node#@parent") && tiled
-    fi
+            bspc node "$node" -n "$recept"
+            bspc node "$node#@parent" -B
+
+            return
+        else
+            node=$parent
+        fi
+    done
 }
 
-if bspc query -N -n focused.floating > /dev/null; then
-    floating
-else
-    # teleport pointer on the focused window
-    bspc config pointer_follows_focus true
-    tiled
-    bspc config pointer_follows_focus false
-fi
+case $(bspc query -T -n | jshon -e client -e state -u) in
+    tiled)
+        node=$(bspc query -N -n)
+
+        # teleport cursor on the focused window
+        bspc config pointer_follows_focus true
+        tiled
+        bspc config pointer_follows_focus false
+        ;;
+    floating) floating
+esac
