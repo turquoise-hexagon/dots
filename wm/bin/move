@@ -2,9 +2,7 @@
 #
 # move windows
 
-dir=$1
-
-node=$(bspc query -N -n)
+dir=$1; node=$(bspc query -N -n)
 
 case $dir in
     west)  fdim=width;  tdim=height; sign=-;;
@@ -32,26 +30,20 @@ tiled ()
     # or to move the window normally
     { bspc node -n "$dir.!automatic" || bspc node -s "$dir"; } && return
 
-    while parent=$(bspc query -N -n "$node#@parent"); do
-        nod_dim=$(bspc query -T -n "$node"   | jshon -e rectangle -e "$tdim")
-        par_dim=$(bspc query -T -n "$parent" | jshon -e rectangle -e "$tdim")
+    nod_dim=$(bspc query -T -n "$node"         | jshon -e rectangle -e "$tdim")
+    par_dim=$(bspc query -T -n "$node#@parent" | jshon -e rectangle -e "$tdim")
 
-        if [ "$par_dim" -gt "$nod_dim" ]; then
-            # create a receptacle
-            # get its id
-            # replace it
-            bspc node "$parent" -p "$dir" -i
+    # climb up the tree
+    if [ "$par_dim" -gt "$nod_dim" ]; then
+        bspc node "$node#@parent" -p "$dir" -i
 
-            recept=$(bspc query -N "$parent#@parent" -n .descendant_of.leaf.!window)
+        recept=$(bspc query -N "$node#@parent#@parent" -n .descendant_of.leaf.!window)
 
-            bspc node "$node" -n "$recept"
-            bspc node "$parent" -B
-
-            return
-        fi
-
-        node=$parent
-    done
+        bspc node "$node" -n "$recept"
+        bspc node "$node#@parent" -B
+    else
+        node=$(bspc query -N -n "$node#@parent") && tiled
+    fi
 }
 
 if bspc query -N -n focused.floating > /dev/null; then
