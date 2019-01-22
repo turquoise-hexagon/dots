@@ -6,10 +6,10 @@
 bspc query -N -n focused.fullscreen > /dev/null && exit
 
 case $1 in
-    east)  dim=xy; sign='<'; op=-gt;;
-    west)  dim=xy; sign='>'; op=-lt;;
-    north) dim=yx; sign='>'; op=-lt;;
-    south) dim=yx; sign='<'; op=-gt
+    east)  dim=xy; op=-gt;;
+    west)  dim=xy; op=-lt;;
+    north) dim=yx; op=-lt;;
+    south) dim=yx; op=-gt
 esac
 
 # get values for the current window
@@ -23,9 +23,14 @@ wattr "$dim" $(windows focused) |
         # sort windows
         while read -r win win_1 win_2; do
             [ "$win_1" "$op" "$cur_1" ] &&
-                case $((min_1 ? win_1 $sign min_1 ? 0 : win_1 == min_1 && win_2 $sign min_2 ? 1 : 2 : 3)) in
+            {
+                win_1=$((win_1 - cur_1)); win_1=${win_1#-}
+                win_2=$((win_2 - cur_2)); win_2=${win_2#-}
+
+                case $((min_1 ? win_1 < min_1 ? 0 : win_1 == min_1 && win_2 < min_2 ? 1 : 2 : 3)) in
                     0|1|3) min_1=$win_1; min_2=$win_2; focus=$win
                 esac
+            }
         done
 
         # exit if there is no window to focus
