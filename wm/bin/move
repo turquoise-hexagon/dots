@@ -19,7 +19,7 @@ floating ()
     var=$((`bspc query -T -m | jshon -e rectangle -e "$fdim"` * percent / 100))
 
     [ "$fdim" = width  ] && { x=$sign$var; y=0; }
-    [ "$tdim" = height ] && { y=$sign$var; x=0; }
+    [ "$fdim" = height ] && { y=$sign$var; x=0; }
 
     bspc node -v "$x" "$y"
 }
