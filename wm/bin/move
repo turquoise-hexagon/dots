@@ -2,7 +2,10 @@
 #
 # move windows
 
-dir=$1; node=$(bspc query -N -n)
+# exit when fullscreen
+bspc query -N -n focused.fullscreen > /dev/null && exit
+
+node=$(bspc query -N -n); dir=$1
 
 case $dir in
     west)  fdim=width;  tdim=height; sign=-;;
