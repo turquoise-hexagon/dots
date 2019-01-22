@@ -35,7 +35,7 @@ tiled ()
         par_dim=$(bspc query -T -n "$node#@parent" | jshon -e rectangle -e "$tdim")
 
         if [ "$par_dim" -gt "$cur_dim" ]; then
-            # climp up the tree
+            # climb up the tree
             bspc node "$node#@parent" -p "$dir" -i
 
             recept=$(bspc query -N "$node#@parent#@parent" -n .descendant_of.leaf.!window)
