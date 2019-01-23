@@ -1,5 +1,3 @@
-# sourced by 'panel'
-
 vol ()
 {
     # ensure volume block isn't empty on startup

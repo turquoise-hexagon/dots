@@ -1,5 +1,3 @@
-# sourced by 'panel'
-
 clk ()
     while :; do
         var=$(date +'%A %R')

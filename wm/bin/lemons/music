@@ -1,5 +1,3 @@
-# sourced by 'panel'
-
 mus ()
     while :; do
         # pattern matching

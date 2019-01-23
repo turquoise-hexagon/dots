@@ -1,5 +1,3 @@
-# sourced by 'panel'
-
 wks ()
 {
     bspc subscribe |

@@ -1,5 +1,3 @@
-# sourced by 'panel'
-
 ntw ()
     while :; do
         var=$(iwgetid -r)
