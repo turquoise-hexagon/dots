@@ -1,12 +1,14 @@
 prompt ()
 {
+    local acc res var status=$?
+
     # colors
-    case $? in
+    res='\[\e[0m\]'
+
+    case $status in
         0) acc='\[\e[95m\]';; # normal
         *) acc='\[\e[31m\]'   # misc error
     esac
-
-    res='\[\e[0m\]'
 
     # path
     var=${PWD/$HOME/\~}
