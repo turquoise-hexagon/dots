@@ -1,12 +1,11 @@
-# locales
+# exports
+export EDITOR=vim
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LC_LANG=en_US.UTF-8
 
 # path
-PATH+=:/sbin:/usr/sbin
-
-[[ -d ~/bin ]] && PATH+=:~/bin
+PATH+=:/sbin:/usr/sbin:~/bin
 
 # interactive shell config
 [[ -f ~/.bashrc ]] && . ~/.bashrc

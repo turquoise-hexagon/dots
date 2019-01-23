@@ -1,0 +1,18 @@
+prompt ()
+{
+    # colors
+    case $? in
+        0) acc='\[\e[95m\]';; # normal
+        *) acc='\[\e[31m\]'   # misc error
+    esac
+
+    res='\[\e[0m\]'
+
+    # path
+    var=${PWD/$HOME/\~}
+
+    # prompt
+    PS1="$acc$var$res "
+}
+
+# vim: ft=sh
