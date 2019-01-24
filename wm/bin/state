@@ -4,9 +4,8 @@
 
 _() bspc config pointer_follows_focus "$1"
 
-bspc node -t ~"$1" &&
-{
+if bspc node -t ~"$1"; then
     _ true
     bspc node -f
     _ false
-}
+fi
