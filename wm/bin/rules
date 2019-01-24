@@ -2,21 +2,24 @@
 #
 # external bspwm rules
 
+percent=66
+
 # exit if there is no window
 bspc query -N -n > /dev/null || exit
 
-# spawn in preselections first, exit in that case
-presel=$(bspc query -N -n newest.local.!automatic)
-test "$presel" && { echo "node = $presel"; exit; }
+# spawn in preselections first
+presel=$(bspc query -N -n newest.local.!automatic) &&
+    { echo "node = $presel"; exit; }
 
-# TODO : use automatic_scheme when available
 wattr wh "$(pfw)" |
 {
     read -r w h
 
-    # split horizontally if w > h
+    ratio=$((h * 100 / w))
+
+    # split horizontally if ratio < percent
     # split vertically otherwise
-    [ "$w" -gt "$h" ] && split=east || split=south
+    [ "$ratio" -lt "$percent" ] && split=east || split=south
 
     echo "split_dir = $split"
 }
