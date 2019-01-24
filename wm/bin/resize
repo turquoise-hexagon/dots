@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# resize windows
+# resize window
 
 percent=10
 

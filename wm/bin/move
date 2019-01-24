@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# move windows
+# move window
 
 dir=$1
 

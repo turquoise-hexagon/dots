@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# change window state
+
+bspc config pointer_follows_focus true
+bspc node -t ~"$1"; bspc node -f
+bspc config pointer_follows_focus false

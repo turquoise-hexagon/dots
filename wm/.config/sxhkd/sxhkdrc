@@ -35,7 +35,7 @@ super + r
     bspc node -n last.!automatic -t tiled
 
 super + {t,Tab,f}
-    bspc node -t ~{tiled,floating,fullscreen}
+    state {tiled,floating,fullscreen}
 
 super + {_,shift} + q
     {bspc node -c, quit}
