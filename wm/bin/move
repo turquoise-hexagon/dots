@@ -30,7 +30,10 @@ tiled()
     # or to move the window normally
     { bspc node -n "$dir.!automatic" || bspc node -s "$dir"; } && return
 
+    node=$(bspc query -N -n)
+
     while parent=$(bspc query -N -n "$node#@parent"); do
+        # compare height or width to parent
         cur_dim=$(bspc query -T -n "$node"         | jshon -e rectangle -e "$tdim")
         par_dim=$(bspc query -T -n "$node#@parent" | jshon -e rectangle -e "$tdim")
 
@@ -52,8 +55,6 @@ tiled()
 
 case $(bspc query -T -n | jshon -e client -e state -u) in
     tiled)
-        node=$(bspc query -N -n)
-
         # teleport cursor on the focused window
         bspc config pointer_follows_focus true
         tiled
