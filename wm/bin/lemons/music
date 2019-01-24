@@ -1,4 +1,4 @@
-mus ()
+mus()
     while :; do
         # pattern matching
         case $(mpc) in

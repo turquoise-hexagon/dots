@@ -11,7 +11,7 @@ case $dir in
     south) fdim=height; tdim=width;  sign=+
 esac
 
-floating ()
+floating()
 {
     percent=5
 
@@ -24,7 +24,7 @@ floating ()
     bspc node -v "$x" "$y"
 }
 
-tiled ()
+tiled()
 {
     # attempt to replace preselection
     # or to move the window normally

@@ -2,7 +2,7 @@
 #
 # volume control
 
-_ ()
+_()
     # send notification when fullscreen
     if bspc query -N -n focused.fullscreen > /dev/null; then
         var=$(pactl list sinks)

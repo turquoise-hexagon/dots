@@ -1,4 +1,4 @@
-ntw ()
+ntw()
     while :; do
         var=$(iwgetid -r)
         var=${var:-Down} # fallback

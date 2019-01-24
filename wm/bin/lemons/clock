@@ -1,4 +1,4 @@
-clk ()
+clk()
     while :; do
         var=$(date +'%A %R')
 

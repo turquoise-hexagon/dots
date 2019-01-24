@@ -7,7 +7,7 @@ b=$((`bspc config border_width` / 2))
 color1=$(bspc config normal_border_color);  color1=0x${color1#?}
 color2=$(bspc config focused_border_color); color2=0x${color2#?}
 
-draw ()
+draw()
 {
     case $1 in
         normal)  i=$color1; o=$color2;;

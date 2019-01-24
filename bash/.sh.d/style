@@ -1,4 +1,4 @@
-prompt ()
+prompt()
 {
     local acc res var status=$?
 

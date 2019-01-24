@@ -1,4 +1,4 @@
-bat ()
+bat()
     while :; do
         read -r var < /sys/class/power_supply/BAT0/capacity
 

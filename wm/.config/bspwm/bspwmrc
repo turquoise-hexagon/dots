@@ -2,7 +2,7 @@
 #
 # bspwm config
 
-cfg () bspc config "$@"
+cfg() bspc config "$@"
 
 # ---
 # settings
