@@ -2,6 +2,11 @@
 #
 # change window state
 
-bspc config pointer_follows_focus true
-bspc node -t ~"$1"; bspc node -f
-bspc config pointer_follows_focus false
+_() bspc config pointer_follows_focus "$1"
+
+bspc node -t ~"$1" &&
+{
+    _ true
+    bspc node -f
+    _ false
+}
