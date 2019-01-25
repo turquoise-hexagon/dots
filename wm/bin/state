@@ -3,4 +3,4 @@
 # change window state
 
 # toggle state, center cursor
-bspc node -t ~"$1"; cursor
+bspc node -t ~"$1" && cursor

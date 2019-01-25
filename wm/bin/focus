@@ -29,6 +29,8 @@ wattr "$arg" $(windows focused) $(windows normal) |
         fi
     done
 
-    # focus, center cursor
-    bspc node "$focus" -f; cursor
+    # teleport pointer on the focused window
+    bspc config pointer_follows_focus true
+    bspc node "$focus" -f
+    bspc config pointer_follows_focus false
 }
