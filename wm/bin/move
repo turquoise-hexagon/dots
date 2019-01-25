@@ -21,7 +21,7 @@ floating()
     [ "$fdim" = width  ] && { x=$sign$var; y=0; }
     [ "$fdim" = height ] && { y=$sign$var; x=0; }
 
-    bspc node -v "$x" "$y"
+    bspc node -v "$x" "$y"; bspc node -f
 }
 
 tiled()
@@ -53,12 +53,9 @@ tiled()
     done
 }
 
-case $(bspc query -T -n | jshon -e client -e state -u) in
-    tiled)
-        # teleport cursor on the focused window
-        bspc config pointer_follows_focus true
-        tiled
-        bspc config pointer_follows_focus false
-        ;;
-    floating) floating
+state=$(bspc query -T -n | jshon -e client -e state -u)
+
+case $state in
+    # move the window, center cursor
+    tiled|floating) "$state"; cursor
 esac

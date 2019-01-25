@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# teleport cursor
+
+wattr xywh "$(pfw)" |
+{
+    read -r x y w h
+
+    x=$((x + w / 2))
+    y=$((y + h / 2))
+
+    wmp "$x" "$y"
+}

@@ -23,3 +23,6 @@ var=$((`bspc query -T -m | jshon -e rectangle -e "$dim"` * percent / 100))
 # try to resize in one direction
 # fall back to the other if it fails
 bspc node -z "$dir" "$x" "$y" || bspc node -z "$falldir" "$x" "$y"
+
+# center cursor
+cursor

@@ -6,38 +6,29 @@
 bspc query -N -n focused.fullscreen > /dev/null && exit
 
 case $1 in
-    east)  dim=xy; op=-gt;;
-    west)  dim=xy; op=-lt;;
-    north) dim=yx; op=-lt;;
-    south) dim=yx; op=-gt
+    east)  arg=ixy; op=-gt;;
+    west)  arg=ixy; op=-lt;;
+    north) arg=iyx; op=-lt;;
+    south) arg=iyx; op=-gt
 esac
 
 # get values for the current window
-wattr "$dim" $(windows focused) |
+wattr "$arg" $(windows focused) $(windows normal)|
 {
-    read -r cur_1 cur_2
+    read -r cur cur_1 cur_2
 
-    # get values for all other windows
-    wattr "i$dim" $(windows normal) |
-    {
-        # sort windows
-        while read -r win win_1 win_2; do
-            if [ "$win_1" "$op" "$cur_1" ]; then
-                win_1=$((win_1 - cur_1)); win_1=${win_1#-}
-                win_2=$((win_2 - cur_2)); win_2=${win_2#-}
+    # sort windows
+    while read -r win win_1 win_2; do
+        if [ "$win_1" "$op" "$cur_1" ]; then
+            win_1=$((win_1 - cur_1)); win_1=${win_1#-}
+            win_2=$((win_2 - cur_2)); win_2=${win_2#-}
 
-                case $((min_1 ? win_1 < min_1 ? 0 : win_1 == min_1 && win_2 < min_2 ? 1 : 2 : 3)) in
-                    0|1|3) min_1=$win_1; min_2=$win_2; focus=$win
-                esac
-            fi
-        done
+            case $((min_1 ? win_1 < min_1 ? 0 : win_1 == min_1 && win_2 < min_2 ? 1 : 2 : 3)) in
+                0|1|3) min_1=$win_1; min_2=$win_2; focus=$win
+            esac
+        fi
+    done
 
-        # exit if there is no window to focus
-        test "$focus" || exit
-
-        # teleport cursor on the focused window
-        bspc config pointer_follows_focus true
-        bspc node "$focus" -f
-        bspc config pointer_follows_focus false
-    }
+    # focus, center cursor
+    bspc node "$focus" -f; cursor
 }
