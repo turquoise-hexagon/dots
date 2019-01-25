@@ -29,7 +29,7 @@ wattr "$arg" $(windows focused) $(windows normal) |
         fi
     done
 
-    # change focus, teleport cursor
+    # change focus, teleport the cursor
     bspc config pointer_follows_focus true
     bspc node "$focus" -f
     bspc config pointer_follows_focus false
