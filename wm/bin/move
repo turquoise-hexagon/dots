@@ -56,6 +56,6 @@ tiled()
 state=$(bspc query -T -n | jshon -e client -e state -u)
 
 case $state in
-    # move the window, center cursor
+    # move window, teleport the cursor
     tiled|floating) "$state"; cursor
 esac

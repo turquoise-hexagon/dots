@@ -2,5 +2,5 @@
 #
 # change window state
 
-# toggle state, center cursor
+# change state, teleport the cursor
 bspc node -t ~"$1" && cursor
