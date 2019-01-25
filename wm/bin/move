@@ -21,7 +21,7 @@ floating()
     [ "$fdim" = width  ] && { x=$sign$var; y=0; }
     [ "$fdim" = height ] && { y=$sign$var; x=0; }
 
-    bspc node -v "$x" "$y"; bspc node -f
+    bspc node -v "$x" "$y"
 }
 
 tiled()
