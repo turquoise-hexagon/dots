@@ -4,9 +4,6 @@
 
 percent=66
 
-# exit if there is no window
-bspc query -N -n > /dev/null || exit
-
 # spawn in preselections first
 presel=$(bspc query -N -n newest.local.!automatic) &&
     { echo "node = $presel"; exit; }
