@@ -5,13 +5,11 @@ export LC_ALL=en_US.UTF-8
 export LC_LANG=en_US.UTF-8
 
 # path
-for dir in     \
-/sbin          \
-/usr/sbin      \
-~/bin          \
-~/.wm/misc     \
-~/.wm/visual   \
-~/.wm/interact
+for dir in \
+/sbin      \
+/usr/sbin  \
+~/bin      \
+~/.wm/*
 do
     PATH+=":$dir"
 done
