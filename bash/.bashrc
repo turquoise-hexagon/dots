@@ -5,7 +5,7 @@
 # sources
 # ---
 
-for file in ~/.sh.d/*; do
+for file in ~/.sh/*; do
     . "$file"
 done
 
