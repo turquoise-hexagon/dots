@@ -20,7 +20,7 @@ fi
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
 # source all panel modules
-for file in ~/bin/lemons/*; do
+for file in ~/.wm/visual/lemons/*; do
     . "$file"
 done
 
