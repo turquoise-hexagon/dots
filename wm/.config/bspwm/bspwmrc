@@ -28,6 +28,6 @@ cfg window_gap 6
 
 cfg external_rules_command "$(command -v rules)"
 
-for bin in panel borders; do
+for bin in ~/bin/visual/*; do
     pgrep -x "$bin" > /dev/null || "$bin" &
 done
