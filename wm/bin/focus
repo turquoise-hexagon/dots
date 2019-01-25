@@ -12,7 +12,7 @@ case $1 in
     south) arg=iyx; op=-gt
 esac
 
-# get values for the current window
+# get values from windows on the current desktop
 wattr "$arg" $(windows focused) $(windows normal) |
 {
     read -r cur cur_1 cur_2
