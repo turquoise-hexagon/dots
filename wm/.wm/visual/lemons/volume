@@ -5,18 +5,11 @@ vol()
         while read -r event; do
             case $event in
                 *'sink #0'*)
-                    var=$(pactl list sinks)
+                    ponymix is-muted && icon= || icon=
 
-                    # pattern matching
-                    case $var in
-                        *'Mute: yes'*) icon=;;
-                        *)             icon=
-                    esac
+                    var=$(ponymix get-volume)
 
-                    # we want word splitting
-                    set -- ${var#*Volume:}; var=$4
-
-                    echo "V$icon $var"
+                    echo "V$icon $var%"
             esac
         done
 }

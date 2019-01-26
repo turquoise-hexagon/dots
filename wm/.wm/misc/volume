@@ -2,18 +2,18 @@
 #
 # volume control
 
-_()
-    # send notification when fullscreen
-    if bspc query -N -n focused.fullscreen > /dev/null; then
-        var=$(pactl list sinks)
-
-        # we want word splitting
-        set -- ${var#*Volume:}; var=$4
-
-        dunstify -r 500 "Volume : $var"
-    fi
-
 case $1 in
-    toggle) pactl set-sink-mute 0 "$1";;
-    *) pactl set-sink-volume 0 "$1"; _
+    # pattern matching
+    +*) arg=increase;;
+    -*) arg=decrease;;
+    toggle)
+        ponymix toggle > /dev/null
+        exit
 esac
+
+var=$(ponymix "$arg" "${1#?}")
+
+# send a notification when fullscreen
+if bspc query -N -n focused.fullscreen > /dev/null &&
+    dunstify -r 500 "Volume : $var%"
+fi
