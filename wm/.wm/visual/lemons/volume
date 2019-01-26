@@ -5,9 +5,11 @@ vol()
         while read -r event; do
             case $event in
                 *'sink #0'*)
-                    ponymix is-muted && icon= || icon=
-
                     var=$(ponymix get-volume)
+
+                    ponymix is-muted &&
+                              icon= ||
+                              icon=
 
                     echo "V$icon $var%"
             esac
