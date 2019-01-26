@@ -8,11 +8,8 @@
 } \
     > /dev/null
 
-case $1 in
-    toggle) exit;;
-    *)
-        # send a notification when fullscreen
-        if bspc query -N -n focused.fullscreen > /dev/null; then
-            dunstify -r 550 "$(mpc current)"
-        fi
-esac
+test "$1" = toggle && exit
+
+# send a notification when fullscreen
+bspc query -N -n focused.fullscreen > /dev/null &&
+    dunstify -r 550 "$(mpc current)"
