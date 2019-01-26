@@ -14,6 +14,5 @@ esac
 var=$(ponymix "$arg" "${1#?}")
 
 # send a notification when fullscreen
-if bspc query -N -n focused.fullscreen > /dev/null &&
+bspc query -N -n focused.fullscreen > /dev/null &&
     dunstify -r 500 "Volume : $var%"
-fi
