@@ -17,5 +17,5 @@ done
 # interactive shell config
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-# automatically start x on tty1
-[[ ! $DISPLAY && $(tty) =~ 1 ]] && exec startx &> /dev/null
+# start x on tty1
+[[ ! $DISPLAY && $(tty) == /dev/tty1 ]] && exec startx &> /dev/null
