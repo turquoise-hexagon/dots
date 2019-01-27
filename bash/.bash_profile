@@ -11,11 +11,11 @@ for dir in \
 ~/bin      \
 ~/.wm/*
 do
-    PATH+=":$dir"
+    PATH+=:$dir
 done
 
 # interactive shell config
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 # start x on tty1
-[[ ! $DISPLAY && $(tty) == /dev/tty1 ]] && exec startx &> /dev/null
+[[ ! $DISPLAY && $(tty) =~ 1 ]] && exec startx &> /dev/null
