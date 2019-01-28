@@ -6,7 +6,11 @@ percent=66
 
 # spawn in preselections first
 presel=$(bspc query -N -n newest.local.!automatic) &&
-    { echo "node = $presel"; exit; }
+{ echo "node = $presel"; exit; }
+
+# spawn floating windows when floating
+bspc query -N -n focused.floating > /dev/null &&
+{ echo "state = floating"; exit; }
 
 wattr wh "$(pfw)" |
 {
