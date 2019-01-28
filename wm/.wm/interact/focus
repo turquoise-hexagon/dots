@@ -13,7 +13,7 @@ case $1 in
 esac
 
 # get values from windows on the current desktop
-wattr "$arg" $(windows focused) $(windows normal) |
+wattr "$arg" "$(windows focused)" $(windows normal) |
 {
     read -r cur cur_1 cur_2
 
