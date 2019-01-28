@@ -1,5 +1,5 @@
 # exit if not interactive
-[[ $PS1 ]] || return
+[[ $- =~ i ]] || return
 
 # ---
 # sources
