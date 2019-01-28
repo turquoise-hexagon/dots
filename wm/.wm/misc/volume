@@ -3,15 +3,15 @@
 # volume control
 
 case $1 in
-    # pattern matching
-    +*) arg=increase;;
-    -*) arg=decrease;;
+    # argument parsing
+    +) arg=increase;;
+    -) arg=decrease;;
     toggle)
         ponymix toggle > /dev/null
         exit
 esac
 
-var=$(ponymix "$arg" "${1#?}")
+var=$(ponymix "$arg" "$2")
 
 # send a notification when fullscreen
 bspc query -N -n focused.fullscreen > /dev/null &&
