@@ -29,5 +29,5 @@ wattr i"$arg" "$(windows focused)" $(windows normal) |
     done
 
     # change focus, teleport the cursor
-    bspc node "$focus" -f; cursor
+    bspc node "$focus" -f && cursor
 }
