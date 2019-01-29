@@ -32,4 +32,4 @@ xset +fp ~/.fonts
 # window manager
 # ---
 
-exec bspwm
+exec wm

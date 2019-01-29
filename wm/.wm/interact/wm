@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# run bspwm
+
+while :; do
+    bspwm || break
+done

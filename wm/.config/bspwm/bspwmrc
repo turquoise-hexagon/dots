@@ -10,6 +10,8 @@ cfg() bspc config "$@"
 
 bspc monitor -d 1 2 3 4 5
 
+cfg external_rules_command "$(command -v rules)"
+
 cfg focus_follows_pointer true
 cfg borderless_monocle true
 cfg gapless_monocle true
@@ -23,11 +25,15 @@ cfg border_width 6
 cfg window_gap 6
 
 # ---
-# utils
+# misc
 # ---
 
-cfg external_rules_command "$(command -v rules)"
-
+# run utilities
 for bin in panel borders; do
     pgrep -x "$bin" > /dev/null || "$bin" &
 done
+
+# restore bspwm state
+if test -e /tmp/bspwm.json; then
+    bspc wm -l /tmp/bspwm.json; rm /tmp/bspwm.json
+fi

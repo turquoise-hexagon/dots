@@ -27,22 +27,18 @@ super + shift + r
 # window manager
 # ---
 
-super + c
-    bspc node -p cancel
-
-# replace presel and tile
-super + r
-    bspc node -n last.!automatic -t tiled
+super + {_,shift} + Escape
+    quit {0,1}
 
 super + {t,Tab,f}
     state {tiled,floating,fullscreen}
 
-super + {_,shift} + q
-    {bspc node -c, quit}
+super + {c,q,r}
+    bspc node {-p cancel,-c,-n last.!automatic -t tiled}
+
+super + {_,shift,alt,ctrl} + {h,j,k,l}
+    {focus,move,resize,bspc node -p} {west,south,north,east}
 
 # caution, azerty keyboard
 super + {_,shift} + {ampersand,eacute,quotedbl,apostrophe,parenleft}
     bspc {desktop -f,node -d} {1-5}
-
-super + {_,shift,alt,ctrl} + {h,j,k,l}
-    {focus,move,resize,bspc node -p} {west,south,north,east}

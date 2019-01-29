@@ -2,7 +2,14 @@
 #
 # properly exit bspwm
 
-# ensure panel cleanup
-pkill -x panel
+# clean up utilities
+for bin in borders panel; do
+    pkill -x "$bin"
+done
 
-bspc quit
+# save state before reload
+if [ "$1" -eq 0 ]; then
+    bspc wm -d > /tmp/bspwm.json
+fi
+
+bspc quit "$1"
