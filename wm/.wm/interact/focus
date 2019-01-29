@@ -6,14 +6,14 @@
 bspc query -N -n focused.fullscreen > /dev/null && exit
 
 case $1 in
-    east)  arg=ixy; op=-gt;;
-    west)  arg=ixy; op=-lt;;
-    north) arg=iyx; op=-lt;;
-    south) arg=iyx; op=-gt
+    east)  arg=xy; op=-gt;;
+    west)  arg=xy; op=-lt;;
+    north) arg=yx; op=-lt;;
+    south) arg=yx; op=-gt
 esac
 
 # get values from windows on the current desktop
-wattr "$arg" "$(windows focused)" $(windows normal) |
+wattr i"$arg" "$(windows focused)" $(windows normal) |
 {
     read -r cur cur_1 cur_2
 
