@@ -11,11 +11,6 @@ a=%{B$accent1}
 b=%{B$accent2}
 c=%{B$accent3}
 
-if xdo id -a "$name" > /dev/null; then
-    echo 'error : panel already running' >&2
-    exit 1
-fi
-
 # ensure proper panel script cleanup
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
