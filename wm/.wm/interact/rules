@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# external bspwm rules
+# external wm rules
 
 percent=66
 

@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# run bspwm
+# run wm
 
 while :; do
     bspwm || break

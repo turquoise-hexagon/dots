@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# bspwm config
+# wm config
 
 cfg() bspc config "$@"
 
