@@ -16,7 +16,7 @@ floating()
     percent=5
 
     # get a percentage of the monitor resolution
-    var=$(($(bspc query -T -m | jshon -e rectangle -e $fdim) * percent / 100))
+    var=$((`bspc query -T -m | jshon -e rectangle -e $fdim` * percent / 100))
 
     [ $fdim = width  ] && { x=$sign$var; y=0; }
     [ $fdim = height ] && { y=$sign$var; x=0; }
@@ -47,9 +47,9 @@ tiled()
             bspc node "$node#@parent" -B
 
             return
-        else
-            node=$parent
         fi
+
+        node=$parent
     done
 }
 
