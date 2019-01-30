@@ -11,7 +11,7 @@ case $1 in
         exit
 esac
 
-var=$(ponymix "$arg" "$2")
+var=$(ponymix $arg "$2")
 
 # send a notification when fullscreen
 bspc query -N -n focused.fullscreen > /dev/null &&
