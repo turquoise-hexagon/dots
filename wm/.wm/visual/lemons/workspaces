@@ -3,13 +3,12 @@ wks()
     bspc subscribe |
         while read -r event; do
             # we want word splitting
-            IFS=:; set -- $event
+            IFS=:; set -- $event; var=
 
-            var=
             while test "$1"; do
-                case $1 in
-                    [OFU]*) var=$var;;
-                    [ofu]*) var=$var
+                case ${1%?} in
+                    [OFU]) var=$var;;
+                    [ofu]) var=$var
                 esac
 
                 shift
