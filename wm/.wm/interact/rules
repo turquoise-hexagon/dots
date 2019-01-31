@@ -1,18 +1,22 @@
 #!/bin/sh
 #
-# external wm rules
+# external rules
 
 percent=66
 
 # spawn in preselections first
 presel=$(bspc query -N -n newest.local.!automatic) &&
-{ echo "node = $presel"; exit; }
+    { echo "node = $presel"; exit; }
 
-# spawn floating windows when floating
-bspc query -N -n focused.floating > /dev/null &&
-{ echo "state = floating"; exit; }
+# if the focused node isn't tiled
+# measure the last tiled node instead
+! bspc query -N -n focused.tiled > /dev/null &&
+    node=$(bspc query -N -n last.local.tiled) ||
+    node=$(bspc query -N -n)
 
-wattr wh "$(pfw)" |
+echo "node = $node"
+
+wattr wh "$node" |
 {
     read -r w h
 
