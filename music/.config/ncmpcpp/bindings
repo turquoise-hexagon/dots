@@ -1,7 +1,3 @@
-# ---
-# ncmpcpp bindings
-# ---
-
 def_key "h"
     previous_column
 
