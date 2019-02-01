@@ -17,4 +17,6 @@ prompt()
     PS1="$acc$var$res "
 }
 
+PROMPT_COMMAND=prompt
+
 # vim: ft=sh

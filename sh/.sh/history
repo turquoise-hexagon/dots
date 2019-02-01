@@ -1,0 +1,7 @@
+size=10000
+
+HISTSIZE=$size
+HISTFILESIZE=$size
+HISTCONTROL=ignoredups
+
+# vim: ft=sh
