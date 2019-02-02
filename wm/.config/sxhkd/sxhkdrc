@@ -27,14 +27,20 @@ super + shift + r
 # window manager
 # ---
 
+super + q
+    bspc node -c
+
+super + c
+    bspc node -p cancel
+
+super + r
+    bspc node -n last.!automatic -t tiled
+
 super + {_,shift} + Escape
     wm {restart,quit}
 
 super + {t,Tab,f}
     state {tiled,floating,fullscreen}
-
-super + {c,q,r}
-    bspc node {-p cancel,-c,-n last.!automatic -t tiled}
 
 super + {_,shift,alt,ctrl} + {h,j,k,l}
     {focus,move,resize,bspc node -p} {west,south,north,east}
