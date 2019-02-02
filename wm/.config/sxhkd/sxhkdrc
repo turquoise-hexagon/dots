@@ -28,7 +28,7 @@ super + shift + r
 # ---
 
 super + {_,shift} + Escape
-    quit {0,1}
+    wm {restart,quit}
 
 super + {t,Tab,f}
     state {tiled,floating,fullscreen}

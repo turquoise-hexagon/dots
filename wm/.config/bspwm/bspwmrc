@@ -32,8 +32,3 @@ cfg window_gap 6
 for bin in panel borders; do
     pgrep -x $bin > /dev/null || $bin &
 done
-
-# restore bspwm state
-if test -e /tmp/bspwm.json; then
-    bspc wm -l /tmp/bspwm.json; rm /tmp/bspwm.json
-fi
