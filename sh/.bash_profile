@@ -1,11 +1,9 @@
 # build env
-locale=en_US.UTF-8
-
-for var in          \
-    EDITOR=vim      \
-    LANG=$locale    \
-    LC_ALL=$locale  \
-    LC_LANG=$locale
+for var in              \
+    EDITOR=vim          \
+    LANG=en_US.UTF-8    \
+    LC_ALL=en_US.UTF-8  \
+    LC_LANG=en_US.UTF-8
 do
     export "$var"
 done
