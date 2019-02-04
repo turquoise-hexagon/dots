@@ -23,5 +23,5 @@ done
     . ~/.bashrc
 
 # start x on tty1
-[[ ! $DISPLAY && $(tty) =~ 1 ]] &&
+[[ ! $DISPLAY && $(tty) =~ 1$ ]] &&
     exec startx &> /dev/null
