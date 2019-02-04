@@ -2,8 +2,8 @@ mus()
     while :; do
         # pattern matching
         case $(mpc) in
-            *paused*) var='Not playing';;
-            *)        var=$(mpc current)
+            *playing*) var=$(mpc current);;
+            *)         var='Not Playing'
         esac
 
         echo "M $var"
