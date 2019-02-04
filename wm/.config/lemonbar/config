@@ -2,10 +2,11 @@
 
 height=30
 
-# colors from r/iama
+# hal colors
 accent1='#37BF8D'
 accent2='#5394C9'
 accent3='#3C4F5B'
+
 foreground='#EEEEEE'
 background='#445967'
 
