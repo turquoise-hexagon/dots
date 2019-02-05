@@ -20,7 +20,7 @@ for file in ~/.wm/visual/lemons/*; do
 done
 
 for func in wks mus clk ntw vol bat; do
-    $func &
+    "$func" &
 done |
     while read -r event; do
         case $event in
@@ -43,6 +43,6 @@ done |
             -n "$name" &
 
 # ensure proper fullscreen
-xdo lower -m -a $name
+xdo lower -m -a "$name"
 
 wait

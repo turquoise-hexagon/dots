@@ -24,7 +24,7 @@ wattr wh "$node" |
 
     # split horizontally if ratio < percent
     # split vertically otherwise
-    [ $ratio -lt $percent ] && split=east || split=south
+    [ "$ratio" -lt "$percent" ] && split=east || split=south
 
     echo "split_dir = $split"
 }

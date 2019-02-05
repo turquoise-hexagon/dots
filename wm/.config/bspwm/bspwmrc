@@ -30,5 +30,5 @@ cfg window_gap 6
 
 # run utilities
 for bin in panel borders; do
-    pgrep -x $bin > /dev/null || $bin &
+    pgrep -x "$bin" > /dev/null || "$bin" &
 done

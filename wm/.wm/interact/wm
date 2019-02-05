@@ -4,7 +4,7 @@
 
 # clean up utilities
 for bin in borders panel; do
-    pkill -x $bin
+    pkill -x "$bin"
 done
 
 case $1 in

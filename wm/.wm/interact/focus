@@ -13,17 +13,17 @@ case $1 in
 esac
 
 # get values from windows on the current desktop
-wattr i$arg $(targets focused) $(targets normal) |
+wattr "i$arg" "$(targets focused)" $(targets normal) |
 {
     read -r cur cur_1 cur_2
 
     # sort windows
     while read -r win win_1 win_2; do
-        if [ "$win_1" $op "$cur_1" ]; then
+        if [ "$win_1" "$op" "$cur_1" ]; then
             win_1=$((win_1 - cur_1)); win_1=${win_1#-}
             win_2=$((win_2 - cur_2)); win_2=${win_2#-}
 
-            [ $((! min_1 || win_1 < min_1 || win_1 == min_1 && win_2 < min_2)) -eq 1 ] &&
+            [ "$((! min_1 || win_1 < min_1 || win_1 == min_1 && win_2 < min_2))" -eq 1 ] &&
                 { min_1=$win_1; min_2=$win_2; focus=$win; }
         fi
     done
