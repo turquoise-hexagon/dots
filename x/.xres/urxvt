@@ -2,8 +2,8 @@
 ! fonts
 ! ---
 
-URxvt.font: -t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1
-URxvt.boldFont: -t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1
+URxvt.font: -t-kiwi-medium-r-normal--10-100-75-75-c-100-iso8859-1
+URxvt.boldFont: -t-kiwi-medium-r-normal--10-100-75-75-c-100-iso8859-1
 
 ! ---
 ! settings
@@ -11,7 +11,7 @@ URxvt.boldFont: -t-cherry-medium-r-normal--10-100-75-75-c-100-iso8859-1
 
 URxvt.scrollBar: 0
 URxvt.internalBorder: 20
-URxvt.geometry: 70x30
+URxvt.geometry: 80x30
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
