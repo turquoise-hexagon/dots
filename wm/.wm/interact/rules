@@ -4,18 +4,14 @@
 
 percent=66
 
-# spawn in preselections first
+# if there are preselections on the current workspace
+# get the newest one and spawn the new window there first
 presel=$(bspc query -N -n newest.local.!automatic) &&
-    { echo "node = $presel"; exit; }
+{ echo "node = $node"; exit; }
 
-# if the focused node isn't tiled
-# measure the last tiled node instead
-! bspc query -N -n focused.tiled > /dev/null  &&
-    node=$(bspc query -N -n last.local.tiled) ||
-    node=$(bspc query -N -n)
-
-# exit if there is no such node
-test "$node" || exit
+# we don't want to measure non floating windows
+# get the newest tiled window instead, exit if there is none
+node=$(bspc query -N -n newest.local.tiled) || exit
 
 wattr wh "$node" |
 {
