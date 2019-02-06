@@ -2,33 +2,34 @@
 #
 # wm config
 
-cfg() bspc config "$@"
-
 # ---
 # settings
 # ---
 
 bspc monitor -d 1 2 3 4 5
 
-cfg external_rules_command "$(command -v rules)"
+while read -r line; do
+    test "$line" && bspc config $line
+done << EOF
+external_rules_command $HOME/.wm/interact/rules
 
-cfg focus_follows_pointer true
-cfg borderless_monocle true
-cfg gapless_monocle true
-cfg single_monocle true
+focus_follows_pointer true
+borderless_monocle true
+gapless_monocle true
+single_monocle true
 
-cfg presel_feedback_color '#EEEEEE'
-cfg focused_border_color '#EEEEEE'
-cfg normal_border_color '#FFFFFF'
+presel_feedback_color #EEEEEE
+focused_border_color #EEEEEE
+normal_border_color #FFFFFF
 
-cfg border_width 6
-cfg window_gap 6
+border_width 6
+window_gap 6
+EOF
 
 # ---
-# misc
+# utils
 # ---
 
-# run utilities
 for bin in panel borders; do
     pgrep -x "$bin" > /dev/null || "$bin" &
 done
