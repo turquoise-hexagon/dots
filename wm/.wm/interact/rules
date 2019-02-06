@@ -14,7 +14,7 @@ presel=$(bspc query -N -n newest.local.!automatic) &&
     node=$(bspc query -N -n last.local.tiled) ||
     node=$(bspc query -N -n)
 
-# exit if there is no focused node
+# exit if there is no such node
 test "$node" || exit
 
 wattr wh "$node" |
