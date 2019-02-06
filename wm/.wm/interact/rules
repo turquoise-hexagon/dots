@@ -7,7 +7,7 @@ percent=66
 # if there are preselections on the current workspace
 # get the newest one and spawn the new window there first
 presel=$(bspc query -N -n newest.local.!automatic) &&
-{ echo "node = $node"; exit; }
+{ echo "node = $presel"; exit; }
 
 # we don't want to measure non floating windows
 # get the newest tiled window instead, exit if there is none
