@@ -2,13 +2,12 @@
 
 height=30
 
-# hal colors
 accent1='#37BF8D'
 accent2='#5394C9'
-accent3='#3C4F5B'
+accent3='#343D46'
 
 foreground='#EEEEEE'
-background='#445967'
+background='#2B303B'
 
 font=-t-kiwi-medium-r-normal--10-100-75-75-c-100-iso8859-1
 icons=-t-mango-medium-r-normal--10-100-75-75-c-100-iso10646-1
