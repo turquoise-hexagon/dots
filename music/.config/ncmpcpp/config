@@ -28,4 +28,4 @@ statusbar_visibility = "no"
 
 progressbar_look = "---"
 progressbar_color  = "black:b"
-progressbar_elapsed_color = "white:b"
+progressbar_elapsed_color = "white"
