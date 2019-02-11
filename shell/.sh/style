@@ -11,7 +11,7 @@ prompt()
     esac
 
     # path
-    var=${PWD/$HOME/\~}
+    var=${PWD/#$HOME/\~}
 
     # prompt
     PS1="$acc$var$res "
