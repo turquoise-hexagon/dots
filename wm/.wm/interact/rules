@@ -4,7 +4,7 @@
 
 percent=66
 
-# if there are preselections on the current workspace
+# if there are preselections on the current desktop
 # get the newest one and spawn the new window here first
 presel=$(bspc query -N -n newest.local.!automatic) &&
 { echo "node = $presel"; exit; }
