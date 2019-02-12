@@ -18,7 +18,6 @@ wattr "i$arg" "$(targets focused)" $(targets normal) |
     read -r cur cur_1 cur_2
 
     # sort the coordinates to find the closest window
-    # from the focused one in the given direction
     while read -r win win_1 win_2; do
         if [ "$win_1" "$op" "$cur_1" ]; then
             win_1=$((win_1 - cur_1)); win_1=${win_1#-}
