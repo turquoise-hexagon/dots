@@ -2,18 +2,16 @@ prompt()
 {
     local acc res var status=$?
 
-    # colors
-    res='\[\e[0m\]'
+    res='\[\e[0m\]' # reset colors
 
     case $status in
         0) acc='\[\e[95m\]';; # normal
         *) acc='\[\e[31m\]'   # misc error
     esac
 
-    # path
-    var=${PWD/#$HOME/\~}
+    var=${PWD/#$HOME/\~} # short path
 
-    # prompt
+    # set prompt
     PS1="$acc$var$res "
 }
 

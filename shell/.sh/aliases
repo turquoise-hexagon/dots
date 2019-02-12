@@ -1,3 +1,5 @@
+alias du='du -h'
+alias df='df -h'
 alias cp='cp -r'
 alias ls='ls -FN --color'
 alias free='free -h'

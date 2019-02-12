@@ -38,7 +38,7 @@ tiled()
         par_dim=$(bspc query -T -n "$node#@parent" | jshon -e rectangle -e "$tdim")
 
         if [ "$par_dim" -gt "$cur_dim" ]; then
-            # climb up the tree
+            # climb up the tree using a receptacle
             bspc node "$node#@parent" -p "$dir" -i
 
             recept=$(bspc query -N "$node#@parent#@parent" -n .descendant_of.leaf.!window)
@@ -56,6 +56,6 @@ tiled()
 state=$(bspc query -T -n | jshon -e client -e state -u)
 
 case $state in
-    # move window, teleport the cursor
-    tiled|floating) "$state"; cursor
+    tiled|floating)
+        "$state"; cursor
 esac

@@ -12,12 +12,13 @@ case $1 in
     south) arg=yx; op=-gt
 esac
 
-# get values from windows on the current desktop
+# get the coordinates of all windows on the current desktop
 wattr "i$arg" "$(targets focused)" $(targets normal) |
 {
     read -r cur cur_1 cur_2
 
-    # sort windows
+    # sort the coordinates to find the closest window
+    # from the focused one in the given direction
     while read -r win win_1 win_2; do
         if [ "$win_1" "$op" "$cur_1" ]; then
             win_1=$((win_1 - cur_1)); win_1=${win_1#-}
@@ -28,6 +29,5 @@ wattr "i$arg" "$(targets focused)" $(targets normal) |
         fi
     done
 
-    # change focus, teleport the cursor
     bspc node "$focus" -f && cursor
 }
