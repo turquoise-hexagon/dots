@@ -5,8 +5,7 @@
 # take borders into account
 b=$(bspc config border_width)
 
-slop -f '%w %h %x %y' |
-{
+slop -f '%w %h %x %y' | {
     read -r w h x y
 
     w=$((w - 2 * b))

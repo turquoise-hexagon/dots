@@ -1,5 +1,4 @@
-prompt()
-{
+prompt() {
     local acc res var status=$?
 
     res='\[\e[0m\]' # reset colors

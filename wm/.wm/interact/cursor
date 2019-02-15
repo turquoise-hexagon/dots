@@ -2,8 +2,7 @@
 #
 # teleport cursor
 
-{ wattr xywh "$(pfw)"; wmp; } |
-{
+{ wattr xywh "$(pfw)"; wmp; } | {
     read -r x y w h; read -r mx my
     
     # exit if the cursor is already on the window

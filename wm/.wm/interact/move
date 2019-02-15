@@ -11,8 +11,7 @@ case $dir in
     south) fdim=height; tdim=width;  sign=+
 esac
 
-floating()
-{
+floating() {
     percent=5
 
     # get a percentage of the monitor resolution
@@ -24,8 +23,7 @@ floating()
     bspc node -v "$x" "$y"
 }
 
-tiled()
-{
+tiled() {
     # attempt to replace preselection
     # or to move the window normally
     { bspc node -n "$dir.!automatic" || bspc node -s "$dir"; } && return

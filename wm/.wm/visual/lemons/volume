@@ -1,5 +1,4 @@
-vol()
-{
+vol() {
     # ensure volume block isn't empty on startup
     { echo 'sink #0'; pactl subscribe 2> /dev/null; } |
         while read -r event; do
