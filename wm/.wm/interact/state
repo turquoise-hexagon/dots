@@ -1,5 +1,0 @@
-#!/bin/sh
-#
-# change window state
-
-bspc node -t ~"$1" && cursor
