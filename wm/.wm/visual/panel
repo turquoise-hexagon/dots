@@ -36,10 +36,10 @@ done |
         echo "%{l}$a  $wks  $c  $mus  %{B-}%{c}$clk%{r}$c  $ntw  $b  $vol  $bat  %{B-}"
     done |
         lemonbar -g "x$height" \
-            -F "$foreground" \
-            -B "$background" \
-            -f "$icons" \
-            -f "$font" \
+            -F "$foreground"   \
+            -B "$background"   \
+            -f "$icons"        \
+            -f "$font"         \
             -n "$name" &
 
 # ensure proper fullscreen

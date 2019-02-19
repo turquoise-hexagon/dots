@@ -8,7 +8,7 @@ prompt() {
         *) acc='\[\e[31m\]'   # misc error
     esac
 
-    var='\W' # short path
+    var='\w' # short path
 
     # set prompt
     PS1="$acc$var$res "
