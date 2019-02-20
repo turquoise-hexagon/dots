@@ -24,9 +24,9 @@ xset s off -dpms
 # rice
 # ---
 
-hsetroot -fill ~/.wall
 xrdb ~/.Xresources
 xset +fp ~/.fonts
+setroot --restore
 
 # ---
 # window manager
