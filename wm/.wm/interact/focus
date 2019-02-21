@@ -22,11 +22,8 @@ wattr "i$arg" "$(targets focused)" $(targets normal) | {
             win_1=$((win_1 - cur_1)); win_1=${win_1#-}
             win_2=$((win_2 - cur_2)); win_2=${win_2#-}
 
-            [ "$((! min_1 || win_1 < min_1 || win_1 == min_1 && win_2 < min_2))" -eq 1 ] && {
-                min_1=$win_1
-                min_2=$win_2
-                focus=$win
-            }
+            [ "$((! min_1 || win_1 < min_1 || win_1 == min_1 && win_2 < min_2))" -eq 1 ] &&
+                { min_1=$win_1; min_2=$win_2; focus=$win; }
         fi
     done
 
