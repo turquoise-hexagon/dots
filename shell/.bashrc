@@ -2,6 +2,6 @@
 [[ $- =~ i ]] || return
 
 # source bash modules
-for file in ~/.sh/*; do
+for file in ~/.config/shell/*; do
     . "$file"
 done
