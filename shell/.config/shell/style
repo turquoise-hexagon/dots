@@ -1,9 +1,9 @@
 prompt() {
-    local acc res var status=$?
+    local acc res var ret=$?
 
     res='\[\e[0m\]' # reset colors
 
-    case $status in
+    case $ret in
         0) acc='\[\e[95m\]';; # normal
         *) acc='\[\e[31m\]'   # misc error
     esac
