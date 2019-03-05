@@ -7,5 +7,5 @@ if ! command -v stow > /dev/null; then
 fi
 
 for i in *; do
-    test -d "$i" && stow "$i"
+    test -d "$i" && stow "$i" -t ~
 done
