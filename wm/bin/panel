@@ -15,7 +15,7 @@ c=%{B$accent3}
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
 # source all panel modules
-for file in ~/.wm/visual/lemons/*; do
+for file in ~/.config/lemonbar/lemons/*; do
     . "$file"
 done
 

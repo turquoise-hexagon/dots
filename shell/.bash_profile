@@ -12,8 +12,7 @@ done
 for dir in    \
     /sbin     \
     /usr/sbin \
-    ~/bin     \
-    ~/.wm/*
+    ~/bin
 do
     PATH+=:$dir
 done

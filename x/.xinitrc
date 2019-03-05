@@ -24,8 +24,8 @@ xset s off -dpms
 # rice
 # ---
 
+xset +fp ~/.local/share/fonts
 xrdb ~/.Xresources
-xset +fp ~/.fonts
 setroot --restore
 
 # ---

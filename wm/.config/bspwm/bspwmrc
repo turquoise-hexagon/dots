@@ -10,7 +10,7 @@ cfg() bspc config "$@"
 
 bspc monitor -d 1 2 3 4 5
 
-cfg external_rules_command ~/.wm/interact/rules
+cfg external_rules_command ~/bin/rules
 
 cfg focus_follows_pointer true
 cfg borderless_monocle true
