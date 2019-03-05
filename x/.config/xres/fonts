@@ -1,3 +1,6 @@
+*.font: -t-kiwi-medium-r-normal--10-100-75-75-c-100-iso8859-1
+*.boldFont: -t-kiwi-medium-r-normal--10-100-75-75-c-100-iso8859-1
+
 Xft.autohint: 0
 Xft.antialias: 1
 Xft.hinting: 1
