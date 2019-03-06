@@ -13,11 +13,10 @@ do
 done
 
 # interactive shell config
-[[ -f ~/.bashrc ]] &&
+if [[ -f ~/.bashrc ]]; then
     . ~/.bashrc
 
 # start x on tty1
-[[ ! $DISPLAY && $(tty) =~ 1$ ]] &&
+if [[ ! $DISPLAY && $(tty) =~ 1$ ]]; then
     exec startx &> /dev/null
-
-exit 0
+fi
