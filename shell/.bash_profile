@@ -1,5 +1,5 @@
 # build path
-PATH+=/sbin:/usr/sbin:~/bin
+PATH+=:/sbin:/usr/sbin:~/bin
 
 # build env
 for var in              \
