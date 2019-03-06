@@ -1,3 +1,6 @@
+# build path
+PATH+=/sbin:/usr/sbin:~/bin
+
 # build env
 for var in              \
     EDITOR=vim          \
@@ -9,21 +12,12 @@ do
     export "$var"
 done
 
-# build path
-for dir in    \
-    /sbin     \
-    /usr/sbin \
-    ~/bin
-do
-    PATH+=:$dir
-done
-
 # interactive shell config
-if [[ -f ~/.bashrc ]]; then
+[[ -f ~/.bashrc ]] &&
     . ~/.bashrc
-fi
 
 # start x on tty1
-if [[ ! $DISPLAY && $(tty) =~ 1$ ]]; then
+[[ ! $DISPLAY && $(tty) =~ 1$ ]] &&
     exec startx &> /dev/null
-fi
+
+exit 0

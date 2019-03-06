@@ -1,5 +1,4 @@
-if [[ -f /etc/bash_completion ]]; then
+[[ -f /etc/bash_completion ]] &&
     . /etc/bash_completion
-fi
 
 # vim: ft=sh
