@@ -15,6 +15,7 @@ done
 # interactive shell config
 if [[ -f ~/.bashrc ]]; then
     . ~/.bashrc
+fi
 
 # start x on tty1
 if [[ ! $DISPLAY && $(tty) =~ 1$ ]]; then
