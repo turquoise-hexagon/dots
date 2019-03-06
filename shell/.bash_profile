@@ -1,6 +1,7 @@
 # build env
 for var in              \
     EDITOR=vim          \
+    LESSHISTFILE=-      \
     LANG=en_US.UTF-8    \
     LC_ALL=en_US.UTF-8  \
     LC_LANG=en_US.UTF-8
