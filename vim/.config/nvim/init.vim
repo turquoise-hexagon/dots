@@ -9,7 +9,6 @@ syntax enable
 " swap and sessions
 set hidden
 set noswapfile
-set shada="NONE"
 
 " case insensitive
 set ignorecase
