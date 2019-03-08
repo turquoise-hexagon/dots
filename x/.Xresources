@@ -1,4 +1,5 @@
 ! ~/.config/xres
 #include ".config/xres/rofi"
 #include ".config/xres/fonts"
+#include ".config/xres/urxvt"
 #include ".config/xres/colors"

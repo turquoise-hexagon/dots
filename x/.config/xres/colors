@@ -2,8 +2,6 @@
 *.foreground:         #E8DFD6
 *.background:         #021B21
 *.cursorColor:        #E8DFD6
-*.highlightColor:     #E8DFD6
-*.highlightTextColor: #021B21
 
 ! black
 *.color0:             #021B21

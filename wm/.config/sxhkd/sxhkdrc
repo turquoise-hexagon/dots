@@ -15,7 +15,7 @@ Print
     screenshot
 
 super {_,shift} + Return
-    {st,draw}
+    {urxvt,draw}
 
 super + space
     rofi -show run
