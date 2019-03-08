@@ -7,6 +7,7 @@
 # ---
 
 start-pulseaudio-x11
+urxvtd -q -o -f
 sxhkd -m1 &
 dunst &
 mpd &
