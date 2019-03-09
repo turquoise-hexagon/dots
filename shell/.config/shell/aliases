@@ -1,6 +1,7 @@
 alias du='du -h'
 alias df='df -h'
 alias cp='cp -r'
+alias vim='nvim'
 alias ls='ls -FN --color'
 alias htop='htop -t'
 alias free='free -h'
