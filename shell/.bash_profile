@@ -1,7 +1,9 @@
-# build path
+# ---
+# env
+# ---
+
 PATH+=:/sbin:/usr/sbin:~/bin
 
-# build env
 for var in              \
     EDITOR=vim          \
     LESSHISTFILE=-      \
@@ -12,12 +14,14 @@ do
     export "$var"
 done
 
-# interactive shell config
+# ---
+# misc
+# ---
+
 if [[ -f ~/.bashrc ]]; then
     . ~/.bashrc
 fi
 
-# start x on tty1
 if [[ ! $DISPLAY && $(tty) =~ 1$ ]]; then
     exec startx &> /dev/null
 fi
