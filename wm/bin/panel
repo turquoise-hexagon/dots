@@ -4,7 +4,7 @@
 
 name=panel
 
-. ~/.config/lemonbar/panelrc
+. ~/.config/lemonbar/config
 
 # accent colors
 a=%{B$accent1}
