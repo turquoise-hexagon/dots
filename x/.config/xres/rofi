@@ -2,6 +2,7 @@
 ! settings
 ! ---
 
+rofi.eh: 1.3
 rofi.lines: 5
 rofi.width: 30
 rofi.padding: 20

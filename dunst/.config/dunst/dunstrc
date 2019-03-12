@@ -10,6 +10,7 @@
     follow = none
     show_indicators = no
     separator_height = 0
+    line_height = 3
     padding = 20
     horizontal_padding = 20
 
