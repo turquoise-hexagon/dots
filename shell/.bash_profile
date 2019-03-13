@@ -5,7 +5,7 @@
 PATH+=:/sbin:/usr/sbin:~/bin
 
 for var in              \
-    EDITOR=vim          \
+    EDITOR=nvim         \
     LESSHISTFILE=-      \
     LANG=en_US.UTF-8    \
     LC_ALL=en_US.UTF-8  \
