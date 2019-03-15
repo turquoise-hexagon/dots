@@ -41,5 +41,8 @@ set guicursor=
 set laststatus=1
 set shortmess=actI
 
+" pkgfiles
+au BufNewFile,BufRead *Pkgfile set ft=sh
+
 " colors
 colorscheme cherry
