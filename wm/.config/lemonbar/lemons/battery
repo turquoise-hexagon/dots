@@ -1,5 +1,6 @@
 bat()
     while :; do
+        read -r sta < /sys/class/power_supply/BAT0/status
         read -r var < /sys/class/power_supply/BAT0/capacity
 
         case $((var / 25)) in
@@ -9,6 +10,8 @@ bat()
             3) icon=;;
             4) icon=
         esac
+
+        [ "$sta" = Charging ] && icon=
 
         echo "B$icon $var%"
 
