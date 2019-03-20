@@ -1,4 +1,0 @@
-[[ -f /etc/bash_completion ]] &&
-    . /etc/bash_completion
-
-# vim: ft=sh
