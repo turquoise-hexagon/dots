@@ -10,7 +10,6 @@ prompt() {
 
     var='\w' # short path
 
-    # set prompt
     PS1="$acc$var$res "
 }
 

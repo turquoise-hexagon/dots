@@ -3,7 +3,6 @@
 # volume control
 
 case $1 in
-    # argument parsing
     +) arg=increase;;
     -) arg=decrease;;
     toggle)
