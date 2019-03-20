@@ -1,0 +1,19 @@
+# ---
+# history completion
+# ---
+
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+# ---
+# tab completion
+# ---
+
+TAB: menu-complete
+set menu-complete-display-prefix on
+set completion-ignore-case on
+set show-all-if-ambiguous on
+set colored-stats on
+set bell-style none
+
+# vim: ft=sh

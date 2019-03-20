@@ -1,0 +1,50 @@
+# ---
+# misc keybindings
+# ---
+
+XF86Audio{Prev,Next,Play}
+    player {prev,next,toggle}
+
+XF86MonBrightness{Up,Down}
+    brightness {+,-} 10
+
+XF86Audio{Mute,RaiseVolume,LowerVolume}
+    volume {toggle,+ 5,- 5}
+
+Print
+    screenshot
+
+super {_,shift} + Return
+    {st,draw}
+
+super + space
+    rofi -show run
+
+super + shift + r
+    pkill -USR1 -x sxhkd
+
+# ---
+# window manager
+# ---
+
+super + q
+    bspc node -c
+
+super + c
+    bspc node -p cancel
+
+super + r
+    bspc node -n last.!automatic -t tiled
+
+super + {_,shift} + Escape
+    wm {restart,quit}
+
+super + {t,Tab,f}
+    bspc node -t ~{tiled,floating,fullscreen}
+
+super + {_,shift,alt,ctrl} + {h,j,k,l}
+    {focus,move,resize,bspc node -p} {west,south,north,east}
+
+# caution, azerty keyboard
+super + {_,shift} + {ampersand,eacute,quotedbl,apostrophe,parenleft}
+    bspc {desktop -f,node -d} {1-5}

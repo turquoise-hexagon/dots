@@ -1,0 +1,11 @@
+ntw()
+    while :; do
+        var=$(iwgetid -r)
+        var=${var:-Down} # fallback
+
+        echo "N $var"
+
+        sleep 2
+    done
+
+# vim: ft=sh

@@ -1,0 +1,8 @@
+gtk-cursor-theme-name="Adwaita"
+gtk-icon-theme-name="Adwaita"
+gtk-theme-name="Adwaita"
+gtk-font-name="Overpass 9"
+gtk-button-images=0
+gtk-menu-images=1
+
+# vim: ft=cfg

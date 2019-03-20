@@ -1,0 +1,14 @@
+alias du='du -h'
+alias df='df -h'
+alias cp='cp -r'
+alias vim='nvim'
+alias ls='ls -FN --color'
+alias htop='htop -t'
+alias free='free -h'
+alias sxiv='sxiv -bs f'
+alias grep='grep --color'
+alias diff='diff --color'
+alias mkdir='mkdir -p'
+alias ncmpcpp='ncmpcpp -q'
+
+# vim: ft=sh

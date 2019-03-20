@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# ensure stow is installed
+if ! command -v stow > /dev/null; then
+    echo 'error : install stow first' >&2
+    exit 1
+fi
+
+for i in *; do
+    test -d "$i" && stow "$i" -t ~
+done

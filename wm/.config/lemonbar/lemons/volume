@@ -1,0 +1,18 @@
+vol() {
+    # ensure volume block isn't empty on startup
+    { echo 'sink #0'; pactl subscribe 2> /dev/null; } |
+        while read -r event; do
+            case $event in
+                *'sink #0'*)
+                    var=$(ponymix get-volume)
+
+                    ponymix is-muted &&
+                              icon= ||
+                              icon=
+
+                    echo "V$icon $var%"
+            esac
+        done
+}
+
+# vim: ft=sh

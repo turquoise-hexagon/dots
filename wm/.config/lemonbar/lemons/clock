@@ -1,0 +1,10 @@
+clk()
+    while :; do
+        var=$(date +'%A %R')
+
+        echo "C$var"
+
+        sleep 10
+    done
+
+# vim: ft=sh

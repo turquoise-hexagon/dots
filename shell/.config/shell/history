@@ -1,0 +1,6 @@
+HISTSIZE=10000
+HISTFILESIZE=10000
+HISTCONTROL=ignoredups
+HISTFILE=~/.cache/bash_history
+
+# vim: ft=sh

@@ -1,0 +1,20 @@
+wks() {
+    bspc subscribe |
+        while read -r event; do
+            # we want word splitting
+            IFS=:; set -- $event; var=
+
+            while test "$1"; do
+                case ${1%?} in
+                    [OFU]) var=$var;;
+                    [ofu]) var=$var
+                esac
+
+                shift
+            done
+
+            echo "W$var"
+        done
+}
+
+# vim: ft=sh

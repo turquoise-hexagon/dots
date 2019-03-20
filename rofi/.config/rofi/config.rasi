@@ -1,0 +1,22 @@
+configuration {
+    /* 
+     * settings
+     */
+
+    eh: 1;
+    lines: 5;
+    width: 30;
+    padding: 20;
+    font: "Kiwi 7";
+    scrollbar-width: 0;
+    show-match: false;
+
+    /*
+     * colors
+     */
+
+    color-window: "#EEEEEE, #EEEEEE, #EEEEEE";
+    color-normal: "#EEEEEE, #021B21, #EEEEEE, #EEEEEE, #FF99A1";
+    color-active: "#EEEEEE, #021B21, #EEEEEE, #EEEEEE, #FF99A1";
+    color-urgent: "#EEEEEE, #021B21, #EEEEEE, #EEEEEE, #FF99A1";
+}
