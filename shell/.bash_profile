@@ -2,7 +2,7 @@
 # env
 # ---
 
-PATH+=:/sbin:/usr/sbin:~/bin
+PATH+=:/sbin:/usr/sbin:~/.local/bin
 
 for var in              \
     EDITOR=nvim         \
