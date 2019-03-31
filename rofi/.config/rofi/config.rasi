@@ -16,7 +16,7 @@ configuration {
      */
 
     color-window: "#EEEEEE, #EEEEEE, #EEEEEE";
-    color-normal: "#EEEEEE, #081A28, #EEEEEE, #EEEEEE, #F4ADB1";
-    color-active: "#EEEEEE, #081A28, #EEEEEE, #EEEEEE, #F4ADB1";
-    color-urgent: "#EEEEEE, #081A28, #EEEEEE, #EEEEEE, #F4ADB1";
+    color-normal: "#EEEEEE, #102029, #EEEEEE, #EEEEEE, #F4ADB1";
+    color-active: "#EEEEEE, #102029, #EEEEEE, #EEEEEE, #F4ADB1";
+    color-urgent: "#EEEEEE, #102029, #EEEEEE, #EEEEEE, #F4ADB1";
 }
