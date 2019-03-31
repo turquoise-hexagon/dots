@@ -5,7 +5,7 @@ prompt() {
 
     case $ret in
         0) acc='\[\e[91m\]';; # normal
-        *) acc='\[\e[34m\]'   # misc error
+        *) acc='\[\e[93m\]'   # misc error
     esac
 
     var='\w' # short path
