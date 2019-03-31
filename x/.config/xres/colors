@@ -20,8 +20,8 @@
 *.color11:     #EBDECD
 
 ! blue
-*.color4:      #71AAC5
-*.color12:     #A0BBD6
+*.color4:      #77B2D8
+*.color12:     #9CC5E1
 
 ! magenta
 *.color5:      #F4ADB1
@@ -33,6 +33,6 @@
 
 ! white
 *.color7:      #FDFDFD
-*.color15:     #E8EDF0
+*.color15:     #D8DFE7
 
 ! vim: ft=xdefaults
