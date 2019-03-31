@@ -15,8 +15,8 @@ configuration {
      * colors
      */
 
-    color-window: "#FDFDFD, #FDFDFD, #FDFDFD";
-    color-normal: "#FDFDFD, #081A28, #FDFDFD, #FDFDFD, #F4ADB1";
-    color-active: "#FDFDFD, #081A28, #FDFDFD, #FDFDFD, #F4ADB1";
-    color-urgent: "#FDFDFD, #081A28, #FDFDFD, #FDFDFD, #F4ADB1";
+    color-window: "#EEEEEE, #EEEEEE, #EEEEEE";
+    color-normal: "#EEEEEE, #081A28, #EEEEEE, #EEEEEE, #F4ADB1";
+    color-active: "#EEEEEE, #081A28, #EEEEEE, #EEEEEE, #F4ADB1";
+    color-urgent: "#EEEEEE, #081A28, #EEEEEE, #EEEEEE, #F4ADB1";
 }
