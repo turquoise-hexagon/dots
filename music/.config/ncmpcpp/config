@@ -17,7 +17,7 @@ centered_cursor = "yes"
 # ---
 
 playlist_display_mode = "classic"
-song_list_format = "$2%a$9 $4-$9 $5%t$9"
+song_list_format = "$2%a$9 $4-$9 $3%t$9"
 playlist_disable_highlight_delay = "0"
 current_item_prefix = "$b"
 current_item_suffix = "$/b"
