@@ -5,7 +5,7 @@
 case $1 in
     +) arg=increase;;
     -) arg=decrease;;
-    toggle)
+    *)
         ponymix toggle > /dev/null
         exit
 esac
