@@ -21,6 +21,6 @@ draw() {
 # initial draw, and then subscribe to events
 { echo; bspc subscribe node_geometry node_focus; } |
     while read -r _; do
-        draw normal  "$(targets normal)"
+        draw normal  "$(targets  normal)"
         draw focused "$(targets focused)"
     done

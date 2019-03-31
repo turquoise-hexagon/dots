@@ -1,38 +1,38 @@
 ! special
-*.foreground:         #E8DFD6
-*.background:         #021B21
-*.cursorColor:        #E8DFD6
+*.background:  #081A28
+*.foreground:  #FDFDFD
+*.cursorColor: #FDFDFD
 
 ! black
-*.color0:             #021B21
-*.color8:             #234149
+*.color0:      #081A28
+*.color8:      #0E374B
 
 ! red
-*.color1:             #C2454E
-*.color9:             #EF5847
+*.color1:      #C9647E
+*.color9:      #D87E8F
 
 ! green
-*.color2:             #7CBF9E
-*.color10:            #A2D9B1
+*.color2:      #6F9E8C
+*.color10:     #78AB9A
 
 ! yellow
-*.color3:             #8A7A63
-*.color11:            #BEB090
+*.color3:      #C7C8B7
+*.color11:     #EBDECD
 
 ! blue
-*.color4:             #2E3340
-*.color12:            #61778D
+*.color4:      #71AAC5
+*.color12:     #A0BBD6
 
 ! magenta
-*.color5:             #FF5879
-*.color13:            #FF99A1
+*.color5:      #F4ADB1
+*.color13:     #F8CBCE
 
 ! cyan
-*.color6:             #44B5B1
-*.color14:            #9ED9D8
+*.color6:      #72C9D2
+*.color14:     #A8D7E1
 
 ! white
-*.color7:             #F2F1B9
-*.color15:            #F6F6C9
+*.color7:      #FDFDFD
+*.color15:     #E8EDF0
 
 ! vim: ft=xdefaults

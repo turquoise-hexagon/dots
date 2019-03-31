@@ -4,8 +4,8 @@ prompt() {
     res='\[\e[0m\]' # reset colors
 
     case $ret in
-        0) acc='\[\e[95m\]';; # normal
-        *) acc='\[\e[31m\]'   # misc error
+        0) acc='\[\e[91m\]';; # normal
+        *) acc='\[\e[34m\]'   # misc error
     esac
 
     var='\w' # short path
