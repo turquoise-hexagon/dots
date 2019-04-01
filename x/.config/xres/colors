@@ -28,11 +28,11 @@
 *.color13:     #F8CBCE
 
 ! cyan
-*.color6:      #7FA7A7
-*.color14:     #B5D3D5
+*.color6:      #56A8C0
+*.color14:     #99D0D7
 
 ! white
-*.color7:      #DEE2E9
+*.color7:      #D9DBE3
 *.color15:     #EDEEF0
 
 ! vim: ft=xdefaults
