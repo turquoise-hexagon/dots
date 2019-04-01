@@ -17,7 +17,7 @@ hi Normal          ctermfg=none    ctermbg=none    cterm=none
 hi Comment         ctermfg=8       ctermbg=none    cterm=none
 hi Constant        ctermfg=2       ctermbg=none    cterm=none
 hi Identifier      ctermfg=9       ctermbg=none    cterm=none
-hi Statement       ctermfg=14      ctermbg=none    cterm=none
+hi Statement       ctermfg=6       ctermbg=none    cterm=none
 hi PreProc         ctermfg=4       ctermbg=none    cterm=none
 hi Type            ctermfg=9       ctermbg=none    cterm=none
 hi Special         ctermfg=11      ctermbg=none    cterm=none
