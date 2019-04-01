@@ -1,7 +1,7 @@
 ! special
 *.background:  #102029
-*.foreground:  #FDFDFD
-*.cursorColor: #FDFDFD
+*.foreground:  #F9FAFB
+*.cursorColor: #F9FAFB
 
 ! black
 *.color0:      #102029
@@ -28,11 +28,11 @@
 *.color13:     #F8CBCE
 
 ! cyan
-*.color6:      #72C9D2
-*.color14:     #A8D7E1
+*.color6:      #B69BAA
+*.color14:     #CBACBE
 
 ! white
-*.color7:      #FDFDFD
-*.color15:     #D8DFE7
+*.color7:      #DEE2E9
+*.color15:     #F9FAFB
 
 ! vim: ft=xdefaults

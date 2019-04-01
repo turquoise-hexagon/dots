@@ -17,7 +17,7 @@ hi Normal          ctermfg=none    ctermbg=none    cterm=none
 hi Comment         ctermfg=8       ctermbg=none    cterm=none
 hi Constant        ctermfg=2       ctermbg=none    cterm=none
 hi Identifier      ctermfg=9       ctermbg=none    cterm=none
-hi Statement       ctermfg=14      ctermbg=none    cterm=none
+hi Statement       ctermfg=12      ctermbg=none    cterm=none
 hi PreProc         ctermfg=4       ctermbg=none    cterm=none
 hi Type            ctermfg=5       ctermbg=none    cterm=none
 hi Special         ctermfg=11      ctermbg=none    cterm=none
@@ -45,7 +45,7 @@ hi LineNr          ctermfg=8       ctermbg=none    cterm=none
 hi ModeMsg         ctermfg=none    ctermbg=none    cterm=none
 hi StatusLine      ctermfg=none    ctermbg=none    cterm=none
 hi StatusLineNC    ctermfg=8       ctermbg=none    cterm=none
-hi MatchParen      ctermfg=0       ctermbg=6       cterm=none
+hi MatchParen      ctermfg=0       ctermbg=12      cterm=none
 hi VertSplit       ctermfg=none    ctermbg=none    cterm=none
 hi Visual          ctermfg=none    ctermbg=0       cterm=reverse
 hi ErrorMsg        ctermfg=1       ctermbg=none    cterm=none
