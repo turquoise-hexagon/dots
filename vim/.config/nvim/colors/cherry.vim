@@ -17,10 +17,10 @@ hi Normal          ctermfg=none    ctermbg=none    cterm=none
 hi Comment         ctermfg=8       ctermbg=none    cterm=none
 hi Constant        ctermfg=2       ctermbg=none    cterm=none
 hi Identifier      ctermfg=9       ctermbg=none    cterm=none
-hi Statement       ctermfg=6       ctermbg=none    cterm=none
-hi PreProc         ctermfg=4       ctermbg=none    cterm=none
+hi Statement       ctermfg=4       ctermbg=none    cterm=none
+hi PreProc         ctermfg=3       ctermbg=none    cterm=none
 hi Type            ctermfg=9       ctermbg=none    cterm=none
-hi Special         ctermfg=11      ctermbg=none    cterm=none
+hi Special         ctermfg=6       ctermbg=none    cterm=none
 hi Ignore          ctermfg=8       ctermbg=none    cterm=none
 hi Error           ctermfg=0       ctermbg=1       cterm=none
 hi Todo            ctermfg=0       ctermbg=2       cterm=none
@@ -35,7 +35,7 @@ hi DiffAdd         ctermfg=2       ctermbg=none    cterm=none
 hi DiffChange      ctermfg=3       ctermbg=none    cterm=none
 hi DiffText        ctermfg=none    ctermbg=none    cterm=none
 hi DiffDelete      ctermfg=1       ctermbg=none    cterm=none
-hi Directory       ctermfg=12      ctermbg=none    cterm=none
+hi Directory       ctermfg=4       ctermbg=none    cterm=none
 hi Search          ctermfg=0       ctermbg=2       cterm=none
 hi IncSearch       ctermfg=0       ctermbg=4       cterm=none
 hi NonText         ctermfg=0       ctermbg=none    cterm=none
@@ -45,7 +45,7 @@ hi LineNr          ctermfg=8       ctermbg=none    cterm=none
 hi ModeMsg         ctermfg=none    ctermbg=none    cterm=none
 hi StatusLine      ctermfg=none    ctermbg=none    cterm=none
 hi StatusLineNC    ctermfg=8       ctermbg=none    cterm=none
-hi MatchParen      ctermfg=0       ctermbg=12      cterm=none
+hi MatchParen      ctermfg=0       ctermbg=6       cterm=none
 hi VertSplit       ctermfg=none    ctermbg=none    cterm=none
 hi Visual          ctermfg=none    ctermbg=0       cterm=reverse
 hi ErrorMsg        ctermfg=1       ctermbg=none    cterm=none
