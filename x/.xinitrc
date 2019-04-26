@@ -24,7 +24,7 @@ xset s off -dpms
 # ---
 
 xset +fp ~/.local/share/fonts
-xrdb ~/.Xresources
+xrdb -merge ~/.Xresources
 setroot --restore
 
 # ---
