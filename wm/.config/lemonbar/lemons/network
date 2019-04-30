@@ -1,13 +1,15 @@
 ntw() {
     # ensure network block isn't empty on startup
-    { echo 'New Access Point/Cell'; iwevent 2> /dev/null; } |
+    { echo 'New Access Point'; iwevent 2> /dev/null; } |
         while read -r event; do
             case $event in
                 *'Not-Associated'*) var=Disconnected;;
-                *'New Access Point/Cell'*)
+                *'New Access Point'*)
                     until var=$(iwgetid -r); do
                         sleep .2
                     done
+                    ;;
+                *) continue
             esac
 
             echo "N $var"
