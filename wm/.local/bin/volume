@@ -2,16 +2,16 @@
 #
 # volume control
 
-case $1 in
-    +) arg=increase;;
-    -) arg=decrease;;
-    *)
-        ponymix toggle > /dev/null
-        exit
-esac
+test "$1" = toggle && {
+    amixer -q set Master "$1"
+    exit
+}
 
-var=$(ponymix "$arg" "$2")
+var=$(amixer set Master "$1")
 
-# send a notification when fullscreen
+# format volume
+var=${var%\%]*}
+var=${var#*[}%
+
 bspc query -N -n focused.fullscreen > /dev/null &&
-    dunstify -r 500 "Volume : $var%"
+    dunstify -r 500 "Volume : $var"

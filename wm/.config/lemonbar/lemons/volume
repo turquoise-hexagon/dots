@@ -1,18 +1,20 @@
-vol() {
-    # ensure volume block isn't empty on startup
-    { echo 'sink #0'; pactl subscribe 2> /dev/null; } |
-        while read -r event; do
-            case $event in
-                *'sink #0'*)
-                    var=$(ponymix get-volume)
+vol()
+    while :; do
+        # ensure volume block isn't empty on startup
+        { echo 'event'; stdbuf -oL alsactl monitor; } |
+            while read -r event; do
+                var=$(amixer get Master)
 
-                    ponymix is-muted &&
-                              icon= ||
-                              icon=
+                case $var in
+                    *'[on]')  icon=;;
+                    *'[off]') icon=
+                esac
 
-                    echo "V$icon $var%"
-            esac
-        done
-}
+                var=${var%\%]*}
+                var=${var#*[}%
+
+                echo "V$icon $var"
+            done
+    done
 
 # vim: ft=sh

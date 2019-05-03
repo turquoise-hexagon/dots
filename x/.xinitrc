@@ -6,7 +6,6 @@
 # daemons
 # ---
 
-start-pulseaudio-x11
 sxhkd -m1 &
 dunst &
 mpd &
