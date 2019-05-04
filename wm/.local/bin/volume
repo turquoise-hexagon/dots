@@ -13,5 +13,6 @@ var=$(amixer set Master "$1")
 var=${var%\%]*}
 var=${var#*[}%
 
+# send a notification when fullscreen
 bspc query -N -n focused.fullscreen > /dev/null &&
     dunstify -r 500 "Volume : $var"

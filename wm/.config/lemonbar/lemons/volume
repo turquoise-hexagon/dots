@@ -1,7 +1,7 @@
 vol()
     while :; do
         # ensure volume block isn't empty on startup
-        { echo 'event'; stdbuf -oL alsactl monitor; } |
+        { echo; stdbuf -oL alsactl monitor; } |
             while read -r event; do
                 var=$(amixer get Master)
 
