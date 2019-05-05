@@ -3,7 +3,9 @@ ntw() {
     { echo 'New Access Point'; iwevent 2> /dev/null; } |
         while read -r event; do
             case $event in
-                *'Not-Associated'*) var=Disconnected;;
+                *'Not-Associated'*)
+                    var=Disconnected
+                    ;;
                 *'New Access Point'*)
                     until var=$(iwgetid -r); do
                         sleep .2
