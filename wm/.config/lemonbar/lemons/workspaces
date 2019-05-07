@@ -4,13 +4,11 @@ wks() {
             # we want word splitting
             IFS=:; set -- $event; var=
 
-            while test "$1"; do
-                case ${1%?} in
+            for i in "$@"; do
+                case ${i%?} in
                     [OFU]) var=$var;;
                     [ofu]) var=$var
                 esac
-
-                shift
             done
 
             echo "W$var"
