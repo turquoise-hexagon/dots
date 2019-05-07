@@ -1,10 +1,11 @@
 wks() {
+    IFS=:
+
     bspc subscribe |
         while read -r event; do
-            # we want word splitting
-            IFS=:; set -- $event; var=
+            var=
 
-            for i in "$@"; do
+            for i in $event; do
                 case ${i%?} in
                     [OFU]) var=$var;;
                     [ofu]) var=$var
