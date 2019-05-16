@@ -1,11 +1,11 @@
-height=30
+height=32
 
 accent1='#71AAC5'
 accent2='#4E5A65'
-accent3='#374049'
+accent3='#2C333A'
 
 foreground='#EEEEEE'
-background='#2B343B'
+background='#262E35'
 
 font=-t-kiwi-medium-r-normal--10-100-75-75-c-100-iso8859-1
 icons=-t-mango-medium-r-normal--10-100-75-75-c-100-iso10646-1
