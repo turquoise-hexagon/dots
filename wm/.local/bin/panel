@@ -33,7 +33,7 @@ done |
             B*) bat=${event#?}
         esac
 
-        echo "%{l}$a  $wks  $c  $mus  %{B-}%{c}$clk%{r}$c  $ntw  $b  $vol  $bat  %{B-}"
+        echo "%{l}$a   $wks   $c   $mus   %{B-}%{c}$clk%{r}$c   $ntw   $b   $vol   $bat   %{B-}"
     done |
         lemonbar -g "x$height" \
             -F "$foreground"   \
@@ -43,6 +43,6 @@ done |
             -n "$name" &
 
 # ensure proper fullscreen
-xdo lower -m -a "$name"
+xdo lower -ma "$name"
 
 wait

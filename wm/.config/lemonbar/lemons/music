@@ -1,13 +1,21 @@
 mus()
     while :; do
-        case $(mpc) in
-            *playing*) var=$(mpc current);;
-            *)         var='Not Playing'
-        esac
+        mpc | {
+            read -r var
+            read -r sta
 
-        echo "M $var"
+            case $sta in
+                *playing*)
+                    [ ${#var} -gt 50 ] &&
+                        # shorten current song title
+                        var=$(echo "$var" | head -c50)...
+                    ;;
+                *) var='Not Playing'
+            esac
+
+            echo "M $var"
+        }
 
         mpc idle player
     done
-
 # vim: ft=sh

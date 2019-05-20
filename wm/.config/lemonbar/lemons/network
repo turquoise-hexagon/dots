@@ -1,6 +1,6 @@
 ntw() {
     # ensure network block isn't empty on startup
-    { echo 'New Access Point'; iwevent 2> /dev/null; } |
+    { echo 'Not-Associated'; iwevent 2> /dev/null; } |
         while read -r event; do
             case $event in
                 *'Not-Associated'*)
