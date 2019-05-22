@@ -8,7 +8,7 @@ bat()
             1) icon=;;
             2) icon=;;
             3) icon=;;
-            4) icon=
+            *) icon=
         esac
 
         [ "$sta" = Charging ] && icon=
