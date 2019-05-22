@@ -4,7 +4,8 @@ ntw() {
         while read -r event; do
             case $event in
                 *'Not-Associated'*)
-                    var=$(iwgetid -r) || var=Disconnected
+                    var=$(iwgetid -r)
+                    var=${var:-Disconnected}
                     ;;
                 *'New Access Point'*)
                     until var=$(iwgetid -r); do
