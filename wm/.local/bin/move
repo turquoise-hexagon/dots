@@ -11,7 +11,7 @@ get() {
     IFS={; set -- $@
     IFS=}; set -- $@
 
-    for i in "$@"; do
+    for i; do
         case $i in
             *\""$arg"\"*)
                 IFS=:; set -- $i
