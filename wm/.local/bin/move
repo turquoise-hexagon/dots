@@ -45,7 +45,7 @@ case $(get state "$(bspc query -T -n)") in
             cur_dim=$(get "$tdim" "$(bspc query -T -n "$node")")
             par_dim=$(get "$tdim" "$(bspc query -T -n "$node#@parent")")
 
-            if [ "$par_dim" -gt "$cur_dim" ]; then
+            [ "$par_dim" -gt "$cur_dim" ] && {
                 # climb up the tree using a receptacle
                 bspc node "$node#@parent" -p "$dir" -i
 
@@ -55,7 +55,7 @@ case $(get state "$(bspc query -T -n)") in
                 bspc node "$node#@parent" -B
 
                 break
-            fi
+            }
 
             node=$parent
         done
