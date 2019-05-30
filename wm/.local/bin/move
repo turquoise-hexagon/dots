@@ -33,9 +33,7 @@ case $dir in
     south) fdim=height; tdim=width;  sign=+
 esac
 
-state=$(get state "$(bspc query -T -n)")
-
-case $state in
+case $(get state "$(bspc query -T -n)") in
     \"tiled\")
         # try to replace a preselection or to move the window normally
         { bspc node -n "$dir.!automatic" || bspc node -s "$dir"; } && return
