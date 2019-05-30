@@ -14,8 +14,8 @@ mpd &
 # settings
 # ---
 
-xsetroot -cursor_name left_ptr
 setxkbmap fr -option caps:escape
+xsetroot -cursor_name left_ptr
 xset s off -dpms
 
 # ---
