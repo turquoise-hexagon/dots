@@ -13,10 +13,10 @@ get() {
 
     for i; do
         case $i in
-            *\""$arg"\"*)
+            *\"$arg\"*)
                 IFS=:; set -- $i
 
-                echo $2
+                echo "$2"
 
                 # reset IFS
                 IFS=$tmp; return
