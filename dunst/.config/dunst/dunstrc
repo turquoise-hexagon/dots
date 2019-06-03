@@ -17,12 +17,12 @@
 [urgency_low]
     background = "#EEEEEE"
     foreground = "#102029"
-    timeout = 3
+    timeout = 5
 
 [urgency_normal]
     background = "#EEEEEE"
     foreground = "#102029"
-    timeout = 3
+    timeout = 5
 
 [urgency_critical]
     background = "#EEEEEE"
