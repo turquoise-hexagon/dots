@@ -15,4 +15,4 @@ slop -f '%w %h %x %y' | {
     bspc rule -a \* -o state=floating rectangle="${w}x${h}+${x}+${y}"
 }
 
-st
+st &
