@@ -36,29 +36,29 @@ esac
 case $(get state "$(bspc query -T -n)") in
     \"tiled\")
         # try to replace a preselection or to move the window normally
-        { bspc node -n "$dir.!automatic" || bspc node -s "$dir"; } && return
+        { bspc node -n "$dir.!automatic" || bspc node -s "$dir"; } || {
+            node=$(bspc query -N -n)
 
-        node=$(bspc query -N -n)
+            while parent=$(bspc query -N -n "$node#@parent"); do
+                # compare height or width to parent
+                [                                                          \
+                    "$(get "$tdim" "$(bspc query -T -n "$node")")" -gt     \
+                    "$(get "$tdim" "$(bspc query -T -n "$node#@parent")")" \
+                ] && {
+                    # climb up the tree using a receptacle
+                    bspc node "$node#@parent" -p "$dir" -i
 
-        while parent=$(bspc query -N -n "$node#@parent"); do
-            # compare height or width to parent
-            cur_dim=$(get "$tdim" "$(bspc query -T -n "$node")")
-            par_dim=$(get "$tdim" "$(bspc query -T -n "$node#@parent")")
+                    bspc node "$node" -n \
+                        "$(bspc query -N "$node#@parent#@parent" -n .descendant_of.leaf.!window)"
 
-            [ "$par_dim" -gt "$cur_dim" ] && {
-                # climb up the tree using a receptacle
-                bspc node "$node#@parent" -p "$dir" -i
+                    bspc node "$node#@parent" -B
 
-                bspc node "$node" -n \
-                    "$(bspc query -N "$node#@parent#@parent" -n .descendant_of.leaf.!window)"
+                    break
+                }
 
-                bspc node "$node#@parent" -B
-
-                break
-            }
-
-            node=$parent
-        done
+                node=$parent
+            done
+        }
 
         cursor
         ;;
