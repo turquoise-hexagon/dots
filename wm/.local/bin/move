@@ -42,7 +42,7 @@ case $(get state "$(bspc query -T -n)") in
             while parent=$(bspc query -N -n "$node#@parent"); do
                 # compare height or width to parent
                 [                                                          \
-                    "$(get "$tdim" "$(bspc query -T -n "$node")")" -gt     \
+                    "$(get "$tdim" "$(bspc query -T -n "$node")")" -le     \
                     "$(get "$tdim" "$(bspc query -T -n "$node#@parent")")" \
                 ] && {
                     # climb up the tree using a receptacle
