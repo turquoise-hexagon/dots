@@ -12,6 +12,6 @@ IFS=+; set -- $@
 
 # make the newly spawned window floating & with the right geometry
 bspc rule -a \* -o state=floating \
-    rectangle="$(($1 - 2 * b))x$(($2 - 2 * b))+${3}+${4}"
+    rectangle="$(($1 - 2 * b))x$(($2 - 2 * b))+$3+$4"
 
 st &
