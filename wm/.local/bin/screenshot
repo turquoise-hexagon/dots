@@ -7,5 +7,10 @@ cur=$(date +%F_%H-%M-%S)
 
 mkdir -p "$dir" || exit 1
 
-maim -su "$dir/$cur.png" &&
+shotgun -g "$(
+    hacksaw                              \
+        -n                               \
+        -s "$(bspc config border_width)" \
+        -c "$(bspc config focused_border_color)"
+)" "$dir/$cur.png" &&
     notify-send "Saved screenshot as $cur.png"
