@@ -22,6 +22,6 @@ if [[ -f ~/.bashrc ]]; then
     . ~/.bashrc
 fi
 
-if ! [[ $DISPLAY || -e /tmp/.X11-unix/X0 ]]; then
+if [[ ! $DISPLAY && $(tty) =~ 1$ ]]; then
     exec startx &> /dev/null
 fi
