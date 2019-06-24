@@ -24,9 +24,7 @@ get() {
     done
 }
 
-dir=$1
-
-case $dir in
+case $1 in
     west)  fdim=width;  tdim=height; sign=-;;
     east)  fdim=width;  tdim=height; sign=+;;
     north) fdim=height; tdim=width;  sign=-;;
@@ -36,7 +34,7 @@ esac
 case $(get state "$(bspc query -T -n)") in
     \"tiled\")
         # try to replace a preselection or to move the window normally
-        { bspc node -n "$dir.!automatic" || bspc node -s "$dir.tiled"; } || {
+        { bspc node -n "$1.!automatic" || bspc node -s "$1.tiled"; } || {
             node=$(bspc query -N -n)
 
             while parent=$(bspc query -N -n "$node#@parent"); do
@@ -46,7 +44,7 @@ case $(get state "$(bspc query -T -n)") in
                     "$(get "$tdim" "$(bspc query -T -n "$node")")"             \
                 ] && {
                     # climb up the tree using a receptacle
-                    bspc node "$node#@parent" -p "$dir" -i
+                    bspc node "$node#@parent" -p "$1" -i
 
                     bspc node "$node" -n \
                         "$(bspc query -N "$node#@parent#@parent" -n .descendant_of.leaf.!window)"
