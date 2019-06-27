@@ -1,10 +1,22 @@
-ntw()
-    while :; do
-        var=$(iwgetid -r) || var=Disconnected
+ntw() {
+    # ensure network block isn't empty on startup
+    { echo 'Not-Associated'; iwevent 2> /dev/null; } |
+        while read -r event; do
+            case $event in
+                *'Not-Associated'*)
+                    var=$(iwgetid -r)
+                    var=${var:-Disconnected}
+                    ;;
+                *'New Access Point'*)
+                    until var=$(iwgetid -r); do
+                        sleep .2
+                    done
+                    ;;
+                *) continue
+            esac
 
-        echo "N $var"
-
-        sleep 2
-    done
+            echo "N $var"
+        done
+}
 
 # vim: ft=sh
