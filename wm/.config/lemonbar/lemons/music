@@ -8,7 +8,7 @@ mus()
                 *playing*)
                     [ ${#var} -gt 50 ] &&
                         # shorten current song title
-                        var=$(echo "$var" | head -c50)...
+                        var=$(printf '%.50s...' "$var")
                     ;;
                 *) var='Not Playing'
             esac
