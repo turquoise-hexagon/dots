@@ -1,11 +1,11 @@
 prompt() {
     local acc res var ret=$?
 
-    res='\[\e[0m\]' # reset colors
+    res='\[\e[m\]'
 
     case $ret in
-        0) acc='\[\e[91m\]';; # normal
-        *) acc='\[\e[36m\]'   # misc error
+        0) acc='\[\e[91m\]';;
+        *) acc='\[\e[36m\]'
     esac
 
     var='\w' # short path
