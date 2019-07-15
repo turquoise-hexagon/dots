@@ -4,7 +4,6 @@
 
 get() {
     arg=$1
-    tmp=$IFS
 
     # filthy json parsing
     IFS=,; set -- $2
@@ -18,8 +17,7 @@ get() {
 
                 echo "$2"
 
-                # reset IFS
-                IFS=$tmp; return
+                return
         esac
     done
 }
