@@ -2,12 +2,9 @@
 #
 # volume control
 
-test "$1" = toggle && {
-    amixer -q set Master "$1"
-    exit
-}
-
 var=$(amixer set Master "$1")
+
+test "$1" = toggle && exit
 
 # format volume
 var=${var%%]*}

@@ -23,8 +23,8 @@ get() {
 }
 
 case $1 in
-    west)  fdim=width;  tdim=height; sign=-;;
     east)  fdim=width;  tdim=height; sign=+;;
+    west)  fdim=width;  tdim=height; sign=-;;
     north) fdim=height; tdim=width;  sign=-;;
     south) fdim=height; tdim=width;  sign=+
 esac

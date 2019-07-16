@@ -2,14 +2,12 @@
 #
 # mpd control
 
-{
-    # exit if mpd isn't running
-    pgrep -x mpd && mpc "$1" || exit
-} \
-    > /dev/null
+mpc "$1" 2> /dev/null | {
+    read -r cur
 
-test "$1" = toggle && exit
+    test "$1" = toggle && exit
 
-# send a notification when fullscreen
-bspc query -N -n focused.fullscreen > /dev/null &&
-    dunstify -r 550 "$(mpc current)"
+    # send a notification when fullscreen
+    bspc query -N -n focused.fullscreen > /dev/null &&
+        dunstify -r 550 "$cur"
+}

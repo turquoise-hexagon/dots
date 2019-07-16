@@ -8,8 +8,8 @@ percent=10
 bspc query -N -n focused.floating > /dev/null && percent=5
 
 case $1 in
-    west)  dim=w; dir=right; falldir=left;   sign=-;;
     east)  dim=w; dir=right; falldir=left;   sign=+;;
+    west)  dim=w; dir=right; falldir=left;   sign=-;;
     north) dim=h; dir=top;   falldir=bottom; sign=-;;
     south) dim=h; dir=top;   falldir=bottom; sign=+
 esac
