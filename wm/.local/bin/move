@@ -13,9 +13,7 @@ get() {
     for i; do
         case $i in
             *\"$arg\"*)
-                IFS=:; set -- $i
-
-                echo "$2"
+                echo "${i#*:}"
 
                 return
         esac
