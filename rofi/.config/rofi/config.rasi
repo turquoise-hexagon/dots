@@ -7,7 +7,7 @@ configuration {
     lines: 5;
     width: 30;
     padding: 20;
-    font: "Kiwi 7";
+    font: "Kiwi Medium 7";
     scrollbar-width: 0;
     show-match: false;
 
