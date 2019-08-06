@@ -1,5 +1,4 @@
-4
+3
 kiwi.otb -misc-kiwi-medium-r-normal--10-29-75-250-m-60-iso10646-1
 kiwi.otb -misc-kiwi-medium-r-normal--10-29-75-250-m-60-iso8859-1
-kiwi.pcf -t-kiwi-medium-r-normal--10-100-75-75-c-100-iso10646-1
-mango.pcf -t-mango-medium-r-normal--10-100-75-75-c-100-iso10646-1
+mango.bdf -t-mango-medium-r-normal--10-100-75-75-c-100-iso10646-1
