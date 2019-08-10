@@ -30,7 +30,7 @@ esac
 case $(get state "$(bspc query -T -n)") in
     \"tiled\")
         # try to replace a preselection or to move the window normally
-        { bspc node -n "$1.!automatic" || bspc node -s "$1.tiled"; } || {
+        bspc node -n "$1.!automatic" || bspc node -s "$1.tiled" || {
             node=$(bspc query -N -n)
 
             while parent=$(bspc query -N -n "$node#@parent"); do
