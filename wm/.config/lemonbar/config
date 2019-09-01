@@ -7,7 +7,7 @@ accent3='#2C333A'
 foreground='#EEEEEE'
 background='#262E35'
 
-font=-t-kiwi-medium-r-normal--10-100-75-75-c-100-iso10646-1
+font=-t-olive-medium-r-normal--10-100-75-75-p-100-iso10646-1
 icons=-t-mango-medium-r-normal--10-100-75-75-c-100-iso10646-1
 
 # vim: ft=sh
