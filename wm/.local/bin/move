@@ -53,8 +53,6 @@ case $(get state "$(bspc query -T -n)") in
                 node=$parent
             done
         }
-
-        cursor
         ;;
     \"floating\")
         percent=5
@@ -66,6 +64,8 @@ case $(get state "$(bspc query -T -n)") in
         [ "$fdim" = height ] && { y=$sign$var; x=0; }
 
         bspc node -v "$x" "$y"
-
-        cursor
+        ;;
+    *) exit
 esac
+
+cursor
