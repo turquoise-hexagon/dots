@@ -6,6 +6,6 @@ if ! command -v stow > /dev/null; then
     exit 1
 fi
 
-for i in *; do
-    test -d "$i" && stow "$i" -t ~
+for i in */; do
+    stow "$i" -t ~
 done
