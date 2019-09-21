@@ -1,15 +1,23 @@
 prompt() {
     local acc res var ret=$?
 
+    # colors
     res='\[\e[m\]'
 
-    case $ret in
-        0) acc='\[\e[91m\]';;
-        *) acc='\[\e[36m\]'
-    esac
+    ((ret)) && acc='\[\e[36m\]' || acc='\[\e[91m\]'
 
-    var='\w' # short path
+    # short path
+    var=$PWD
 
+    [[ $var =~ ^$HOME ]] && var=~${var#$HOME}
+
+    [[                              \
+        $var =~ .*/.*/.*/.*      && \
+        $var =~ ^(~?/[^/]*).*(/.*)$ \
+    ]] &&
+        var=${BASH_REMATCH[1]}/..${BASH_REMATCH[2]}
+
+    # set prompt
     PS1="$acc$var$res "
 }
 
