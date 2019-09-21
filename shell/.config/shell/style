@@ -7,9 +7,7 @@ prompt() {
     ((ret)) && acc='\[\e[36m\]' || acc='\[\e[91m\]'
 
     # short path
-    var=$PWD
-
-    [[ $var =~ ^$HOME ]] && var=~${var#$HOME}
+    var=${PWD/#$HOME/\~}
 
     [[                              \
         $var =~ .*/.*/.*/.*      && \
