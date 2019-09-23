@@ -9,11 +9,11 @@ prompt() {
     # short path
     var=${PWD/#$HOME/\~}
 
-    [[                            \
-        $var =~ .*/.*/.*/.*    && \
-        $var =~ (~?/[^/]*).*(/.*) \
+    [[                             \
+        $var =~ .*/.*/.*/.*     && \
+        $var =~ (~?/[^/]*/).*(/.*) \
     ]] &&
-        var=${BASH_REMATCH[1]}/..${BASH_REMATCH[2]}
+        var=${BASH_REMATCH[1]}..${BASH_REMATCH[2]}
 
     # set prompt
     PS1="$acc$var$res "
