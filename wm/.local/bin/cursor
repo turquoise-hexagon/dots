@@ -5,7 +5,7 @@
 { wattr xywh "$(pfw)"; wmp; } | {
     read -r x y w h
     read -r  mx  my
-    
+
     # exit if the cursor is already on the window
     [ $((mx >= x && mx <= x + w && my >= y && my <= y + h)) -eq 1 ] && exit
 
