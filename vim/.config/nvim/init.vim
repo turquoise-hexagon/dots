@@ -41,8 +41,11 @@ set guicursor=
 set laststatus=1
 set shortmess=actI
 
+" terminal
+tnoremap <Esc> <C-\><C-n>
+
 " pkgfiles
-au BufNewFile,BufRead *Pkgfile set ft=sh
+autocmd BufNewFile,BufRead *Pkgfile set ft=sh
 
 " colors
 colorscheme cherry
