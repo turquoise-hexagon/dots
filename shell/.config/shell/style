@@ -18,7 +18,7 @@ prompt() {
     # don't print the prompt mid line
     IFS='[;' read -p $'\e[6n' -dR -rs _ _ pos
 
-    ((pos != 1)) && pos='\n' || pos=
+    ((pos > 1)) && pos='\n' || pos=
 
     # set prompt
     PS1="$pos$acc$var$res "
