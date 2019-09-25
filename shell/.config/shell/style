@@ -16,7 +16,7 @@ prompt() {
         var=${BASH_REMATCH[1]}..${BASH_REMATCH[2]}
 
     # don't print the prompt mid line
-    IFS='[;' read -p $'\e[6n' -dR -rs _ _ pos _
+    IFS='[;' read -p $'\e[6n' -dR -rs _ _ pos
 
     ((pos != 1)) && pos='\n' || pos=
 
