@@ -7,7 +7,7 @@ if exists ("g:syntax on")
     syntax reset
 endif
 
-let g:colors_name="cherry"
+let g:colors_name="fruity"
 
 " ---
 " syntax

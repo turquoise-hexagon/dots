@@ -48,4 +48,4 @@ tnoremap <Esc> <C-\><C-n>
 autocmd BufNewFile,BufRead *Pkgfile set ft=sh
 
 " colors
-colorscheme cherry
+colorscheme fruity
