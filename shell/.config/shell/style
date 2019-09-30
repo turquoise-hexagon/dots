@@ -1,5 +1,5 @@
 prompt() {
-    local acc res var pos ret=$?
+    local acc res var ret=$?
 
     # colors
     res='\[\e[m\]'
@@ -15,13 +15,8 @@ prompt() {
     ]] &&
         var=${BASH_REMATCH[1]}..${BASH_REMATCH[2]}
 
-    # don't print the prompt mid line
-    IFS='[;' read -rsp $'\e[6n' -dR _ _ pos
-
-    ((pos > 1)) && pos='\n' || pos=
-
     # set prompt
-    PS1="$pos$acc$var$res "
+    PS1="$acc$var$res "
 }
 
 PROMPT_COMMAND=prompt
