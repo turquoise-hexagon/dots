@@ -37,6 +37,7 @@ set breakindent
 " interface
 set noruler
 set nonumber
+set mouse=a
 set guicursor=
 set laststatus=1
 set shortmess=actI
