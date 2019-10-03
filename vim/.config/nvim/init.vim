@@ -22,6 +22,9 @@ set incsearch
 " better backspace
 set backspace=indent,eol,start
 
+" clipboard
+set clipboard=unnamedplus
+
 " tabs
 set smarttab
 set expandtab
