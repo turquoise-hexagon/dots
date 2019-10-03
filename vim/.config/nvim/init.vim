@@ -48,8 +48,5 @@ set shortmess=actI
 " terminal
 tnoremap <Esc> <C-\><C-n>
 
-" pkgfiles
-autocmd BufNewFile,BufRead *Pkgfile set ft=sh
-
 " colors
 colorscheme fruity
