@@ -1,13 +1,12 @@
 fonts/.local/share/fonts/.uuid
 
-music/.config/ncmpcpp/lyrics
-music/.config/ncmpcpp/ncmpcpp
+music/.config/ncmpcpp/*
+!music/.config/ncmpcpp/ncmpcpp.conf
 
-music/.config/mpd/database
-music/.config/mpd/log
-music/.config/mpd/pid
-music/.config/mpd/playlists
-music/.config/mpd/state
-music/.config/mpd/sticker
+music/.config/mpd/*
+!music/.config/mpd/mpd.conf
 
 vim/.config/nvim/.*
+
+ssh/.ssh/*
+!ssh/.ssh/config
