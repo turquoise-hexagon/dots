@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# mpv
+
+# pause mpc
+mpc pause > /dev/null
+
+mpv "$@"
