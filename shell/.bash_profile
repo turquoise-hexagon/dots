@@ -10,9 +10,7 @@ for var in              \
     LANG=en_US.UTF-8    \
     LC_ALL=en_US.UTF-8  \
     LC_LANG=en_US.UTF-8
-do
-    export "$var"
-done
+{ export "$var"; }
 
 # ---
 # misc
@@ -20,10 +18,10 @@ done
 
 . <(keychain --eval --agents ssh id_rsa)
 
-if [[ -f ~/.bashrc ]]; then
+[[ -f ~/.bashrc ]] &&
     . ~/.bashrc
-fi
 
-if [[ ! $DISPLAY && $(tty) =~ 1$ ]]; then
+[[ ! $DISPLAY && $(tty) =~ 1$ ]] &&
     exec startx &> /dev/null
-fi
+
+:
