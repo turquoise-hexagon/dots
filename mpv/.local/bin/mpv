@@ -5,4 +5,4 @@
 # pause mpc
 mpc pause > /dev/null
 
-mpv "$@"
+command -p mpv "$@"
