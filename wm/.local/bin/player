@@ -15,13 +15,13 @@ pgrep -x mpv > /dev/null && {
     esac
 
     if test "$notify"; then
-        echo '{ "command": [ "get_property", "filtered-metadata" ] }' |
+        echo '{ "command" : [ "get_property", "media-title" ] }' |
             socat - "$socket" | {
                 read -r out
 
                 # parse output
-                out=${out#*\"Title\":\"}
-                out=${out%\"\},\"request*}
+                out=${out#*:\"}
+                out=${out%\",*}
 
                 dunstify -r 550 "$out"
             }
