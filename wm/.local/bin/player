@@ -14,7 +14,7 @@ pgrep -x mpv > /dev/null && {
         next|prev) echo "playlist-$1" | socat - "$socket"
     esac
 
-    if "$notify"; then
+    if test "$notify"; then
         echo '{ "command": [ "get_property", "filtered-metadata" ] }' |
             socat - "$socket" | {
                 read -r out
