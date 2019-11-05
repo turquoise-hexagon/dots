@@ -3,6 +3,6 @@
 # mpv
 
 # pause mpc
-mpc pause > /dev/null
+mpc pause > /dev/null 2>&1
 
 command -p mpv "$@"
