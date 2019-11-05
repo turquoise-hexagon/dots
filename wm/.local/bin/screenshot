@@ -2,7 +2,7 @@
 #
 # screenshot script
 
-dir=~/pics/scrots
+dir=~/medias/pics/scrots
 cur=$(date +%F_%H-%M-%S)
 
 mkdir -p "$dir" || exit 1
