@@ -4,7 +4,7 @@ prompt() {
     # colors
     res='\[\e[m\]'
 
-    ((ret)) && acc='\[\e[36m\]' || acc='\[\e[91m\]'
+    ((ret)) && acc='\[\e[32m\]' || acc='\[\e[91m\]'
 
     # short path
     var=${PWD/#$HOME/\~}

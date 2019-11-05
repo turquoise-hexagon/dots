@@ -6,10 +6,10 @@ PATH=~/.local/bin:/sbin:/usr/sbin:$PATH
 
 for var in              \
     EDITOR=nvim         \
-    LESSHISTFILE=-      \
     LANG=en_US.UTF-8    \
     LC_ALL=en_US.UTF-8  \
-    LC_LANG=en_US.UTF-8
+    LC_LANG=en_US.UTF-8 \
+    LESSHISTFILE=-
 { export "$var"; }
 
 # ---

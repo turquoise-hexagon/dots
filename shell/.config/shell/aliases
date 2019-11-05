@@ -1,15 +1,17 @@
-alias cp='cp -r'
-alias df='df -h'
-alias diff='diff --color=auto'
-alias du='du -h'
-alias free='free -h'
-alias grep='grep --color=auto'
-alias htop='htop -t'
-alias ls='ls -FN --color=auto'
-alias mkdir='mkdir -p'
-alias ncmpcpp='ncmpcpp -q'
-alias scp='scp -r'
-alias sxiv='sxiv -bs f'
-alias vim='nvim'
+for _ in                 \
+cp='cp -r'               \
+df='df -h'               \
+diff='diff --color=auto' \
+du='du -h'               \
+free='free -h'           \
+grep='grep --color=auto' \
+htop='htop -t'           \
+ls='ls -FN --color=auto' \
+mkdir='mkdir -p'         \
+ncmpcpp='ncmpcpp -q'     \
+scp='scp -r'             \
+sxiv='sxiv -bs f'        \
+vim='nvim'
+{ alias "$_"; }
 
 # vim: ft=sh
