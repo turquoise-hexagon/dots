@@ -2,9 +2,9 @@
 #
 # player control
 
-# send a notification when fullscreen
+# send a notification when fullscreen & changing playing file
 bspc query -N -n focused.fullscreen > /dev/null && test "$1" != toggle &&
-    fullscreen=1
+    notify=1
 
 pgrep -x mpv > /dev/null && {
     socket=/tmp/mpv-socket
@@ -14,7 +14,7 @@ pgrep -x mpv > /dev/null && {
         next|prev) echo "playlist-$1" | socat - "$socket"
     esac
 
-    if "$fullscreen"; then
+    if "$notify"; then
         echo '{ "command": [ "get_property", "filtered-metadata" ] }' |
             socat - "$socket" | {
                 read -r out
@@ -29,6 +29,6 @@ pgrep -x mpv > /dev/null && {
 } || mpc "$1" 2> /dev/null | {
     read -r out
 
-    test "$fullscreen" &&
+    test "$notify" &&
         dunstify -r 550 "$out"
 }
