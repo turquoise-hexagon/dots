@@ -1,3 +1,4 @@
+# prompt
 prompt() {
     local acc res var pos ret=$?
 
@@ -26,27 +27,28 @@ prompt() {
 
 PROMPT_COMMAND=prompt
 
+# ls_colors
 for _ in   \
-rs=97:     \
-no=97:     \
-fi=97:     \
-di=34:     \
-ln=32:     \
-pi=33:     \
-so=95:     \
 bd=93:     \
 cd=93:     \
-mi=90:     \
-or=90:     \
-ex=92:     \
+di=34:     \
 do=95:     \
+ex=92:     \
+fi=97:     \
+ln=32:     \
 mh=97:     \
+mi=90:     \
+no=97:     \
+or=90:     \
+pi=33:     \
+rs=97:     \
+so=95:     \
+ca=41\;30: \
+ow=42\;34: \
+sg=43\;30: \
 st=44\;30: \
 su=41\;97: \
-sg=43\;30: \
-ow=42\;34: \
-tw=42\;30: \
-ca=41\;30:
+tw=42\;30:
 { LS_COLORS+=$_; }
 
 export LS_COLORS
