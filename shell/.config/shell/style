@@ -26,6 +26,29 @@ prompt() {
 
 PROMPT_COMMAND=prompt
 
-export LS_COLORS='rs=97:no=97:fi=97:di=34:ln=32:pi=33:so=95:bd=93:cd=93:mi=90:or=90:ex=92:do=95:su=41;97:sg=43;30:st=4430:ow=42;34:tw=42;30:ca=41;30:mh=97:'
+for _ in   \
+rs=97:     \
+no=97:     \
+fi=97:     \
+di=34:     \
+ln=32:     \
+pi=33:     \
+so=95:     \
+bd=93:     \
+cd=93:     \
+mi=90:     \
+or=90:     \
+ex=92:     \
+do=95:     \
+mh=97:     \
+st=44\;30: \
+su=41\;97: \
+sg=43\;30: \
+ow=42\;34: \
+tw=42\;30: \
+ca=41\;30:
+{ LS_COLORS+=$_; }
+
+export LS_COLORS
 
 # vim: ft=sh
