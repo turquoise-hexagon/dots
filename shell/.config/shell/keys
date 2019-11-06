@@ -1,4 +1,4 @@
-# history completion'
+# history completion
 for _ in                          \
 '"\e[A": history-search-backward' \
 '"\e[B": history-search-forward'
