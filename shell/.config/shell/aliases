@@ -11,7 +11,8 @@ mkdir='mkdir -p'         \
 ncmpcpp='ncmpcpp -q'     \
 scp='scp -r'             \
 sxiv='sxiv -bs f'        \
-vim='nvim'
+vim='nvim'               \
+wget='wget --hsts-file=~/.cache/wget'
 { alias "$_"; }
 
 # vim: ft=sh

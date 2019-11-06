@@ -1,0 +1,5 @@
+! ~/.config/xres
+#include "fonts"
+#include "colors"
+
+! vim: ft=xdefaults
