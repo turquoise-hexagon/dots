@@ -1,11 +1,12 @@
 # env
 PATH=~/.local/bin:/sbin:/usr/sbin:$PATH
 
-for _ in            \
-EDITOR=nvim         \
-LANG=en_US.UTF-8    \
-LC_ALL=en_US.UTF-8  \
-LC_LANG=en_US.UTF-8 \
+for _ in                           \
+EDITOR=nvim                        \
+INPUTRC=~/.config/readline/inputrc \
+LANG=en_US.UTF-8                   \
+LC_ALL=en_US.UTF-8                 \
+LC_LANG=en_US.UTF-8                \
 LESSHISTFILE=-
 { export "$_"; }
 
