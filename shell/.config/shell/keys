@@ -1,13 +1,17 @@
 # history completion'
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
+for _ in                          \
+'"\e[A": history-search-backward' \
+'"\e[B": history-search-forward'
+{ bind "$_"; }
 
 # tab completion
-bind 'TAB: menu-complete'
-bind 'set menu-complete-display-prefix on'
-bind 'set completion-ignore-case on'
-bind 'set show-all-if-ambiguous on'
-bind 'set colored-stats on'
-bind 'set bell-style none'
+for _ in                              \
+'TAB: menu-complete'                  \
+'set bell-style none'                 \
+'set colored-stats on'                \
+'set completion-ignore-case on'       \
+'set menu-complete-display-prefix on' \
+'set show-all-if-ambiguous on'
+{ bind "$_"; }
 
 # vim: ft=sh
