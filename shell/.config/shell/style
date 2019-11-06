@@ -28,6 +28,8 @@ prompt() {
 PROMPT_COMMAND=prompt
 
 # ls_colors
+LS_COLORS=
+
 for _ in   \
 bd=93:     \
 cd=93:     \
