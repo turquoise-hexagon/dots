@@ -2,32 +2,20 @@
 #
 # xinitrc
 
-# ---
 # daemons
-# ---
-
 sxhkd -m1 &
 dunst &
 mpd &
 
-# ---
 # settings
-# ---
-
 setxkbmap fr -option caps:escape
 xsetroot -cursor_name left_ptr
 xset s off -dpms
 
-# ---
 # rice
-# ---
-
 xset +fp ~/.local/share/fonts
 xrdb -merge ~/.config/xres/main
 setroot --restore
 
-# ---
-# window manager
-# ---
-
+# wm
 exec bspwm

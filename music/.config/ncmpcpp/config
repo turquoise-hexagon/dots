@@ -1,21 +1,12 @@
-# ---
 # directories
-# ---
-
 ncmpcpp_directory = "~/.config/ncmpcpp/ncmpcpp"
 lyrics_directory = "~/.config/ncmpcpp/lyrics"
 
-# ---
 # general
-# ---
-
 autocenter_mode = "yes"
 centered_cursor = "yes"
 
-# ---
 # interface
-# ---
-
 playlist_display_mode = "classic"
 song_list_format = "$2%a$9 $4-$9 $3%t$9"
 playlist_disable_highlight_delay = "0"

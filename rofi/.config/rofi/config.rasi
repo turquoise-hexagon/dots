@@ -1,8 +1,5 @@
 configuration {
-    /*
-     * settings
-     */
-
+    // settings
     eh: 1;
     lines: 5;
     width: 30;
@@ -11,10 +8,7 @@ configuration {
     scrollbar-width: 0;
     show-match: false;
 
-    /*
-     * colors
-     */
-
+    // colors
     color-window: "#EEEEEE, #EEEEEE, #EEEEEE";
     color-normal: "#EEEEEE, #102029, #EEEEEE, #EEEEEE, #F4ADB1";
     color-active: "#EEEEEE, #102029, #EEEEEE, #EEEEEE, #F4ADB1";

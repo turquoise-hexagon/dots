@@ -9,10 +9,7 @@ endif
 
 let g:colors_name="fruity"
 
-" ---
 " syntax
-" ---
-
 hi Normal          ctermfg=none    ctermbg=none    cterm=none
 hi Comment         ctermfg=8       ctermbg=none    cterm=none
 hi Constant        ctermfg=2       ctermbg=none    cterm=none
@@ -26,10 +23,7 @@ hi Error           ctermfg=0       ctermbg=1       cterm=none
 hi Todo            ctermfg=0       ctermbg=2       cterm=none
 hi Underlined      ctermfg=none    ctermbg=none    cterm=underline
 
-" ---
 " interface
-" ---
-
 hi Folded          ctermfg=8       ctermbg=none    cterm=none
 hi DiffAdd         ctermfg=2       ctermbg=none    cterm=none
 hi DiffChange      ctermfg=3       ctermbg=none    cterm=none

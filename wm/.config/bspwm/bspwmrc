@@ -2,10 +2,7 @@
 #
 # wm config
 
-# ---
 # settings
-# ---
-
 bspc monitor -d 1 2 3 4 5
 
 while read -r line; do
@@ -26,10 +23,7 @@ border_width 6
 window_gap 6
 EOF
 
-# ---
 # utils
-# ---
-
 for bin in panel borders; do
     pgrep -x "$bin" > /dev/null || "$bin" &
 done

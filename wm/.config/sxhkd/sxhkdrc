@@ -1,7 +1,4 @@
-# ---
 # misc keybindings
-# ---
-
 XF86Audio{Prev,Next,Play}
     player {prev,next,toggle}
 
@@ -23,10 +20,7 @@ super + space
 super + shift + r
     pkill -USR1 -x sxhkd
 
-# ---
 # window manager
-# ---
-
 super + q
     bspc node -c
 
@@ -45,6 +39,5 @@ super + {t,Tab,f}
 super + {_,shift,alt,ctrl} + {h,j,k,l}
     {focus,move,resize,bspc node -p} {west,south,north,east}
 
-# caution, azerty keyboard
-super + {_,shift} + {ampersand,eacute,quotedbl,apostrophe,parenleft}
+super + {_,shift} + {ampersand,eacute,quotedbl,apostrophe,parenleft} # azerty
     bspc {desktop -f,node -d} {1-5}
