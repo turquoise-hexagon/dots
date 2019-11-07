@@ -12,7 +12,7 @@ read -r max < $dir/max_brightness
 
 var=$((cur $1 max * $2 / 100))
 
-[ $var -gt "$max" ] && var=$max
-[ $var -lt "$min" ] && var=$min
-
-echo $var > $dir/brightness
+echo $((
+    var > max ? max :
+    var < min ? min : var
+)) > $dir/brightness
