@@ -24,7 +24,7 @@ wattr "i$arg" "$(targets focused)" $(targets normal) | {
 
             [ \
                 $((
-                    ! min_1 || win_2 < min_1 ||
+                    !min_1 || win_2 < min_1 ||
                     win_2 == min_1 && win_3 < min_2
                  )) -eq 1 \
             ] && {
