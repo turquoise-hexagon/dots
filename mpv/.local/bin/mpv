@@ -8,15 +8,13 @@ dir=/tmp/mpv
 mpc pause > /dev/null 2>&1
 
 # handle multiple mpv sockets
-max=0
-
 for socket in "$dir"-*; do
     num=${socket##*-}
 
     case $num in
        \*) ;;
         *)
-            [ "$num" -gt "$max" ] &&
+            [ "$num" -gt "${max:-0}" ] &&
                 max=$num
     esac
 done
