@@ -8,8 +8,10 @@ dir=/tmp/mpv
 mpc pause > /dev/null 2>&1
 
 # handle multiple mpv sockets
-for socket in "$dir"-*; do
-    num=${socket##*-}
+mkdir -p "$dir"
+
+for socket in "$dir"/*; do
+    num=${socket##*/}
 
     case $num in
        \*) ;;
@@ -19,9 +21,9 @@ for socket in "$dir"-*; do
     esac
 done
 
-max=$((max + 1))
+socket=$dir/$((max + 1))
 
-trap 'rm "$dir-$max"' EXIT
+trap 'rm "$socket"' EXIT
 
 command -p mpv \
-    --input-ipc-server="$dir-$max" "$@"
+    --input-ipc-server="$socket" "$@"
