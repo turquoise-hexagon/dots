@@ -7,7 +7,15 @@ bspc query -N -n focused.fullscreen > /dev/null && test "$1" != toggle &&
     notify=1
 
 pgrep -x mpv > /dev/null && {
-    socket=/tmp/mpv-socket
+    # handle multiple mpv sockets
+    for socket in /tmp/mpv-*; do
+        num=${socket##*-}
+
+        [ "$num" -gt "${max:-0}" ] &&
+            max=$num
+    done
+
+    socket=/tmp/mpv-$max
 
     case $1 in
         toggle)    echo "cycle pause" | socat - "$socket";;

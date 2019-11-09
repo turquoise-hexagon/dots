@@ -2,7 +2,28 @@
 #
 # mpv
 
+dir=/tmp/mpv
+
 # pause mpc
 mpc pause > /dev/null 2>&1
 
-command -p mpv "$@"
+# handle multiple mpv sockets
+max=0
+
+for socket in "$dir"-*; do
+    num=${socket##*-}
+
+    case $num in
+       \*) ;;
+        *)
+            [ "$num" -gt "$max" ] &&
+                max=$num
+    esac
+done
+
+max=$((max + 1))
+
+trap 'rm "$dir-$max"' EXIT
+
+command -p mpv \
+    --input-ipc-server="$dir-$max" "$@"
