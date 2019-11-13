@@ -13,7 +13,7 @@ vol()
                 var=${var%%]*}
                 var=${var#*[}
 
-                echo "V$icon $var"
+                echo "vol $icon $var"
             done
     done
 

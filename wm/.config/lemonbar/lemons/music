@@ -13,7 +13,7 @@ mus()
                 *) var='Not Playing'
             esac
 
-            echo "M $var"
+            echo "mus  $var"
         }
 
         mpc idle player

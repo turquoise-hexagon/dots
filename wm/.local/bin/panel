@@ -23,17 +23,12 @@ for func in wks mus clk ntw vol bat; do
     "$func" &
 done |
     while read -r event; do
-        case $event in
-            # remove identifier
-            W*) wks=${event#?};;
-            M*) mus=${event#?};;
-            C*) clk=${event#?};;
-            N*) ntw=${event#?};;
-            V*) vol=${event#?};;
-            B*) bat=${event#?}
-        esac
+        eval "${event%% *}"='${event#* }'
 
-        echo "%{l}$a   $wks   $c   $mus   %{B-}%{c}$clk%{r}$c   $ntw   $b   $vol   $bat   %{B-}"
+        printf '%s%s%s\n'                       \
+            "%{l}$a   $wks   $c   $mus   %{B-}" \
+            "%{c}$clk"                          \
+            "%{r}$c   $ntw   $b   $vol   $bat   %{B-}"
     done |
         lemonbar -g "x$height" \
             -F "$foreground"   \

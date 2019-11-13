@@ -12,7 +12,7 @@ wks() {
                 esac
             done
 
-            echo "W$var"
+            echo "wks $var"
         done
 }
 

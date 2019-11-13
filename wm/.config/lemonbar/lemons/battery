@@ -13,7 +13,7 @@ bat()
 
         [ "$sta" = Charging ] && icon=
 
-        echo "B$icon $var%"
+        echo "bat $icon $var%"
 
         sleep 10
     done
