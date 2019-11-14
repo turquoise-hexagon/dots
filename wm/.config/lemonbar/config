@@ -10,6 +10,12 @@ background='#262E35'
 font=-t-olive-medium-r-normal--10-100-75-75-p-100-iso10646-1
 icons=-t-mango-medium-r-normal--10-100-75-75-c-100-iso10646-1
 
-output='%{B$accent1}   $wks   %{B$accent3}   $mus   %{B-}%{c}$clk%{r}%{B$accent3}   $ntw   %{B$accent2}   $vol   $bat   %{B}'
+while IFS= read -r line; do
+    output=$output$line
+done << 'EOF'
+%{B$accent1}   $wks   %{B$accent3}   $mus   %{B-}
+%{c}$clk
+%{r}%{B$accent3}   $ntw   %{B$accent2}   $vol   $bat   %{B-}
+EOF
 
 # vim: ft=sh
