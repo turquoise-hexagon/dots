@@ -1,17 +1,19 @@
-for _ in                 \
-cp='cp -r'               \
-df='df -h'               \
-diff='diff --color=auto' \
-du='du -h'               \
-free='free -h'           \
-grep='grep --color=auto' \
-htop='htop -t'           \
-ls='ls -FN --color=auto' \
-mkdir='mkdir -p'         \
-ncmpcpp='ncmpcpp -q'     \
-scp='scp -r'             \
-sxiv='sxiv -bs f'        \
-vim='nvim'
-{ alias "$_"; }
+while read -r line; do
+    alias "$line"
+done << EOF
+cp=cp -r
+df=df -h
+diff=diff --color=auto
+du=du -h
+free=free -h
+grep=grep --color=auto
+htop=htop -t
+ls=ls -FN --color=auto
+mkdir=mkdir -p
+ncmpcpp=ncmpcpp -q
+scp=scp -r
+sxiv=sxiv -bs f
+vim=nvim
+EOF
 
 # vim: ft=sh

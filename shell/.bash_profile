@@ -1,14 +1,16 @@
 # env
 PATH=~/.local/bin:/sbin:/usr/sbin:$PATH
 
-for _ in                           \
-EDITOR=nvim                        \
-INPUTRC=~/.config/readline/inputrc \
-LANG=en_US.UTF-8                   \
-LC_ALL=en_US.UTF-8                 \
-LC_LANG=en_US.UTF-8                \
+while read -r line; do
+    export "$line"
+done << EOF
+EDITOR=nvim
+INPUTRC=~/.config/readline/inputrc
+LANG=en_US.UTF-8
+LC_ALL=en_US.UTF-8
+LC_LANG=en_US.UTF-8
 LESSHISTFILE=-
-{ export "$_"; }
+EOF
 
 # misc
 . <(

@@ -28,30 +28,32 @@ prompt() {
 PROMPT_COMMAND=prompt
 
 # ls_colors
-LS_COLORS=
+[[ $LS_COLORS ]] && return
 
-for _ in   \
-bd=93:     \
-cd=93:     \
-di=34:     \
-do=95:     \
-ex=92:     \
-fi=97:     \
-ln=32:     \
-mh=97:     \
-mi=90:     \
-no=97:     \
-or=90:     \
-pi=33:     \
-rs=97:     \
-so=95:     \
-ca=41\;30: \
-ow=42\;34: \
-sg=43\;30: \
-st=44\;30: \
-su=41\;97: \
-tw=42\;30:
-{ LS_COLORS+=$_; }
+while read -r line; do
+    LS_COLORS+=$line
+done << EOF
+bd=93:
+cd=93:
+di=34:
+do=95:
+ex=92:
+fi=97:
+ln=32:
+mh=97:
+mi=90:
+no=97:
+or=90:
+pi=33:
+rs=97:
+so=95:
+ca=41;30:
+ow=42;34:
+sg=43;30:
+st=44;30:
+su=41;97:
+tw=42;30:
+EOF
 
 export LS_COLORS
 
