@@ -24,12 +24,9 @@ for func in wks mus clk ntw vol bat; do
 done |
     while read -r event; do
         # parse events
-        eval "${event%% *}"='${event#* }'
+        eval "${event%% *}"=\${event#* }
 
-        printf '%s%s%s\n'                       \
-            "%{l}$a   $wks   $c   $mus   %{B-}" \
-            "%{c}$clk"                          \
-            "%{r}$c   $ntw   $b   $vol   $bat   %{B-}"
+        eval "echo \"$output\""
     done |
         lemonbar -g "x$height" \
             -F "$foreground"   \
