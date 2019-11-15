@@ -14,6 +14,7 @@ IFS='+x'; set -- $(
         -c "$(bspc config focused_border_color)"
 )
 
+# avoid small accidental screenshots
 [ $(($1 < 5 && $2 < 5)) -eq 1 ] && {
     IFS=' '; set -- $(wattr whxy "$(lsw -r)")
 }
