@@ -27,7 +27,7 @@ prompt() {
     # don't print the prompt mid line
     IFS='[;' read -rsp $'\e[6n' -dR _ _ position
 
-    ((pos > 1)) && position='\n' || position=
+    ((position > 1)) && position='\n' || position=
 
     # set prompt
     PS1="$position$accent$path$reset "
