@@ -21,7 +21,7 @@ done |
         # parse events
         eval "${event%% *}"=\${event#* }
 
-        eval "echo \"$output\""
+        eval "echo \"$format\""
     done |
         lemonbar -g "x$height" \
             -F "$foreground"   \
