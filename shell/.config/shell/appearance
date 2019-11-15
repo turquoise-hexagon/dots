@@ -1,28 +1,36 @@
 # prompt
 prompt() {
-    local acc res var pos ret=$?
+    local        \
+        accent   \
+        path     \
+        position \
+        prompt   \
+        reset    \
+        return=$?
 
     # colors
-    res='\[\e[m\]'
+    reset='\[\e[m\]'
 
-    ((ret)) && acc='\[\e[32m\]' || acc='\[\e[91m\]'
+    ((return)) && accent='\[\e[32m\]' || accent='\[\e[91m\]'
 
     # short path
-    var=${PWD/#$HOME/\~}
+    [[ $SSH_TTY ]] && prompt='><>' || prompt='~'
 
-    [[                             \
-        $var =~ .*/.*/.*/.*     && \
-        $var =~ (~?/[^/]*/).*(/.*) \
+    path=${PWD/#$HOME/$prompt}
+
+    [[                              \
+        $path =~ .*/.*/.*/.*     && \
+        $path =~ (~?/[^/]*/).*(/.*) \
     ]] &&
-        var=${BASH_REMATCH[1]}..${BASH_REMATCH[2]}
+        path=${BASH_REMATCH[1]}..${BASH_REMATCH[2]}
 
     # don't print the prompt mid line
-    IFS='[;' read -rsp $'\e[6n' -dR _ _ pos
+    IFS='[;' read -rsp $'\e[6n' -dR _ _ position
 
-    ((pos > 1)) && pos='\n' || pos=
+    ((pos > 1)) && position='\n' || position=
 
     # set prompt
-    PS1="$pos$acc$var$res "
+    PS1="$position$accent$path$reset "
 }
 
 PROMPT_COMMAND=prompt
