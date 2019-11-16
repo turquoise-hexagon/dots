@@ -10,4 +10,7 @@ set completion-ignore-case on
 set menu-complete-display-prefix on
 set show-all-if-ambiguous on
 
+# misc
+set blink-matching-paren on
+
 # vim: ft=sh
