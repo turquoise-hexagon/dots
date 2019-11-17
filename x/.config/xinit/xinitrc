@@ -8,7 +8,7 @@ dunst &
 mpd &
 
 # settings
-setxkbmap fr -option caps:escape
+setxkbmap fr -option caps:swapescape
 xsetroot -cursor_name left_ptr
 xset s off -dpms
 

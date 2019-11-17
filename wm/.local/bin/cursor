@@ -6,14 +6,12 @@
     read -r x y w h
     read -r  mx  my
 
-    # exit if the cursor is already on the window
+    # center if cursor isn't on the window
     [ \
         $((
             mx >= x && mx <= x + w &&
             my >= y && my <= y + h
-         )) -eq 1 \
+         )) -eq 0 \
     ] &&
-        exit
-
-    wmp $((x + w / 2)) $((y + h / 2))
+        wmp $((x + w / 2)) $((y + h / 2))
 }
