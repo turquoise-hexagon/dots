@@ -1,4 +1,5 @@
-[[ -f /etc/bash_completion ]] &&
-    . /etc/bash_completion
+: /usr/share/bash-completion/bash_completion
+
+[[ -f $_ ]] && . "$_"
 
 # vim: ft=sh
