@@ -45,8 +45,9 @@ set guicursor=
 set laststatus=1
 set shortmess=actI
 
-" terminal
-tnoremap <Esc> <C-\><C-n>
+" keybindings
+tnoremap <esc> <c-\><c-n>
+nnoremap <silent> <esc> :noh<cr>
 
 " colors
 colorscheme fruity
