@@ -17,8 +17,10 @@ esac
 # get a percentage of the monitor resolution
 var=$((`wattr "$dim" "$(lsw -r)"` * percent / 100))
 
-[ "$dim" = w ] && { x=$sign$var; y=0; }
-[ "$dim" = h ] && { y=$sign$var; x=0; }
+case $dim in
+    w) x=$sign$var; y=0;;
+    h) y=$sign$var; x=0
+esac
 
 # try to resize in one direction
 # fall back to the other if it fails

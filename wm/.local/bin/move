@@ -60,8 +60,10 @@ case $(get state "$(bspc query -T -n)") in
         # get a percentage of the monitor resolution
         var=$((`get "$fdim" "$(bspc query -T -m)"` * percent / 100))
 
-        [ "$fdim" = width  ] && { x=$sign$var; y=0; }
-        [ "$fdim" = height ] && { y=$sign$var; x=0; }
+        case $fdim in
+            width)  x=$sign$var; y=0;;
+            height) y=$sign$var; x=0
+        esac
 
         bspc node -v "$x" "$y"
         ;;
