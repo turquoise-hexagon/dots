@@ -22,7 +22,7 @@ super + shift + r
 
 # window manager
 super + q
-    close
+    bspc node -c
 
 super + c
     bspc node -p cancel

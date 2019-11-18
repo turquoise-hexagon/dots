@@ -13,12 +13,13 @@ LESSHISTFILE=-
 EOF
 
 # misc
-. <(
-    keychain                \
-        --eval --absolute   \
-        --agents ssh id_rsa \
-        --dir ~/.config/keychain
-)
+command -v keychain > /dev/null &&
+    . <(
+        keychain                \
+            --eval --absolute   \
+            --agents ssh id_rsa \
+            --dir ~/.config/keychain
+    )
 
 [[ -f ~/.bashrc ]] &&
     . ~/.bashrc
