@@ -3,7 +3,7 @@
 # quit / reload wm
 
 # clean up utilities
-for bin in borders panel; do
+for bin in borders panel events; do
     pkill -x "$bin"
 done
 
