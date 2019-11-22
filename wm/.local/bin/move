@@ -3,21 +3,13 @@
 # move window
 
 get() {
-    arg=$1
+    arg=$1; shift
 
     # filthy json parsing
-    IFS=,; set -- $2
-    IFS={; set -- $@
-    IFS=}; set -- $@
+    var=${*#*\"$arg\":}
+    var=${var%%[,\}]*}
 
-    for i; do
-        case $i in
-            *\"$arg\"*)
-                echo "${i#*:}"
-
-                return
-        esac
-    done
+    echo "$var"
 }
 
 case $1 in
