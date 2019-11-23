@@ -15,7 +15,7 @@ IFS='+x'; set -- $(
 )
 
 # avoid small accidental screenshots
-[ $(($1 < 5 && $2 < 5)) -eq 1 ] && {
+[ $(($1 < 10 && $2 < 10)) -eq 1 ] && {
     IFS=' '; set -- $(wattr whxy "$(lsw -r)")
 }
 
