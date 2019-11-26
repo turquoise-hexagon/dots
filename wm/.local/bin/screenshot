@@ -7,7 +7,7 @@ cur=$(date +%F_%H-%M-%S)
 
 mkdir -p "$dir"
 
-IFS='+x'; set -- $(
+IFS=+x; set -- $(
     hacksaw                              \
         -n                               \
         -s "$(bspc config border_width)" \
