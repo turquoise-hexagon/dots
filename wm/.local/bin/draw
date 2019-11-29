@@ -11,7 +11,7 @@ hacksaw              \
 
     # make the newly spawned window floating & with the right geometry
     bspc rule -a \* -o state=floating \
-        rectangle=$((w - 2 * b))x$((h - 2 * b))+$x+$y
+        rectangle="$((w - 2 * b))x$((h - 2 * b))+$x+$y"
 }
 
 st &

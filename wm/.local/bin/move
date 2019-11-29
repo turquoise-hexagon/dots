@@ -20,7 +20,7 @@ case $1 in
 esac
 
 case $(get state "$(bspc query -T -n)") in
-    \"tiled\")
+    '"tiled"')
         # try to replace a preselection or to move the window normally
         bspc node -n "$1.!automatic" || bspc node -s "$1.tiled" || {
             node=$(bspc query -N -n)
@@ -46,7 +46,7 @@ case $(get state "$(bspc query -T -n)") in
             done
         }
         ;;
-    \"floating\")
+    '"floating"')
         percent=5
 
         # get a percentage of the monitor resolution
