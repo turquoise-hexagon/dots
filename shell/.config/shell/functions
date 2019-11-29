@@ -1,0 +1,23 @@
+map() {
+    while read -r x; do
+        "$@" "$x"
+    done
+}
+
+filter() {
+    while read -r x; do
+        "$@" "$x" > /dev/null && echo "$x"
+    done
+}
+
+reduce() {
+    local a=${@: -1}
+
+    while read -r x; do
+        a=$("${@:1:$# - 1}" "$a" "$x")
+    done
+
+    echo "$a"
+}
+
+# vim: ft=sh
