@@ -27,4 +27,4 @@ command -v keychain > /dev/null &&
 [[ ! $DISPLAY && $(tty) =~ [^0-9]1$ ]] &&
     exec startx ~/.config/xinit/xinitrc &> /dev/null
 
-: # fix non 0 exit status
+:
