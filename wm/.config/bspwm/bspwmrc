@@ -26,6 +26,6 @@ EOF
 # utils
 _ external_rules_command "$(command -v rules)"
 
-for bin in panel borders events; do
+for bin in panel borders; do
     pgrep -x "$bin" > /dev/null || "$bin" &
 done

@@ -1,8 +1,0 @@
-#!/bin/sh
-#
-# adjust cursor on new windows
-
-bspc subscribe node_add |
-    while read -r _; do
-        cursor
-    done
