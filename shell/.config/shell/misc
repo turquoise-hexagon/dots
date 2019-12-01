@@ -2,5 +2,4 @@ if command -v direnv > /dev/null; then
     . <(direnv hook bash)
 fi
 
-
 # vim: ft=sh
