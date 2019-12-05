@@ -23,7 +23,7 @@ done
 
 socket=$dir/$((max + 1))
 
-trap 'rm "$socket"' EXIT
+trap 'rm -f "$socket"' INT TERM QUIT EXIT
 
 command -p mpv \
     --input-ipc-server="$socket" "$@"
