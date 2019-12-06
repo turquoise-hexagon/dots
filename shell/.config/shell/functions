@@ -1,20 +1,28 @@
+run() {
+    local i=0
+
+    for ((; i++ < $1;)) {
+        "${@:2}"
+    }
+}
+
 map() {
-    while read -r x; do
-        "$@" "$x"
+    while read -r i; do
+        "$@" "$i"
     done
 }
 
 filter() {
-    while read -r x; do
-        "$@" "$x" > /dev/null && echo "$x"
+    while read -r i; do
+        "$@" "$i" > /dev/null && echo "$i"
     done
 }
 
 reduce() {
     local a=${@: -1}
 
-    while read -r x; do
-        a=$("${@:1:$# - 1}" "$a" "$x")
+    while read -r i; do
+        a=$("${@:1:$# - 1}" "$a" "$i")
     done
 
     echo "$a"
