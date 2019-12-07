@@ -24,7 +24,7 @@ command -v keychain > /dev/null &&
 [[ -f ~/.bashrc ]] &&
     . ~/.bashrc
 
-[[ ! $DISPLAY && $(tty) =~ [^0-9]1$ ]] &&
+[[ ! $DISPLAY && $(tty) =~ /dev/tty1 ]] &&
     exec startx ~/.config/xinit/xinitrc &> /dev/null
 
 :
