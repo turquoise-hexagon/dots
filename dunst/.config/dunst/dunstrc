@@ -1,5 +1,5 @@
 [global]
-    font = Kiwi Medium Regular 7
+    font = Olive Medium Regular 12
     format= "%s\n%b"
     markup = full
     indicate_hidden = yes

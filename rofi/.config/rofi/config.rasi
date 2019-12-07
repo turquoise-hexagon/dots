@@ -4,7 +4,7 @@ configuration {
     lines: 5;
     width: 30;
     padding: 20;
-    font: "Kiwi Medium Regular 7";
+    font: "Olive Medium Regular 12";
     scrollbar-width: 0;
     show-match: false;
 
