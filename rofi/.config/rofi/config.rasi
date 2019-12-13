@@ -4,7 +4,7 @@ configuration {
     lines: 5;
     width: 30;
     padding: 20;
-    font: "Olive Medium Regular 12";
+    font: "Olive 12";
     scrollbar-width: 0;
     show-match: false;
 
