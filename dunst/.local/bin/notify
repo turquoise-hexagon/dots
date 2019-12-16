@@ -1,0 +1,44 @@
+#!/bin/sh
+#
+# send a notification using lemonbar
+
+name=notify
+
+. ~/.config/lemonbar/notify
+
+# clear previous notification
+killw "$(xdo id -a "$name")"
+
+[ "$3" ] &&
+    string="$2 - $3" || string=$2
+
+# get relevant informations
+{
+    echo "$font"
+
+    wattr wh "$(lsw -r)"
+} | {
+    read -r f_n f_s
+    read -r s_w s_h
+
+    # get notification size
+    w=$((`txtw -f "$f_n" -s "$f_s" "$string"` + padding * 2))
+    h=$((`txth -f "$f_n" -s "$f_s" "$string"` + padding * 2))
+
+    # get notification offset
+    x=$((s_w - w - offset_x))
+    y=$((s_h - h - offset_y))
+
+    {
+        echo "%{c}$string" | tr '\n' ' '
+
+        sleep "$time"
+    } |
+        lemonbar               \
+            -F "$foreground"   \
+            -B "$background"   \
+            -g "${w}x$h+$x+$y" \
+            -n "$name"         \
+            -d                 \
+            -f "$f_n:pixelsize=$f_s:antialias=false" &
+}

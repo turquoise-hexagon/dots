@@ -4,7 +4,7 @@
 
 name=panel
 
-. ~/.config/lemonbar/config
+. ~/.config/lemonbar/panel
 
 # ensure proper panel script cleanup
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT

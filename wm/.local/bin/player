@@ -31,12 +31,12 @@ pgrep -x mpv > /dev/null && {
                 out=${out#*:\"}
                 out=${out%\",*}
 
-                dunstify -r 550 "$out"
+                notify-send "$out"
             }
     fi
 } || mpc "$1" 2> /dev/null | {
     read -r out
 
     test "$notify" &&
-        dunstify -r 550 "$out"
+        notify-send "$out"
 }

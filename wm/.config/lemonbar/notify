@@ -1,0 +1,13 @@
+time=5
+
+padding=20
+
+offset_x=30
+offset_y=30
+
+foreground='#102029'
+background='#EEEEEE'
+
+font='Olive 16'
+
+# vim: ft=sh

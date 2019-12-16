@@ -1,35 +1,6 @@
-[global]
-    font = Olive 12
-    format= "%s\n%b"
-    markup = full
-    indicate_hidden = yes
-    alignment = center
-    word_wrap = yes
-    geometry = "0x0-30-30"
-    shrink = no
-    follow = none
-    show_indicators = no
-    separator_height = 0
-    line_height = 3
-    padding = 20
-    horizontal_padding = 20
-
-[urgency_low]
-    background = "#EEEEEE"
-    foreground = "#102029"
-    timeout = 5
-
-[urgency_normal]
-    background = "#EEEEEE"
-    foreground = "#102029"
-    timeout = 5
-
-[urgency_critical]
-    background = "#EEEEEE"
-    foreground = "#C9647E"
-    timeout = 0
-
-[shortcuts]
-    close = ctrl+space
+[script]
+    summary = *
+    script = notify
+    format =
 
 # vim: ft=cfg
