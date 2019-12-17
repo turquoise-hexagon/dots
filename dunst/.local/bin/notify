@@ -12,10 +12,10 @@ cmd="killw \"\$(xdo id -a \"$name\")\""
 eval "$cmd"
 
 # fix formatting #1
-string=$(
-    { [ "$3" ] && echo "$2 - $3" || echo "$2"; } |
-        sed 's|%{[^{]*}||g'
-)
+[ "$3" ] && string="$2 - $3" || string=$2
+
+[ ${#string} -gt 80 ] &&
+    string=$(printf '%.80s...' "$string")
 
 {
     echo "$font"
