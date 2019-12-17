@@ -13,8 +13,8 @@ eval "$cmd"
 
 # format parameters
 string=$(
-    [ "$3" ] && echo "$2 - $3" || echo "$2" |
-        sed 'H;$!d;x;s|\n||;s|\n| |g;s|%{.*}||g'
+    { [ "$3" ] && echo "$2 - $3" || echo "$2"; } |
+        sed 's|%{[^}+]}||g;:x;N;$!bx;s|\n| |g'
 )
 
 # get relevant informations
@@ -35,7 +35,7 @@ string=$(
     y=$((s_h - h - offset_y))
 
     {
-        echo "%{c}%{A:$cmd:}$string%{A}"
+        echo "%{c}%{A:$cmd:}$string%{A}" | tr '\n' ' '
 
         sleep "$time"
     } |
