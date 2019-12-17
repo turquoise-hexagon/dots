@@ -35,7 +35,7 @@ string=$(
     y=$((s_h - h - offset_y))
 
     {
-        echo "%{c}%{A:$cmd:}$string%{A}" | tr '\n' ' '
+        echo "%{c}%{A:$cmd:}$string%{A}"
 
         sleep "$time"
     } |
