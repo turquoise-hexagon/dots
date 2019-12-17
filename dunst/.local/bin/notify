@@ -7,10 +7,12 @@ name=notify
 . ~/.config/lemonbar/notify
 
 # clear previous notification
-killw "$(xdo id -a "$name")"
+cmd="killw \"\$(xdo id -a \"$name\")\""
 
-[ "$3" ] &&
-    string="$2 - $3" || string=$2
+eval "$cmd"
+
+# format parameters
+[ "$3" ] && string="$2 - $3" || string=$2
 
 # get relevant informations
 {
@@ -30,7 +32,7 @@ killw "$(xdo id -a "$name")"
     y=$((s_h - h - offset_y))
 
     {
-        echo "%{c}$string" | tr '\n' ' '
+        echo "%{c}%{A:$cmd:}$string%{A}" | tr '\n' ' '
 
         sleep "$time"
     } |
@@ -40,5 +42,5 @@ killw "$(xdo id -a "$name")"
             -g "${w}x$h+$x+$y" \
             -n "$name"         \
             -d                 \
-            -f "$f_n:pixelsize=$f_s:antialias=false" &
+            -f "$f_n:pixelsize=$f_s:antialias=false" | sh &
 }
