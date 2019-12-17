@@ -11,13 +11,12 @@ cmd="killw \"\$(xdo id -a \"$name\")\""
 
 eval "$cmd"
 
-# format parameters
+# fix formatting #1
 string=$(
     { [ "$3" ] && echo "$2 - $3" || echo "$2"; } |
-        sed 's|%{[^}]+}||g;:x;N;$!bx;s|\n| |g'
+        sed 's|%{[^{]*}||g'
 )
 
-# get relevant informations
 {
     echo "$font"
 
@@ -30,12 +29,15 @@ string=$(
     w=$((`txtw -f "$f_n" -s "$f_s" "$string"` + padding * 2))
     h=$((`txth -f "$f_n" -s "$f_s" "$string"` + padding * 2))
 
+    # fix formatting #2
+    string=$(echo "$string" | sed 's|%|%%|g;:x;N;$!bx;s|\n| |g')
+
     # get notification offset
     x=$((s_w - w - offset_x))
     y=$((s_h - h - offset_y))
 
     {
-        echo "%{c}%{A:$cmd:} $string %{A}"
+        echo "%{c}%{A:$cmd:}$string%{A}"
 
         sleep "$time"
     } |
