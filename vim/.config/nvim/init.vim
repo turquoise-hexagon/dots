@@ -49,5 +49,8 @@ set shortmess=actI
 tnoremap <esc> <c-\><c-n>
 nnoremap <silent> <esc> :noh<cr>
 
+" pkgfiles
+au BufNewFile,BufRead *Pkgfile set filetype=sh
+
 " colors
 colorscheme fruity
