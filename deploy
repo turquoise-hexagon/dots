@@ -1,11 +1,19 @@
 #!/bin/sh
 
-# ensure stow is installed
-if ! command -v stow > /dev/null; then
-    echo 'error : install stow first' >&2
+command -v stow > /dev/null || {
+    echo "error : install stow first" >&2
     exit 1
-fi
+}
 
-for i in */; do
-    stow "$i" -t ~
+case $1 in
+    desktop) arg="dunst fonts git gtk mpv music rofi shell ssh vim wm x";;
+    phone)   arg="shell ssh termux vim";;
+    server)  arg="shell ssh vim";;
+    *)
+        echo "usage : ${0##*/} <desktop|server|phone>" >&2
+        exit 1
+esac
+
+for dir in $arg; do
+    stow -t ~ "$dir"
 done
