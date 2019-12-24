@@ -1,19 +1,21 @@
 #!/bin/sh
 
-command -v stow > /dev/null || {
-    echo "error : install stow first" >&2
+die() {
+    echo "$1" >&2
     exit 1
 }
 
+command -v stow > /dev/null ||
+    die 'error : stow is needed to deploy'
+
 case $1 in
-    desktop) arg="dunst fonts git gtk mpv music rofi shell ssh vim wm x";;
-    phone)   arg="shell ssh termux vim";;
-    server)  arg="shell ssh vim";;
+    desktop) arg='dunst fonts git gtk mpv music rofi shell ssh vim wm x';;
+    phone)   arg='shell ssh termux vim';;
+    server)  arg='shell ssh vim';;
     *)
-        echo "usage : ${0##*/} <desktop|server|phone>" >&2
-        exit 1
+        die "usage : ${0##*/} <desktop|phone|server>"
 esac
 
-for dir in $arg; do
-    stow -t ~ "$dir"
+for pkg in $arg; do
+    stow -t ~ "$pkg"
 done
