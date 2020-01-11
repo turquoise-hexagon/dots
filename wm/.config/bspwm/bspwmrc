@@ -2,13 +2,11 @@
 #
 # wm config
 
-_() bspc config "$@"
-
 # settings
 bspc monitor -d 1 2 3 4 5
 
 while IFS= read -r line; do
-    test "$line" && _ $line
+    test "$line" && bspc config $line
 done << EOF
 focus_follows_pointer true
 borderless_monocle true
@@ -24,7 +22,7 @@ window_gap 6
 EOF
 
 # utils
-_ external_rules_command "$(command -v rules)"
+bspc config external_rules_command "$(command -v rules)"
 
 for bin in panel borders; do
     pgrep -x "$bin" > /dev/null || "$bin" &
