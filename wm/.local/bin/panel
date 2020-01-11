@@ -9,13 +9,9 @@ name=panel
 # ensure proper panel script cleanup
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
-# source all panel modules
-for file in ~/.config/lemonbar/lemons/*; do
-    . "$file"
-done
-
-for func in wks mus clk ntw vol bat; do
-    "$func" &
+# run all panel modules
+for mod in ~/.config/lemonbar/lemons/*; do
+    "$mod" &
 done |
     while read -r event; do
         # parse events

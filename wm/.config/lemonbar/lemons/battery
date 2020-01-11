@@ -1,21 +1,20 @@
-bat()
-    while :; do
-        read -r sta < /sys/class/power_supply/BAT0/status
-        read -r var < /sys/class/power_supply/BAT0/capacity
+#!/bin/sh
 
-        case $((var / 25)) in
-            0) icon=;;
-            1) icon=;;
-            2) icon=;;
-            3) icon=;;
-            *) icon=
-        esac
+while :; do
+    read -r sta < /sys/class/power_supply/BAT0/status
+    read -r var < /sys/class/power_supply/BAT0/capacity
 
-        [ "$sta" = Charging ] && icon=
+    case $((var / 25)) in
+        0) icon=;;
+        1) icon=;;
+        2) icon=;;
+        3) icon=;;
+        *) icon=
+    esac
 
-        echo "bat $icon $var%"
+    [ "$sta" = Charging ] && icon=
 
-        sleep 10
-    done
+    echo "bat $icon $var%"
 
-# vim: ft=sh
+    sleep 10
+done

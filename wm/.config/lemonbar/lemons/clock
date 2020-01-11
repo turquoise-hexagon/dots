@@ -1,10 +1,9 @@
-clk()
-    while :; do
-        var=$(date +'%A %R')
+#!/bin/sh
 
-        echo "clk $var"
+while :; do
+    var=$(date +'%A %R')
 
-        sleep 10
-    done
+    echo "clk $var"
 
-# vim: ft=sh
+    sleep 10
+done

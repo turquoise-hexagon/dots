@@ -1,19 +1,17 @@
-wks() {
-    IFS=:
+#!/bin/sh
 
-    bspc subscribe |
-        while read -r event; do
-            var=
+IFS=:
 
-            for i in $event; do
-                case ${i%?} in
-                    [OFU]) var=$var;;
-                    [ofu]) var=$var
-                esac
-            done
+bspc subscribe |
+    while read -r event; do
+        var=
 
-            echo "wks $var"
+        for i in $event; do
+            case ${i%?} in
+                [OFU]) var=$var;;
+                [ofu]) var=$var
+            esac
         done
-}
 
-# vim: ft=sh
+        echo "wks $var"
+    done

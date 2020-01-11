@@ -1,20 +1,19 @@
-vol()
-    while :; do
-        # ensure volume block isn't empty on startup
-        { echo; stdbuf -oL alsactl monitor; } |
-            while read -r event; do
-                var=$(amixer get Master)
+#!/bin/sh
 
-                case $var in
-                    *'[on]')  icon=;;
-                    *'[off]') icon=
-                esac
+while :; do
+    # ensure volume block isn't empty on startup
+    { echo; stdbuf -oL alsactl monitor; } |
+        while read -r event; do
+            var=$(amixer get Master)
 
-                var=${var%%]*}
-                var=${var#*[}
+            case $var in
+                *'[on]')  icon=;;
+                *'[off]') icon=
+            esac
 
-                echo "vol $icon $var"
-            done
-    done
+            var=${var%%]*}
+            var=${var#*[}
 
-# vim: ft=sh
+            echo "vol $icon $var"
+        done
+done
