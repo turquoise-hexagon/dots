@@ -13,7 +13,7 @@ LESSHISTFILE=-
 EOF
 
 # misc
-command -v keychain > /dev/null &&
+type keychain > /dev/null &&
     . <(
         keychain                \
             --eval --absolute   \

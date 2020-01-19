@@ -5,7 +5,7 @@ die() {
     exit 1
 }
 
-command -v stow > /dev/null ||
+type -v stow > /dev/null ||
     die 'error : stow is needed to deploy'
 
 case $1 in

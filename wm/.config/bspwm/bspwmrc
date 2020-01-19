@@ -22,7 +22,7 @@ window_gap 6
 EOF
 
 # utils
-bspc config external_rules_command "$(command -v rules)"
+bspc config external_rules_command "$(type rules)"
 
 for bin in panel borders; do
     pgrep -x "$bin" > /dev/null || "$bin" &
