@@ -21,6 +21,6 @@
 (variable-bind! "blink-matching-paren" "on")
 (paren-blink-timeout-set! 100000)
 
-(current-input-port (make-readline-port))
+(current-input-port (make-readline-port "> "))
 
 ; vim: ft=scheme
