@@ -1,0 +1,27 @@
+(import (chicken load))
+(load-verbose #f)
+
+(let ()
+  (import (chicken format)
+          (chicken process-context)
+          (only chicken-doc)
+          breadline
+          breadline-scheme-completion)
+
+  ; history
+  (history-file (format "~a/.csi_history"
+                        (get-environment-variable "HOME")))
+  (stifle-history! 10000)
+  (completer-word-break-characters-set! "\"\'`;|(")
+
+  ; completion
+  (completer-set! scheme-completer)
+  (basic-quote-characters-set! "\"|")
+
+  ; parentheses matching
+  (variable-bind! "blink-matching-paren" "on")
+  (paren-blink-timeout-set! 100000)
+
+  (current-input-port (make-readline-port)))
+
+; vim: ft=scheme

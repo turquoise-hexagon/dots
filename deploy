@@ -9,9 +9,9 @@ type stow > /dev/null ||
     die 'error : stow is needed to deploy'
 
 case $1 in
-    desktop) arg='dunst fonts git gtk misc mpv music rofi shell ssh vim wm x';;
-    phone)   arg='misc shell ssh termux vim';;
-    server)  arg='misc shell ssh vim';;
+    desktop) arg='chicken dunst fonts git gtk misc mpv music rofi shell ssh vim wm x';;
+    phone)   arg='chicken misc shell ssh termux vim';;
+    server)  arg='chicken misc shell ssh vim';;
     *)
         die "usage : ${0##*/} <desktop|phone|server>"
 esac
