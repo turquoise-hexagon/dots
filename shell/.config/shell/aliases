@@ -12,7 +12,6 @@ htop=htop -t
 ls=ls -FN --color=auto
 mkdir=mkdir -p
 ncmpcpp=ncmpcpp -q
-scheme=scheme --eehistory off
 scp=scp -r
 sxiv=sxiv -bs f
 vim=nvim
