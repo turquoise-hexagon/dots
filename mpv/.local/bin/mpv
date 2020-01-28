@@ -13,12 +13,8 @@ mkdir -p "$dir"
 for socket in "$dir"/*; do
     num=${socket##*/}
 
-    case $num in
-       \*) ;;
-        *)
-            [ "$num" -gt "${max:-0}" ] &&
-                max=$num
-    esac
+    [ "$num" != \* ] &&
+        [ "$num" -gt "${max:-0}" ] && max=$num
 done
 
 socket=$dir/$((max + 1))
