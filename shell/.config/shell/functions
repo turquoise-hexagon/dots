@@ -1,5 +1,5 @@
 run() {
-    local i=0
+    local i
 
     for ((; i++ < $1;)) {
         "${@:2}"
