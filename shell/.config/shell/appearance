@@ -19,7 +19,7 @@ prompt() {
     path=${PWD/#$HOME/$prompt}
 
     [[
-        $path =~ .*/.*/.*/.*             &&
+        $path =~ .*/.*/.*/.* &&
         $path =~ ($prompt)?(/[^/]*/).*(/.*)
     ]] && {
         declare -n tmp=BASH_REMATCH
