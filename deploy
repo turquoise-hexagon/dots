@@ -6,7 +6,7 @@ die() {
 }
 
 type stow > /dev/null 2>&1 ||
-    die 'error : stow is needed to deploy'
+    die 'error : install stow first'
 
 case $1 in
     desktop) arg='chicken dunst fonts git gtk misc mpv music rofi shell ssh vim wm x';;
