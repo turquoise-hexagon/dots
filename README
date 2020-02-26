@@ -1,7 +1,12 @@
-various scripts and config files for backup and sharing purpose
+dots
+====
+    various scripts and config files for backup and sharing purpose
+    please read the files you intend to use beforehand
 
-usage :
-$ ./deploy $machine_type
+usage
+-----
+    $ ./deploy $machine_type
 
-depends on :
-* stow
+depends on
+----------
+    * stow
