@@ -1,5 +1,4 @@
-various scripts and config files
+various scripts and config files for backup and sharing purpose
 
-please read the files you intend to use
-
-managed with gnu stow
+usage :
+$ ./deploy $machine_type
