@@ -2,3 +2,6 @@ various scripts and config files for backup and sharing purpose
 
 usage :
 $ ./deploy $machine_type
+
+depends on :
+* stow

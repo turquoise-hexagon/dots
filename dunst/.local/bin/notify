@@ -36,6 +36,8 @@ eval "$cmd"
     x=$((s_w - w - offset_x))
     y=$((s_h - h - offset_y))
 
+    echo "%{c}%{A:$cmd:}$string%{A}" >> /tmp/notify
+
     {
         echo "%{c}%{A:$cmd:}$string%{A}"
 
