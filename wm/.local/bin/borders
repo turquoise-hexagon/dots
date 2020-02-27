@@ -9,20 +9,12 @@ b=$((`_ border_width` / 2))
 color1=$(_  normal_border_color); color1=0x${color1#?}
 color2=$(_ focused_border_color); color2=0x${color2#?}
 
-draw() {
-    case $1 in
-        normal)  i=$color1; o=$color2;;
-        focused) i=$color2; o=$color1
-    esac
-
-    shift
-
+draw()
     chwb2 -I "$i" -O "$o" -i "$b" -o "$b" $@ 2> /dev/null
-}
 
 # initial draw, and then subscribe to events
 { echo; bspc subscribe node_geometry node_focus; } |
     while read -r _; do
-        draw normal  "$(targets  normal)"
-        draw focused "$(targets focused)"
+        i=$color1 o=$color2 draw "$(targets  normal)"
+        i=$color2 o=$color1 draw "$(targets focused)"
     done
