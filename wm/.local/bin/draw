@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# draw terminals
+# draw - draw terminals
 
 b=$(bspc config border_width)
 c=$(bspc config focused_border_color)

@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# volume control
+# volume - control volume
 
 var=$(amixer set Master "$1")
 

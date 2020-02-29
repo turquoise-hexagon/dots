@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# resize window
+# resize - resize window in a given direction
 
 percent=10
 

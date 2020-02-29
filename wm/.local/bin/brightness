@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# change brightness
+# brightness - change brightness
 
 dir=/sys/class/backlight/intel_backlight
 

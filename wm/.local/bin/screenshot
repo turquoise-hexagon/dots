@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# screenshot script
+# screenshot - screenshot an area of the screen
 
 dir=~/medias/pics/scrots
 cur=$(date +%F_%H-%M-%S)

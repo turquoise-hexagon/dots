@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# quit / reload wm
+# wm - quit / reload wm
 
 # clean up utilities
 for bin in borders panel; do

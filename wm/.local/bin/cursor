@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# teleport cursor
+# cursor - teleport cursor
 
 { wattr xywh "$(pfw)"; wmp; } | {
     read -r x y w h

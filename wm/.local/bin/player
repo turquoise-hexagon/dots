@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# player control
+# player - control media player
 
 # send a notification when fullscreen & changing playing file
 bspc query -N -n focused.fullscreen > /dev/null && test "$1" != toggle &&

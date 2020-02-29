@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# mpv
+# mpv - small mpv wrapper
 
 dir=/tmp/mpv
 

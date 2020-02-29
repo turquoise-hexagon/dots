@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# external rules
+# rules - external rules
 
 percent=66
 

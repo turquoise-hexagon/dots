@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# move window
+# move - move window in a given direction
 
 get() {
     arg=$1; shift

@@ -1,6 +1,4 @@
 #!/bin/sh
-#
-# wm config
 
 # settings
 bspc monitor -d 1 2 3 4 5
