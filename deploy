@@ -8,14 +8,13 @@ die() {
 type stow > /dev/null 2>&1 ||
     die 'error : install stow first'
 
-case $1 in
-    desktop) arg='chicken dunst fonts git gtk misc mpv music rofi shell ssh vim wm x';;
-    phone)   arg='chicken misc shell ssh termux vim';;
-    server)  arg='chicken misc shell ssh vim';;
-    *)
-        die "usage : ${0##*/} <desktop|phone|server>"
-esac
+_()
+    stow -t ~ "$@"
 
-for pkg in $arg; do
-    stow -t ~ "$pkg"
-done
+case $1 in
+    laptop) _ chicken dunst fonts git gtk misc mpv music rofi shell ssh vim wm x;;
+    termux) _ chicken misc shell ssh termux vim;;
+    server) _ chicken misc shell ssh vim;;
+    *)
+        die "usage : ${0##*/} <laptop|termux|server>"
+esac
