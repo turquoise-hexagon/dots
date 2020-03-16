@@ -1,6 +1,6 @@
 HISTSIZE=10000
 HISTFILESIZE=10000
-HISTCONTROL=ignoredups
+HISTCONTROL=ignoredups:erasedups
 HISTFILE=~/.local/share/bash
 
 # vim: ft=sh

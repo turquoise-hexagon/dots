@@ -5,12 +5,12 @@ while read -r line; do
     export "$line"
 done << EOF
 EDITOR=nvim
-MANPAGER=nvim -c 'set ft=man'
 INPUTRC=~/.config/readline/inputrc
 LANG=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 LC_LANG=en_US.UTF-8
 LESSHISTFILE=-
+MANPAGER=nvim -c 'set ft=man'
 EOF
 
 # misc
