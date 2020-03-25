@@ -14,6 +14,9 @@ MANPAGER=nvim -c 'set ft=man'
 EOF
 
 # misc
+[[ -f ~/.bashrc ]] &&
+    . ~/.bashrc
+
 type keychain &> /dev/null &&
     . <(
         keychain                \
@@ -21,9 +24,6 @@ type keychain &> /dev/null &&
             --agents ssh id_rsa \
             --dir ~/.config/keychain
     )
-
-[[ -f ~/.bashrc ]] &&
-    . ~/.bashrc
 
 [[ ! $DISPLAY && $(tty) =~ /dev/tty1 ]] &&
     exec startx ~/.config/xinit/xinitrc &> /dev/null
