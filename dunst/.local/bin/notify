@@ -1,51 +1,81 @@
 #!/bin/sh
 #
-# notify - display notification using lemonbar
+# notify - display a notification using n30f & imagemagick
 
-name=notify
+dir=/tmp/notify
 
-. ~/.config/lemonbar/notify
+. ~/.config/notify/config
 
-# clear previous notification
-cmd="killw \"\$(xdo id -a \"$name\")\""
+# fix formatting
+[ "$3" ] && string="$2
+$3" || string="$2"
 
-eval "$cmd"
+# find current notification
+mkdir -p "$dir"
 
-# fix formatting #1
-[ "$3" ] && string="$2 - $3" || string=$2
+for file in "$dir/"*; do
+    num=${file##*/}
+    num=${num%.png}
 
-[ ${#string} -gt 80 ] &&
-    string=$(printf '%.80s...' "$string")
+    [ "$num" != \* ] &&
+        [ "$num" -gt "${max:-0}" ] && max=$num
+done
+
+file=$dir/$((max + 1)).png
 
 {
     echo "$font"
-
     wattr wh "$(lsw -r)"
 } | {
-    read -r f_n f_s
-    read -r s_w s_h
+    read -r font  size
+    read -r scr_w scr_h
 
-    # get notification size
-    w=$((`txtw -f "$f_n" -s "$f_s" "$string"` + padding * 2))
-    h=$((`txth -f "$f_n" -s "$f_s" "$string"` + padding * 2))
+    # create initial popup
+    convert                           \
+        -background "$background"     \
+        -fill "$foreground"           \
+        -font "$font"                 \
+        -pointsize "$size"            \
+        -interline-spacing "$spacing" \
+        -gravity center               \
+        label:"$string"               \
+        "$file"
 
-    # fix formatting #2
-    string=$(echo "$string" | sed 's|%|%%|g;:x;N;$!bx;s|\n| |g')
+    identify -format '%W %H' "$file" | {
+        read -r img_w img_h
 
-    # get notification offset
-    x=$((s_w - w - offset_x))
-    y=$((s_h - h - offset_y))
+        img_w=$((img_w + padding * 2))
+        img_h=$((img_h + padding * 2))
 
-    {
-        echo "%{c}%{A:$cmd:}$string%{A}"
+        # add padding to popup
+        convert                         \
+            -background "$background"   \
+            -gravity center             \
+            -extent "${img_w}x${img_h}" \
+            "$file"                     \
+            "$file"
 
-        sleep "$time"
-    } |
-        lemonbar               \
-            -F "$foreground"   \
-            -B "$background"   \
-            -g "${w}x$h+$x+$y" \
-            -n "$name"         \
-            -d                 \
-            -f "$f_n:pixelsize=$f_s:antialias=false" | sh &
+        pop_x=$((scr_w - img_w - x_offset))
+        pop_y=$((scr_h - img_h - y_offset))
+
+        # clear previous notification
+        killw "$(xdo id -a "$dir/$max.png")"
+
+        # display popup
+        n30f                               \
+            -x "$pop_x"                    \
+            -y "$pop_y"                    \
+            -c "killw \$(xdo id -a $file)" \
+            -t "$file"                     \
+            "$file" &
+
+        # clear popup after timeout
+        {
+            sleep 5
+
+            killw "$(xdo id -a "$file")"
+
+            rm "$file"
+        } &
+    }
 }

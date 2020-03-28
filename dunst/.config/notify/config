@@ -1,9 +1,11 @@
-time=5
+timeout=5
 
 padding=20
 
-offset_x=30
-offset_y=30
+spacing=3
+
+x_offset=30
+y_offset=30
 
 foreground='#102029'
 background='#EEEEEE'
