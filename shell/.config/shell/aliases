@@ -9,7 +9,6 @@ diff=diff --color=auto
 du=du -h
 free=free -h
 grep=grep --color=auto
-htop=htop -t
 ls=ls -FN --color=auto
 mkdir=mkdir -p
 ncmpcpp=ncmpcpp -q
