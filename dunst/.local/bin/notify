@@ -10,6 +10,8 @@ dir=/tmp/notify
 [ "$3" ] && string="$2
 $3" || string="$2"
 
+string=$(echo "$string" | fold -s)
+
 # find current notification
 mkdir -p "$dir"
 
