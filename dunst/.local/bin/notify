@@ -61,21 +61,21 @@ file=$dir/$((max + 1)).png
         pop_y=$((scr_h - img_h - y_offset))
 
         # clear previous notification
-        killw "$(xdo id -a "$dir/$max.png")"
+        killw -p "$(xdo id -a "$dir/$max.png")"
 
         # display popup
-        n30f                               \
-            -x "$pop_x"                    \
-            -y "$pop_y"                    \
-            -c "killw \$(xdo id -a $file)" \
-            -t "$file"                     \
+        n30f                                  \
+            -x "$pop_x"                       \
+            -y "$pop_y"                       \
+            -c "killw -p \$(xdo id -a $file)" \
+            -t "$file"                        \
             "$file" &
 
         # clear popup after timeout
         {
             sleep 5
 
-            killw "$(xdo id -a "$file")"
+            killw -p "$(xdo id -a "$file")"
 
             rm "$file"
         } &
