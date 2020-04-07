@@ -32,7 +32,7 @@ file=$dir/$((max + 1)).png
     read -r font  size
     read -r scr_w scr_h
 
-    # create initial popup
+    # create popup
     convert                           \
         -background "$background"     \
         -bordercolor "$background"    \
