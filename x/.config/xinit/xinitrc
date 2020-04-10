@@ -1,7 +1,12 @@
 # daemons
-sxhkd -m1 &
-dunst &
-mpd &
+_() {
+    pgrep -x "$1" > /dev/null ||
+        { "$@" & }
+}
+
+_ sxhkd -m 1
+_ dunst
+_ mpd
 
 # settings
 setxkbmap fr -option caps:swapescape
@@ -9,11 +14,23 @@ xsetroot -cursor_name left_ptr
 xset s off -dpms
 
 # rice
-xset +fp ~/.local/share/fonts
-xrdb -merge ~/.config/xres/main
-setroot --restore
+tmp=~/.local/share/fonts
+
+[ -f "$tmp/fonts.dir" ] &&
+    xset +fp "$tmp"
+
+tmp=~/.config/xres/main
+
+[ -f "$tmp" ] &&
+    xrdb -merge "$tmp"
+
+tmp=~/.config/setroot/.setroot-restore
+
+[ -x "$tmp" ] &&
+    setroot --restore
 
 # wm
-exec bspwm
+bspc query -M > /dev/null 2>&1 ||
+    exec bspwm
 
 # vim: ft=sh
