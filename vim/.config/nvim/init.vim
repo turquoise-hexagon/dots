@@ -39,7 +39,7 @@ set breakindent
 
 " interface
 set noruler
-set nonumber
+set number
 set mouse=a
 set guicursor=
 set laststatus=1

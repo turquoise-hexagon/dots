@@ -15,8 +15,8 @@ presel_feedback_color #EEEEEE
 focused_border_color #EEEEEE
 normal_border_color #FFFFFF
 
-border_width 6
-window_gap 6
+border_width 8
+window_gap 8
 EOF
 
 # utils

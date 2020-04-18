@@ -48,8 +48,8 @@ file=$dir/$((max + 1)).png
     identify -format '%W %H' "$file" | {
         read -r img_w img_h
 
-        pop_x=$((scr_w - img_w - padding * 2))
-        pop_y=$((scr_h - img_h - padding * 2))
+        pop_x=$((scr_w - img_w - x_offset))
+        pop_y=$((scr_h - img_h - y_offset))
 
         # clear previous notification
         killw -p "$(xdo id -a "$dir/$max.png")"
