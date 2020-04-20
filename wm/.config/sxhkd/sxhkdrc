@@ -15,7 +15,7 @@ super {_,shift} + Return
     {st,draw}
 
 super + {_,shift} + space
-    rofi -show {run,window}
+    {rofi -show run,switcher}
 
 super + shift + r
     pkill -USR1 -x sxhkd

@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# switcher - small rofi wrapper
+
+rofi -show window && cursor
