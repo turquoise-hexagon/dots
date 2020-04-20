@@ -14,8 +14,8 @@ Print
 super {_,shift} + Return
     {st,draw}
 
-super + space
-    rofi -show run
+super + {_,shift} + space
+    rofi -show {run,window}
 
 super + shift + r
     pkill -USR1 -x sxhkd

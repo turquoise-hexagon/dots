@@ -27,13 +27,16 @@ prompt() {
         path=${tmp[1]}${tmp[2]}..${tmp[3]}
     }
 
+    # set window title
+    title="\[\e]0;$path\]\[\a\]"
+
     # don't print the prompt mid line
     IFS='[;' read -rsp $'\e[6n' -dR _ _ position
 
     ((position > 1)) && position='\n' || position=
 
     # set prompt
-    PS1="$position$accent$path$reset "
+    PS1="$position$accent$path$reset$title "
 }
 
 PROMPT_COMMAND=prompt

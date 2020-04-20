@@ -2,7 +2,9 @@
 #
 # targets - list focused / unfocused windows
 
+_() bspc query -N -n ".local.$1.!fullscreen"
+
 case $1 in
-    focused) bspc query -N -n .local.focused.\!fullscreen;;
-    normal)  bspc query -N -n .local.\!focused.\!fullscreen
+    focused) _ focused;;
+    normal)  _ \!focused
 esac
