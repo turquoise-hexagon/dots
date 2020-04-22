@@ -2,14 +2,21 @@
 #
 # draw - draw terminals
 
-b=$(bspc config border_width)
+_() bspc config "$@"
 
-hacksaw -ns "$b" -c "$(bspc config focused_border_color)" | {
-    IFS=+x read -r w h x y
+border=$(_ border_width)
 
-    # make the newly spawned window floating & with the right geometry
-    bspc rule -a \* -o state=floating \
-        rectangle="$((w - 2 * b))x$((h - 2 * b))+$x+$y"
-}
+IFS=+x; set -- $(
+    hacksaw          \
+        -n           \
+        -s "$border" \
+        -c "$(_ focused_border_color)" 2> /dev/null
+)
+
+[ $# -eq 0 ] && exit
+
+# make the newly spawned window floating & with the right geometry
+bspc rule -a \* -o state=floating \
+    rectangle="$(($1 - 2 * border))x$(($2 - 2 * border))+$3+$4"
 
 st &

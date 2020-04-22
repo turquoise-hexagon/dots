@@ -2,22 +2,26 @@
 #
 # screenshot - screenshot an area of the screen
 
+_() bspc config "$@"
+
 dir=~/medias/pics/scrots
 cur=$(date +%F_%H-%M-%S)
 
 mkdir -p "$dir"
 
 IFS=+x; set -- $(
-    hacksaw                              \
-        -n                               \
-        -s "$(bspc config border_width)" \
-        -c "$(bspc config focused_border_color)"
+    hacksaw                    \
+        -n                     \
+        -s "$(_ border_width)" \
+        -c "$(_ focused_border_color)" 2> /dev/null
 )
+
+[ $# -eq 0 ] && exit
 
 # avoid small accidental screenshots
 [ $(($1 < 10 && $2 < 10)) -eq 1 ] && {
-    IFS=' '; set -- $(wattr whxy "$(lsw -r)")
+    IFS=\  ; set -- $(wattr whxy "$(lsw -r)")
 }
 
 shotgun -g "$1x$2+$3+$4" "$dir/$cur.png" &&
-    notify-send "Saved screenshot as $cur.png"
+    notify-send "Screenshot saved as $cur.png"
