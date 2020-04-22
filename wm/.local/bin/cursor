@@ -1,17 +1,18 @@
 #!/bin/sh
 #
-# cursor - teleport cursor
+# cursor - bring cursor back on focused window
 
-{ wattr xywh "$(pfw)"; wmp; } | {
-    read -r x y w h
-    read -r  mx  my
+{ wmp; wattr xywhb "$(pfw)"; } | {
+    read -r m_x m_y
+    read -r x y w h b
 
-    # center if cursor isn't on the window
     [ \
         $((
-            mx >= x && mx <= x + w &&
-            my >= y && my <= y + h
-         )) -eq 0 \
+               m_x <= x + b
+            || m_y <= y + b
+            || m_x >= x + w + b
+            || m_y >= y + h + b
+        )) -eq 1 \
     ] &&
-        wmp $((x + w / 2)) $((y + h / 2))
+        wmp -a $((x + w / 2 + b)) $((y + h / 2 + b))
 }
