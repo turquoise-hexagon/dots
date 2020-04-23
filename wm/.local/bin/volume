@@ -6,10 +6,11 @@ var=$(amixer set Master "$1")
 
 test "$1" = toggle && exit
 
-# format volume
-var=${var%%]*}
-var=${var#*[}
-
 # send a notification when fullscreen
-bspc query -N -n focused.fullscreen > /dev/null &&
+bspc query -N -n focused.fullscreen > /dev/null && {
+    # format volume
+    var=${var%%]*}
+    var=${var#*[}
+
     notify-send "Volume : $var"
+}
