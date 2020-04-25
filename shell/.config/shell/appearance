@@ -60,8 +60,7 @@ prompt() {
 
             git=' ='
 
-            [[ ${output[0]} =~ '[ahead '[0-9]+']'$ ]] &&
-                git=' *'
+            [[ ${output[0]} =~ '[ahead '[0-9]+']'$ ]] && git=' *'
 
             ((${#output[@]} > 1)) && git=' !'
 
@@ -71,6 +70,7 @@ prompt() {
 
     cd "$path"
 
+    # set prompt
     PS1="$position$accent1$short$accent2$git$reset$title "
 }
 
