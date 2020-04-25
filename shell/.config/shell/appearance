@@ -1,42 +1,77 @@
 # prompt
 prompt() {
-    local        \
-        accent   \
-        path     \
-        position \
-        prompt   \
-        reset    \
-        return=$?
+    local status=$?
 
     # colors
+    local reset accent1 accent2
+
     reset='\[\e[m\]'
 
-    ((return)) && accent='\[\e[32m\]' || accent='\[\e[91m\]'
+    ((status)) && {
+        accent1='\[\e[32m\]'
+        accent2='\[\e[91m\]'
+    } || {
+        accent1='\[\e[91m\]'
+        accent2='\e[\e[32m\]'
+    }
 
     # short path
+    local prompt short
+
     [[ $SSH_TTY ]] && prompt='><>' || prompt='~'
 
-    path=${PWD/#$HOME/$prompt}
+    short=${PWD/#$HOME/$prompt}
 
     [[
-        $path =~ .*/.*/.*/.* &&
-        $path =~ ($prompt)?(/[^/]*/).*(/.*)
+        $short =~ (.*/){3}.* &&
+        $short =~ ($prompt)?(/[^/]*/).*(/.*)
     ]] && {
         declare -n tmp=BASH_REMATCH
 
-        path=${tmp[1]}${tmp[2]}..${tmp[3]}
+        short=${tmp[1]}${tmp[2]}..${tmp[3]}
     }
 
-    # set window title
-    title="\[\e]0;$path\]\[\a\]"
+    # window title
+    local title
 
-    # don't print the prompt mid line
+    title="\[\e]0;$short\]\[\a\]"
+
+    # print prompt at beginning of line
+    local position
+
     IFS='[;' read -rsp $'\e[6n' -dR _ _ position
 
-    ((position > 1)) && position='\n' || position=
+    ((position > 1)) && position='\[\n\]' || position=
 
-    # set prompt
-    PS1="$position$accent$path$reset$title "
+    # git status
+    local git dir path=$PWD
+
+    declare -a dirs output
+
+    IFS=/ read -ra dirs <<< $path
+
+    for dir in "${dirs[@]}"; {
+        cd "${dir:-/}"
+
+        [[ -d .git ]] && {
+            mapfile -t output < <(
+                git status --branch --porcelain
+            )
+
+            git=' ='
+
+            [[ ${output[0]} =~ '[ahead '[0-9]+']'$ ]] &&
+                git=' *'
+
+            ((${#output[@]} > 1)) && git=' !'
+
+            break
+        }
+    }
+
+    cd "$path"
+
+    PS1="$position$accent1$short$accent2$git$reset$title "
 }
 
 PROMPT_COMMAND=prompt
