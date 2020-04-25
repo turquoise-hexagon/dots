@@ -12,6 +12,8 @@ get() {
     echo "$var"
 }
 
+PERCENT=5
+
 case $1 in
     east)  fdim=width;  tdim=height; sign=+;;
     west)  fdim=width;  tdim=height; sign=-;;
@@ -47,10 +49,8 @@ case $(get state "$(bspc query -T -n)") in
         }
         ;;
     '"floating"')
-        percent=5
-
         # get a percentage of the monitor resolution
-        var=$((`get "$fdim" "$(bspc query -T -m)"` * percent / 100))
+        var=$((`get "$fdim" "$(bspc query -T -m)"` * PERCENT / 100))
 
         case $fdim in
             width)  x=$sign$var; y=0;;
