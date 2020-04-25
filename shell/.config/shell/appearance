@@ -12,7 +12,7 @@ prompt() {
         accent2='\[\e[91m\]'
     } || {
         accent1='\[\e[91m\]'
-        accent2='\e[\e[32m\]'
+        accent2='\[\e[32m\]'
     }
 
     # short path
@@ -60,7 +60,7 @@ prompt() {
 
             git=' ='
 
-            [[ ${output[0]} =~ '[ahead '[0-9]+']'$ ]] && git=' *'
+            [[ ${output[0]} =~ '[ahead '[0-9]+']'$ ]] && git=' +'
 
             ((${#output[@]} > 1)) && git=' !'
 
