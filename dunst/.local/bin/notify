@@ -2,7 +2,7 @@
 #
 # notify - display a notification using n30f & imagemagick
 
-dir=/tmp/notify
+DIR=/tmp/notify
 
 . ~/.config/notify/config
 
@@ -13,9 +13,9 @@ $3" || string="$2"
 string=$(echo "$string" | fold -s)
 
 # find current notification
-mkdir -p "$dir"
+mkdir -p "$DIR"
 
-for file in "$dir/"*; do
+for file in "$DIR/"*; do
     num=${file##*/}
     num=${num%.png}
 
@@ -23,7 +23,7 @@ for file in "$dir/"*; do
         [ "$num" -gt "${max:-0}" ] && max=$num
 done
 
-file=$dir/$((max + 1)).png
+file=$DIR/$((max + 1)).png
 
 {
     echo "$font"
@@ -52,7 +52,7 @@ file=$dir/$((max + 1)).png
         pop_y=$((scr_h - img_h - y_offset))
 
         # clear previous notification
-        killw -p "$(xdo id -a "$dir/$max.png")"
+        killw -p "$(xdo id -a "$DIR/$max.png")"
 
         # display popup
         n30f                                  \

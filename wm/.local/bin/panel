@@ -2,7 +2,7 @@
 #
 # panel - main panel script
 
-name=panel
+NAME=panel
 
 . ~/.config/lemonbar/config
 
@@ -24,9 +24,9 @@ done |
             -B "$background"   \
             -f "$icons"        \
             -f "$font"         \
-            -n "$name" &
+            -n "$NAME" &
 
 # ensure proper fullscreen
-xdo lower -ma "$name"
+xdo lower -ma "$NAME"
 
 wait

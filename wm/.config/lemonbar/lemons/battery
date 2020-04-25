@@ -1,18 +1,19 @@
 #!/bin/sh
 
+DIR=/sys/class/power_supply/BAT0
+
 while :; do
-    read -r sta < /sys/class/power_supply/BAT0/status
-    read -r var < /sys/class/power_supply/BAT0/capacity
+    read -r sta < $DIR/status
+    read -r var < $DIR/capacity
 
-    case $((var / 25)) in
-        0) icon=;;
-        1) icon=;;
-        2) icon=;;
-        3) icon=;;
-        *) icon=
-    esac
-
-    [ "$sta" = Charging ] && icon=
+    [ "$sta" = Charging ] && icon= ||
+        case $((var / 25)) in
+            0) icon=;;
+            1) icon=;;
+            2) icon=;;
+            3) icon=;;
+            *) icon=
+        esac
 
     echo "bat $icon $var%"
 

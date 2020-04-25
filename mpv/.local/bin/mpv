@@ -2,22 +2,22 @@
 #
 # mpv - small mpv wrapper
 
-dir=/tmp/mpv
+DIR=/tmp/mpv
 
 # pause mpc
 mpc pause > /dev/null 2>&1
 
 # handle multiple mpv sockets
-mkdir -p "$dir"
+mkdir -p "$DIR"
 
-for socket in "$dir"/*; do
+for socket in "$DIR"/*; do
     num=${socket##*/}
 
     [ "$num" != \* ] &&
         [ "$num" -gt "${max:-0}" ] && max=$num
 done
 
-socket=$dir/$((max + 1))
+socket=$DIR/$((max + 1))
 
 trap 'rm -f "$socket"' INT TERM QUIT EXIT
 

@@ -4,10 +4,9 @@
 
 _() bspc config "$@"
 
-dir=~/medias/pics/scrots
-cur=$(date +%F_%H-%M-%S)
+DIR=~/medias/pics/scrots
 
-mkdir -p "$dir"
+mkdir -p "$DIR"
 
 IFS=+x; set -- $(
     hacksaw                    \
@@ -23,5 +22,7 @@ IFS=+x; set -- $(
     IFS=\  ; set -- $(wattr whxy "$(lsw -r)")
 }
 
-shotgun -g "$1x$2+$3+$4" "$dir/$cur.png" &&
+cur=$(date +%F_%H-%M-%S)
+
+shotgun -g "$1x$2+$3+$4" "$DIR/$cur.png" &&
     notify-send "Screenshot saved as $cur.png"

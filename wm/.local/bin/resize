@@ -2,8 +2,6 @@
 #
 # resize - resize window in a given direction
 
-percent=10
-
 # set a smaller percentage when floating
 bspc query -N -n focused.floating > /dev/null && percent=5
 
@@ -15,7 +13,7 @@ case $1 in
 esac
 
 # get a percentage of the monitor resolution
-var=$((`wattr "$dim" "$(lsw -r)"` * percent / 100))
+var=$((`wattr "$dim" "$(lsw -r)"` * ${percent:-10} / 100))
 
 case $dim in
     w) x=$sign$var; y=0;;

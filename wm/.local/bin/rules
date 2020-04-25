@@ -2,7 +2,7 @@
 #
 # rules - external rules
 
-percent=66
+PERCENT=66
 
 # if there are preselections on the current desktop
 # get the newest one and spawn the new window here first
@@ -18,9 +18,9 @@ wattr wh "$node" | {
 
     ratio=$((h * 100 / w))
 
-    # split horizontally if ratio < percent
+    # split horizontally if ratio < PERCENT
     # split vertically otherwise
-    [ "$ratio" -lt "$percent" ] && split=east || split=south
+    [ "$ratio" -lt "$PERCENT" ] && split=east || split=south
 
     echo "split_dir = $split"
 }
