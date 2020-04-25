@@ -4,7 +4,7 @@
 
 PERCENT=10
 
-tmp=$percent
+tmp=$PERCENT
 
 # set a smaller percentage when floating
 bspc query -N -n focused.floating > /dev/null && tmp=$((tmp / 2))
