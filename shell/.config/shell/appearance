@@ -48,7 +48,7 @@ prompt() {
 
     until [[ $PWD == \/ ]]; do
         [[ -d .git ]] && {
-            mapfile output < <(
+            mapfile -t output < <(
                 git status --branch --porcelain
             )
 
