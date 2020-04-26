@@ -11,9 +11,9 @@ while :; do
                 *'[off]') icon=
             esac
 
-            var=${var%%]*}
+            var=${var%%%]*}
             var=${var#*[}
 
-            echo "vol $icon $var"
+            echo "vol $icon $var%%"
         done
 done

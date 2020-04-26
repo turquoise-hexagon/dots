@@ -13,9 +13,9 @@ icons=-t-mango-medium-r-normal--10-100-75-75-c-100-iso10646-1
 while read -r line; do
     format=$format$line
 done << 'EOF'
-%{B$accent1}   $wks   %{B$accent3}   $mus   %{B-}
+%{B$accent1}%{O20}$wks%{O20}%{B$accent3}%{O20}$mus%{O20}%{B-}
 %{c}$clk
-%{r}%{B$accent3}   $ntw   %{B$accent2}   $vol   $bat   %{B-}
+%{r}%{B$accent3}%{O20}$ntw%{O20}%{B$accent2}%{O20}$vol%{O20}$bat%{O20}%{B-}
 EOF
 
 # vim: ft=sh
