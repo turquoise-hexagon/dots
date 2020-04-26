@@ -9,7 +9,7 @@ xtitle -s |
 
         # shorten current window title
         [ ${#var} -gt 45 ] &&
-            var=$(printf '.45s...' "$var")
+            var=$(printf '%.45s...' "$var")
 
         echo "wks  $var"
     done
