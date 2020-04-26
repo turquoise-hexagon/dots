@@ -1,17 +1,13 @@
 #!/bin/sh
 
-IFS=:
+xtitle -s |
+    while read -r win; do
+        win=${win:-Desktop}
+        cur=$(bspc query -D -d --names)
 
-bspc subscribe |
-    while read -r event; do
-        var=
+        # shorten current window title
+        [ ${#win} -gt 45 ] &&
+            win=$(printf '%.45s...' "$win")
 
-        for i in $event; do
-            case ${i%?} in
-                [OFU]) var=$var;;
-                [ofu]) var=$var
-            esac
-        done
-
-        echo "wks $var"
+        echo "wks  $cur - $win"
     done

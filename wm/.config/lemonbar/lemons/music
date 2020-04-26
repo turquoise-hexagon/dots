@@ -7,9 +7,9 @@ while :; do
 
         case $sta in
             *playing*)
-                [ ${#var} -gt 50 ] &&
+                [ ${#var} -gt 45 ] &&
                     # shorten current song title
-                    var=$(printf '%.50s...' "$var")
+                    var=$(printf '%.45s...' "$var")
                 ;;
             *) var='Not Playing'
         esac

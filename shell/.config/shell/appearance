@@ -44,28 +44,22 @@ prompt() {
     ((position > 1)) && position='\[\n\]' || position=
 
     # git status
-    local git dir path=$PWD
+    local -a output git path=$PWD
 
-    declare -a dirs output
-
-    IFS=/ read -ra dirs <<< $path
-
-    for dir in "${dirs[@]}"; {
-        cd "${dir:-/}"
-
+    for ((;;)) {
         [[ -d .git ]] && {
-            mapfile -t output < <(
+            mapfile output < <(
                 git status --branch --porcelain
             )
 
-            git=' ='
-
-            [[ ${output[0]} =~ '[ahead '[0-9]+']'$ ]] && git=' +'
+            [[ $output =~ \[ahead\ [0-9]+\]$ ]] && git=' +' || git=' ='
 
             ((${#output[@]} > 1)) && git=' !'
 
             break
         }
+
+        cd -Pe .. || break
     }
 
     cd "$path"
