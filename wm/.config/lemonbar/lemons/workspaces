@@ -2,12 +2,16 @@
 
 xtitle -s |
     while read -r win; do
-        win=${win:-Desktop}
         cur=$(bspc query -D -d --names)
 
-        # shorten current window title
-        [ ${#win} -gt 45 ] &&
-            win=$(printf '%.45s...' "$win")
+        # fallback
+        win=${win:-Desktop}
 
-        echo "wks  $cur - $win"
+        var="$cur - $win"
+
+        # shorten current window title
+        [ ${#var} -gt 45 ] &&
+            var=$(printf '.45s...' "$var")
+
+        echo "wks  $var"
     done
