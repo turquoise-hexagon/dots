@@ -8,7 +8,7 @@ foreground='#EEEEEE'
 background='#262E35'
 
 font=-t-olive-medium-r-normal--11-100-75-75-p-100-iso10646-1
-icons=-t-mango-medium-r-normal--10-100-75-75-p-100-iso10646-1
+icons=-t-mango-medium-r-normal--12-100-75-75-p-100-iso10646-1
 
 while read -r line; do
     format=$format$line
