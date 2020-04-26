@@ -2,10 +2,8 @@
 
 xtitle -s |
     while read -r win; do
+        win=${win:-Desktop} # fallback
         cur=$(bspc query -D -d --names)
-
-        # fallback
-        win=${win:-Desktop}
 
         var="$cur - $win"
 
