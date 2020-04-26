@@ -15,7 +15,7 @@ while :; do
             *) icon=
         esac
 
-    echo "bat $icon $var%%"
+    echo "bat $icon  $var%%"
 
     sleep 10
 done

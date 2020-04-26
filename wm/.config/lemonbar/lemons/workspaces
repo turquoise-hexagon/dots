@@ -11,5 +11,5 @@ xtitle -s |
         [ ${#var} -gt 45 ] &&
             var=$(printf '%.45s...' "$var")
 
-        echo "wks  $var"
+        echo "wks   $var"
     done

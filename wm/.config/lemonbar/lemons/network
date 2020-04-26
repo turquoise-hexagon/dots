@@ -16,5 +16,5 @@
             *) continue
         esac
 
-        echo "ntw  $var"
+        echo "ntw   $var"
     done
