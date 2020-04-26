@@ -1,6 +1,7 @@
 #!/bin/sh
 
-xtitle -s |
+# ensure workspaces block isn't empty on startup
+{ echo; xtitle -s; } |
     while read -r win; do
         win=${win:-Desktop} # fallback
         cur=$(bspc query -D -d --names)
