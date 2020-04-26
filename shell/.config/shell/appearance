@@ -46,21 +46,23 @@ prompt() {
     # git status
     local -a output git path=$PWD
 
-    for ((;;)) {
+    until [[ $PWD == \/ ]]; do
         [[ -d .git ]] && {
             mapfile output < <(
                 git status --branch --porcelain
             )
 
-            [[ $output =~ \[ahead\ [0-9]+\]$ ]] && git=' +' || git=' ='
+            [[ $output =~ \[ahead\ [0-9]+\]$ ]] && git=' +'
 
             ((${#output[@]} > 1)) && git=' !'
+
+            git=${git:- =}
 
             break
         }
 
-        cd -Pe .. || break
-    }
+        cd .. || break
+    done
 
     cd "$path"
 
