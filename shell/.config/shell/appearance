@@ -28,7 +28,7 @@ prompt() {
     ]] && {
         declare -n tmp=BASH_REMATCH
 
-        short=${tmp[1]}${tmp[2]}..${tmp[3]}
+        short=${tmp[1]}${tmp[2]}...${tmp[3]}
     }
 
     # window title
