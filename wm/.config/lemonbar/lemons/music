@@ -14,7 +14,7 @@ while :; do
             *) var='Not Playing'
         esac
 
-        echo "mus %{O10}$var"
+        printf '%s\n' "mus %{O10}$var"
     }
 
     mpc idle player

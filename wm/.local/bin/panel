@@ -15,9 +15,9 @@ for mod in ~/.config/lemonbar/lemons/*; do
 done |
     while read -r event; do
         # parse events
-        eval "${event%% *}"=\${event#* }
+        eval "${event%% *}=\${event#* }"
 
-        eval "echo \"$format\""
+        eval "printf '%s\n' \"$format\""
     done |
         lemonbar -g "x$height" \
             -F "$foreground"   \

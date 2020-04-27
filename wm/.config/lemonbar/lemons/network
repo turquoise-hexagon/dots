@@ -16,5 +16,5 @@
             *) continue
         esac
 
-        echo "ntw %{O10}$var"
+        printf '%s\n' "ntw %{O10}$var"
     done

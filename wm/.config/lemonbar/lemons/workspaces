@@ -12,5 +12,5 @@
         [ ${#var} -gt 45 ] &&
             var=$(printf '%.45s...' "$var")
 
-        echo "wks %{O10}$var"
+        printf '%s\n' "wks %{O10}$var"
     done
