@@ -33,7 +33,7 @@ pgrep -x mpv > /dev/null && {
                 out=${out#*:\"}
                 out=${out%\",*}
 
-                notify-send "$out"
+                dunstify -r 500 "$out"
             }
 
     :
@@ -41,5 +41,5 @@ pgrep -x mpv > /dev/null && {
     read -r out
 
     test "$notify" &&
-        notify-send "$out"
+        dunstify -r 500 "$out"
 }
