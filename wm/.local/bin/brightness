@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# brightness - change brightness
+# brightness - control monitor brightness
 
 MIN=30 # minimum brightness
 DIR=/sys/class/backlight/intel_backlight

@@ -1,20 +1,25 @@
 #!/bin/sh
 #
-# borders - draw double borders
+# borders - draw two borders
 
-_() bspc config "$@"
-
-# get values from bspwm config
-b=$((`_ border_width` / 2))
-color1=$(_  normal_border_color); color1=0x${color1#?}
-color2=$(_ focused_border_color); color2=0x${color2#?}
+_()
+    bspc config "$@"
 
 draw()
     chwb2 -I "$i" -O "$o" -i "$b" -o "$b" $@ 2> /dev/null
 
-# initial draw, and then subscribe to events
+# get values from bspwm config
+b=$((`_ border_width` / 2))
+color1=$(_  normal_border_color)
+color2=$(_ focused_border_color)
+
+# make values usable for chwb2
+color1=0x${color1#\#}
+color2=0x${color2#\#}
+
+# initial draw & then subscribe to events
 { echo; bspc subscribe node_geometry node_focus; } |
-    while read -r _; do
+    while read _; do
         i=$color1 o=$color2 draw "$(targets  normal)"
         i=$color2 o=$color1 draw "$(targets focused)"
     done

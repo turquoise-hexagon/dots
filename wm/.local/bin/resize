@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# resize - resize window in a given direction
+# resize - resize focused window in a given direction
 
 PERCENT=10
 
@@ -16,7 +16,7 @@ case $1 in
 esac
 
 # get a percentage of the monitor resolution
-var=$((`wattr "$dim" "$(lsw -r)"` * tmp / 100))
+var=$((`wattr "$dim" "$(lsw -r)"` * PERCENT / 100))
 
 case $dim in
     w) x=$sign$var; y=0;;

@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# focus - focus window in a given direction
+# focus - focus closest window from the focused window in a given direction
 
 # exit when fullscreen
 bspc query -N -n focused.fullscreen > /dev/null && exit

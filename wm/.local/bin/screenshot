@@ -9,13 +9,12 @@ DIR=~/medias/pics/scrots
 mkdir -p "$DIR"
 
 IFS=+x; set -- $(
-    hacksaw                    \
-        -n                     \
-        -s "$(_ border_width)" \
+    hacksaw                     \
+        -ns "$(_ border_width)" \
         -c "$(_ focused_border_color)" 2> /dev/null
 )
 
-[ $# -eq 0 ] && exit
+test $# -eq 0 && exit
 
 # avoid small accidental screenshots
 [ $(($1 < 10 && $2 < 10)) -eq 1 ] && {

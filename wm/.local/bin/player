@@ -1,6 +1,8 @@
 #!/bin/sh
 #
-# player - control media player
+# player - control currently playing media player
+
+DIR=/tmp/mpv
 
 # send a notification when fullscreen & changing playing file
 bspc query -N -n focused.fullscreen > /dev/null && test "$1" != toggle &&
@@ -8,21 +10,21 @@ bspc query -N -n focused.fullscreen > /dev/null && test "$1" != toggle &&
 
 pgrep -x mpv > /dev/null && {
     # handle multiple mpv sockets
-    for socket in /tmp/mpv/*; do
+    for socket in "$DIR/"*; do
         num=${socket##*/}
 
         [ "$num" -gt "${max:-0}" ] &&
             max=$num
     done
 
-    socket=/tmp/mpv/$max
+    socket=$DIR/$max
 
     case $1 in
         toggle)    echo "cycle pause" | socat - "$socket";;
         next|prev) echo "playlist-$1" | socat - "$socket"
     esac
 
-    if test "$notify"; then
+    test "$notify" &&
         echo '{ "command" : [ "get_property", "media-title" ] }' |
             socat - "$socket" | {
                 read -r out
@@ -33,7 +35,8 @@ pgrep -x mpv > /dev/null && {
 
                 notify-send "$out"
             }
-    fi
+
+    :
 } || mpc "$1" 2> /dev/null | {
     read -r out
 
