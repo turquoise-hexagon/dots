@@ -4,10 +4,9 @@
 
 PERCENT=10
 
-tmp=$PERCENT
-
 # set a smaller percentage when floating
-bspc query -N -n focused.floating > /dev/null && tmp=$((tmp / 2))
+bspc query -N -n focused.floating > /dev/null &&
+    PERCENT=$((PERCENT / 2))
 
 case $1 in
     east)  dim=w; dir=right; falldir=left;   sign=+;;

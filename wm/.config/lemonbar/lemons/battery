@@ -15,7 +15,7 @@ while :; do
             *) icon=
         esac
 
-    printf '%s\n' "bat $icon%{O10}$var%%"
+    echo "bat $icon%{O10}$var%%"
 
     sleep 10
 done

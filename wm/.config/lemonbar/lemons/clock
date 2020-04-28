@@ -3,7 +3,7 @@
 while :; do
     var=$(date +'%A %R')
 
-    printf '%s\n' "clk $var"
+    echo "clk $var"
 
     sleep 10
 done
