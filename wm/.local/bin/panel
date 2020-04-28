@@ -19,12 +19,12 @@ done |
 
         eval "printf '%s\n' \"$format\""
     done |
-        lemonbar               \
-            -g "x$height"      \
-            -F "$foreground"   \
-            -B "$background"   \
-            -f "$icons"        \
-            -f "$font"         \
+        lemonbar             \
+            -g "x$height"    \
+            -F "$foreground" \
+            -B "$background" \
+            -f "$icons"      \
+            -f "$font"       \
             -n "$NAME" &
 
 # ensure proper fullscreen
