@@ -1,7 +1,7 @@
 [global]
     font = Olive 12
     format= "%s\n%b"
-    markup = full
+    markup = strip
     indicate_hidden = yes
     alignment = center
     word_wrap = yes
