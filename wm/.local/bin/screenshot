@@ -18,7 +18,7 @@ test $# -eq 0 && exit
 
 # avoid small accidental screenshots
 [ $(($1 < 10 && $2 < 10)) -eq 1 ] && {
-    IFS=\  ; set -- $(wattr whxy "$(lsw -r)")
+    IFS=\ ; set -- $(wattr whxy "$(lsw -r)")
 }
 
 cur=$(date +%F_%H-%M-%S)
