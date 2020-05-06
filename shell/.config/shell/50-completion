@@ -1,7 +1,8 @@
 : /usr/share/bash-completion/bash_completion
 
-if [[ -f $_ ]]; then
+[[ -f $_ ]] &&
     . "$_"
-fi
+
+:
 
 # vim: ft=sh
