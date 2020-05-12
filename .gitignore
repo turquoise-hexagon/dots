@@ -1,3 +1,5 @@
+gtk/.local/share/icons/*.png
+
 fonts/.local/share/fonts/.uuid
 
 music/.config/ncmpcpp/*
