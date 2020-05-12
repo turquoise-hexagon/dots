@@ -11,7 +11,7 @@ LANG=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 LC_LANG=en_US.UTF-8
 LESSHISTFILE=-
-MANPAGER=nvim -c Man! -
+MANPAGER=nvim -c 'Man!' -
 EOF
 
 # misc
