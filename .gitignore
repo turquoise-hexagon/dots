@@ -1,14 +1,1 @@
-gtk/.local/share/icons/*.png
-
-fonts/.local/share/fonts/.uuid
-
-music/.config/ncmpcpp/*
-!music/.config/ncmpcpp/ncmpcpp.conf
-
-music/.config/mpd/*
-!music/.config/mpd/mpd.conf
-
-vim/.config/nvim/.*
-
-ssh/.ssh/*
-!ssh/.ssh/config
+*
