@@ -1,18 +1,15 @@
 # env
 PATH=~/.local/bin:/sbin:/usr/sbin:$PATH
 
-while read -r line; do
-    export "$line"
-done << EOF
-LS_COLORS=
-EDITOR=nvim
-INPUTRC=~/.config/readline/inputrc
-LANG=en_US.UTF-8
-LC_ALL=en_US.UTF-8
-LC_LANG=en_US.UTF-8
-LESSHISTFILE=-
-MANPAGER=nvim -c 'Man!' -
-EOF
+export                             \
+EDITOR=nvim                        \
+INPUTRC=~/.config/readline/inputrc \
+LANG=en_US.UTF-8                   \
+LC_ALL=en_US.UTF-8                 \
+LC_LANG=en_US.UTF-8                \
+LESSHISTFILE=-                     \
+LS_COLORS=                         \
+MANPAGER='nvim -c Man\! -'
 
 # misc
 [[ -f ~/.bashrc ]] &&
