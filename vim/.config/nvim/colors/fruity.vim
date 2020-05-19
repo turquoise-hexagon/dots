@@ -40,7 +40,7 @@ hi ModeMsg         ctermfg=none    ctermbg=none    cterm=none
 hi StatusLine      ctermfg=none    ctermbg=none    cterm=none
 hi StatusLineNC    ctermfg=8       ctermbg=none    cterm=none
 hi MatchParen      ctermfg=0       ctermbg=6       cterm=none
-hi VertSplit       ctermfg=0       ctermbg=none    cterm=none
+hi VertSplit       ctermfg=8       ctermbg=none    cterm=none
 hi Visual          ctermfg=none    ctermbg=0       cterm=reverse
 hi ErrorMsg        ctermfg=1       ctermbg=none    cterm=none
 hi WarningMsg      ctermfg=3       ctermbg=none    cterm=none

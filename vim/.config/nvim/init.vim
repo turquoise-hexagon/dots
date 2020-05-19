@@ -44,6 +44,7 @@ set mouse=a
 set guicursor=
 set laststatus=1
 set shortmess=actI
+set fillchars=vert:\|
 
 " keybindings
 tnoremap <esc> <c-\><c-n>
