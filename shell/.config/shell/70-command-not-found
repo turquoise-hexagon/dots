@@ -3,10 +3,7 @@ type command_not_found &> /dev/null &&
         # get list of commands
         mapfile -t cmds < <(compgen -c)
 
-        {
-            echo "no command '$1' found, did you mean :"
-            command_not_found "$1" "${cmds[@]}"
-        } >&2
+        command_not_found "$1" "${cmds[@]}" >&2
     }
 
 # vim: ft=sh
