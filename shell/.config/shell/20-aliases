@@ -1,20 +1,17 @@
-while read -r line; do
-    alias "$line"
-done << EOF
-cal=cal -m
-cp=cp -r
-csi=csi -q
-df=df -h
-diff=diff --color=auto
-du=du -h
-free=free -h
-grep=grep --color=auto
-ls=ls -FN --color=auto
-mkdir=mkdir -p
-ncmpcpp=ncmpcpp -q
-scp=scp -r
-sxiv=sxiv -bs f
-vim=nvim
-EOF
+alias                    \
+cal='cal -m'             \
+cp='cp -r'               \
+csi='csi -q'             \
+df='df -h'               \
+diff='diff --color=auto' \
+du='du -h'               \
+free='free -h'           \
+grep='grep --color=auto' \
+ls='ls -FN --color=auto' \
+mkdir='mkdir -p'         \
+ncmpcpp='ncmpcpp -q'     \
+scp='scp -r'             \
+sxiv='sxiv -bs f'        \
+vim='nvim'
 
 # vim: ft=sh

@@ -6,4 +6,6 @@ type correct &> /dev/null &&
         } >&2
     }
 
+:
+
 # vim: ft=sh
