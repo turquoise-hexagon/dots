@@ -1,9 +1,9 @@
-type command_not_found &> /dev/null &&
+type correct &> /dev/null &&
     command_not_found_handle() {
-        # get list of commands
-        mapfile -t cmds < <(compgen -c)
-
-        command_not_found "$1" "${cmds[@]}" >&2
+        {
+            echo "${SHELL##*/}: command '$1' not found, did you mean:"
+            correct "$1"
+        } >&2
     }
 
 # vim: ft=sh
