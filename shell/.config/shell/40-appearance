@@ -1,4 +1,3 @@
-# prompt
 prompt() {
     local status=$?
 
