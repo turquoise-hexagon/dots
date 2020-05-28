@@ -12,6 +12,7 @@ mkdir='mkdir -p'         \
 ncmpcpp='ncmpcpp -q'     \
 scp='scp -r'             \
 sxiv='sxiv -bs f'        \
+uptime='uptime -p'       \
 vim='nvim'
 
 # vim: ft=sh
