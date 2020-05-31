@@ -21,6 +21,7 @@ prompt() {
 
     short=${PWD//\\/\\\\}
     short=${short//$/\\$}
+    short=${short//\`/\\\`}
     short=${short/#$HOME/$prompt}
 
     [[
