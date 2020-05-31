@@ -19,7 +19,9 @@ prompt() {
 
     [[ $SSH_TTY ]] && prompt='><>' || prompt='~'
 
-    short=${PWD/#$HOME/$prompt}
+    short=${PWD//\\/\\\\}
+    short=${short//$/\\$}
+    short=${short/#$HOME/$prompt}
 
     [[
         $short =~ (.*/){3}.* &&
