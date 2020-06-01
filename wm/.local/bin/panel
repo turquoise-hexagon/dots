@@ -15,7 +15,7 @@ for mod in ~/.config/lemonbar/lemons/*; do
 done |
     while read -r event; do
         # parse events
-        eval "${event%% *}=\${event#* }"
+        export "${event%% *}=${event#* }"
 
         eval "printf '%s\n' \"$format\""
     done |
