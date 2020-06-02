@@ -27,7 +27,7 @@ prompt() {
     short_pwd=$PWD
     short_pwd=${short_pwd//\\/\\\\} # \ => \\
     short_pwd=${short_pwd//\`/\\\`} # ` => \`
-    short_pwd=${short_pwd//$/\\$} # $ => \$
+    short_pwd=${short_pwd//$/\\$}   # $ => \$
     short_pwd=${short_pwd/#$HOME/$short_home}
 
     [[
