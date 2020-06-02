@@ -1,12 +1,12 @@
 prompt() {
-    local status=$?
+    local exit_status=$?
 
-    # colors
+    # use different colors depending on exit status
     local reset accent1 accent2
 
     reset='\[\e[m\]'
 
-    ((status)) && {
+    ((exit_status)) && {
         accent1='\[\e[32m\]'
         accent2='\[\e[91m\]'
     } || {
@@ -14,62 +14,71 @@ prompt() {
         accent2='\[\e[32m\]'
     }
 
-    # short path
-    local prompt short
+    # different $HOME symbol when using ssh
+    local short_home
 
-    [[ $SSH_TTY ]] && prompt='><>' || prompt='~'
+    [[ $SSY_TTY ]]          \
+        && short_home='><>' \
+        || short_home='~'
 
-    short=${PWD//\\/\\\\}
-    short=${short//$/\\$}
-    short=${short//\`/\\\`}
-    short=${short/#$HOME/$prompt}
+    # shorten long $PWDs
+    local short_pwd
+
+    short_pwd=$PWD
+    short_pwd=${short_pwd//\\/\\\\} # \ => \\
+    short_pwd=${short_pwd//\`/\\\`} # ` => \`
+    short_pwd=${short_pwd//$/\\$} # $ => \$
+    short_pwd=${short_pwd/#$HOME/$short_home}
 
     [[
-        $short =~ (.*/){3}.* &&
-        $short =~ ($prompt)?(/[^/]*/).*(/.*)
+        $short_pwd =~ (.*/){3}.* &&
+        $short_pwd =~ ($short_home)?(/[^/]*/).*(/.*)
     ]] && {
-        declare -n tmp=BASH_REMATCH
+        # save ourselves some typing
+        declare -n match=BASH_REMATCH
 
-        short=${tmp[1]}${tmp[2]}...${tmp[3]}
+        short_pwd=${match[1]}${match[2]}...${match[3]}
     }
 
-    # window title
-    local title
+    # set terminal title to the same thing
+    local term_title
 
-    title="\[\e]0;$short\]\[\a\]"
+    term_title="\[\e]0;$short_pwd\]\[\a\]"
 
-    # print prompt at beginning of line
-    local position
+    # ensure that the prompt is always printed on a newline
+    local position column
 
-    IFS='[;' read -rsp $'\e[6n' -dR _ _ position
+    IFS='[;' read -rsp $'\e[6n' -dR _ _ column
 
-    ((position > 1)) && position='\[\n\]' || position=
+    ((column > 1))           \
+        && position='\[\n\]' \
+        || position=
 
-    # git status
-    local -a output git path=$PWD
+    # git status indicator
+    local -a git_output git_status current_path=$PWD
 
     until [[ $PWD == \/ ]]; do
         [[ -d .git ]] && {
-            mapfile -t output < <(
-                git status --branch --porcelain
-            )
+            mapfile -t git_output < \
+                <(git status --branch --porcelain)
 
-            [[ $output =~ \[ahead\ [0-9]+\]$ ]] && git=' +'
+            [[ $git_output =~ '[ahead '[0-9]+\]$ ]] &&
+                git_status=' +'
 
-            ((${#output[@]} > 1)) && git=' !'
+            ((${#git_output[@]} > 1)) &&
+                git_status=' !'
 
-            git=${git:- =}
-
-            break
+            # fallback
+            git_status=${git_status:- =}
         }
 
         cd .. || break
     done
 
-    cd "$path"
+    cd "$current_path"
 
-    # set prompt
-    PS1="$position$accent1$short$accent2$git$reset$title "
+    # put the prompt together
+    PS1="$position$term_title$accent1$short_pwd$accent2$git_status$reset "
 }
 
 PROMPT_COMMAND=prompt
