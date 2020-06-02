@@ -65,8 +65,7 @@ prompt() {
             continue
         }
 
-        mapfile -t git_output < \
-            <(git status --branch --porcelain)
+        mapfile -t git_output < <(git status --branch --porcelain)
 
         git_status=' ='
 
