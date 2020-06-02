@@ -58,21 +58,25 @@ prompt() {
     local -a git_output git_status current_path=$PWD
 
     until [[ $PWD == \/ ]]; do
-        [[ -d .git ]] && {
-            mapfile -t git_output < \
-                <(git status --branch --porcelain)
+        # move up the directory tree
+        [[ -d .git ]] || {
+            cd .. || break
 
-            [[ $git_output =~ '[ahead '[0-9]+\]$ ]] &&
-                git_status=' +'
-
-            ((${#git_output[@]} > 1)) &&
-                git_status=' !'
-
-            # fallback
-            git_status=${git_status:- =}
+            continue
         }
 
-        cd .. || break
+        mapfile -t git_output < \
+            <(git status --branch --porcelain)
+
+        git_status=' ='
+
+        [[ $git_output =~ '[ahead '[0-9]+\]$ ]] &&
+            git_status=' +'
+
+        ((${#git_output[@]} > 1)) &&
+            git_status=' !'
+
+        break
     done
 
     cd "$current_path"
