@@ -1,10 +1,8 @@
 type correct &> /dev/null &&
     command_not_found_handle() {
-        {
-            echo "${SHELL##*/} : command '$1' not found, did you mean :"
-            correct "$1"
-        } >&2
-    }
+        echo "${SHELL##*/} : command '$1' not found, did you mean :"
+        correct "$1"
+    } >&2
 
 :
 
