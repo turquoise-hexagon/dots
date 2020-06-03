@@ -1,7 +1,7 @@
 #!/bin/sh
 
 die() {
-    echo "$1" >&2
+    echo "${1:-usage : ${0##*/} <laptop|termux|server>}" >&2
     exit 1
 }
 
@@ -16,5 +16,5 @@ case $1 in
     termux) _ chicken misc shell ssh termux vim;;
     server) _ chicken misc shell ssh vim;;
     *)
-        die "usage : ${0##*/} <laptop|termux|server>"
+        die
 esac
