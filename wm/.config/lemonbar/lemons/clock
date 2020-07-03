@@ -1,9 +1,6 @@
 #!/bin/sh
 
-while :; do
-    var=$(date +'%A %R')
-
-    echo "clk $var"
-
-    sleep 10
-done
+clock |
+    while read -r event; do
+        echo "clk $event"
+    done
