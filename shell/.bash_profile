@@ -25,6 +25,6 @@ type keychain &> /dev/null &&
     )
 
 [[ ! $DISPLAY && $(tty) =~ /dev/tty1 ]] &&
-    exec startx ~/.config/xinit/xinitrc &> /dev/null
+    exec sx &> /dev/null
 
 :
