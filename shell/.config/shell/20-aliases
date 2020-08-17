@@ -2,7 +2,6 @@ alias                    \
 cal='cal -m'             \
 cp='cp -r'               \
 csi='csi -q'             \
-date='date -Ins'         \
 df='df -h'               \
 diff='diff --color=auto' \
 du='du -h'               \
