@@ -17,7 +17,7 @@ prompt() {
     # different $HOME symbol when using ssh
     local short_home
 
-    [[ $SSY_TTY ]]          \
+    [[ $SSH_TTY ]]          \
         && short_home='><>' \
         || short_home='~'
 
