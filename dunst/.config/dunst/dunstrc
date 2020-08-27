@@ -5,8 +5,8 @@
     indicate_hidden = yes
     alignment = center
     word_wrap = yes
-    geometry = "0x0-30-30"
-    shrink = no
+    geometry = "350x0-30-30"
+    shrink = yes
     follow = none
     show_indicators = no
     separator_height = 0
