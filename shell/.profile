@@ -1,3 +1,4 @@
+# environment variables
 PATH=~/.local/bin:/sbin:/usr/sbin:$PATH
 
 export                             \
@@ -11,6 +12,7 @@ LS_COLORS=                         \
 MANPAGER='nvim -c Man! -'          \
 QT_QPA_PLATFORMTHEME=gtk3
 
+# misc
 [ "${SHELL##*/}" = bash ] && [ -f ~/.bashrc ] &&
     . ~/.bashrc
 
