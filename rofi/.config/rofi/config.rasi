@@ -1,5 +1,4 @@
 configuration {
-    eh: 1;
     lines: 5;
     width: 30;
     font: "Olive 12";
@@ -19,15 +18,20 @@ window {
     padding: 20;
 }
 
+#element {
+    padding: 1;
+}
+
 #element.selected {
     text-color: @highlight;
 }
 
 #inputbar {
+    padding: 1;
     children: [prompt, textbox-prompt-colon, entry];
 }
 
 #textbox-prompt-colon {
     expand: false;
-    str: ":";
+    str: " : ";
 }
