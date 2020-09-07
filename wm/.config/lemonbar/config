@@ -3,6 +3,7 @@ height=32
 accent1='#71AAC5'
 accent2='#4E5A65'
 accent3='#2C333A'
+accent4='#C9647E'
 
 foreground='#EEEEEE'
 background='#262E35'
@@ -13,6 +14,6 @@ icons=-t-mango-medium-r-normal--12-100-75-75-p-100-iso10646-1
 format="\
 %{B\$accent1}%{O20}\$wks%{O20}%{B\$accent3}%{O20}\$mus%{O20}%{B-}\
 %{c}\$clk\
-%{r}%{B\$accent3}%{O20}\$ntw%{O20}%{B\$accent2}%{O20}\$vol%{O20}\$bat%{O20}%{B-}"
+%{r}%{B\$accent3}%{O20}\$ntw%{O20}%{B\$accent2}%{O20}\$vol%{O20}\$bat%{O20}%{B\$accent4}%{O20}\$tdl%{O20}%{B-}"
 
 # vim: ft=sh
