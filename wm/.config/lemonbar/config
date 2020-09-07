@@ -10,9 +10,9 @@ background='#262E35'
 font=-t-olive-medium-r-normal--11-100-75-75-p-100-iso10646-1
 icons=-t-mango-medium-r-normal--12-100-75-75-p-100-iso10646-1
 
-format='\
-%{B$accent1}%{O20}$wks%{O20}%{B$accent3}%{O20}$mus%{O20}%{B-}\
-%{c}$clk\
-%{r}%{B$accent3}%{O20}$ntw%{O20}%{B$accent2}%{O20}$vol%{O20}$bat%{O20}%{B-}'
+format="\
+%{B\$accent1}%{O20}\$wks%{O20}%{B\$accent3}%{O20}\$mus%{O20}%{B-}\
+%{c}\$clk\
+%{r}%{B\$accent3}%{O20}\$ntw%{O20}%{B\$accent2}%{O20}\$vol%{O20}\$bat%{O20}%{B-}"
 
 # vim: ft=sh
