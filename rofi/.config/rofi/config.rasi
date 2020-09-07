@@ -1,17 +1,33 @@
 configuration {
-    // settings
     eh: 1;
     lines: 5;
     width: 30;
-    padding: 20;
     font: "Olive 12";
-    scrollbar-width: 0;
     show-match: false;
     window-format: "{t:80}";
+}
 
-    // colors
-    color-window: "#EEEEEE, #EEEEEE, #EEEEEE";
-    color-normal: "#EEEEEE, #102029, #EEEEEE, #EEEEEE, #F4ADB1";
-    color-active: "#EEEEEE, #102029, #EEEEEE, #EEEEEE, #F4ADB1";
-    color-urgent: "#EEEEEE, #102029, #EEEEEE, #EEEEEE, #F4ADB1";
+* {
+    foreground: #102029;
+    background: #EEEEEE;
+    highlight:  #F4ADB1;
+    background-color: @background;
+    text-color: @foreground;
+}
+
+window {
+    padding: 20;
+}
+
+#element.selected {
+    text-color: @highlight;
+}
+
+#inputbar {
+    children: [prompt, textbox-prompt-colon, entry];
+}
+
+#textbox-prompt-colon {
+    expand: false;
+    str: ":";
 }

@@ -30,6 +30,6 @@
     timeout = 0
 
 [shortcuts]
-    close = ctrl+space
+    close_all = ctrl+space
 
 # vim: ft=cfg
