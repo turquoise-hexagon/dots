@@ -3,7 +3,7 @@
 FILE=~/.local/share/todo
 
 # ensure todo block isn't empty on startup
-{ echo; wendy -vm 8 -w "$FILE"; } |
+{ echo; wendy -vm 2056 -w "$FILE"; } |
     while read -r event; do
         # get number of entries
         cnt=0
