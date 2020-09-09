@@ -7,13 +7,13 @@ run() {
 }
 
 map() {
-    while read -r i; do
+    while IFS= read -r i; do
         "$@" "$i"
     done
 }
 
 filter() {
-    while read -r i; do
+    while IFS= read -r i; do
         "$@" "$i" > /dev/null && echo "$i"
     done
 }
@@ -21,7 +21,7 @@ filter() {
 reduce() {
     local a=${@: -1}
 
-    while read -r i; do
+    while IFS= read -r i; do
         a=$("${@:1:$# - 1}" "$a" "$i")
     done
 
