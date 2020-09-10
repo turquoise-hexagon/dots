@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# settings
+setxkbmap fr -option caps:swapescape
+xsetroot -cursor_name left_ptr
+xset s off -dpms
+
 # daemons
 _() {
     pgrep -x "$1" > /dev/null ||
@@ -9,11 +14,6 @@ _() {
 _ sxhkd -m 1
 _ dunst
 _ mpd
-
-# settings
-setxkbmap fr -option caps:swapescape
-xsetroot -cursor_name left_ptr
-xset s off -dpms
 
 # rice
 tmp=~/.local/share/fonts
@@ -33,6 +33,6 @@ tmp=~/.config/setroot/.setroot-restore
 
 # wm
 bspc query -M > /dev/null 2>&1 ||
-    exec bspwm > /tmp/bspwm.log 2>&1
+    exec bspwm
 
 # vim: ft=sh
