@@ -1,15 +1,17 @@
 # environment variables
 PATH=~/.local/bin:/sbin:/usr/sbin:$PATH
 
-export                             \
-EDITOR=nvim                        \
-INPUTRC=~/.config/readline/inputrc \
-LANG=en_US.UTF-8                   \
-LC_ALL=en_US.UTF-8                 \
-LC_LANG=en_US.UTF-8                \
-LESSHISTFILE=-                     \
-LS_COLORS=                         \
-MANPAGER='nvim -c Man! -'          \
+export                                            \
+CHICKEN_INSTALL_REPOSITORY=~/.local/share/chicken \
+CHICKEN_REPOSITORY_PATH=~/.local/share/chicken    \
+EDITOR=nvim                                       \
+INPUTRC=~/.config/readline/inputrc                \
+LANG=en_US.UTF-8                                  \
+LC_ALL=en_US.UTF-8                                \
+LC_LANG=en_US.UTF-8                               \
+LESSHISTFILE=-                                    \
+LS_COLORS=                                        \
+MANPAGER='nvim -c Man! -'                         \
 QT_QPA_PLATFORMTHEME=gtk3
 
 # misc
