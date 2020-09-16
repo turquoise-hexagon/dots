@@ -8,8 +8,8 @@
         breadline-scheme-completion)
 
 ; history
-(history-file (format "~a/.local/share/csi"
-                      (get-environment-variable "HOME")))
+(history-file (string-append (get-environment-variable "HOME")
+                             "/.local/share/csi"))
 (stifle-history! 10000)
 (completer-word-break-characters-set! "\"\'`;|(")
 

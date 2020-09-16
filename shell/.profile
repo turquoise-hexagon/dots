@@ -2,6 +2,7 @@
 PATH=~/.local/bin:/sbin:/usr/sbin:$PATH
 
 export                                            \
+ABDUCO_SOCKET_DIR=/tmp                            \
 CHICKEN_INSTALL_REPOSITORY=~/.local/share/chicken \
 CHICKEN_REPOSITORY_PATH=~/.local/share/chicken    \
 EDITOR=nvim                                       \
