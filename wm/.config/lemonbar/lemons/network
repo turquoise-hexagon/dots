@@ -1,20 +1,19 @@
 #!/bin/sh
 
+_() printf '%s\n' "ntw %{O10}$1"
+
 # ensure network block isn't empty on startup
-{ echo 'Not-Associated'; iwevent 2> /dev/null; } |
+{ echo 'default via'; ip monitor route dev wlan0; } |
     while read -r event; do
         case $event in
-            *'Not-Associated'*)
+            'default via'*)
                 var=$(iwgetid -r)
-                var=${var:-Disconnected}
+
+                _ "${var:-Disconnected}"
                 ;;
-            *'New Access Point'*)
-                until var=$(iwgetid -r); do
-                    sleep .2
-                done
+            'Deleted default via'*)
+                _ 'Disconnected'
                 ;;
             *) continue
         esac
-
-        printf '%s\n' "ntw %{O10}$var"
     done
