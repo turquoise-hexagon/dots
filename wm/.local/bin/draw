@@ -1,21 +1,35 @@
 #!/bin/sh
 #
-# draw - draw terminals by selecting areas of the screen
+# draw - spawn a terminal in a preselected area
 
 _() bspc config "$@"
 
-border=$(_ border_width)
+tmp=$IFS
 
-IFS=+x; set -- $(
-    hacksaw           \
-        -ns "$border" \
-        -c "$(_ focused_border_color)" 2> /dev/null
-)
+# get preselected area
+IFS=+x
+
+b=$(_         border_width)
+c=$(_ focused_border_color)
+
+set -f
+set -- $(hacksaw -c "$c" -s "$b" -n 2> /dev/null)
+set +f
+
+IFS=$tmp
 
 test $# -eq 0 && exit
 
+# adjust geometry
+set --              \
+    $(($1 - 2 * b)) \
+    $(($2 - 2 * b)) \
+    "$3" "$4"
+
+[ $(($1 < 10 && $2 < 10)) -eq 1 ] &&
+    set -- 300 200 "$3" "$4"
+
 # make the newly spawned window floating & w/ the right geometry
-bspc rule -a \* -o state=floating \
-    rectangle="$(($1 - 2 * border))x$(($2 - 2 * border))+$3+$4"
+bspc rule -a '*' -o state=floating rectangle="$1x$2+$3+$4"
 
 st &

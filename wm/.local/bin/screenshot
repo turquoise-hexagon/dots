@@ -1,27 +1,38 @@
 #!/bin/sh
 #
-# screenshot - screenshot an area of the screen
-
-_() bspc config "$@"
+# screenshot - take screenshot of a preseleted area
 
 DIR=~/medias/pics/scrots
 
-mkdir -p "$DIR"
+_() bspc config "$@"
 
-IFS=+x; set -- $(
-    hacksaw                     \
-        -ns "$(_ border_width)" \
-        -c "$(_ focused_border_color)" 2> /dev/null
-)
+tmp=$IFS
+
+# get preselected area
+IFS=+x
+
+set -f
+set -- $(
+    hacksaw                            \
+        -s "$(_         border_width)" \
+        -c "$(_ focused_border_color)" \
+        -n 2> /dev/null)
+set +f
+
+IFS=$tmp
 
 test $# -eq 0 && exit
 
-# avoid small accidental screenshots
+# avoid accidental small screenshots
 [ $(($1 < 10 && $2 < 10)) -eq 1 ] && {
-    IFS=\ ; set -- $(wattr whxy "$(lsw -r)")
+    set -f
+    set -- $(wattr whxy "$(lsw -r)")
+    set +f
 }
 
-cur=$(date +%F_%H-%M-%S)
+name=$(date +%F_%H-%M-%S).png
 
-shotgun -g "$1x$2+$3+$4" "$DIR/$cur.png" &&
-    notify-send "Screenshot saved as $cur.png"
+mkdir -p "$DIR"
+
+shotgun -g "$1x$2+$3+$4" "$DIR/$name"
+    notify-send "Screenshot saved as $name"
