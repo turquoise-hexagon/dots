@@ -4,32 +4,25 @@
 
 _() bspc config "$@"
 
-tmp=$IFS
-
-# get preselected area
-IFS=+x
-
 b=$(_         border_width)
 c=$(_ focused_border_color)
 
-set -f
-set -- $(hacksaw -c "$c" -s "$b" -n 2> /dev/null)
-set +f
+hacksaw -s "$b" -c "$c" -n 2> /dev/null | {
+    IFS=+x read -r w h x y
 
-IFS=$tmp
+    [ "$w" ] || exit
 
-test $# -eq 0 && exit
+    # adjust geometry
+    w=$((w - 2 * b))
+    h=$((h - 2 * b))
 
-# adjust geometry
-set --              \
-    $(($1 - 2 * b)) \
-    $(($2 - 2 * b)) \
-    "$3" "$4"
+    [ $((w < 10 && h < 10)) -eq 1 ] && {
+        w=300
+        h=200
+    }
 
-[ $(($1 < 10 && $2 < 10)) -eq 1 ] &&
-    set -- 300 200 "$3" "$4"
+    # make the newly spawned window floating & w/ the right geometry
+    bspc rule -a '*' -o state=floating rectangle="${w}x${h}+${x}+${y}"
 
-# make the newly spawned window floating & w/ the right geometry
-bspc rule -a '*' -o state=floating rectangle="$1x$2+$3+$4"
-
-st &
+    st &
+}
