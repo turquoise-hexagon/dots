@@ -18,7 +18,7 @@ case $1 in
 
             [ "$cnt" -gt 1 ] || mpc pause
         }
-    :
+
         bspc quit
         ;;
     restart)
