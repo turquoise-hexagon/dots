@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# wm - quit / reload wm
+# wm - handle wm state
 
 # clean up utilities
 for bin in borders panel; do
@@ -8,6 +8,19 @@ for bin in borders panel; do
 done
 
 case $1 in
-    quit)    bspc quit;;
-    restart) bspc wm -r
+    quit)
+        # pause mpd if we aren't logged in another tty
+        who | {
+            while read -r user _; do
+                [ "$user" = "$USER" ] &&
+                    : $((cnt += 1))
+            done
+
+            [ "$cnt" -gt 1 ] || mpc pause
+        }
+    :
+        bspc quit
+        ;;
+    restart)
+        bspc wm -r
 esac
