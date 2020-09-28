@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# battery - suspend when battery level is low
+# bat-monitor - suspend when battery level is low
 
 DIR=/sys/class/power_supply/BAT0
 
