@@ -11,9 +11,10 @@ _() {
         { "$@" & }
 }
 
-_ sxhkd -m 1
+_ battery
 _ dunst
 _ mpd
+_ sxhkd -m 1
 
 # rice
 tmp=~/.local/share/fonts
