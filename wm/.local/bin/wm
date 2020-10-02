@@ -16,7 +16,8 @@ case $1 in
                     : $((cnt += 1))
             done
 
-            [ "$cnt" -gt 1 ] || mpc pause
+            [ "$cnt" -gt 1 ] ||
+                mpc pause > /dev/null 2>&1
         }
 
         bspc quit
