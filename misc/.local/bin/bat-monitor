@@ -2,29 +2,23 @@
 #
 # bat-monitor - suspend when battery level is low
 
-DIR=/sys/class/power_supply/BAT0
-
 toggle=1
 
-while :; do
-    read -r status   < $DIR/status
-    read -r capacity < $DIR/capacity
+battery |
+    while read -r capacity status; do
+        case $status in
+            Discharging)
+                [ $((capacity <= 5)) -eq 1 ] && {
+                    [ $((toggle == 1)) -eq 1 ] && {
+                        sudo zzz
 
-    case $status in
-        Discharging)
-            [ "$capacity" -le 5 ] && {
-                [ "$toggle" -eq 1 ] && {
-                    sudo zzz
+                        toggle=0
+                    }
 
-                    toggle=0
-                }
-
-                :
-            } ||
-                toggle=1
-            ;;
-        *) toggle=1
-    esac
-
-    sleep 10
-done
+                    :
+                } ||
+                    toggle=1
+                ;;
+            *) toggle=1
+        esac
+    done
