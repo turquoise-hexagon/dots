@@ -22,9 +22,8 @@ prompt() {
         || short_home='~'
 
     # shorten long $PWDs
-    local short_pwd
+    local short_pwd=$PWD
 
-    short_pwd=$PWD
     short_pwd=${short_pwd//\\/\\\\} # \ => \\
     short_pwd=${short_pwd//\`/\\\`} # ` => \`
     short_pwd=${short_pwd//$/\\$}   # $ => \$
