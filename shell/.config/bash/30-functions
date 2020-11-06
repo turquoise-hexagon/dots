@@ -14,7 +14,8 @@ map() {
 
 filter() {
     while IFS= read -r i; do
-        "$@" "$i" > /dev/null && echo "$i"
+        "$@" "$i" > /dev/null &&
+            printf '%s\n' "$i"
     done
 }
 
@@ -25,7 +26,7 @@ reduce() {
         a=$("${@:1:$# - 1}" "$a" "$i")
     done
 
-    echo "$a"
+    printf '%s\n' "$a"
 }
 
 # vim: ft=sh
