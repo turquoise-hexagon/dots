@@ -27,10 +27,7 @@ tmp=~/.config/xres/main
 [ -f "$tmp" ] &&
     xrdb -merge "$tmp"
 
-tmp=~/.config/setroot/.setroot-restore
-
-[ -x "$tmp" ] &&
-    setroot --restore
+wallpaper
 
 # wm
 bspc query -M > /dev/null 2>&1 ||

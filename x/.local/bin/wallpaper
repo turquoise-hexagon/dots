@@ -1,0 +1,32 @@
+#!/bin/sh
+#
+# wallpaper - select a random wallpaper
+
+DIR=~/medias/pics/walls
+
+_() : $(($@)) # maths
+
+xorshift() {
+    _ "x ^= $1 << 13"
+    _ "x ^=  x >> 17"
+    _ "x ^=  x <<  5"
+
+    echo "$x"
+}
+
+for file in "$DIR/"*; do
+    _ cnt += 1
+done
+
+# generate a "random" number
+_ "rand = $(xorshift $$) % cnt"
+
+for file in "$DIR/"*; do
+    [ $((tmp == rand)) -eq 1 ] && {
+        setroot --store -fw "$file"
+
+        break
+    }
+    
+    _ tmp += 1
+done
