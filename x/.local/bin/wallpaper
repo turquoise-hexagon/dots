@@ -14,11 +14,7 @@ xorshift() {
     printf '%s\n' "$x"
 }
 
-set --
-
-for file in "$DIR/"*; do
-    set -f -- "$@" "$file"; set +f
-done
+set -- "$DIR/"*
 
 # generate a "random" number
 _ "rand = $(xorshift $$) % $#"
