@@ -5,7 +5,8 @@
 NAME=panel
 
 cleanup() {
-    bspc config top_padding 0
+    bspc config top_padding \
+        "$(bspc top_padding)"
 
     trap - TERM; kill 0
 }
