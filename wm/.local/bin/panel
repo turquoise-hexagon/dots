@@ -4,10 +4,16 @@
 
 NAME=panel
 
+cleanup() {
+    bspc config top_padding 0
+
+    trap - TERM; kill 0
+}
+
 . ~/.config/lemonbar/config
 
 # ensure proper panel script cleanup
-trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+trap cleanup INT TERM QUIT EXIT
 
 # run all panel modules
 for mod in ~/.config/lemonbar/lemons/*; do
