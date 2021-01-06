@@ -10,6 +10,9 @@ battery |
             Discharging)
                 [ $((capacity <= 5)) -eq 1 ] && {
                     [ $((toggle == 1)) -eq 1 ] && {
+                        # send a warning beforehand
+                        notify-send -u critical 'low battery'; sleep 10
+
                         sudo zzz
 
                         toggle=0

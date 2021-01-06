@@ -9,6 +9,8 @@ syntax enable
 " swap and sessions
 set hidden
 set noswapfile
+set backup
+set backupdir=~/.local/share/nvim/backup
 
 " case insensitive
 set ignorecase
@@ -52,6 +54,7 @@ nnoremap <silent> <esc> :noh<cr>
 
 " pkgfiles
 au BufNewFile,BufRead *Pkgfile set filetype=sh
+au TermOpen * set nonumber
 
 " colors
 colorscheme fruity
