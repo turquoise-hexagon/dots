@@ -2,24 +2,12 @@
 #
 # mpv - small mpv wrapper
 
-DIR=/tmp/mpv
+# pause other players
+mpc pause > /dev/null
 
-# pause mpc
-mpc pause > /dev/null 2>&1
+playerctl -l 2> /dev/null |
+    while read -r line; do
+        playerctl -p "$line" pause
+    done
 
-# handle multiple mpv sockets
-mkdir -p "$DIR"
-
-for socket in "$DIR"/*; do
-    num=${socket##*/}
-
-    [ "$num" != \* ] &&
-        [ "$num" -gt "${max:-0}" ] && max=$num
-done
-
-socket=$DIR/$((max + 1))
-
-trap 'rm -f "$socket"' INT TERM QUIT EXIT
-
-command -p mpv \
-    --input-ipc-server="$socket" "$@"
+command -p mpv "$@"

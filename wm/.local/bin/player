@@ -2,39 +2,38 @@
 #
 # player - control currently playing media player
 
-DIR=/tmp/mpv
+_() playerctl -p "$player" "$@"
 
 # send a notification when fullscreen & changing playing file
 bspc query -N -n focused.fullscreen > /dev/null && test "$1" != toggle &&
     notify=1
 
 pgrep -x mpv > /dev/null && {
-    # handle multiple mpv sockets
-    for socket in "$DIR/"*; do
-        num=${socket##*/}
+    # find latest instance
+    playerctl -l 2> /dev/null | {
+        while read -r line; do
+            case $line in
+                mpv*) player=$line
+            esac
+        done
 
-        [ "$num" -gt "${max:-0}" ] &&
-            max=$num
-    done
+        case $1 in
+            toggle) _ play-pause;;
+            prev)   _ previous;;
+            next)   _ next
+        esac
 
-    socket=$DIR/$max
+        test "$notify" && {
+            # wait for metadata to become available
+            until [ "$(_ metadata 'mpris:length')" ]; do
+                sleep .1
+            done
 
-    case $1 in
-        toggle)    echo "cycle pause" | socat - "$socket";;
-        next|prev) echo "playlist-$1" | socat - "$socket"
-    esac
+            out=$(_ metadata -f '{{title}}')
 
-    test "$notify" &&
-        echo '{ "command" : [ "get_property", "media-title" ] }' |
-            socat - "$socket" | {
-                read -r out
-
-                # parse output
-                out=${out#*:\"}
-                out=${out%\",*}
-
-                dunstify -r 500 "$out"
-            }
+            dunstify -r 500 "$out"
+        }
+    }
 
     :
 } || mpc "$1" 2> /dev/null | {
