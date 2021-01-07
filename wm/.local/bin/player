@@ -22,9 +22,13 @@ playerctl -l 2> /dev/null | {
         esac
 
         test "$notify" && {
-            # wait for metadata to become available
-            until [ "$(_ metadata 'mpris:length')" ]; do
-                sleep .1
+            # try to wait for metadata to settle
+            old=$(_ metadata)
+
+            while :; do
+                sleep .1; new=$(_ metadata)
+
+                [ "$old" = "$new" ] && break || old=$new
             done
 
             out=$(_ metadata 'xesam:title')
