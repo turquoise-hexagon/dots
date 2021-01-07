@@ -8,15 +8,13 @@ _() playerctl -p "$player" "$@"
 bspc query -N -n focused.fullscreen > /dev/null && test "$1" != toggle &&
     notify=1
 
-pgrep -x mpv > /dev/null && {
-    # find latest instance
-    playerctl -l 2> /dev/null | {
-        while read -r line; do
-            case $line in
-                mpv*) player=$line
-            esac
-        done
+# find latest instance
+playerctl -l 2> /dev/null | {
+    while read -r line; do
+        player=$line
+    done
 
+    [ "$player" ] && {
         case $1 in
             toggle) _ play-pause;;
             prev)   _ previous;;
@@ -29,16 +27,16 @@ pgrep -x mpv > /dev/null && {
                 sleep .1
             done
 
-            out=$(_ metadata -f '{{title}}')
+            out=$(_ metadata 'xesam:title')
 
             dunstify -r 500 "$out"
         }
+
+        :
+    } || mpc "$1" 2> /dev/null | {
+        read -r out
+
+        test "$notify" &&
+            dunstify -r 500 "$out"
     }
-
-    :
-} || mpc "$1" 2> /dev/null | {
-    read -r out
-
-    test "$notify" &&
-        dunstify -r 500 "$out"
 }
