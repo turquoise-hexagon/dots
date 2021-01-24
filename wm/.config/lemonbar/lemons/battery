@@ -36,7 +36,7 @@ while read -r id capacity status; do
         tmp=status_$battery
 
         [[ ${!tmp} == Charging ]] && break
-    } && icon=||
+    } && icon= ||
         case $((var / 25)) in
             0) icon=;;
             1) icon=;;
