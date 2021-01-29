@@ -1,41 +1,21 @@
 #!/usr/bin/env bash
 
-readonly DIR=/sys/class/power_supply
+declare -A statuses capacities
 
-subscribe()
-    while read -r line; do
-        echo "$1 $line"
-    done < <(battery -p "$DIR/BAT$1/")
+while read -r id status capacity; do
+    statuses[$id]=$status
+    capacities[$id]=$capacity
 
-# get a list of batteries
-shopt -s nullglob
-
-for battery in "$DIR/BAT"*; {
-    batteries+=("${battery#*BAT}")
-}
-
-shopt -u nullglob
-
-while read -r id capacity status; do
-    printf -v "capacity_$id" '%s' "$capacity"
-    printf -v "status_$id"   '%s' "$status"
-
-    # get average battery level
     ((var = 0))
 
-    for battery in "${batteries[@]}"; {
-        tmp=capacity_$battery
-
-        ((var += $((${!tmp}))))
+    for i in "${capacities[@]}"; {
+        ((var += i))
     }
 
-    ((var /= ${#batteries[@]}))
+    ((var /= ${#capacities[@]}))
 
-    # get appropriate icon
-    for battery in "${batteries[@]}"; {
-        tmp=status_$battery
-
-        [[ ${!tmp} == Charging ]] && break
+    for i in "${statuses[@]}"; {
+        [[ $i =~ Charging ]] && break
     } && icon= ||
         case $((var / 25)) in
             0) icon=;;
@@ -46,8 +26,4 @@ while read -r id capacity status; do
         esac
 
     echo "bat $icon%{O10}$var%%"
-done < <(
-    # subscribe to all batteries
-    for battery in "${batteries[@]}"; {
-        subscribe "$battery" &
-    })
+done < <(battery)
