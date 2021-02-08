@@ -14,7 +14,7 @@ esac
 
 # get coordinates of all windows on the focused desktop
 wattr "$arg" "$(targets focused)" $(targets normal) | {
-    read -r cur_1 cur_2 _
+    read -r cur_1 cur_2 focused
 
     # sort the coordinates to find the closest window
     while read -r win_1 win_2 win_3; do
@@ -39,5 +39,5 @@ wattr "$arg" "$(targets focused)" $(targets normal) | {
         }
     done
 
-    bspc node "$focus" -f && cursor
+    bspc node "${focus:-$focused}" -f && cursor
 }
