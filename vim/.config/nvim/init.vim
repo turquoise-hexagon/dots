@@ -1,39 +1,40 @@
-" vim
+" general
 set nocompatible
 set encoding=utf-8
 
-" syntax
-filetype indent plugin on
-syntax enable
+" init
+set runtimepath+=~/.local/share/nvim
 
-" swap and sessions
+if empty(glob('~/.local/share/nvim/autoload/plug.vim'))
+    silent !curl -fLo ~/.local/share/nvim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall
+endif
+
+" syntax
+syntax enable
+filetype indent plugin on
+
+" behavior
 set hidden
 set noswapfile
-set backup
-set backupdir=~/.local/share/nvim/backup
 
-" case insensitive
 set ignorecase
 set smartcase
 set infercase
 
-" better search
 set hlsearch
 set incsearch
 
-" better backspace
 set backspace=indent,eol,start
 
-" clipboard
 set clipboard=unnamed,unnamedplus
 
-" tabs
 set smarttab
 set expandtab
 set tabstop=4
 set shiftwidth=4
 
-" indent
 set wrap
 set linebreak
 set autoindent
@@ -50,11 +51,17 @@ set fillchars=vert:\|
 
 " keybindings
 tnoremap <esc> <c-\><c-n>
-nnoremap <silent> <esc> :noh<cr>
+nnoremap <silent> <esc> :nohlsearch<cr>
 
-" pkgfiles
-au BufNewFile,BufRead *Pkgfile set filetype=sh
-au TermOpen * set nonumber
+" autocmds
+autocmd TermOpen * set nonumber
+autocmd BufNewFile,BufRead *Pkgfile set filetype=sh
 
-" colors
+" plugins
+call plug#begin('~/.local/share/nvim/plugged')
+    Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-surround'
+    Plug 'turquoise-hexagon/fruity'
+call plug#end()
+
 colorscheme fruity
