@@ -19,4 +19,4 @@ set -- "$DIR/"*
 # generate a "random" number
 _ "rand = $(xorshift $$) % $#"
 
-shift "$rand"; setroot --store -fw "$1"
+shift "$rand"; setroot -fw "$1"

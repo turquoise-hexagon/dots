@@ -59,6 +59,7 @@ autocmd BufNewFile,BufRead *Pkgfile set filetype=sh
 
 " plugins
 call plug#begin('~/.local/share/nvim/plugged')
+    Plug 'mbbill/undotree'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-surround'
     Plug 'turquoise-hexagon/fruity'
