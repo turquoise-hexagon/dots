@@ -12,8 +12,7 @@ LC_ALL=en_US.UTF-8                                \
 LC_LANG=en_US.UTF-8                               \
 LESSHISTFILE=-                                    \
 LS_COLORS=                                        \
-MANPAGER='nvim -c Man! -'                         \
-QT_QPA_PLATFORMTHEME=gtk3
+MANPAGER='nvim -c Man! -'
 
 # misc
 [ "${SHELL##*/}" = bash ] && [ -f ~/.bashrc ] &&

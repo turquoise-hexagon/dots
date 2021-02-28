@@ -13,6 +13,7 @@
     line_height = 3
     padding = 20
     horizontal_padding = 20
+    icon_position = off
 
 [urgency_low]
     background = "#EEEEEE"
