@@ -6,6 +6,10 @@ run() {
     }
 }
 
+list() {
+    printf '%s\n' "$@"
+}
+
 map() {
     while IFS= read -r i; do
         "$@" "$i"
