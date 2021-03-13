@@ -1,8 +1,7 @@
 (import (chicken load))
 (load-verbose #f)
 
-(import (chicken format)
-        (chicken process-context)
+(import (chicken process-context)
         (only chicken-doc)
         breadline
         breadline-scheme-completion)
