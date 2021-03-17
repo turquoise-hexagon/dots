@@ -17,8 +17,8 @@ prompt() {
     # different $HOME symbol when using ssh
     local short_home
 
-    [[ $SSH_TTY ]]          \
-        && short_home='><>' \
+    [[ $SSH_TTY || $SSH_CLIENT ]] \
+        && short_home='><>'       \
         || short_home='~'
 
     # shorten long $PWDs
