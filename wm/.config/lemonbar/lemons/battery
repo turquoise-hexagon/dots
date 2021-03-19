@@ -2,28 +2,30 @@
 
 declare -A statuses capacities
 
-while read -r id status capacity; do
-    statuses[$id]=$status
-    capacities[$id]=$capacity
+for ((;;)) {
+    while read -r id status capacity; do
+        statuses[$id]=$status
+        capacities[$id]=$capacity
 
-    ((var = 0))
+        ((var = 0))
 
-    for i in "${capacities[@]}"; {
-        ((var += i))
-    }
+        for i in "${capacities[@]}"; {
+            ((var += i))
+        }
 
-    ((var /= ${#capacities[@]}))
+        ((var /= ${#capacities[@]}))
 
-    for i in "${statuses[@]}"; {
-        [[ $i =~ Charging ]] && break
-    } && icon= ||
-        case $((var / 25)) in
-            0) icon=;;
-            1) icon=;;
-            2) icon=;;
-            3) icon=;;
-            *) icon=
-        esac
+        for i in "${statuses[@]}"; {
+            [[ $i =~ Charging ]] && break
+        } && icon= ||
+            case $((var / 25)) in
+                0) icon=;;
+                1) icon=;;
+                2) icon=;;
+                3) icon=;;
+                *) icon=
+            esac
 
-    echo "bat $icon%{O10}$var%%"
-done < <(battery)
+        echo "bat $icon%{O10}$var%%"
+    done < <(battery)
+}
