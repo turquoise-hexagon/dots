@@ -1,7 +1,7 @@
 type correct &> /dev/null &&
     command_not_found_handle() {
         echo "${SHELL##*/} : command '$1' not found, did you mean :"
-        correct "$1"
+        compgen -c | correct "$1"
 
         return 127
     } >&2
