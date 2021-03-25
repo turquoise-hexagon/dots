@@ -1,6 +1,6 @@
 ! xlfd
-*.font: -t-kiwi-medium-r-normal--11-100-75-75-c-100-iso10646-1
-*.boldFont: -t-kiwi-medium-r-normal--11-100-75-75-c-100-iso10646-1
+*.font: -t-banana-medium-r-normal--14-120-96-96-c-100-iso10646-1
+*.boldFont: -t-banana-medium-r-normal--14-120-96-96-c-100-iso10646-1
 
 ! xft
 Xft.autohint: 0

@@ -12,7 +12,7 @@ Print
     screenshot
 
 super {_,shift} + Return
-    {st,draw}
+    {alacritty,draw}
 
 super + {_,shift} + space
     {rofi -show run,switcher}
