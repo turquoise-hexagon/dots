@@ -1,4 +1,4 @@
-#include "fonts"
 #include "colors"
+#include "fonts"
 
 ! vim: ft=xdefaults
