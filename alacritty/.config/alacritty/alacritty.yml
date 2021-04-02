@@ -26,6 +26,8 @@ font:
 draw_bold_text_with_bright_colors: true
 
 colors:
+    cursor:
+        cursor:     '#EDEEF0'
     primary:
         background: '#102029'
         foreground: '#EDEEF0'
@@ -293,3 +295,7 @@ colors:
 cursor:
     style:
         shape: Underline
+
+mouse:
+    url:
+        launcher: firefox
