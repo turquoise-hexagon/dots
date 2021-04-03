@@ -1,3 +1,14 @@
+# bash completion
+: /usr/share/bash-completion/bash_completion
+
+[[ -f $_ ]] &&
+    . "$_"
+
+# direnv
+type direnv &> /dev/null &&
+    . <(direnv hook bash)
+
+# command_not_found
 type correct &> /dev/null &&
     command_not_found_handle() {
         echo "${SHELL##*/} : command '$1' not found, did you mean :"

@@ -1,6 +1,0 @@
-type direnv &> /dev/null &&
-    . <(direnv hook bash)
-
-:
-
-# vim: ft=sh
