@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# screenshot - take screenshot of a preseleted area
+# screenshot - take screenshot of a preselected area
 
 DIR=~/medias/pics/scrots
 
