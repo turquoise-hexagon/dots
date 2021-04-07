@@ -54,30 +54,30 @@ prompt() {
         || position=
 
     # git status indicator
-    local -a git_output git_status current_path=$PWD
+    local -a git_output git_status new_path old_path=$PWD
 
-    until [[ $PWD == \/ ]]; do
-        # move up the directory tree
-        [[ -d .git ]] || {
-            cd .. || break
+    for ((;;)) {
+        [[ -d $old_path/.git ]] && {
+            mapfile -t git_output <<< $(git status --branch --porcelain)
 
-            continue
+            git_status=' ='
+
+            [[ $git_output =~ '[ahead '[0-9]+\]$ ]] &&
+                git_status=' +'
+
+            [[ ${#git_output[@]} -gt 1 ]] &&
+                git_status=' !'
+
+            break
         }
 
-        mapfile -t git_output <<< $(git status --branch --porcelain)
+        new_path=${old_path%/*}
 
-        git_status=' ='
+        test "$new_path" = "$old_path" &&
+            break
 
-        [[ $git_output =~ '[ahead '[0-9]+\]$ ]] &&
-            git_status=' +'
-
-        ((${#git_output[@]} > 1)) &&
-            git_status=' !'
-
-        break
-    done
-
-    cd "$current_path"
+        old_path=$new_path
+    }
 
     # put the prompt together
     PS1="$position$term_title$accent1$short_pwd$accent2$git_status$reset "
