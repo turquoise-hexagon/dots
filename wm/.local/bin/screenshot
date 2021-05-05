@@ -34,5 +34,5 @@ name=$(date +%F_%H-%M-%S).png
 
 mkdir -p "$DIR"
 
-shotgun -g "$1x$2+$3+$4" "$DIR/$name"
+shotgun -g "$1x$2+$3+$4" "$DIR/$name" &&
     notify-send "Screenshot saved as $name"
