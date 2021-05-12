@@ -29,7 +29,7 @@ tmp=~/.config/xres/main
 wallpaper
 
 # wm
-bspc query -M > /dev/null 2>&1 ||
+pgrep -x bspwm > /dev/null ||
     exec bspwm > /tmp/bspwm.log 2>&1
 
 # vim: ft=sh
