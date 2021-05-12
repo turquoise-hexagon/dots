@@ -9,7 +9,7 @@ die() {
 }
 
 kill_utils() {
-    for util in "$UTILS"; do
+    for util in $UTILS; do
         pkill -x "$util"
     done
 }
