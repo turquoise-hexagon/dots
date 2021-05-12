@@ -2,26 +2,42 @@
 #
 # wm - handle wm state
 
-# clean up utilities
-for bin in borders panel; do
-    pkill -x "$bin"
-done
+die() {
+    printf '%s\n' "${1:-usage : ${0##*/} <quit|restart>}" >&2
 
-case $1 in
+    exit 1
+}
+
+kill_utils() {
+    for util in "$UTILS"; do
+        pkill -x "$util"
+    done
+}
+
+readonly UTILS='borders panel'
+
+case $* in
     quit)
         # pause mpd if we aren't logged in another tty
+        cnt=0
+
         who | {
             while read -r user _; do
                 [ "$user" = "$USER" ] &&
                     : $((cnt += 1))
             done
 
-            [ "$cnt" -gt 1 ] ||
+            [ $((cnt > 1)) -eq 1 ] ||
                 mpc pause > /dev/null 2>&1
         }
 
+        kill_utils
         bspc quit
         ;;
     restart)
+        kill_utils
         bspc wm -r
+        ;;
+    *)
+        die
 esac
