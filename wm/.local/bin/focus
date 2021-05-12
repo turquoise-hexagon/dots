@@ -15,7 +15,7 @@ esac
 set -f #disable globbing
 
 # get coordinates of all windows on the focused desktop
-wattr "$arg" "$(targets focused)" $(targets normal) | {
+wattr "$arg" $(targets focused normal) | {
     read -r cur_pos_1 cur_pos_2 cur_id
 
     while read -r win_pos_1 win_pos_2 win_id; do

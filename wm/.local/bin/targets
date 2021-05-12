@@ -2,9 +2,19 @@
 #
 # targets - list focused / unfocused windows
 
+die() {
+    printf '%s\n' "${1:-usage : ${0##*/} <focused|normal>}" >&2
+
+    exit 1
+}
+
 _() bspc query -N -n ".local.$1.!fullscreen.!hidden"
 
-case $1 in
-    focused) _ focused;;
-    normal)  _ \!focused
-esac
+for arg; do
+    case $arg in
+        focused) _  'focused';;
+        normal)  _ '!focused';;
+        *)
+            die
+    esac
+done
