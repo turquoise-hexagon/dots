@@ -32,7 +32,8 @@ get_coordinates +x "$hacksaw_output"
 [ $((w < 10 && h < 10)) -eq 1 ] &&
     get_coordinates \  "$(wattr whxy "$(lsw -r)")"
 
-mkdir -p "$DIR" || exit 1
+mkdir -p "$DIR" ||
+    die "error : failed to create '$DIR'"
 
 name=$(date +%F_%H-%M-%S).png
 

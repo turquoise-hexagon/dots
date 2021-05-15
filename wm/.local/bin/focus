@@ -1,25 +1,41 @@
 #!/bin/sh
 #
-# focus - focus closest window in a given direction
+# focus - focus the closest window in a given direction
 
-# exit when the focused window is fullscreen
-bspc query -N -n focused.fullscreen > /dev/null && exit
+die() {
+    printf '%s\n' \
+        "${1:-usage : ${0##*/} <east|west|north|south>}" >&2
 
-case $1 in
-    east)  arg=xyi; sign=-gt;;
-    west)  arg=xyi; sign=-lt;;
-    north) arg=yxi; sign=-lt;;
-    south) arg=yxi; sign=-gt
+    exit 1
+}
+
+case $* in
+    east)  arg=xyi; sign=\>;;
+    west)  arg=xyi; sign=\<;;
+    north) arg=yxi; sign=\<;;
+    south) arg=yxi; sign=\>;;
+    *)
+        die
 esac
 
-set -f #disable globbing
+# exit when fullscreen
+bspc query -N -n focused.fullscreen > /dev/null &&
+    exit 1
 
-# get coordinates of all windows on the focused desktop
-wattr "$arg" $(targets focused normal) | {
+set -f
+set -- $(targets focused normal)
+set +f
+
+# get coordinates of all windows
+wattr "$arg" "$@" | {
     read -r cur_pos_1 cur_pos_2 cur_id
 
+    unset min_1 \
+          min_2 \
+          focus
+
     while read -r win_pos_1 win_pos_2 win_id; do
-        [ "$win_pos_1" "$sign" "$cur_pos_1" ] && {
+        [ $((win_pos_1 $sign cur_pos_1)) -eq 1 ] && {
             # get position relative to the focused window
             : $((diff_pos_1 = win_pos_1 - cur_pos_1))
             : $((diff_pos_2 = win_pos_2 - cur_pos_2))
@@ -43,5 +59,8 @@ wattr "$arg" $(targets focused normal) | {
         }
     done
 
-    bspc node "${focus:-$cur_id}" -f && cursor
+    bspc node "${focus:-$cur_id}" -f &&
+        cursor
+
+    test "$focus" # fix exit status
 }
