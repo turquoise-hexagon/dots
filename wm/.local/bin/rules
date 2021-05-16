@@ -2,27 +2,33 @@
 #
 # rules - external rules
 
-PERCENT=66
+readonly PERCENT=66
 
-# if there are preselections on the current desktop
-# get the newest one & spawn the new window here first
-presel=$(bspc query -N -n newest.local.!automatic) &&
-    { echo "node = $presel"; exit; }
+# if there are preselections on the current workspace,
+# find the most recent one and spawn the new window there
+presel=$(bspc query -N -n newest.local.!automatic) && {
+    printf 'node = %s\n' "$presel"
 
-# we don't want to measure non tiled windows
-# get the newest tiled window instead, exit if there is none
-node=$(bspc query -N -n newest.local.tiled) || exit
+    exit
+}
+
+# we don't want to measure a non-tiled window, find the
+# most recent tiled window instead and exit if there is none
+node=$(bspc query -N -n newest.local.tiled) ||
+    exit
 
 wattr wh "$node" | {
     read -r w h
 
-    ratio=$((h * 100 / w))
+    : $((ratio = h * 100 / w))
 
     # split horizontally if ratio < PERCENT
-    # split vertically otherwise
-    [ "$ratio" -lt "$PERCENT" ] && split=east || split=south
+    # split vertically   if ratio > PERCENT
+    [ $((ratio < PERCENT)) -eq 1 ] \
+        && split=east              \
+        || split=south
 
-    echo "split_dir = $split"
+    printf 'split_dir = %s\n' "$split"
 }
 
-echo "node = $node"
+printf 'node = %s\n' "$node"
