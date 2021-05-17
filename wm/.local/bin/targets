@@ -8,12 +8,16 @@ die() {
     exit 1
 }
 
-_() bspc query -N -n ".local.$1.!fullscreen.!hidden"
+query() {
+    bspc query -N -n ".local.$1.!fullscreen.!hidden"
+}
+
+test "$1" || die
 
 for arg; do
     case $arg in
-        focused) _  'focused';;
-        normal)  _ '!focused';;
+        focused) query  'focused';;
+        normal)  query '!focused';;
         *)
             die
     esac
