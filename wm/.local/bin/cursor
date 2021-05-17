@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# cursor - bring cursor back on the focused window if it wasn't already
+# cursor - move the cursor to the focused window
 
 { wmp; wattr xywhb "$(pfw)"; } | {
     read -r m_x m_y

@@ -2,4 +2,19 @@
 #
 # state - change window state
 
-bspc node -t "~$1" && cursor
+die() {
+    printf '%s\n' \
+        "${1:-usage : ${0##*/} <floating|tiled|fullscreen>}" >&2
+
+    exit 1
+}
+
+case $* in
+    floating|tiled|fullscreen)
+        bspc node -t "~$*" &&
+            cursor
+        ;;
+    *) die
+esac
+
+: # fit exit status
