@@ -2,18 +2,18 @@
 #
 # panel - main panel script
 
-NAME=panel
+readonly NAME=panel
 
 . ~/.config/lemonbar/config
 
-# ensure proper panel script cleanup
+# ensure proper panel cleanup
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
 # run all panel modules
 for mod in ~/.config/lemonbar/lemons/*; do
     "$mod" &
 done |
-    while read -r event; do
+    while IFS= read -r event; do
         # parse events
         export "${event%% *}=${event#* }"
 
