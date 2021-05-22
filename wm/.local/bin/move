@@ -1,45 +1,59 @@
 #!/bin/sh
 #
-# move - move focused window in a given direction
+# move - move the focused window in a given direction
 
-get() {
+die() {
+    printf '%s\n' \
+        "${1:-usage : ${0##*/} <east|west|north|south>}" >&2
+
+    exit 1
+}
+
+json() {
     arg=$1; shift
 
     # filthy json parsing
     var=${*#*\"$arg\":}
     var=${var%%[,\}]*}
 
-    echo "$var"
+    printf '%s\n' "$var"
 }
 
-PERCENT=5
+readonly PERCENT=5
 
-case $1 in
-    east)  fdim=width;  tdim=height; sign=+;;
-    west)  fdim=width;  tdim=height; sign=-;;
-    north) fdim=height; tdim=width;  sign=-;;
-    south) fdim=height; tdim=width;  sign=+
+case $* in
+    east)  f_dim=width ; t_dim=height; sign=+;;
+    west)  f_dim=width ; t_dim=height; sign=-;;
+    north) f_dim=height; t_dim=width ; sign=-;;
+    south) f_dim=height; t_dim=width ; sign=+;;
+    *)
+        die
 esac
 
-case $(get state "$(bspc query -T -n)") in
+case $(json state "$(bspc query -T -n)") in
     '"tiled"')
         # try to replace a preselection or to move the window normally
-        bspc node -n "$1.!automatic" || bspc node -s "$1.tiled" || {
+        {
+            bspc node -n "$*.!automatic" ||
+            bspc node -s      "$*.tiled"
+        } || {
             node=$(bspc query -N -n)
 
             while parent=$(bspc query -N -n "$node#@parent"); do
-                # compare height or width to parent
-                [                                                              \
-                    "$(get "$tdim" "$(bspc query -T -n "$node#@parent")")" -gt \
-                    "$(get "$tdim" "$(bspc query -T -n "$node")")"             \
+                # compare dimensions to parent
+                [ \
+                    $((
+                        $(json "$t_dim" "$(bspc query -T -n "$parent")") >
+                        $(json "$t_dim" "$(bspc query -T -n   "$node")")
+                     )) -eq 1 \
                 ] && {
-                    # climb up the tree using a receptacle
-                    bspc node "$node#@parent" -p "$1" -i
+                    # climb up the tree using receptacles
+                    bspc node "$parent" -p "$*" -i
 
                     bspc node "$node" -n \
-                        "$(bspc query -N "$node#@parent#@parent" -n .descendant_of.leaf.!window)"
+                        "$(bspc query -N "$parent#@parent" -n .descendant_of.leaf.!window)"
 
-                    bspc node "$node#@parent" -B
+                    bspc node "$parent" -B
 
                     break
                 }
@@ -49,17 +63,19 @@ case $(get state "$(bspc query -T -n)") in
         }
         ;;
     '"floating"')
-        # get a percentage of the monitor resolution
-        var=$((`get "$fdim" "$(bspc query -T -m)"` * PERCENT / 100))
+        # get a percentage of the resolution
+        : $((var = $(json "$f_dim" "$(bspc query -T -m)") * PERCENT / 100))
 
-        case $fdim in
+        case $f_dim in
             width)  x=$sign$var; y=0;;
-            height) y=$sign$var; x=0
+            height) y=$sign$var; x=0;;
         esac
 
         bspc node -v "$x" "$y"
         ;;
-    *) exit
+    *) exit 1
 esac
 
 cursor
+
+: # fix exit status
