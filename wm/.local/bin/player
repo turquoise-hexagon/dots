@@ -18,11 +18,11 @@ case $* in
 esac
 
 # send a notification when fullscreen & changing media
+unset notify
+
 {
     bspc query -N -n focused.fullscreen > /dev/null && [ "$1" != toggle ]
-}               \
-    && notify=1 \
-    || notify=0
+} && notify=1
 
 # find most recent media player
 playerctl -l 2> /dev/null | {
