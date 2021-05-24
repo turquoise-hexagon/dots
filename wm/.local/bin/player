@@ -1,43 +1,64 @@
 #!/bin/sh
 #
-# player - control currently playing media player
+# player - media player control
+
+die() {
+    printf '%s\n' "${1:-usage : ${0##*/} <prev|next|toggle>}" >&2
+
+    exit 1
+}
 
 _() playerctl -p "$player" "$@"
 
-# send a notification when fullscreen & changing playing file
-bspc query -N -n focused.fullscreen > /dev/null && test "$1" != toggle &&
-    notify=1
+# basic argument parsing
+case $* in
+    prev|next|toggle) ;;
+    *)
+        die
+esac
 
-# find latest instance
+# send a notification when fullscreen & changing media
+{
+    bspc query -N -n focused.fullscreen > /dev/null && [ "$1" != toggle ]
+}               \
+    && notify=1 \
+    || notify=0
+
+# find most recent media player
 playerctl -l 2> /dev/null | {
+    unset player
+
     while read -r line; do
         player=$line
     done
 
-    [ "$player" ] && {
-        case $1 in
+    test "$player" && {
+        case $* in
             toggle) _ play-pause;;
             prev)   _ previous;;
-            next)   _ next
+            next)   _ next;;
         esac
 
         test "$notify" && {
-            # try to wait for metadata to settle
-            old=$(_ metadata)
+            # wait for metadata to settle
+            old_metadata=$(_ metadata)
 
             while :; do
-                sleep .1; new=$(_ metadata)
+                sleep .1
 
-                [ "$old" = "$new" ] && break || old=$new
+                new_metadata=$(_ metadata)
+
+                [ "$new_metadata" = "$old_metadata" ] &&
+                    break
+
+                old_metadata=$new_metadata
             done
 
-            out=$(_ metadata 'xesam:title')
-
-            dunstify -r 500 "$out"
+            dunstify -r 500 "$(_ metadata xesam:title)"
         }
 
         :
-    } || mpc "$1" 2> /dev/null | {
+    } || mpc "$*" 2> /dev/null | {
         read -r out
 
         test "$notify" &&
