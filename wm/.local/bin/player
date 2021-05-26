@@ -41,20 +41,17 @@ playerctl -l 2> /dev/null | {
 
         test "$notify" && {
             # wait for metadata to settle
-            old_metadata=$(_ metadata)
+            {
+                sh -c 'echo $$; playerctl metadata -f "{{duration(position)}}" -F' | {
+                    read -r pid
+                    read -r _
+                    read -r _
 
-            while :; do
-                sleep .1
+                    kill "$pid"
+                }
+            } 2> /dev/null
 
-                new_metadata=$(_ metadata)
-
-                [ "$new_metadata" = "$old_metadata" ] &&
-                    break
-
-                old_metadata=$new_metadata
-            done
-
-            dunstify -r 500 "$(_ metadata xesam:title)"
+            dunstify -r 500 "$(_ metadata title)"
         }
 
         :
