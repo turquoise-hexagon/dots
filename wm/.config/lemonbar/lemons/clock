@@ -1,6 +1,6 @@
 #!/bin/sh
 
 clock |
-    while IFS= read -r line; do
-        printf 'clk %s\n' "$line"
+    while IFS= read -r out; do
+        printf 'clk %s\n' "$out"
     done

@@ -2,19 +2,19 @@
 
 while :; do
     mpc | {
-        read -r var
-        read -r sta
+        IFS= read -r  title
+        IFS= read -r status
 
-        case $sta in
+        case $status in
             *playing*)
-                [ ${#var} -gt 45 ] &&
-                    # shorten current song title
-                    var=$(printf '%.45s...' "$var")
+                # shorten title if necessary
+                [ $((${#title} > 45)) -eq 1 ] &&
+                    title=$(printf '%.45s...' "$title")
                 ;;
-            *) var='Not Playing'
+            *) title='Not Playing'
         esac
 
-        printf '%s\n' "mus %{O10}$var"
+        printf 'mus %%{O10}%s\n' "$title"
     }
 
     mpc idle player
