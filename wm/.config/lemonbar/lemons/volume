@@ -1,19 +1,19 @@
 #!/bin/sh
 
 while :; do
-    # ensure volume block isn't empty on startup
+    # ensure volume module isn't empty on startup
     { echo; stdbuf -oL alsactl monitor; } |
-        while read -r event; do
-            var=$(amixer get Master)
+        while read -r _; do
+            out=$(amixer get Master)
 
-            case $var in
+            case $out in
                 *'[on]')  icon=;;
-                *'[off]') icon=
+                *'[off]') icon=;;
             esac
 
-            var=${var%%%]*}
-            var=${var#*[}
+            out=${out%%%]*}
+            out=${out#*[}%
 
-            echo "vol $icon%{O10}$var%%"
+            printf 'vol %s%%{O10}%s\n' "$icon" "$out"
         done
 done

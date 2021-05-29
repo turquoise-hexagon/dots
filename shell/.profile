@@ -24,7 +24,8 @@ type keychain > /dev/null 2>&1 &&
             --eval              \
             --absolute          \
             --agents ssh id_rsa \
-            --dir ~/.config/keychain)"
+            --dir ~/.config/keychain
+    )"
 
 [ ! "$DISPLAY" ] &&
     case $(tty) in

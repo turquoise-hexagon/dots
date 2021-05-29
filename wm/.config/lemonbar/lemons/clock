@@ -1,6 +1,6 @@
 #!/bin/sh
 
 clock |
-    while read -r event; do
-        echo "clk $event"
+    while IFS= read -r line; do
+        printf 'clk %s\n' "$line"
     done
