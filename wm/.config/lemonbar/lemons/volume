@@ -12,7 +12,7 @@ while :; do
             esac
 
             out=${out%%%]*}
-            out=${out#*[}%
+            out=${out#*[}%%
 
             printf 'vol %s%%{O10}%s\n' "$icon" "$out"
         done
