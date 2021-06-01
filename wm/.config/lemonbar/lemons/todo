@@ -1,16 +1,16 @@
 #!/bin/sh
 
-FILE=~/.local/share/todo
+readonly FILE=~/.local/share/todo
 
 # ensure todo block isn't empty on startup
-{ echo; wendy -vm 2056 -w "$FILE"; } |
-    while read -r event; do
+{ echo; wendy -m 2056 -w "$FILE" -v; } |
+    while read -r _; do
         # get number of entries
-        cnt=0
+        : $((cnt = 0))
 
         while read -r line; do
-            cnt=$((cnt + 1))
-        done < "$FILE"
+            : $((cnt += 1))
+        done < $FILE
 
-        echo "tdl %{O10}$cnt"
+        printf 'tdl %%{O10}%s\n' "$cnt"
     done
