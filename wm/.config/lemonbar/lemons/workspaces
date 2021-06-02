@@ -2,15 +2,14 @@
 
 # ensure workspaces block isn't empty on startup
 { echo; xtitle -s; } |
-    while read -r win; do
-        win=${win:-Desktop} # fallback
-        cur=$(bspc query -D -d --names)
+    while IFS= read -r title; do
+        var="$(bspc query -D -d --names) - ${title:-Desktop}"
 
-        var="$cur - $win"
+        # shorten if necessary
+        [ $((${#var} > 45)) -eq 1 ] &&
+            var=$(printf '%.45s...\n' "$var")
 
-        # shorten current window title
-        [ ${#var} -gt 45 ] &&
-            var=$(printf '%.45s...' "$var")
+        var=$(printf '%s\n' "$var" | sed 's|%|%%|g')
 
         printf '%s\n' "wks %{O10}$var"
     done

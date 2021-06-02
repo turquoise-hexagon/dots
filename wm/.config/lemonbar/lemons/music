@@ -10,6 +10,8 @@ while :; do
                 # shorten title if necessary
                 [ $((${#title} > 45)) -eq 1 ] &&
                     title=$(printf '%.45s...' "$title")
+
+                title=$(printf '%s\n' "$title" | sed 's|%|%%|g')
                 ;;
             *) title='Not Playing'
         esac
