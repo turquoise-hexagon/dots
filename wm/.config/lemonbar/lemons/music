@@ -16,7 +16,7 @@ while :; do
             *) title='Not Playing'
         esac
 
-        printf 'mus %%{O10}%s\n' "$title"
+        printf '%s\n' "mus %{O10}$title"
     }
 
     mpc idle player

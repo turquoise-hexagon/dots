@@ -12,5 +12,5 @@ readonly FILE=~/.local/share/todo
             : $((cnt += 1))
         done < $FILE
 
-        printf 'tdl %%{O10}%s\n' "$cnt"
+        printf '%s\n' "tdl %{O10}$cnt"
     done

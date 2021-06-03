@@ -2,5 +2,5 @@
 
 clock |
     while IFS= read -r out; do
-        printf 'clk %s\n' "$out"
+        printf '%s\n' "clk $out"
     done

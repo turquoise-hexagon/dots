@@ -14,6 +14,6 @@ while :; do
             out=${out%%%]*}
             out=${out#*[}%%
 
-            printf 'vol %s%%{O10}%s\n' "$icon" "$out"
+            printf '%s\n' "vol $icon%{O10}$out"
         done
 done
