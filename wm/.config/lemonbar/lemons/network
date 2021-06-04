@@ -1,11 +1,13 @@
 #!/bin/sh
 
+readonly DEV=wlan0
+
 # ensure network block isn't empty on startup
-{ echo 'default via'; ip monitor route dev wlan0; } |
+{ echo 'default via'; ip monitor route dev "$DEV"; } |
     while read -r event; do
         case $event in
             'default via'*)
-                var=$(iwgetid -r)
+                var=$(iwgetid -r | sed 's|%|%%|g')
                 var=${var:-Disconnected}
                 ;;
             'Deleted default via'*)
