@@ -9,15 +9,15 @@ die() {
 }
 
 query() {
-    bspc query -N -n ".local.$1.!fullscreen.!hidden"
+    bspc query -N -n ".local.$1descendant_of.window.leaf.!fullscreen.!hidden"
 }
 
 test "$1" || die
 
 for arg; do
     case $arg in
-        focused) query  'focused';;
-        normal)  query '!focused';;
+        focused) query  '';;
+        normal)  query '!';;
         *)
             die
     esac
