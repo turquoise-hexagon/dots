@@ -26,6 +26,6 @@ for ((;;)) {
                 *) icon=
             esac
 
-        echo "bat $icon%{O10}$var%%"
+        printf '%s\n' "bat $icon%{O10}$var%%"
     done < <(battery)
 }
