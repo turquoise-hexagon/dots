@@ -27,7 +27,7 @@ case $* in
 esac
 
 # get a percentage of the resolution
-: $((var = $(wattr "$dim" "$(lsw -r)") * PERCENT / 100))
+: $((var = $(wattr "$dim" "$(lsw -r)") * percent / 100))
 
 case $dim in
     w) x=$sign$var; y=0;;
