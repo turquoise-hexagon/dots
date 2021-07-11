@@ -11,7 +11,7 @@ type direnv &> /dev/null &&
 # command_not_found
 type correct &> /dev/null &&
     command_not_found_handle() {
-        echo "${SHELL##*/} : command '$1' not found, did you mean :"
+        printf "%s : command '%s' not found, did you mean :\n" "${SHELL##*/}" "$1"
         compgen -c | correct "$1"
 
         return 127
