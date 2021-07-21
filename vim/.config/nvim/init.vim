@@ -12,8 +12,8 @@ if empty(glob('~/.local/share/nvim/autoload/plug.vim'))
 endif
 
 " syntax
-syntax enable
 filetype indent plugin on
+syntax enable
 
 " behavior
 set hidden
