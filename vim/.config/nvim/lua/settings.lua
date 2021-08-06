@@ -2,7 +2,7 @@ local opt = vim.opt
 
 -- behavior
 opt.hidden =      true
-opt.swapfile =    true
+opt.swapfile =    false
 
 opt.ignorecase =  true
 opt.smartcase =   true
