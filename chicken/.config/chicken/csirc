@@ -1,10 +1,13 @@
-(import (chicken load))
+(import
+  (chicken load))
+
 (load-verbose #f)
 
-(import (chicken process-context)
-        (only chicken-doc)
-        breadline
-        breadline-scheme-completion)
+(import
+  (chicken process-context)
+  (only chicken-doc)
+  (breadline)
+  (breadline-scheme-completion))
 
 ; history
 (history-file (string-append (get-environment-variable "HOME")

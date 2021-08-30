@@ -14,8 +14,8 @@ Print
 super {_,shift} + Return
     {alacritty,draw}
 
-super + {_,shift} + space
-    {rofi -show run,switcher}
+super + space
+    rofi -show run
 
 super + shift + r
     pkill -USR1 -x sxhkd

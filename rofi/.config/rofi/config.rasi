@@ -1,37 +1,47 @@
-configuration {
-    lines: 5;
-    width: 30;
-    font: "Olive 12";
-    show-match: false;
-    window-format: "{t:80}";
-}
-
 * {
-    foreground: #102029;
+    font: "Olive 12";
     background: #EEEEEE;
+    foreground: #102029;
     highlight:  #F4ADB1;
-    background-color: @background;
-    text-color: @foreground;
 }
 
 window {
+    background-color: @background;
+    border: 0;
     padding: 20;
+    width: 30%;
 }
 
-#element {
-    padding: 1;
+entry {
+    placeholder: "";
 }
 
-#element.selected {
+listview {
+    border: 0;
+    lines: 5;
+    scrollbar: false;
+}
+
+inputbar {
+    children: [prompt, textbox-prompt-colon, entry];
+    border-color: @background;
+    border: 2;
+    padding: 0;
+}
+
+element {
+    highlight: none;
+    border-color: @background;
+    border: 2;
+    padding: 0;
+}
+
+element-text {
+    background-color: @background;
+}
+
+element-text selected {
     text-color: @highlight;
 }
 
-#inputbar {
-    padding: 1;
-    children: [prompt, textbox-prompt-colon, entry];
-}
-
-#textbox-prompt-colon {
-    expand: false;
-    str: " : ";
-}
+/* vim: ft=css
