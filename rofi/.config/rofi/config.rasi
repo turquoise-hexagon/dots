@@ -29,6 +29,10 @@ inputbar {
     padding: 0;
 }
 
+textbox-prompt-colon {
+    str: " : ";
+}
+
 element {
     highlight: none;
     border-color: @background;
