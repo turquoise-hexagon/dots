@@ -1,22 +1,28 @@
 local cmd = vim.cmd
 
-local function paq_install()
+local function packer_install()
     os.execute(os.getenv("HOME") ..
-        "/.config/nvim/paq_install.sh")
+        "/.config/nvim/packer_install.sh")
 end
 
-local function paq_init()
-    require("paq") {
-        "mbbill/undotree",
-        "tpope/vim-commentary",
-        "tpope/vim-surround",
-        "turquoise-hexagon/fruity"
-    }
+local function packer_init()
+    require("packer").startup(
+        function()
+            use "wbthomason/packer.nvim"
+            use "tpope/vim-commentary"
+            use "tpope/vim-surround"
+            use "turquoise-hexagon/fruity"
+            use "mbbill/undotree"
+            use {
+                "eraserhd/parinfer-rust", run = "cargo build --release"
+            }
+        end
+    )
 
     -- enable colorscheme
-    cmd("colorscheme fruity")
+   cmd("colorscheme fruity")
 end
 
-if not pcall(paq_init) then
-    paq_install()
+if not pcall(packer_init) then
+    packer_install()
 end
