@@ -33,4 +33,10 @@ reduce() {
     printf '%s\n' "$a"
 }
 
+lambda() {
+    local c=$1; shift
+
+    eval "$c"
+}
+
 # vim: ft=sh
