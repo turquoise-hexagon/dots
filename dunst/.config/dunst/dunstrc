@@ -1,14 +1,17 @@
 [global]
-    font = "Olive 12"
-    format= "%s\n%b"
+    font = Olive 12
+    format= %s\n%b
     markup = strip
     indicate_hidden = yes
     alignment = center
     word_wrap = yes
-    geometry = "350x0-30-30"
+    offset = 30x30
+    width = (0, 350)
+    origin = bottom-right
     shrink = yes
     follow = none
     show_indicators = no
+    frame_width = 0
     separator_height = 0
     line_height = 3
     padding = 20
@@ -29,8 +32,5 @@
     background = "#EEEEEE"
     foreground = "#C9647E"
     timeout = 10
-
-[shortcuts]
-    close_all = ctrl+space
 
 # vim: ft=cfg
