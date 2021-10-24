@@ -2,15 +2,23 @@
 #
 # center - center the focused window
 
-cur=$(pfw)
-win=$(lsw -r)
+# only center floating windows
+win=$(bspc query -N -n focused.floating) ||
+    exit
 
-wattr whb "$win" "$cur" | {
+scr=$(lsw -r)
+
+wattr whb "$scr" "$win" | {
     read -r w h _
     read -r _ _ b
 
+    # adjust geometry
     : $((x = w / 2 - b))
     : $((y = h / 2 - b))
 
-    wmv -a "$x" "$y" "$cur"
+    wmv -a "$x" "$y" "$win"
 }
+
+cursor
+
+: # fix exit status
