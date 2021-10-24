@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# close - close window / preselection
+
+_() bspc node "$@"
+
+bspc query -N -n 'focused.!automatic' > /dev/null \
+    && _ -p cancel || _ -c

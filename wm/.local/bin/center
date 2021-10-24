@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# center - center the focused window
+
+cur=$(pfw)
+win=$(lsw -r)
+
+wattr whb "$win" "$cur" | {
+    read -r w h _
+    read -r _ _ b
+
+    : $((x = w / 2 - b))
+    : $((y = h / 2 - b))
+
+    wmv -a "$x" "$y" "$cur"
+}
