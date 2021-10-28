@@ -1,6 +1,6 @@
 # misc keybindings
 super + {Left,Right,Down}
-    player {prev,next,toggle}
+    player {previous,next,play-pause}
 
 XF86MonBrightness{Up,Down}
     brightness -r {+,-}10

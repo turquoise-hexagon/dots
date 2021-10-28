@@ -1,24 +1,28 @@
 #!/bin/sh
 
-_() {
-    pgrep -x "$1" > /dev/null ||
-        { "$@" & }
-}
+_() pgrep -x "$1" > /dev/null
 
-readonly XRES_FILE=~/.config/xres/main
-readonly FONTS_DIR=~/.local/share/fonts
+# daemons
+_ dbus-launch ||
+    eval "$(
+        dbus-launch     \
+            --sh-syntax \
+            --exit-with-x11
+    )"
+
+_ dunst     || { dunst & }
+_ mpd       || { mpd ; }
+_ mpd-mpris || { mpd-mpris & }
+_ sxhkd     || { sxhkd -m 1 & }
 
 # settings
 setxkbmap -option caps:swapescape
 xsetroot -cursor_name left_ptr
 xset s off -dpms
 
-# daemons
-_ dunst
-_ mpd
-_ sxhkd -m 1
+readonly XRES_FILE=~/.config/xres/main
+readonly FONTS_DIR=~/.local/share/fonts
 
-# rice
 [ -f "$FONTS_DIR/fonts.dir" ] &&
     xset +fp "$FONTS_DIR"
 
@@ -28,5 +32,5 @@ _ sxhkd -m 1
 wallpaper
 
 # wm
-pgrep -x bspwm > /dev/null ||
+_ bspwm ||
     exec bspwm > /dev/null 2>&1

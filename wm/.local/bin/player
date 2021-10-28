@@ -1,45 +1,32 @@
 #!/bin/sh
 #
-# player - media player control
+# player - media players control
 
 die() {
-    printf '%s\n' "${1:-usage : ${0##*/} <prev|next|toggle>}" >&2
+    printf '%s\n' "${1:-usage : ${0##*/} <play-pause|previous|next}" >&2
 
     exit 1
 }
 
-_() playerctl -p "$player" "$@"
+_() playerctl "$@"
 
-# basic argument parsing
-case $* in
-    prev|next|toggle) ;;
-    *)
-        die
-esac
+# get list of media players
+arg=$1
 
-# send a notification when fullscreen & changing media
-unset notify
+set -f
+set -- $(_ -l 2> /dev/null)
+set +f
 
-{
-    bspc query -N -n focused.fullscreen > /dev/null && [ "$1" != toggle ]
-} && notify=1
+test "$#" -gt 0 ||
+    exit
 
-# find most recent media player
-playerctl -l 2> /dev/null | {
-    unset player
+# argument parsing
+case $arg in
+    previous|next)
+        _ "$arg"
 
-    while read -r line; do
-        player=$line
-    done
-
-    test "$player" && {
-        case $* in
-            toggle) _ play-pause;;
-            prev)   _ previous;;
-            next)   _ next;;
-        esac
-
-        test "$notify" && {
+        # send a notification when fullscreen
+        bspc query -N -n focused.fullscreen > /dev/null && {
             # wait for metadata to settle
             {
                 sh -c 'echo $$; playerctl metadata -f "{{duration(position)}}" -F' | {
@@ -54,11 +41,18 @@ playerctl -l 2> /dev/null | {
             dunstify -r 500 "$(_ metadata title)"
         }
 
-        :
-    } || mpc "$*" 2> /dev/null | {
-        read -r out
+        : # fix exit status
+        ;;
+    play-pause)
+        # toggle most recent playing media player
+        for player; do
+            case $(_ -p "$player" metadata -f "{{status}}") in
+                Playing) _ -p "$player" pause; exit
+            esac
+        done
 
-        test "$notify" &&
-            dunstify -r 500 "$out"
-    }
-}
+        _ play
+        ;;
+    *)
+        die
+esac
