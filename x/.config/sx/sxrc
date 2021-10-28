@@ -1,35 +1,32 @@
 #!/bin/sh
 
+_() {
+    pgrep -x "$1" > /dev/null ||
+        { "$@" & }
+}
+
+readonly XRES_FILE=~/.config/xres/main
+readonly FONTS_DIR=~/.local/share/fonts
+
 # settings
 setxkbmap -option caps:swapescape
 xsetroot -cursor_name left_ptr
 xset s off -dpms
 
 # daemons
-_() {
-    pgrep -x "$1" > /dev/null ||
-        { "$@" & }
-}
-
 _ dunst
 _ mpd
 _ sxhkd -m 1
 
 # rice
-tmp=~/.local/share/fonts
+[ -f "$FONTS_DIR/fonts.dir" ] &&
+    xset +fp "$FONTS_DIR"
 
-[ -f "$tmp/fonts.dir" ] &&
-    xset +fp "$tmp"
-
-tmp=~/.config/xres/main
-
-[ -f "$tmp" ] &&
-    xrdb -merge "$tmp"
+[ -f "$XRES_FILE" ] &&
+    xrdb -merge "$XRES_FILE"
 
 wallpaper
 
 # wm
 pgrep -x bspwm > /dev/null ||
-    exec bspwm > /tmp/bspwm.log 2>&1
-
-# vim: ft=sh
+    exec bspwm > /dev/null 2>&1
