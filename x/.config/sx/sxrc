@@ -19,6 +19,7 @@ _ sxhkd     || { sxhkd -m 1 & }
 setxkbmap -option caps:swapescape
 xsetroot -cursor_name left_ptr
 xset s off -dpms
+xrandr --dpi 96
 
 readonly XRES_FILE=~/.config/xres/main
 readonly FONTS_DIR=~/.local/share/fonts
