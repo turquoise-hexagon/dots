@@ -3,8 +3,6 @@
 # mpv - simple mpv wrapper
 
 # stop other players
-{
-    mpc pause; playerctl -a pause
-} > /dev/null 2>&1
+playerctl -a pause > /dev/null 2>&1
 
 command -p mpv "$@"
