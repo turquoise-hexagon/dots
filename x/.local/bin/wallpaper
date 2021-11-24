@@ -2,21 +2,11 @@
 #
 # wallpaper - set a random wallpaper
 
-seed=$$
-
-rand() {
-    : $((seed ^= seed << 13))
-    : $((seed ^= seed >> 17))
-    : $((seed ^= seed <<  5))
-
-    printf '%s\n' "$seed"
-}
-
 readonly DIR=~/medias/pics/walls
 
 set -- "$DIR/"*
 
-# generate a "random" number
-: $((rand = $(rand) % $#))
+# get a "random" number
+: $((rand = $$ % $#))
 
 shift "$rand"; setroot -fw "$1"
