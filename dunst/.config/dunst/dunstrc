@@ -1,6 +1,6 @@
 [global]
     font = Olive 12
-    format= %s\n%b
+    format = %s\n%b
     markup = strip
     indicate_hidden = yes
     alignment = center

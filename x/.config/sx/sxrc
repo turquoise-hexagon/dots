@@ -1,5 +1,8 @@
 #!/bin/sh
 
+readonly XRES_FILE=~/.config/xres/main
+readonly FONTS_DIR=~/.local/share/fonts
+
 _() pgrep -x "$1" > /dev/null
 
 # daemons
@@ -20,9 +23,6 @@ setxkbmap -option caps:swapescape
 xsetroot -cursor_name left_ptr
 xset s off -dpms
 xrandr --dpi 96
-
-readonly XRES_FILE=~/.config/xres/main
-readonly FONTS_DIR=~/.local/share/fonts
 
 [ -f "$FONTS_DIR/fonts.dir" ] &&
     xset +fp "$FONTS_DIR"
