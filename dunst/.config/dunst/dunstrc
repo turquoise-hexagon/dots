@@ -9,7 +9,6 @@
     width = (0, 350)
     origin = bottom-right
     shrink = yes
-    follow = none
     show_indicators = no
     frame_width = 0
     separator_height = 0
