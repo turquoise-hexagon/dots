@@ -3,7 +3,7 @@
 declare -A statuses capacities
 
 for ((;;)) {
-    while read -r id status capacity; do
+    while read -r id capacity status; do
         statuses[$id]=$status
         capacities[$id]=$capacity
 
