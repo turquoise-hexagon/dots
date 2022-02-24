@@ -16,6 +16,7 @@
     padding = 20
     horizontal_padding = 20
     icon_position = off
+    close = ctrl+space
 
 [urgency_low]
     background = "#EEEEEE"
