@@ -13,10 +13,11 @@ _ dbus-launch ||
             --exit-with-x11
     )"
 
-_ dunst     || { dunst & }
-_ mpd       || { mpd ; }
-_ mpd-mpris || { mpd-mpris & }
-_ sxhkd     || { sxhkd -m 1 & }
+_ dunst      || { dunst & }
+_ mpd        || { mpd ; }
+_ mpd-mpris  || { mpd-mpris & }
+_ playerctld || { playerctld & }
+_ sxhkd      || { sxhkd -m 1 & }
 
 # settings
 setxkbmap -option caps:swapescape
