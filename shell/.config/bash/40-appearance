@@ -42,7 +42,7 @@ prompt() {
 
     while [[ $current_dir ]]; do
         [[ -d $current_dir/.git ]] && {
-            mapfile -t git_output <<< $(git status --branch --porcelain)
+            mapfile -t git_output <<< $(git status --branch --porcelain 2> /dev/null)
 
             [[ $git_output =~ '[ahead '[0-9]+']'$ ]] \
                 && git_status=' +'                   \

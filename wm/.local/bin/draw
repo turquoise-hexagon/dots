@@ -2,7 +2,6 @@
 #
 # draw - spawn a window in a preselected area
 
-readonly PROG=alacritty
 readonly MIN_W=500
 readonly MIN_H=400
 
@@ -28,6 +27,4 @@ hacksaw                \
 
     # set spawning rule
     bspc rule -a '*' -o state=floating rectangle="${w}x${h}+${x}+${y}"
-
-    $PROG
 }
