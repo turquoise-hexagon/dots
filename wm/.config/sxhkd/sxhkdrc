@@ -11,8 +11,8 @@ XF86Audio{Mute,RaiseVolume,LowerVolume}
 Print
     screenshot
 
-super {_,shift} + Return
-    {alacritty,draw}
+super + Return
+    alacritty
 
 super + space
     rofi -show run
@@ -26,6 +26,9 @@ super + q
 
 super + c
     center
+
+super + d
+    draw
 
 super + r
     bspc node -n last.!automatic -t tiled
