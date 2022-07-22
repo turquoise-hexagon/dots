@@ -3,14 +3,9 @@
 # screenshot - take a screenshot of a preselected area
 
 get_coordinates() {
-    IFS_backup=$IFS
-
-    set -f
-    IFS=$1; set -- $2; IFS=$IFS_backup
-    set +f
-
-    w=$1; h=$2
-    x=$3; y=$4
+IFS=$1 read -r w h x y << EOF
+$2
+EOF
 }
 
 readonly DIR=~/medias/pics/scrots
