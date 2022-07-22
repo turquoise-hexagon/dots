@@ -1,34 +1,49 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-while IFS=: read -r -a chunks; do
-    charging=0
+readonly IFS_backup=$IFS
 
-    ((var = 0))
+_parse_chunk() {
+IFS=\  read -r _ charge status << EOF
+$1
+EOF
+}
 
-    for chunk in "${chunks[@]}"; do
-        IFS=' ' read -r _ charge status <<< $chunk
+battery |
+    while IFS= read -r line; do
+        set -f
+        IFS=:; set -- $line
+        set +f
 
-        [[ $status == Charging ]] &&
-            charging=1
+        IFS=$IFS_backup
 
-        ((var += charge))
+        nb_batteries=$#
+        charge_total=0
+        status_total=0
+
+        for chunk; do
+            _parse_chunk "$chunk"
+
+            charge_total=$((charge_total + charge))
+
+            [ "$status" = Charging ] &&
+                status_total=1
+        done
+
+        charge_total=$((charge_total / nb_batteries))
+
+        case $status_total in
+            1)
+                icon=
+                ;;
+            *)
+                case $((charge_total / 25)) in
+                    0) icon=;;
+                    1) icon=;;
+                    2) icon=;;
+                    3) icon=;;
+                    *) icon=
+                esac
+        esac
+
+        printf '%s\n' "bat $icon%{O10}$charge_total%%"
     done
-
-    ((var /= ${#chunks[@]}))
-
-    case $charging in
-        1)
-            icon=
-            ;;
-        0)
-            case $((var / 25)) in
-                0) icon=;;
-                1) icon=;;
-                2) icon=;;
-                3) icon=;;
-                *) icon=
-            esac
-    esac
-
-    printf '%s\n' "bat $icon%{O10}$var%%"
-done < <(battery)
