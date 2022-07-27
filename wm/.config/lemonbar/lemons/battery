@@ -1,22 +1,21 @@
 #!/bin/sh
 
-readonly IFS_backup=$IFS
-
 _parse_chunk() {
-IFS=\  read -r _ charge status << EOF
+IFS=' ' read -r _ charge status << EOF
 $1
 EOF
 }
 
 battery |
     while IFS= read -r line; do
+        IFS_backup=$IFS
+
         set -f
         IFS=:; set -- $line
         set +f
 
         IFS=$IFS_backup
 
-        nb_batteries=$#
         charge_total=0
         status_total=0
 
@@ -29,21 +28,19 @@ battery |
                 status_total=1
         done
 
-        charge_total=$((charge_total / nb_batteries))
+        charge_total=$((charge_total / $#))
 
-        case $status_total in
-            1)
-                icon=
-                ;;
-            *)
-                case $((charge_total / 25)) in
-                    0) icon=;;
-                    1) icon=;;
-                    2) icon=;;
-                    3) icon=;;
-                    *) icon=
-                esac
-        esac
+        if [ "$status_total" -eq 1 ]; then
+            icon=
+        else
+            case $((charge_total / 25)) in
+                0) icon=;;
+                1) icon=;;
+                2) icon=;;
+                3) icon=;;
+                *) icon=
+            esac
+        fi
 
         printf '%s\n' "bat $icon%{O10}$charge_total%%"
     done
