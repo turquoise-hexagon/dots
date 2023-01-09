@@ -1,0 +1,50 @@
+#!/bin/sh
+#
+# battery_monitor - prevents battery from running out
+
+readonly PERCENTAGE=5
+
+parse_chunk() {
+IFS=' ' read -r name charge status << EOF
+$1
+EOF
+}
+
+toggle=0
+
+battery |
+    while IFS= read -r line; do
+        IFS_backup=$IFS
+
+        set -f
+        IFS=:; set -- $line
+        set +f
+
+        IFS=$IFS_backup
+
+        charge_total=0
+        status_total=0
+
+        for chunk; do
+            parse_chunk "$chunk"
+
+            charge_total=$((charge_total + charge))
+
+            [ "$status" = Charging ] &&
+                status_total=1
+        done
+
+        charge_total=$((charge_total / $#))
+
+        [ $((charge_total < PERCENTAGE)) -eq 1 ] && {
+            [ $((status_total == 0)) -eq 1 ] && {
+                [ $((toggle == 1)) -eq 1 ] && {
+                    sudo zzz > /dev/null 2>&1
+
+                    toggle=0
+                }
+                :
+            } || toggle=1
+            :
+        } || toggle=1
+    done

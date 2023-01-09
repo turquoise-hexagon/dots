@@ -3,7 +3,7 @@ super + {Left,Right,Down}
     player {previous,next,play-pause}
 
 XF86MonBrightness{Up,Down}
-    brightness -r {+,-}10
+    brightness -r {+,-}5
 
 XF86Audio{Mute,RaiseVolume,LowerVolume}
     volume {toggle,5%+,5%-}
