@@ -36,15 +36,13 @@ battery |
 
         charge_total=$((charge_total / $#))
 
-        [ $((charge_total < PERCENTAGE)) -eq 1 ] && {
-            [ $((status_total == 0)) -eq 1 ] && {
-                [ $((toggle == 1)) -eq 1 ] && {
-                    sudo zzz > /dev/null 2>&1
+        [ $((charge_total < PERCENTAGE && status_total == 0)) -eq 1 ] && {
+            [ $((toggle == 1)) -eq 1 ] && {
+                sudo zzz > /dev/null 2>&1
 
-                    toggle=0
-                }
-                :
-            } || toggle=1
+                toggle=0
+            }
             :
-        } || toggle=1
+        } ||
+            toggle=1
     done
