@@ -24,10 +24,10 @@ filter() {
 }
 
 reduce() {
-    local a=${@: -1}
+    local a=$1; shift
 
     while IFS= read -r i; do
-        a=$("${@:1:$# - 1}" "$a" "$i")
+        a=$("$@" "$a" "$i")
     done
 
     printf '%s\n' "$a"
