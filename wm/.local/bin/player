@@ -3,56 +3,68 @@
 # player - media players control
 
 die() {
-    printf '%s\n' "${1:-usage : ${0##*/} <play-pause|previous|next>}" >&2
+    printf '%s\n' "${1:-usage : ${0##/*} <previous|next|play-pause>}" >&2
 
     exit 1
 }
 
-_() playerctl "$@"
+# argument parsing
+[ $# = 1 ] ||
+    die
 
-# get list of media players
-arg=$1
+case $1 in
+    previous|next|play-pause)
+        cmd=$1
+        ;;
+    *) die
+esac
 
+# get media players
 set -f
-set -- $(_ -l 2> /dev/null)
+set -- $(playerctl -l)
 set +f
 
-test "$#" -gt 0 ||
-    exit
+case $cmd in
+    next|previous)
+        for player; do
+            # find playing player
+            [ "$(playerctl status -p "$player")" = Playing ] && {
+                playerctl "$cmd" -p "$player"
 
-# argument parsing
-case $arg in
-    previous|next)
-        _ "$arg"
+                # send notification when fullscreen
+                bspc query -N -n focused.fullscreen > /dev/null && {
+                    {
+                        # wait for metadata to settle
+                        sh -c "echo \$$; playerctl metadata -f '{{position}}' -p '$player' -F" | {
+                            read -r pid
+                            read -r _
+                            read -r _
 
-        # send a notification when fullscreen
-        bspc query -N -n focused.fullscreen > /dev/null && {
-            # wait for metadata to settle
-            {
-                sh -c 'echo $$; playerctl metadata -f "{{duration(position)}}" -F' | {
-                    read -r pid
-                    read -r _
-                    read -r _
+                            kill "$pid"
+                        }
+                    } 2> /dev/null
 
-                    kill "$pid"
+                    dunstify -r 500 "$(playerctl metadata -f '{{title}}' -p "$player")"
                 }
-            } 2> /dev/null
 
-            dunstify -r 500 "$(_ metadata title)"
-        }
-
-        : # fix exit status
+                break
+            }
+        done
         ;;
     play-pause)
-        # toggle most recent playing media player
+        playing=0
+
         for player; do
-            case $(_ -p "$player" metadata -f "{{status}}") in
-                Playing) _ -p "$player" pause; exit
-            esac
+            # pause until actually paused
+            until [ "$(playerctl status -p "$player")" = Paused ]; do
+                playerctl pause -p "$player"
+
+                playing=1
+            done
         done
 
-        _ play
-        ;;
-    *)
-        die
+        [ "$playing" = 0 ] &&
+            playerctl play -p "$1"
 esac
+
+: # fix exit status
