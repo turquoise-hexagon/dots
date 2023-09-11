@@ -3,7 +3,7 @@
 readonly XRES_FILE=~/.config/xres/main
 readonly FONTS_DIR=~/.local/share/fonts
 
-_() pgrep -x "$1" > /dev/null
+_() pidof "$1" > /dev/null
 
 # daemons
 _ dbus-launch ||
@@ -15,7 +15,7 @@ _ dbus-launch ||
 
 _ battery_monitor || { battery_monitor & }
 _ dunst           || { dunst & }
-_ mpd             || { mpd ; }
+_ mpd             || { mpd; }
 _ mpd-mpris       || { mpd-mpris & }
 _ playerctld      || { playerctld & }
 _ sxhkd           || { sxhkd -m 1 & }

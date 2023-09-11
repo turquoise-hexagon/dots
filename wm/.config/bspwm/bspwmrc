@@ -26,6 +26,6 @@ EOF
 
 # start utils
 for util in $UTILS; do
-    pgrep -x "$util" > /dev/null ||
+    pidof "$util" > /dev/null ||
         { "$util" & }
 done
