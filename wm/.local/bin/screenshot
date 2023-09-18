@@ -2,7 +2,7 @@
 #
 # screenshot - select an area to screenshot
 
-readonly FORMAT=%F_%H-%M-%S.png
+readonly FORMAT=%F_%H-%M-%S
 readonly DIR=~/medias/pics/scrots
 
 border_color=$(bspc config focused_border_color)
@@ -17,7 +17,7 @@ geometry=$(
 ) 2> /dev/null && {
     mkdir -p "$DIR"
 
-    name=$(date "+$FORMAT")
+    name=$(date "+$FORMAT").png
 
     # take screenshot
     shotgun -g "$geometry" \
