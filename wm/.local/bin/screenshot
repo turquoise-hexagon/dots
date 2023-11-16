@@ -1,30 +1,45 @@
 #!/bin/sh
 #
-# screenshot - select an area to screenshot
+# screenshot - select area & take screenshot
 
-readonly FORMAT=%F_%H-%M-%S
+parse() {
+IFS='+x ' read -r w h x y << EOF
+$1
+EOF
+}
+
 readonly DIR=~/medias/pics/scrots
+readonly FORMAT=%F_%H-%M-%S
 
 border_color=$(bspc config focused_border_color)
 border_width=$(bspc config border_width)
 
 # select area
 geometry=$(
-    hacksaw \
+    hacksaw                \
         -c "$border_color" \
         -s "$border_width" \
         -n
 ) 2> /dev/null && {
-    mkdir -p "$DIR"
+    parse "$geometry"
+
+    # prevent accidental small screenshot
+    [ $((h < 10 && w < 10)) -eq 1 ] && {
+        parse "$(wattr wh "$(lsw -r)")"
+        x=0
+        y=0
+    }
 
     name=$(date "+$FORMAT").png
 
-    # take screenshot
-    shotgun -g "$geometry" \
-        "$DIR/$name"
-    # send screenshot to clipboard
-    xclip -selection clipboard -target image/png \
-        "$DIR/$name"
+    # take screenshot &
+    # send to clipboard
+    {
+        shotgun -g "${w}x${h}+${x}+${y}"       \
+            "$DIR/$name" &&
 
-    notify-send "Screenshot saved as $name"
+        xclip -sel clipboard -target image/png \
+            "$DIR/$name"
+    } &&
+        notify-send "Screenshot saved as $name"
 }
