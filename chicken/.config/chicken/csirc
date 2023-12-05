@@ -3,26 +3,26 @@
 
 (load-verbose #f)
 
-(import
-  (chicken process-context)
-  (only chicken-doc)
-  (breadline)
-  (breadline-scheme-completion))
+(begin
+  (import
+    (chicken process-context)
+    (breadline)
+    (breadline-scheme-completion)
+    (only chicken-doc))
 
-; history
-(history-file (string-append (get-environment-variable "HOME")
-                             "/.local/share/csi"))
-(stifle-history! 10000)
-(completer-word-break-characters-set! "\"\'`;|(")
+  ;; history
+  (history-file (string-append (get-environment-variable "HOME") "/.local/share/csi"))
+  (stifle-history! 10000)
 
-; completion
-(completer-set! scheme-completer)
-(basic-quote-characters-set! "\"|")
+  ;; completion
+  (completer-word-break-characters-set! "\"\'`;|(")
+  (basic-quote-characters-set! "\"|")
+  (completer-set! scheme-completer)
 
-; parentheses matching
-(variable-bind! "blink-matching-paren" "on")
-(paren-blink-timeout-set! 100000)
+  ;; parentheses matching
+  (variable-bind! "blink-matching-paren" "on")
+  (paren-blink-timeout-set! 100000)
 
-(current-input-port (make-readline-port "> "))
+  (current-input-port (make-readline-port "><> ")))
 
 ; vim: ft=scheme
