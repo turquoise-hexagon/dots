@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# key-handler - sxiv key-handler
+
+# helper function
+process() {
+    local file
+
+    while IFS= read -r file; do
+        "$@" "$file"
+    done
+}
+
+clipboard() {
+    local file=$1 type=${file##*.}
+
+    case $type in
+        jpg|gif|png|jpeg)
+            xclip -selection clipboard -target "image/$type" < "$file"
+    esac
+}
+
+for arg; do
+    case $arg in
+        C-c) process clipboard
+    esac
+done

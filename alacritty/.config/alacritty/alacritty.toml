@@ -1,0 +1,40 @@
+import = ["/home/camille/.config/alacritty/colors.toml"]
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[window.dimensions]
+columns = 70
+lines = 17
+
+[window.padding]
+x = 10
+y = 10
+
+[font]
+size = 6
+
+[font.bold]
+style = "regular"
+
+[font.italic]
+style = "regular"
+
+[font.normal]
+family = "banana"
+
+[font.offset]
+y = 4
+
+[cursor.style]
+shape = "underline"
+
+[[hints.enabled]]
+command = "firefox"
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-<>\"\\s{-}\\^⟨⟩`]+"
+
+[hints.enabled.mouse]
+enabled = true
+
+[scrolling]
+history = 500

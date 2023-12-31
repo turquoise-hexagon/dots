@@ -1,6 +1,6 @@
 #!/bin/sh
 
-readonly DEV=wlan0
+readonly DEV=wlp59s0
 
 # ensure network block isn't empty on startup
 { echo 'default via'; ip monitor route dev "$DEV"; } |
