@@ -12,10 +12,10 @@ process() {
 }
 
 clipboard() {
-    local file=$1 type=${file##*.}
+    local file=${1} type=${1##*.}
 
     case $type in
-        jpg|gif|png|jpeg)
+        gif|jpeg|jpg|png)
             xclip -selection clipboard -target "image/$type" < "$file"
     esac
 }
