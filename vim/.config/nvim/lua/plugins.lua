@@ -21,7 +21,7 @@ local function packer_init()
     )
 
     -- enable colorscheme
-   cmd("colorscheme fruity")
+    cmd("colorscheme fruity")
 end
 
 if not pcall(packer_init) then

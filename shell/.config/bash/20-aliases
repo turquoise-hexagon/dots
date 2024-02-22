@@ -1,19 +1,19 @@
-alias                    \
-cal='cal -m'             \
-cp='cp -r'               \
-csi='csi -q'             \
-df='df -h'               \
+alias \
+cal='cal -m' \
+cp='cp -r' \
+csi='csi -q' \
+df='df -h' \
 diff='diff --color=auto' \
-du='du -h'               \
-free='free -h'           \
+du='du -h' \
+free='free -h' \
 grep='grep --color=auto' \
-ls='ls -FN --color=auto' \
-mkdir='mkdir -p'         \
-ncmpcpp='ncmpcpp -q'     \
-scp='scp -r'             \
-sxiv='sxiv -bs f'        \
-tokei='tokei -s code'    \
-uptime='uptime -p'       \
+ls='ls -FN --group-directories-first --color=auto' \
+mkdir='mkdir -p' \
+ncmpcpp='ncmpcpp -q' \
+scp='scp -r' \
+sxiv='sxiv -bsf' \
+tokei='tokei -scode' \
+uptime='uptime -p' \
 vim='nvim'
 
 # vim: ft=sh
