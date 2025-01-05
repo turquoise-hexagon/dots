@@ -1,4 +1,4 @@
-import = ["/home/camille/.config/alacritty/colors.toml"]
+general.import = ["/home/camille/.config/alacritty/colors.toml"]
 
 [colors]
 draw_bold_text_with_bright_colors = true

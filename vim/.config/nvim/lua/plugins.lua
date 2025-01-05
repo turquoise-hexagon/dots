@@ -17,6 +17,9 @@ local function packer_init()
             use {
                 "eraserhd/parinfer-rust", run = "cargo build --release"
             }
+            use {
+                "nvim-treesitter/nvim-treesitter", run = ":TSUpdate"
+            }
         end
     )
 

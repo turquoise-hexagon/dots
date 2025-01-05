@@ -2,11 +2,10 @@
     font: "Olive 12";
     background: #EEEEEE;
     foreground: #102029;
-    highlight:  #F4ADB1;
+    highlight: #F4ADB1;
 }
 
 window {
-    background-color: @background;
     border: 0;
     padding: 20;
     width: 30%;
@@ -16,35 +15,30 @@ entry {
     placeholder: "";
 }
 
-listview {
-    border: 0;
-    lines: 5;
-    scrollbar: false;
-}
-
 inputbar {
     children: [prompt, textbox-prompt-colon, entry];
-    border-color: @background;
-    border: 2;
-    padding: 0;
+    border: 0;
+    padding: 2;
 }
 
-textbox-prompt-colon {
-    str: " : ";
+listview {
+    lines: 5;
+    scrollbar: false;
+    border: 0;
+    padding: 0;
 }
 
 element {
-    highlight: none;
-    border-color: @background;
-    border: 2;
-    padding: 0;
+    border: 0;
+    padding: 2;
 }
 
-element-text {
+element.alternate.normal {
     background-color: @background;
 }
 
-element-text selected {
+element.selected.normal {
+    background-color: @background;
     text-color: @highlight;
 }
 
