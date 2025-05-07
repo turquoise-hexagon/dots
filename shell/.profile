@@ -20,11 +20,11 @@ MANPAGER='nvim -c Man! -'
 
 type keychain > /dev/null 2>&1 &&
     eval "$(
-        keychain                    \
-            --eval                  \
-            --absolute              \
-            --agents ssh id_ed25519 \
-            --dir ~/.config/keychain
+        keychain                     \
+            --eval                   \
+            --absolute               \
+            --dir ~/.config/keychain \
+            id_ed25519
     )"
 
 [ ! "$DISPLAY" ] &&
