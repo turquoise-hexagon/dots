@@ -10,10 +10,10 @@ die() {
 }
 
 case $* in
-    east)  arg=xyi; sign=\>;;
-    west)  arg=xyi; sign=\<;;
-    north) arg=yxi; sign=\<;;
-    south) arg=yxi; sign=\>;;
+    east)  arg=xy; sign=\>;;
+    west)  arg=xy; sign=\<;;
+    north) arg=yx; sign=\<;;
+    south) arg=yx; sign=\>;;
     *)
         die
 esac
@@ -27,7 +27,7 @@ set -- $(targets focused normal)
 set +f
 
 # get coordinates of all windows
-wattr "$arg" "$@" | {
+wattr "${arg}i" "$@" | {
     read -r cur_pos_1 cur_pos_2 cur_id
 
     unset min_1 \

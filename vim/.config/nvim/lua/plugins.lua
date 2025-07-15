@@ -8,12 +8,13 @@ end
 local function packer_init()
     require("packer").startup(
         function()
-            use "wbthomason/packer.nvim"
+            use "calebsmith/vim-lambdify"
             use "mbbill/undotree"
             use "tpope/vim-commentary"
             use "tpope/vim-surround"
             use "turquoise-hexagon/fruity"
             use "vale1410/vim-minizinc"
+            use "wbthomason/packer.nvim"
             use {
                 "eraserhd/parinfer-rust", run = "cargo build --release"
             }
