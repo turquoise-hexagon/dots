@@ -12,7 +12,7 @@ x = 10
 y = 10
 
 [font]
-size = 6
+size = 6.5
 
 [font.bold]
 style = "regular"
@@ -22,7 +22,6 @@ style = "regular"
 
 [font.normal]
 family = "banana"
-# family = "Overpass Mono"
 
 [font.offset]
 y = 4
