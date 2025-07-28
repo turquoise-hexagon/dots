@@ -1,19 +1,26 @@
 #!/bin/sh
 
-while :; do
-    # ensure volume module isn't empty on startup
-    { echo; stdbuf -oL alsactl monitor; } |
-        while read -r _; do
-            out=$(amixer get Master)
+readonly SINK=0
 
-            case $out in
-                *'[on]')  icon=;;
-                *'[off]') icon=;;
-            esac
+# ensure volume module isn't empty on startup
+{ echo "Event 'change' on sink #$SINK"; pactl subscribe; } |
+    while read -r event; do
+        case $event in
+            "Event 'change' on sink #$SINK")
+                {
+                    pactl get-sink-volume "$SINK"
+                    pactl get-sink-mute   "$SINK"
+                } | {
+                    read -r _ _ _ _ volume _
+                    read -r _
+                    read -r _ status
 
-            out=${out%%%]*}
-            out=${out#*[}%%
+                    case $status in
+                        no)  icon=;;
+                        yes) icon=;;
+                    esac
 
-            printf '%s\n' "vol $icon%{O10}$out"
-        done
-done
+                    printf '%s\n' "vol $icon%{O10}$volume%"
+                }
+        esac
+    done

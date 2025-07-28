@@ -2,6 +2,8 @@
 #
 # volume - volume control
 
+readonly SINK=0
+
 die() {
     printf '%s\n' "${1:-usage : ${0##*/} <offset|toggle>}" >&2
 
@@ -10,26 +12,26 @@ die() {
 
 # basic argument parsing
 case $* in
-    [0-9]%[+-])           ;;
-    [0-9][0-9]%[+-])      ;;
-    [0-9][0-9][0-9]%[+-]) ;;
-    toggle)               ;;
+    [+-][0-9]%)          ;;
+    [+-][0-9][0-9]%)     ;;
+    [+-][0-9][0-9][0-9]%);;
+    toggle)
+        pactl set-sink-mute "$SINK" toggle
+        exit
+        ;;
     *)
         die
 esac
 
-amixer_output=$(amixer set Master "$*")
+pactl set-sink-volume "$SINK" "$*"
 
-[ "$*" = toggle ] && exit
+# send notification when fullscreen
+bspc query -N -n focused.fullscreen > /dev/null &&
+    # get volume
+    pactl get-sink-volume "$SINK" | {
+        read -r _ _ _ _ volume _
 
-# send a notification when fullscreen
-bspc query -N -n focused.fullscreen > /dev/null && {
-    # format volume
-    volume=$amixer_output
-    volume=${volume%%]*}
-    volume=${volume#*[}
-
-    dunstify -r 501 "Volume : $volume"
-}
+        dunstify -r 501 "Volume : $volume"
+    }
 
 : # fix exit status

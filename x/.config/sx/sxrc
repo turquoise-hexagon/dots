@@ -13,6 +13,7 @@ _ dbus-launch ||
             --exit-with-x11
     )"
 
+_ pulseaudio      || { pulseaudio --start --exit-idle-time=-1; }
 _ battery_monitor || { battery_monitor & }
 _ dunst           || { dunst & }
 _ mpd             || { mpd; }
