@@ -22,7 +22,6 @@ _ playerctld      || { playerctld & }
 _ sxhkd           || { sxhkd -m 1 & }
 
 # settings
-setxkbmap -option caps:swapescape
 xsetroot -cursor_name left_ptr
 xset s off -dpms
 xrandr --dpi 96

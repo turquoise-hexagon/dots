@@ -2,7 +2,7 @@
 #
 # volume - volume control
 
-readonly SINK=0
+readonly SINK=$(pactl get-default-sink)
 
 die() {
     printf '%s\n' "${1:-usage : ${0##*/} <offset|toggle>}" >&2

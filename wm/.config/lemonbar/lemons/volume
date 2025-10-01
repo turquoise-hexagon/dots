@@ -1,15 +1,15 @@
 #!/bin/sh
 
-readonly SINK=0
-
 # ensure volume module isn't empty on startup
-{ echo "Event 'change' on sink #$SINK"; pactl subscribe; } |
+{ echo "Event 'change' on sink #"; pactl subscribe; } |
     while read -r event; do
         case $event in
-            "Event 'change' on sink #$SINK")
+            "Event 'change' on sink #"*)
+                sink=$(pactl get-default-sink)
+
                 {
-                    pactl get-sink-volume "$SINK"
-                    pactl get-sink-mute   "$SINK"
+                    pactl get-sink-volume "$sink"
+                    pactl get-sink-mute   "$sink"
                 } | {
                     read -r _ _ _ _ volume _
                     read -r _

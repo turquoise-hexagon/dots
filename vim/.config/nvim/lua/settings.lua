@@ -33,3 +33,5 @@ opt.mouse =       "a"
 opt.guicursor =   ""
 opt.shortmess =   "actI"
 opt.fillchars =   "vert:|"
+
+vim.cmd("colorscheme fruity")
