@@ -2,7 +2,7 @@
 #
 # battery_monitor - prevents battery from running out
 
-readonly PERCENTAGE=5
+readonly PERCENTAGE=20
 
 parse_chunk() {
 IFS=' ' read -r name charge status << EOF
