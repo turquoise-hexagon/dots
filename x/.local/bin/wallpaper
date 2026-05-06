@@ -2,7 +2,7 @@
 #
 # wallpaper - set a random wallpaper
 
-readonly DIR=~/medias/pics/walls
+readonly DIR=~/media/pics/walls
 
 set -- "$DIR/"*
 

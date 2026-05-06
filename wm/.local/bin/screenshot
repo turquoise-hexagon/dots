@@ -8,7 +8,7 @@ $1
 EOF
 }
 
-readonly DIR=~/medias/pics/scrots
+readonly DIR=~/media/pics/scrots
 readonly FORMAT=%F_%H-%M-%S
 
 border_color=$(bspc config focused_border_color)
